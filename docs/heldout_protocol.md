@@ -1,8 +1,10 @@
-# Held-out set: protocol (draft)
+# Held-out set: protocol
 
-Status 2026-10-29. **Draft, not frozen.** The draft file is `data/heldout/gupta2023_heldout_draft.json`.
-No model has been run on any item: not the base network, not an augmented one, not an LLM.
-The commit that adds this file is the proof of that ordering.
+Status 2026-10-29: **frozen v1, human check pending.** The item file is `data/heldout/gupta2023_heldout.json`; its hash is
+in `data/heldout/heldout.sha256` and a test fails if the file changes without a logged amendment (section at the end).
+No network, base or augmented, and no LLM has been run on any item: the commit tagged `heldout-frozen-v1` precedes the first
+scoring run. Every claim carries a verbatim quote found by code in the source paper; what a person still has to do is
+check that each quote supports its claim (D4), and until then every number computed from this set is provisional.
 
 ## What the set is for
 
@@ -35,24 +37,24 @@ A direction claim is scoreable (by contrast, see the scoring rule) only if its h
 
 ## What is in the draft (produced by `summarize`, 2026-10-29, after adding `g2_arrest` and adopting D6)
 
-14 items, 25 claims, from 7 papers. Perturbed node is in the base network for 8 of 14 items.
+After amendment 1 (below): 14 items, 23 claims, from 7 papers. Perturbed node is in the base network for 9 of 14 items.
 
 | Category | Claims |
 |---|---|
-| scoreable | 7 |
-| scoreable_with_new_nodes | 3 |
+| scoreable | 8 |
+| scoreable_with_new_nodes | 2 |
 | needs_readout | 0 |
-| survival_level | 11 |
-| direction_only (partial changes) | 4 |
+| survival_level | 10 |
+| direction_only (partial changes) | 3 |
 
-**10 of 25 claims can be scored, 7 of them on the base network.** Most of the radiosensitisation literature
+**10 of 23 claims can be scored, 8 of them on the base network.** Most of the radiosensitisation literature
 reports survival, which a phenotype network cannot express. That is a result about the approach, and the README must say so.
 It is also far too few claims to show an improvement statistically; any M1 number from this set must be reported as counts.
 
 **Correction.** An earlier version of this protocol, and a message to the human, said that adding `g2_arrest` would make
 8 more claims scoreable (13 of 25). That was wrong. Seven of the 8 G2 claims say "reduced", "unchanged" or "increased",
 so they fell under `direction_only`, and adding the readout made exactly one claim scoreable (H04). The step from 6 to 10
-comes from D6 below, which was a separate decision.
+comes from D6 below, which was a separate decision. (Before amendment 1 the counts were 7 + 3 + 4 + 11 of 25.)
 
 ## Scoring rule, fixed now (implemented in `src/cellproof/eval/score.py`)
 
@@ -81,7 +83,9 @@ before the freeze. Its tests use synthetic items built from cases in the Gupta p
 ## Leakage and selection, disclosed
 
 - **Corpus exclusion.** These papers must not be in the extraction corpus: PMC2906734, PMC3789084, PMC3167033,
-  PMC5342109, PMC6116113, PMC3997448, PMC3687028. Extraction prompts ask for mechanisms only.
+  PMC5342109, PMC6116113, PMC4013513, PMC3687028. Extraction prompts ask for mechanisms only. (PMC3997448, H14's source,
+  was in this list until amendment 1 and was never in the corpus.) A test checks the committed corpus manifest against the
+  sources in the item file.
 - **Corpus is not clean of similar experiments.** The queries (in `corpus/europepmc.py`) exclude papers that use the words
   radiosensitisation or clonogenic, and the list was fixed by topic and citation count before any text was read. Some
   corpus papers still report G2 checkpoint results under irradiation with ATM, ATR or DNA-PK inhibition, in other cell
@@ -94,12 +98,13 @@ before the freeze. Its tests use synthetic items built from cases in the Gupta p
   H03 (apoptosis in p53-null cells) was therefore chosen partly because the base network should get it wrong. H01 should
   be got right by the base. Per-claim reporting, not an aggregate, is what keeps this honest. The human should add items
   without looking at the rules.
-- **Reading was indirect.** Every claim was read through a page-summarising fetch tool, not by a person.
-  Some sources disagree internally (for example H08: the authors say U87 is refractory, yet the two enhancement ratios
-  are 3.0 and 3.2). Every locator and claim needs a human check before the freeze.
-- **Genuine disagreement is kept**: H13 reports G2 abrogation in one line and not in the other, and the same paper reports
-  similar reductions in both in asynchronous cultures. Halaçlı 2013 (H03, H04) conflicts with the classic finding that
-  p53 is needed to sustain G2 arrest; that classic paper was not read.
+- **Reading.** The draft was first written from page summaries made by a fetch tool. Amendment 1 re-read the sources through
+  the Europe PMC and NCBI E-utilities APIs, found a verbatim quote for every claim by code, and checked that each quote is
+  in the paper. That exposed errors in the summaries (listed in the amendment log); they were corrected from the text, and
+  no score existed to influence the corrections. A person still has to check that each quote supports its claim (D4).
+- **Genuine disagreement.** Halaçlı 2013 (H03, H04) conflicts with the classic finding that p53 is needed to sustain G2
+  arrest; that classic paper was not read. H13's paper concludes that abrogation of the G2 block by the CHK1 inhibitor is
+  essentially identical in the p53-null and the p53 wild-type line, which is why its claims are partial reductions.
 
 ## Approximations, applied uniformly
 
@@ -128,27 +133,63 @@ These are recorded per item in `perturbation.approximation`.
   `backgrounds` annotation (p53 = 0 for H1299, empty for A549, both for U2OS wild type and dominant-negative). Dominant-
   negative p53 is modelled as p53 = 0, and A549 "wild type" ignores its other lesions. Added together with D6.
 - **D2. Accepted by the assistant on 2026-10-29 (delegated).** The approximations above stand.
-- **D3. More items.** Phenotype-level knockout data (apoptosis present or absent after irradiation in null cells) would
-  be scoreable, unlike survival data. This search was not done. Open.
-- **D4. Still the human's, and not delegable.** Check every locator and claim against the papers. An assistant reading
-  its own summaries cannot stand in for this. Until it is done, every number computed from this set is provisional.
-- **D5. Pre-extraction snapshot, taken 2026-10-29** (see below). This is a snapshot that proves ordering, not the final
-  freeze: the final freeze follows D4. Changes after the snapshot are listed in the amendment log.
+- **D3. More items: one fixed search, run once (amendment 1).** For eight perturbed genes (ATM, TP53, MDM2, PPM1D/Wip1,
+  CHEK1, CHEK2, ATR, PRKDC/DNA-PK) Europe PMC was searched for open-access papers whose abstract has irradiation, a
+  loss-of-function term and a phenotype term (apoptosis, cell cycle arrest, G2/M, G1 arrest, senescence, autophagy), sorted
+  by citations, Creative Commons licence, not in the extraction corpus and not already a source; the first two per gene
+  were read (16 papers). Most hits were off topic (a bioinformatics web tool, a muscle review, replication stress,
+  temozolomide) or had only partial or timing differences (Wip1 depletion: apoptosis 41% vs 11%; miR-185/ATR: more
+  apoptosis; Myc null fibroblasts: delayed arrest and cell death). One gave a clear complete change in a network node:
+  Phesse 2014, Myc deletion abrogates the immediate wave of apoptosis after irradiation (H15). The set is therefore still
+  small; the search was not extended after seeing that, and no network had been scored.
+- **D4. Still the human's, and not delegable.** Check that each claim's quote supports the claim. With the quotes this is a
+  reading task of 23 sentences, not a literature search. An assistant checking its own selection cannot stand in for it.
+  Until it is done, every number computed from this set is provisional.
+- **D5. Freeze.** Two points in the git history: the tag `heldout-pre-extraction` (before any extraction) and the tag
+  `heldout-frozen-v1` (after amendment 1, before any scoring). Changes after the freeze are listed in the amendment log and
+  need the human's approval; the log below shows what each did to the set.
 
 ## Snapshot before extraction, and amendment log
 
 The corpus download and the Muse Spark extraction start only after this snapshot. The extraction prompts ask for
 mechanisms only and the seven source papers are excluded from the corpus, so the held-out outcomes cannot reach the
-extractor. The SHA-256 of `data/heldout/gupta2023_heldout_draft.json` is recorded in `data/heldout/draft.sha256`, a test
+extractor. The SHA-256 of `data/heldout/gupta2023_heldout.json` is recorded in `data/heldout/heldout.sha256`, a test
 fails when the file stops matching it, and the commit is tagged `heldout-pre-extraction`.
 
-Amendment log (any later change to the item file, with the reason; updating the hash file is the sign of an amendment):
+Amendment log (any change to the item file, with the reason; updating the hash file is the sign of an amendment):
 
-- none yet.
+- **Amendment 1, 2026-10-29, before the first scoring run.** Hash before: `b7d55b84...4914c` (tag `heldout-pre-extraction`).
+  Done by `scripts/amend_heldout_quotes.py` after the two extractions and the augmentation arms had been run, so the
+  assistant knew which nodes entered the augmented networks (ATR, CHK1, CHK2, DNA-PK) and the edit counts, but no held-out
+  score existed. What it changed, and why:
+  1. Every claim got a verbatim quote, found by code in the full text from Europe PMC or NCBI E-utilities.
+  2. H07 claim 2 narrowed to the heterozygous line, the only case the quoted sentence covers.
+  3. H08: the caveat "U87 is relatively refractory" does not occur in the text and was removed; the text says the two lines
+     "were similarly radiosensitized". The enhancement ratios 3.0 and 3.2 were dropped, being unquoted.
+  4. H13: the paper concludes that abrogation of the G2 block by the CHK1 inhibitor is "essentially identical" in the
+     p53-null and the p53 wild-type line, so "unchanged in A549 at 4 h" compared different time points. Both claims are now
+     partial reductions, which are not scored. This removed the only CHK1 claim that was scoreable.
+  5. H14 dropped: no full text is served for its source, and its three claims (increased G2/M, increased apoptosis,
+     survival) were not scoreable.
+  6. H15 added from the fixed search of D3 (Myc deletion abrogates apoptosis after irradiation).
+  Effect on the counts: 25 claims, 10 scoreable (7 on the base network) became 23 claims, 10 scoreable (8 on the base).
+  Hash after: in `data/heldout/heldout.sha256` for the frozen file (the status line was then changed from DRAFT to FROZEN).
+
+## Analysis fixed before the first scoring run
+
+- **Networks scored** (`cellproof score`): the base network; and from `cellproof augment` the three arms *naive* (every
+  edit applied unchecked), *verified* (solver-checked, no repair) and *repaired* (rejected edits sent back to Muse Spark
+  with the counterexample, K = 3), each with edges supported by at least 2 papers (`min2`) and by at least 1 (`min1`).
+- **Headline**: `repaired_min2` against the base network, `naive_min2` and the no-information baseline, claim by claim.
+  `min1` and the other arms are reported next to it, not instead of it.
+- **Reported**: the per-claim table and the counts of correct, wrong and not expressible, nothing else. No percentage and no
+  claim of improvement is made from counts this small; the README says what the table shows and what it cannot.
+- A result that is bad for the thesis is reported as it is. The set, the rules and the arms are not changed after the first run
+  except by a logged amendment with the human's approval.
 
 ## Not found or not done
 
 AKT/PTEN (only survival-level sources surfaced), Wip1 with irradiation (only combinations with other drugs surfaced),
 a photon-irradiation HCT116 p21-/- study, the original Bunz 1998 paper, the original MK-1775 radiosensitisation
 phenotype data beyond Bridges 2011, and DNA-PK with p53 status. Poehlmann 2011 (PMC3823197) was excluded because it uses
-hydrogen peroxide, not radiation.
+hydrogen peroxide, not radiation. DNA-PK has no item left (H14 was dropped), so nothing in this set tests the DNA-PK node.

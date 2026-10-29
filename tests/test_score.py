@@ -1,6 +1,6 @@
 """The scoring harness, exercised on synthetic items built from cases the Gupta et al. 2023 paper reports.
 
-The held-out draft itself is never scored here: score_doc refuses a DRAFT set.
+The real held-out items are never scored in the tests: they are scored by `cellproof score`, whose output is in results/.
 """
 from pathlib import Path
 
@@ -24,8 +24,9 @@ def claim(readout, polarity, **extra):
 
 
 def test_a_draft_set_is_refused():
+    draft = {**load(ROOT / "data" / "heldout" / "gupta2023_heldout.json"), "status": "DRAFT, not frozen"}
     with pytest.raises(ValueError, match="DRAFT"):
-        score_doc(load(ROOT / "data" / "heldout" / "gupta2023_heldout_draft.json"), RULES)
+        score_doc(draft, RULES)
 
 
 def test_outcome_of_the_paper_case_tug1_knockout():

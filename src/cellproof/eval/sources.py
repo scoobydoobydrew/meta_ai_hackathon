@@ -56,6 +56,21 @@ def find(text: str, *patterns: str) -> list[str]:
     return [s for s in sentences(text) if all(c.search(s) for c in compiled)]
 
 
+def passage(text: str, start: str, max_words: int = 45) -> str | None:
+    """The verbatim text from `start` to the end of its sentence (or `max_words` words), or None when `start` is absent or
+    occurs more than once. A sentence ends at ., ! or ? followed by a space or a capital letter (abstract sections in the
+    XML run together without a space)."""
+    flat = " ".join(text.split())
+    first = flat.find(start)
+    if first < 0 or flat.find(start, first + 1) >= 0:
+        return None
+    tail = flat[first:]
+    end = re.search(r"(?<!Fig)(?<!Figs)(?<!al)(?<!vs)[.!?](?=\s|[A-Z])", tail)
+    sentence = tail[: end.end()] if end else tail
+    words = sentence.split()
+    return " ".join(words[:max_words])
+
+
 def quote_in_text(quote: str, text: str) -> bool:
     folded = normalize(quote)
     return len(folded) >= 15 and folded in normalize(text)

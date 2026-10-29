@@ -5,7 +5,7 @@ from cellproof.corpus.europepmc import download, select, xml_to_text
 from cellproof.eval.heldout import load
 
 ROOT = Path(__file__).resolve().parents[1]
-DRAFT = ROOT / "data" / "heldout" / "gupta2023_heldout_draft.json"
+DRAFT = ROOT / "data" / "heldout" / "gupta2023_heldout.json"
 MANIFEST = ROOT / "data" / "corpus" / "manifest.json"
 
 JATS = """<article><front><article-meta>

@@ -1,0 +1,466 @@
+{
+  "status": "FROZEN v1 (2026-10-29). Every claim carries a verbatim quote that code found in the source paper's full text (scripts/amend_heldout_quotes.py). No network had been scored on any item when this was frozen. A human has not yet checked that each quote supports its claim (D4): results computed from this set are provisional until then. Any change needs a logged amendment (docs/heldout_protocol.md).",
+  "protocol": "docs/heldout_protocol.md",
+  "stimulus_mapping": {
+    "IR": {
+      "DNA_damage": 1
+    },
+    "none": {
+      "DNA_damage": 0
+    }
+  },
+  "sources": {
+    "arya2010": {
+      "cite": "Arya AK et al. Br J Cancer 2010;103(2):186-195",
+      "doi": "10.1038/sj.bjc.6605739",
+      "pmcid": "PMC2906734",
+      "license": "CC BY 4.0 (as stated in the text)"
+    },
+    "halacli2013": {
+      "cite": "Halacli SO et al. Oncol Lett 2013;6(3):807-810",
+      "doi": "10.3892/ol.2013.1441",
+      "pmcid": "PMC3789084",
+      "license": "CC BY-NC 3.0"
+    },
+    "bridges2011": {
+      "cite": "Bridges KA et al. Clin Cancer Res 2011;17(17):5638-5648",
+      "doi": "10.1158/1078-0432.CCR-11-0650",
+      "pmcid": "PMC3167033",
+      "license": "not stated in the text read"
+    },
+    "bridges2016": {
+      "cite": "Bridges KA et al. Oncotarget 2016;7(44):71660-71672",
+      "doi": "10.18632/oncotarget.12311",
+      "pmcid": "PMC5342109",
+      "license": "CC BY"
+    },
+    "middleton2018": {
+      "cite": "Middleton FK, Pollard JR, Curtin NJ. Cancers 2018;10(8):275",
+      "doi": "10.3390/cancers10080275",
+      "pmcid": "PMC6116113",
+      "license": "CC BY"
+    },
+    "biddlestone2013": {
+      "cite": "Biddlestone-Thorpe L et al. Clin Cancer Res 2013;19(12):3189-3200",
+      "doi": "10.1158/1078-0432.CCR-12-3408",
+      "pmcid": "PMC3687028",
+      "license": "not stated in the text read"
+    },
+    "phesse2014": {
+      "cite": "Phesse TJ et al. Cell Death Differ 2014, pages 956-966",
+      "doi": "10.1038/cdd.2014.15",
+      "pmcid": "PMC4013513",
+      "license": "CC BY (Europe PMC)"
+    }
+  },
+  "items": [
+    {
+      "id": "H01",
+      "source": "arya2010",
+      "locator": "Fig 7",
+      "context": "UM-SCC-11B and UM-SCC-81B laryngeal carcinoma lines (p53 mutant with loss of heterozygosity), 6 Gy gamma, with or without nutlin-3 5 uM",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "p53": 0
+        },
+        "approximation": "p53 mutation with LOH treated as loss of function"
+      },
+      "claims": [
+        {
+          "readout": "senescence",
+          "polarity": "absent",
+          "vs": "any condition tested",
+          "statement": "No detectable senescence (SA-beta-gal) under any condition.",
+          "quote": "Cells expressing full-length mutant p53 with LOH (UM-SCC-11B and UM-SCC-81B, the most radiosensitive) did not show any detectable senescence under any of the conditions examined."
+        }
+      ]
+    },
+    {
+      "id": "H02",
+      "source": "arya2010",
+      "locator": "Fig 3",
+      "context": "UM-SCC-17A and UM-SCC-17AS (p53 wild type), nutlin-3 alone, no irradiation",
+      "stimulus": "none",
+      "perturbation": {
+        "nodes": {
+          "Mdm2": 0
+        },
+        "approximation": "nutlin-3 blocks the MDM2-p53 interaction; modelled as Mdm2 loss"
+      },
+      "claims": [
+        {
+          "readout": "arrest",
+          "polarity": "present",
+          "vs": "untreated control",
+          "statement": "Increased G1 and decreased S phase.",
+          "quote": "Figure 3 summarises the results (also see Supplementary Data Figure 2) from a typical experiment, and shows that there is a reduction in the S-phase population and a concomitant increase in the G1 population in the wild-type cells with increasing doses of Nutlin-3."
+        },
+        {
+          "readout": "apoptosis",
+          "polarity": "absent",
+          "vs": "untreated control",
+          "statement": "No increase in sub-G1; absent here means not induced.",
+          "quote": "As shown in Figure 3, flow cytometry did not detect any increase in the sub-G1 population of cells in response to Nutlin-3 treatment, and thus we conclude that this is unlikely to provide an explanation for this effect."
+        }
+      ]
+    },
+    {
+      "id": "H03",
+      "source": "halacli2013",
+      "locator": "Fig 1A-B",
+      "context": "HCT116 p53-/-, 5 Gy gamma, apoptosis measured as sub-G0 DNA content over time",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "p53": 0
+        },
+        "approximation": "none, a true null line"
+      },
+      "claims": [
+        {
+          "readout": "apoptosis",
+          "polarity": "present",
+          "vs": "unirradiated control",
+          "statement": "Significant time-dependent increase (P<0.05); the paper reports no difference in apoptotic ratio from p53+/+.",
+          "quote": "Following treatment with 5 Gy γ-irradiation, the average apoptotic percentages of cell number significantly increased in a time-dependent manner in the p53+/+ and p53−/− cells (P<0.05), whereas there was no change in the apoptotic cell number in the non-irradiated control cells (Fig. 1A)."
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "source": "halacli2013",
+      "locator": "Fig 3A-B",
+      "context": "HCT116 p53-/-, 5 Gy gamma, cell cycle at 24 and 48 h",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "p53": 0
+        },
+        "approximation": "none, a true null line"
+      },
+      "claims": [
+        {
+          "readout": "g2_arrest",
+          "polarity": "present",
+          "vs": "unirradiated control",
+          "statement": "Cells that left G1 accumulated in G2 at 48 h, whereas p53+/+ cells arrested in S.",
+          "quote": "Following treatment with irradiation, G1/S cell cycle arrest occurred in the p53+/+ cells, whereas the p53−/− cells accumulated in the G2 phase."
+        }
+      ]
+    },
+    {
+      "id": "H05",
+      "source": "bridges2011",
+      "locator": "Fig 1A, Table 1",
+      "context": "MK-1775 (WEE1 inhibitor) 200 nM with irradiation; p53-defective H1299, Calu-6, MDA-MB-231, PC3 versus p53 wild-type A549, H460, MCF-7, LnCap, CCD-16, MCF-10A. Replicated for H1299, FaDu, Calu-6 and A549 in bridges2016 Table 1.",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "Wee1": 0
+        },
+        "approximation": "kinase inhibition modelled as node loss"
+      },
+      "claims": [
+        {
+          "readout": "clonogenic_survival",
+          "polarity": "decreased",
+          "vs": "IR alone",
+          "in": "p53-defective lines",
+          "statement": "Radiosensitised, dose enhancement factor 1.2 to 1.5.",
+          "quote": "Clonogenic survival analyses indicated that nanomolar concentrations of MK-1775 radiosensitized p53-defective human lung, breast, and prostate cancer cells but not similar lines with wild-type p53."
+        },
+        {
+          "readout": "clonogenic_survival",
+          "polarity": "unchanged",
+          "vs": "IR alone",
+          "in": "p53 wild-type lines",
+          "statement": "Not radiosensitised, factor about 1.0.",
+          "quote": "Tumor cells with wild-type p53 and cells of normal tissue origin were not similarly radiosensitized."
+        }
+      ]
+    },
+    {
+      "id": "H06",
+      "source": "bridges2011",
+      "locator": "Fig 2B",
+      "context": "MK-1775 200 nM with irradiation, mitotic index; H1299 (p53-null) versus A549 (p53 wild type)",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "Wee1": 0
+        },
+        "approximation": "kinase inhibition modelled as node loss"
+      },
+      "claims": [
+        {
+          "readout": "g2_arrest",
+          "polarity": "decreased",
+          "magnitude": "complete",
+          "backgrounds": [
+            {
+              "p53": 0
+            }
+          ],
+          "vs": "IR alone",
+          "in": "p53-null H1299",
+          "statement": "The radiation-induced G2 block was abrogated.",
+          "quote": "Consistent with its ability to radiosensitize, MK-1775 abrogated the radiation-induced G2 block in p53-defective cells but not in p53 wild-type lines."
+        },
+        {
+          "readout": "g2_arrest",
+          "polarity": "unchanged",
+          "magnitude": "none",
+          "backgrounds": [
+            {}
+          ],
+          "vs": "IR alone",
+          "in": "p53 wild-type A549",
+          "statement": "No abrogation.",
+          "quote": "Consistent with its ability to radiosensitize, MK-1775 abrogated the radiation-induced G2 block in p53-defective cells but not in p53 wild-type lines."
+        }
+      ]
+    },
+    {
+      "id": "H07",
+      "source": "arya2010",
+      "locator": "Fig 4",
+      "context": "Nutlin-3 5 uM pre-treatment before 0 to 6 Gy; p53 wild-type UM-SCC-17A and 17AS versus heterozygous, mutant and null lines",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "Mdm2": 0
+        },
+        "approximation": "nutlin-3 blocks the MDM2-p53 interaction; modelled as Mdm2 loss"
+      },
+      "claims": [
+        {
+          "readout": "clonogenic_survival",
+          "polarity": "decreased",
+          "vs": "IR alone",
+          "in": "p53 wild-type lines",
+          "statement": "Significantly radiosensitised (P<0.0001 at SF2).",
+          "quote": "Nutlin-3 radiosensitises p53 wild-type laryngeal squamous cell carcinoma cells."
+        },
+        {
+          "readout": "clonogenic_survival",
+          "polarity": "unchanged",
+          "vs": "IR alone",
+          "in": "heterozygous line (one wild-type copy and a mutant allele)",
+          "statement": "Retaining one wild-type copy does not make cells more radiosensitive to pre-treatment with Nutlin-3.",
+          "quote": "Not only does retention of one wild-type copy in the presence of a mutant p53 allele (heterozygous mutation) not render cells sensitive to the growth inhibitory effects of Nutlin-3 (Figure 1) but it also does not render the cells more radiosensitive (Figure 4)."
+        }
+      ]
+    },
+    {
+      "id": "H08",
+      "source": "biddlestone2013",
+      "locator": "Fig 1B, Fig 6E",
+      "context": "KU-60019 (ATM inhibitor) 3 uM with irradiation; U1242 (p53 R175H mutant) and U87 (p53 wild type) glioma",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "ATM_pH2AX": 0
+        },
+        "approximation": "kinase inhibition modelled as loss of the merged ATM/pH2AX node"
+      },
+      "claims": [
+        {
+          "readout": "clonogenic_survival",
+          "polarity": "decreased",
+          "vs": "IR alone",
+          "in": "U1242 mutant",
+          "statement": "Radiosensitised by KU-60019; the paper says the two lines were similarly radiosensitised.",
+          "quote": "Furthermore, U1242 and U87 cells were similarly radiosensitized in vitro in the presence of low levels of KU-60019 (Fig. 1B)."
+        },
+        {
+          "readout": "clonogenic_survival",
+          "polarity": "decreased",
+          "vs": "IR alone",
+          "in": "U87 wild type",
+          "statement": "Radiosensitised by KU-60019; the paper says the two lines were similarly radiosensitised.",
+          "quote": "Furthermore, U1242 and U87 cells were similarly radiosensitized in vitro in the presence of low levels of KU-60019 (Fig. 1B)."
+        }
+      ]
+    },
+    {
+      "id": "H09",
+      "source": "middleton2018",
+      "locator": "Fig 4",
+      "context": "VE-821 (ATR inhibitor) 1 uM with 2 Gy; HCT116 p53+/+ and p53-/-, U2OS p53 wild type and dominant-negative",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "ATR": 0
+        },
+        "approximation": "kinase inhibition modelled as node loss"
+      },
+      "claims": [
+        {
+          "readout": "g2_arrest",
+          "polarity": "decreased",
+          "magnitude": "partial",
+          "vs": "IR alone",
+          "in": "HCT116 p53+/+ (by 24%) and p53-/- (by 36%)",
+          "statement": "IR-induced G2 arrest reduced, more in p53-/-.",
+          "quote": "VE-821 alone had negligible effects on cell cycle distribution but it reduced the IR-induced G2 arrest to a greater extent in the p53−/− HCT116 cells (36%) than in the p53+/+ cells (24%) and completely abrogated the IR-induced G2 arrest in both of the U2OS cells."
+        },
+        {
+          "readout": "g2_arrest",
+          "polarity": "decreased",
+          "magnitude": "complete",
+          "backgrounds": [
+            {},
+            {
+              "p53": 0
+            }
+          ],
+          "vs": "IR alone",
+          "in": "U2OS p53 wild type and dominant-negative",
+          "statement": "IR-induced G2 arrest completely abrogated in both.",
+          "quote": "VE-821 alone had negligible effects on cell cycle distribution but it reduced the IR-induced G2 arrest to a greater extent in the p53−/− HCT116 cells (36%) than in the p53+/+ cells (24%) and completely abrogated the IR-induced G2 arrest in both of the U2OS cells."
+        }
+      ]
+    },
+    {
+      "id": "H10",
+      "source": "middleton2018",
+      "locator": "Discussion (no figure cited)",
+      "context": "VE-821 alone for 24 h, all lines tested, no irradiation",
+      "stimulus": "none",
+      "perturbation": {
+        "nodes": {
+          "ATR": 0
+        },
+        "approximation": "kinase inhibition modelled as node loss"
+      },
+      "claims": [
+        {
+          "readout": "apoptosis",
+          "polarity": "absent",
+          "vs": "untreated control",
+          "statement": "No increase in sub-G1 cells; absent here means not induced.",
+          "quote": "One possibility is that the loss of p53 renders the cells less likely to undergo apoptosis but there was no increase in sub-G1 cells detected after 24 h exposure to VE-821."
+        }
+      ]
+    },
+    {
+      "id": "H11",
+      "source": "middleton2018",
+      "locator": "Fig 3B, Table S4",
+      "context": "VE-821 1 uM with 2 or 4 Gy; isogenic pairs HCT116 p53+/+ vs p53-/- and U2OS wild type vs dominant-negative; unmatched MCF7 (wt) vs MDA-MB-231 (mutant)",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "ATR": 0
+        },
+        "approximation": "kinase inhibition modelled as node loss"
+      },
+      "claims": [
+        {
+          "readout": "clonogenic_survival",
+          "polarity": "decreased",
+          "vs": "IR alone",
+          "in": "HCT116 p53-/- (1.6-fold at 2 Gy, 2.8-fold at 4 Gy more than wt) and U2OS dominant-negative (2-fold, 6.5-fold more than wt)",
+          "statement": "Greater radiosensitisation in the p53-dysfunctional line of each isogenic pair.",
+          "quote": "Defective p53 consistently conferred greater chemo- and radiosensitisation, particularly at high dose levels in isogenic cells but not unmatched cells."
+        },
+        {
+          "readout": "clonogenic_survival",
+          "polarity": "unchanged",
+          "vs": "between lines",
+          "in": "MCF7 versus MDA-MB-231",
+          "statement": "About 2-fold in both; p53 status did not appear to matter.",
+          "quote": "In the unmatched breast cancer cell lines, gemcitabine sensitisation was greater in the p53 mutant MDA-MB231 cells than MCF7 cells but radiosensitisation was similar."
+        }
+      ]
+    },
+    {
+      "id": "H12",
+      "source": "bridges2016",
+      "locator": "Table 1, Fig 1A",
+      "context": "MK-8776 (CHK1 inhibitor) 200 nM with irradiation; p53-defective H1299, FaDu, Calu-6 versus p53 wild-type A549, H460 and normal MRC-9",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "CHK1": 0
+        },
+        "approximation": "kinase inhibition modelled as node loss"
+      },
+      "claims": [
+        {
+          "readout": "clonogenic_survival",
+          "polarity": "decreased",
+          "vs": "IR alone",
+          "in": "p53-defective lines (factor 1.25 to 1.53)",
+          "statement": "Radiosensitised.",
+          "quote": "Clonogenic survival analyses indicated that MK-8776 radiosensitized p53-defective tumor cells but not lines with wild-type p53."
+        },
+        {
+          "readout": "clonogenic_survival",
+          "polarity": "unchanged",
+          "vs": "IR alone",
+          "in": "p53 wild-type lines and MRC-9 (factor 1.00 to 1.03)",
+          "statement": "Not radiosensitised.",
+          "quote": "Clonogenic survival analyses indicated that MK-8776 radiosensitized p53-defective tumor cells but not lines with wild-type p53."
+        }
+      ]
+    },
+    {
+      "id": "H13",
+      "source": "bridges2016",
+      "locator": "Fig 2A-C, Suppl Fig S3",
+      "context": "MK-8776 200 nM with 4 Gy, mitotic trap; H1299 (p53-null) versus A549 (p53 wild type). The same paper reports G2/M accumulation in asynchronous cultures reduced similarly in both lines. The paper concludes that abrogation by MK-8776 occurs to a similar extent in both lines.",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "CHK1": 0
+        },
+        "approximation": "kinase inhibition modelled as node loss"
+      },
+      "claims": [
+        {
+          "readout": "g2_arrest",
+          "polarity": "decreased",
+          "magnitude": "partial",
+          "vs": "IR alone",
+          "in": "H1299 at 8 h",
+          "statement": "The radiation-induced G2 block was significantly reversed in the mitotic trap.",
+          "quote": "In the 8-h samples (Figure 2B), there was evidence that MK-8776 accelerated unirradiated cells into mitosis and the radiation-induced G2 block was significantly reversed."
+        },
+        {
+          "readout": "g2_arrest",
+          "polarity": "decreased",
+          "magnitude": "partial",
+          "vs": "IR alone",
+          "in": "asynchronous H1299 and A549 cultures, later than 4 h",
+          "statement": "Some abrogation of the G2 block, essentially identical in the p53-defective and the p53 wild-type line.",
+          "quote": "In follow-up experiments using asynchronously growing cells, we did observe some abrogation of the G2 block at times exceeding 4 h after irradiation but the degree of abrogation was essentially identical in the p53-defective H1299 cells and the p53 wild-type A549 cells and was a"
+        }
+      ]
+    },
+    {
+      "id": "H15",
+      "source": "phesse2014",
+      "locator": "Abstract; Figure 1",
+      "context": "mouse intestinal crypts, conditional c-Myc deletion (AhCre Myc fl/fl) versus wild type, 14 Gy gamma irradiation, apoptosis 6 h later",
+      "stimulus": "IR",
+      "perturbation": {
+        "nodes": {
+          "Myc": 0
+        },
+        "approximation": "conditional gene deletion treated as loss of function; mouse tissue, not a cell line"
+      },
+      "claims": [
+        {
+          "readout": "apoptosis",
+          "polarity": "decreased",
+          "magnitude": "complete",
+          "vs": "wild-type intestine, same dose",
+          "statement": "The immediate wave of apoptosis after ionizing irradiation was completely abrogated (the figure shows a significant, not total, reduction; 'completely' is the authors' wording).",
+          "quote": "Remarkably, c-Myc deletion completely abrogated the immediate wave of apoptosis following both ionizing irradiation and cisplatin treatment, recapitulating the phenotype of p53 deficiency in the intestine."
+        }
+      ]
+    }
+  ]
+}

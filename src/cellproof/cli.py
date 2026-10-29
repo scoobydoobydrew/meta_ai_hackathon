@@ -30,7 +30,7 @@ def smoke() -> None:
 def corpus(
     out: Path = typer.Option(Path("data/raw/corpus"), help="Where the full texts go (git-ignored)."),
     manifest: Path = typer.Option(Path("data/corpus/manifest.json"), help="Committed list of what was downloaded."),
-    heldout: Path = typer.Option(Path("data/heldout/gupta2023_heldout_draft.json"), help="Its source papers are excluded."),
+    heldout: Path = typer.Option(Path("data/heldout/gupta2023_heldout.json"), help="Its source papers are excluded."),
 ) -> None:
     """Select open-access papers by the rules in corpus/europepmc.py, download their texts, write the manifest."""
     excluded = {source["pmcid"] for source in load_heldout(heldout)["sources"].values()}
@@ -137,6 +137,31 @@ def augment(
             summary["runs"][name] = {**summarize_records(records), "nodes": len(rules), "verification_cases_failing": failing}
             typer.echo(f"{name:18s} {json.dumps(summary['runs'][name])}")
     (out_results / "augmentation_summary.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+@app.command()
+def score(
+    heldout: Path = typer.Option(Path("data/heldout/gupta2023_heldout.json")),
+    networks: str = typer.Option(
+        "base=data/base/gupta2023.bnet,naive=data/models/naive_min2.bnet,verified=data/models/verified_min2.bnet,"
+        "repaired=data/models/repaired_min2.bnet",
+        help="name=path pairs, comma separated.",
+    ),
+    out: Path = typer.Option(Path("results/m1_heldout.md")),
+) -> None:
+    """M1: score each network on the held-out set, per claim. Refuses a set whose status is DRAFT."""
+    from cellproof.eval.heldout import load
+    from cellproof.eval.report import markdown, score_networks
+    from cellproof.network.bnet import load_bnet
+
+    doc = load(heldout)
+    loaded = {pair.split("=")[0]: load_bnet(pair.split("=")[1]) for pair in networks.split(",")}
+    scored = score_networks(doc, loaded)["rows"]
+    out.parent.mkdir(parents=True, exist_ok=True)
+    table = markdown(doc, scored)
+    out.write_text(f"Held-out set status: {doc['status']}\n\n{table}", encoding="utf-8")
+    out.with_suffix(".json").write_text(json.dumps(scored, indent=1) + "\n", encoding="utf-8")
+    typer.echo(table)
 
 
 @app.command("extract-stats")
