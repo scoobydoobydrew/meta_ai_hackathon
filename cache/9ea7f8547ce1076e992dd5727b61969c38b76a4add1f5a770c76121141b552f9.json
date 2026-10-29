@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "82eb633167731d05b2eb9d3d5ddae242a55cce93dbf008d17fbcfabe84d4300c",
+      "chars": 37065,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"MCF7 cells, IR-exposed positive control\", \"effect\": \"activates\", \"evidence_quote\": \"In contrast to IR-exposed positive control (PC) group (Fig. 1c, d, g), P-ATM and \\u03b3H2AX were not observed in active AKT-induced senescence (Fig. 1g).\", \"location\": \"PTEN depletion induces cellular senescence via the p53-p21 signaling pathway without triggering a DNA damage response\", \"source\": \"IR\", \"target\": \"ATM\"}, {\"context\": \"MCF7 cells, IR-exposed positive control\", \"effect\": \"activates\", \"evidence_quote\": \"In contrast to IR-exposed positive control (PC) group (Fig. 1c, d, g), P-ATM and \\u03b3H2AX were not observed in active AKT-induced senescence (Fig. 1g).\", \"location\": \"PTEN depletion induces cellular senescence via the p53-p21 signaling pathway without triggering a DNA damage response\", \"source\": \"IR\", \"target\": \"H2AX\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 9501,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2399,
+    "output_tokens_details": {
+      "reasoning_tokens": 2148
+    },
+    "total_tokens": 11900
+  }
+}

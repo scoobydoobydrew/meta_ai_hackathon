@@ -82,6 +82,32 @@ def read_rules(supplement_zip: str | Path) -> dict[str, str]:
     return rules
 
 
+def read_annotations(supplement_zip: str | Path) -> dict:
+    """The official molecule names and the biological justification of every interaction, as Table S2 prints them:
+    {"nodes": {node id: official name}, "interactions": [{target, regulator, text, references}]}."""
+    with zipfile.ZipFile(supplement_zip) as z:
+        wb = openpyxl.load_workbook(io.BytesIO(z.read("Table S2.xlsx")), read_only=True)
+    names: dict[str, str] = {}
+    interactions: list[dict] = []
+    target, header_seen = None, False
+    for row in wb.worksheets[0].iter_rows(values_only=True):
+        if row[4] == "Target Node":
+            header_seen = True
+            continue
+        if not header_seen:
+            continue
+        if row[4]:
+            target = ALIASES[_key(str(row[4]))]
+            if row[1]:
+                names[target] = " ".join(str(row[1]).split())
+        if isinstance(row[5], int | float) and row[6] and row[7]:
+            interactions.append({
+                "target": target, "regulator": ALIASES[_key(str(row[6]))],
+                "text": " ".join(str(row[7]).split()), "references": " ".join(str(row[8] or "").split()),
+            })
+    return {"source": "Gupta et al. 2023, Cells 12(7):1085, Supplementary Table S2 (article CC BY 4.0)", "nodes": names, "interactions": interactions}
+
+
 def build(raw_rules: dict[str, str]) -> dict[str, str]:
     """Validated {node id: bnet rule}, including the constant input node."""
     rules = {INPUT: INPUT}

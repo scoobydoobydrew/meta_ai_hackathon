@@ -1,0 +1,582 @@
+{
+ "source": "Gupta et al. 2023, Cells 12(7):1085, Supplementary Table S2 (article CC BY 4.0)",
+ "nodes": {
+  "ATM_pH2AX": "ATM serine/threonine kinase/phosphorylated histone H2AX",
+  "AMPK_MAPK": "AMP-activated protein kinase/Mitogen-activated protein kinase",
+  "Mdm2": "E3 ubiquitin protein ligase homolog protein",
+  "p53": "Tumor supressor p53 protein",
+  "p53_A": "Tumor supressor p53 protein (Ser-15 and Ser-20)",
+  "p53_INP1": "Tumor protein p53 inducible nuclear protein 1",
+  "p53_K": "Tumor supressor p53 protein (Ser-46)",
+  "p21": "Cyclin-dependent kinase inhibitor 1A",
+  "Wip1": "Mg2+/Mn2+ Dependent 1D",
+  "RB": "RB transcriptional corepressor 1",
+  "Myc": "MYC proto-oncogene",
+  "WWP1": "WW domain containing E3 ubiquitin protein ligase 1",
+  "hTERT": "Human telomerase reverse transcriptase",
+  "E2F1": "E2F transcripition factor 1",
+  "Cdc25": "Cell division cycle 25c",
+  "Sirt1": "Sirtuin 1",
+  "Cdc2_CycB": "Cyclin-dependent kinase 1/G2/mitotic-specific cyclin-B1",
+  "Wee1": "WEE1 G2 checkpoint kinase",
+  "TUG1": "Long non-coding RNA - taurine up-regulated 1",
+  "miR221": "microRNA 221",
+  "PTEN": "Phosphatase and tensin homolog",
+  "AKT": "AKT serine/threonine kinase 1",
+  "mTORC1": "Mammalian target of rapamycin complex 1",
+  "mTORC2": "Mammalian target of rapamycin complex 2",
+  "ULK1_Beclin1": "Unc-51 like autophagy activating kinase 1/Beclin 1",
+  "BCL2": "BCL2 apoptosis regulator",
+  "PUMA": "BCL2 binding component 3",
+  "BAX": "BCL2 associated X, apoptosis regulator",
+  "Caspase": "Caspase"
+ },
+ "interactions": [
+  {
+   "target": "ATM_pH2AX",
+   "regulator": "DNA_damage",
+   "text": "DNA damage triggers ATM/pH2AX activity.",
+   "references": "[1,2,3,4]"
+  },
+  {
+   "target": "ATM_pH2AX",
+   "regulator": "Wip1",
+   "text": "Wip1 inhibits ATM/pH2AX activity.",
+   "references": ""
+  },
+  {
+   "target": "ATM_pH2AX",
+   "regulator": "Cdc25",
+   "text": "Cdc25 is negative regulator pH2AX activity.",
+   "references": ""
+  },
+  {
+   "target": "ATM_pH2AX",
+   "regulator": "E2F1",
+   "text": "E2F1 activats ATM/pH2AX activity.",
+   "references": ""
+  },
+  {
+   "target": "AMPK_MAPK",
+   "regulator": "ATM_pH2AX",
+   "text": "ATM/pH2AX triggers activation of AMPK/MAPK.",
+   "references": "[5,6,7]"
+  },
+  {
+   "target": "AMPK_MAPK",
+   "regulator": "Wip1",
+   "text": "Wip1 inhibits MAPK activity.",
+   "references": ""
+  },
+  {
+   "target": "Mdm2",
+   "regulator": "Wip1",
+   "text": "Wip1 inhibits Mdm2 expression.",
+   "references": "[8,9,10,11,12]"
+  },
+  {
+   "target": "Mdm2",
+   "regulator": "p53",
+   "text": "p53 induces Mdm2 expression.",
+   "references": ""
+  },
+  {
+   "target": "Mdm2",
+   "regulator": "ATM_pH2AX",
+   "text": "ATM is negative regulator of Mdm2 activity.",
+   "references": ""
+  },
+  {
+   "target": "Mdm2",
+   "regulator": "miR221",
+   "text": "miR-221 inhibits Mdm2 expression.",
+   "references": ""
+  },
+  {
+   "target": "Mdm2",
+   "regulator": "PTEN",
+   "text": "PTEN stabilized p53 by inhibits Mdm2 expression.",
+   "references": ""
+  },
+  {
+   "target": "Mdm2",
+   "regulator": "AKT",
+   "text": "AKT is a positive regulator of Mdm2 activity.",
+   "references": ""
+  },
+  {
+   "target": "p53",
+   "regulator": "ATM_pH2AX",
+   "text": "ATM and pH2AX is positive regulator of p53 activity.",
+   "references": "[1,13,14,15,16]"
+  },
+  {
+   "target": "p53",
+   "regulator": "Mdm2",
+   "text": "Mdm2 is negative regulator of p53 activity.",
+   "references": ""
+  },
+  {
+   "target": "p53",
+   "regulator": "AMPK_MAPK",
+   "text": "Both AMPK and MAPK can induces p53 expression.",
+   "references": ""
+  },
+  {
+   "target": "p53",
+   "regulator": "hTERT",
+   "text": "hTERT is a negative regulator of p53 activity.",
+   "references": ""
+  },
+  {
+   "target": "p53_A",
+   "regulator": "Sirt1",
+   "text": "Sirt1 is a negative regulator of p53-A activity.",
+   "references": "[17,18]"
+  },
+  {
+   "target": "p53_A",
+   "regulator": "p53_K",
+   "text": "p53-K directly inhibits p53-A.",
+   "references": ""
+  },
+  {
+   "target": "p53_A",
+   "regulator": "p53",
+   "text": "p53-A induces by p53.",
+   "references": ""
+  },
+  {
+   "target": "p53_A",
+   "regulator": "p53_INP1",
+   "text": "p53INP1 inhibits p53-A.",
+   "references": ""
+  },
+  {
+   "target": "p53_INP1",
+   "regulator": "p53_K",
+   "text": "p53-K induces p53INP1 expression.",
+   "references": "[18]"
+  },
+  {
+   "target": "p53_INP1",
+   "regulator": "p53_A",
+   "text": "p53-A positively regulate p53INP1 expression.",
+   "references": ""
+  },
+  {
+   "target": "p53_K",
+   "regulator": "p53_A",
+   "text": "p53-A inhibits p53-K expression.",
+   "references": "[18,17,8]"
+  },
+  {
+   "target": "p53_K",
+   "regulator": "Sirt1",
+   "text": "Sirt1 is a negative regulator of p53-K activity.",
+   "references": ""
+  },
+  {
+   "target": "p53_K",
+   "regulator": "Wip1",
+   "text": "Wip1 is a negative regulator of p53-K activity.",
+   "references": ""
+  },
+  {
+   "target": "p53_K",
+   "regulator": "p53",
+   "text": "p53 induces p53-K expression.",
+   "references": ""
+  },
+  {
+   "target": "p21",
+   "regulator": "p53_A",
+   "text": "p53-A trigger activation of p21.",
+   "references": "[19,20,21,22,23,24]"
+  },
+  {
+   "target": "p21",
+   "regulator": "Myc",
+   "text": "Myc is a negative regulator of p21 expression.",
+   "references": ""
+  },
+  {
+   "target": "p21",
+   "regulator": "AKT",
+   "text": "AKT is a negative regulator of p21 expression.",
+   "references": ""
+  },
+  {
+   "target": "p21",
+   "regulator": "Caspase",
+   "text": "Caspase inhibits p21 expression.",
+   "references": ""
+  },
+  {
+   "target": "p21",
+   "regulator": "AMPK_MAPK",
+   "text": "Both AMPK and MAPK can induces p21 expression.",
+   "references": ""
+  },
+  {
+   "target": "Wip1",
+   "regulator": "p53_A",
+   "text": "Wip1 induces by p53-A.",
+   "references": "[25]"
+  },
+  {
+   "target": "RB",
+   "regulator": "Cdc2_CycB",
+   "text": "Cdc2-CycB inhibits RB expression.",
+   "references": "[26,27]"
+  },
+  {
+   "target": "RB",
+   "regulator": "Cdc25",
+   "text": "Cdc25 is a negative regulator of RB expression.",
+   "references": ""
+  },
+  {
+   "target": "Myc",
+   "regulator": "E2F1",
+   "text": "E2F1 trigger activation of Myc.",
+   "references": "[28,29,30,31,32,33]"
+  },
+  {
+   "target": "Myc",
+   "regulator": "AMPK_MAPK",
+   "text": "Both AMPK and MAPK can induces Myc expression.",
+   "references": ""
+  },
+  {
+   "target": "Myc",
+   "regulator": "AKT",
+   "text": "AKT is a positive regulator of Myc expression.",
+   "references": ""
+  },
+  {
+   "target": "Myc",
+   "regulator": "RB",
+   "text": "RB is a negative regulator of Myc activity.",
+   "references": ""
+  },
+  {
+   "target": "Myc",
+   "regulator": "p21",
+   "text": "p21 is a negative regulator of Myc activity.",
+   "references": ""
+  },
+  {
+   "target": "WWP1",
+   "regulator": "Myc",
+   "text": "Myc induces WWP1 expression.",
+   "references": "[34]"
+  },
+  {
+   "target": "hTERT",
+   "regulator": "AKT",
+   "text": "AKT induces hTERT expression.",
+   "references": "[35,36,16,37]"
+  },
+  {
+   "target": "hTERT",
+   "regulator": "Myc",
+   "text": "Myc can induces hTERT expression.",
+   "references": ""
+  },
+  {
+   "target": "hTERT",
+   "regulator": "p53",
+   "text": "p53 inhibits hTERT expression.",
+   "references": ""
+  },
+  {
+   "target": "hTERT",
+   "regulator": "PTEN",
+   "text": "PTEN inhibits hTERT expression.",
+   "references": ""
+  },
+  {
+   "target": "E2F1",
+   "regulator": "RB",
+   "text": "RB is a negative regulator of E2F1 activity.",
+   "references": "[38,39,40,41,42,43]"
+  },
+  {
+   "target": "E2F1",
+   "regulator": "Cdc25",
+   "text": "Cdc25 is a positive regulator of E2F1 activity.",
+   "references": ""
+  },
+  {
+   "target": "E2F1",
+   "regulator": "ATM_pH2AX",
+   "text": "ATM is a positive regulator of E2F1 activity.",
+   "references": ""
+  },
+  {
+   "target": "E2F1",
+   "regulator": "Sirt1",
+   "text": "Sirt1 inhibits E2F1 expression.",
+   "references": ""
+  },
+  {
+   "target": "E2F1",
+   "regulator": "PTEN",
+   "text": "PTEN inhibits E2F1 expression.",
+   "references": ""
+  },
+  {
+   "target": "E2F1",
+   "regulator": "Myc",
+   "text": "Myc is a positive regulator of E2F1 expression.",
+   "references": ""
+  },
+  {
+   "target": "Cdc25",
+   "regulator": "ATM_pH2AX",
+   "text": "ATM is a negative regulator of Cdc25 expression.",
+   "references": "[44,45,5,46,3]"
+  },
+  {
+   "target": "Cdc25",
+   "regulator": "AMPK_MAPK",
+   "text": "Both AMPK and MAPK are negative regulator of Cdc25 expression.",
+   "references": ""
+  },
+  {
+   "target": "Cdc25",
+   "regulator": "Wee1",
+   "text": "Wee1 inhibits Cdc25 expression.",
+   "references": ""
+  },
+  {
+   "target": "Cdc25",
+   "regulator": "PTEN",
+   "text": "PTEN inhibits Cdc25 expression.",
+   "references": ""
+  },
+  {
+   "target": "Sirt1",
+   "regulator": "E2F1",
+   "text": "E2F1 induces Sirt1 expression.",
+   "references": "[42]"
+  },
+  {
+   "target": "Cdc2_CycB",
+   "regulator": "Cdc25",
+   "text": "Cdc25 is a positive regulator of Cdc2-CycB activity.",
+   "references": "[47,48,49,21]"
+  },
+  {
+   "target": "Cdc2_CycB",
+   "regulator": "Wee1",
+   "text": "Wee1 inhibits Cdc2-CycB expression.",
+   "references": ""
+  },
+  {
+   "target": "Cdc2_CycB",
+   "regulator": "PTEN",
+   "text": "PTEN inhibits Cdc2-CycB expression.",
+   "references": ""
+  },
+  {
+   "target": "Cdc2_CycB",
+   "regulator": "p21",
+   "text": "p21 is a negative regulator of Cdc2-CycB activity.",
+   "references": ""
+  },
+  {
+   "target": "Wee1",
+   "regulator": "AKT",
+   "text": "AKT is a negative regulator of Wee1 expression.",
+   "references": "[46]"
+  },
+  {
+   "target": "TUG1",
+   "regulator": "p53",
+   "text": "p53 induces TUG1 expression.",
+   "references": "[50]"
+  },
+  {
+   "target": "miR221",
+   "regulator": "TUG1",
+   "text": "TUG1 negatively regulates miR-221 expression.",
+   "references": "[37,51]"
+  },
+  {
+   "target": "miR221",
+   "regulator": "E2F1",
+   "text": "E2F1 is inducer of miR-221 expression.",
+   "references": ""
+  },
+  {
+   "target": "PTEN",
+   "regulator": "miR221",
+   "text": "miR-221 inhibits PTEN expression.",
+   "references": "[37,52,53,34]"
+  },
+  {
+   "target": "PTEN",
+   "regulator": "ATM_pH2AX",
+   "text": "ATM can triggers PTEN expression in DNA damage response.",
+   "references": ""
+  },
+  {
+   "target": "PTEN",
+   "regulator": "p53_K",
+   "text": "p53-K is a positive regulator of PTEN expression.",
+   "references": ""
+  },
+  {
+   "target": "PTEN",
+   "regulator": "WWP1",
+   "text": "WWP1 is a negative regulator of PTEN activity.",
+   "references": ""
+  },
+  {
+   "target": "AKT",
+   "regulator": "PTEN",
+   "text": "PTEN is a negative regulator of AKT.",
+   "references": "[37,54]"
+  },
+  {
+   "target": "AKT",
+   "regulator": "mTORC2",
+   "text": "mTOR2 activates AKT expression.",
+   "references": ""
+  },
+  {
+   "target": "mTORC1",
+   "regulator": "AKT",
+   "text": "AKT induces mTORC1 expresssion.",
+   "references": "[55,56,57,58]"
+  },
+  {
+   "target": "mTORC1",
+   "regulator": "ULK1_Beclin1",
+   "text": "ULK1 directly inhibits mTORC1.",
+   "references": ""
+  },
+  {
+   "target": "mTORC1",
+   "regulator": "AMPK_MAPK",
+   "text": "AMPK/MAPK inhibits mTORC1 expression.",
+   "references": ""
+  },
+  {
+   "target": "mTORC2",
+   "regulator": "AKT",
+   "text": "AKT activats mTORC2 expression.",
+   "references": "[54,59,60,61,62,57,58]"
+  },
+  {
+   "target": "mTORC2",
+   "regulator": "PTEN",
+   "text": "PTEN inhibits mTORC2 expression.",
+   "references": ""
+  },
+  {
+   "target": "mTORC2",
+   "regulator": "mTORC1",
+   "text": "mTORC1 inhibits mTORC2 expression.",
+   "references": ""
+  },
+  {
+   "target": "mTORC2",
+   "regulator": "Sirt1",
+   "text": "Sirt1 inhibits mTORC expression.",
+   "references": ""
+  },
+  {
+   "target": "mTORC2",
+   "regulator": "hTERT",
+   "text": "hTERT is a negative regulator of mTORC2 activity.",
+   "references": ""
+  },
+  {
+   "target": "mTORC2",
+   "regulator": "AMPK_MAPK",
+   "text": "AMPK/MAPK inhibits mTORC2 expression.",
+   "references": ""
+  },
+  {
+   "target": "ULK1_Beclin1",
+   "regulator": "mTORC2",
+   "text": "mTOR2 inhibits ULK1 expression.",
+   "references": "[63,64,57]"
+  },
+  {
+   "target": "ULK1_Beclin1",
+   "regulator": "mTORC1",
+   "text": "mTOR1 inhibits ULK1 expression.",
+   "references": ""
+  },
+  {
+   "target": "ULK1_Beclin1",
+   "regulator": "AMPK_MAPK",
+   "text": "AMPK/MAPK activates ULK1/Beclin1 expression",
+   "references": ""
+  },
+  {
+   "target": "BCL2",
+   "regulator": "PUMA",
+   "text": "PUMA inhibits BCL2 expression.",
+   "references": "[65,66,67]"
+  },
+  {
+   "target": "BCL2",
+   "regulator": "E2F1",
+   "text": "E2F1 activats BCL2 activity.",
+   "references": ""
+  },
+  {
+   "target": "BCL2",
+   "regulator": "p53_K",
+   "text": "p53-K inhibits BCL2 expression.",
+   "references": ""
+  },
+  {
+   "target": "PUMA",
+   "regulator": "p53_K",
+   "text": "PUMA activated by p53-K.",
+   "references": "[68,69]"
+  },
+  {
+   "target": "PUMA",
+   "regulator": "miR221",
+   "text": "miR-221 inhibits PUMA expression.",
+   "references": ""
+  },
+  {
+   "target": "BAX",
+   "regulator": "BCL2",
+   "text": "BCL2 inhibits BAX expression.",
+   "references": "[70,71]"
+  },
+  {
+   "target": "BAX",
+   "regulator": "p53_K",
+   "text": "p53-K induces BAX expression.",
+   "references": ""
+  },
+  {
+   "target": "Caspase",
+   "regulator": "BCL2",
+   "text": "BCL2 inhibits Caspase expression.",
+   "references": "[72,73,74]"
+  },
+  {
+   "target": "Caspase",
+   "regulator": "p21",
+   "text": "p21 inhibits Caspase expression.",
+   "references": ""
+  },
+  {
+   "target": "Caspase",
+   "regulator": "BAX",
+   "text": "BAX induces Caspase expression.",
+   "references": ""
+  }
+ ]
+}

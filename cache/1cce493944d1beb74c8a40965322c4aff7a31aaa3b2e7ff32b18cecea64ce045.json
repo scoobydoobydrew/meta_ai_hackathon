@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "4e4dbc479689bb9e381852937c992063a693909aacd4ee84c1681491e5ad1e14",
+      "chars": 47954,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"downstream of oncogenic stress\", \"effect\": \"activates\", \"evidence_quote\": \"Signaling downstream of oncogenic stress involves activation of the single-stranded DNA-dependent ATR pathway and the double-stranded break-induced ATM pathway.\", \"location\": \"INTRODUCTION\", \"source\": \"single-stranded DNA\", \"target\": \"ATR\"}, {\"context\": \"downstream of oncogenic stress\", \"effect\": \"activates\", \"evidence_quote\": \"Signaling downstream of oncogenic stress involves activation of the single-stranded DNA-dependent ATR pathway and the double-stranded break-induced ATM pathway.\", \"location\": \"INTRODUCTION\", \"source\": \"double-stranded break\", \"target\": \"ATM\"}, {\"context\": \"replication intermediates of DNA viruses and retroviruses\", \"effect\": \"activates\", \"evidence_quote\": \"In addition to oncogenic stress, replication intermediates of DNA viruses and retroviruses contain double-stranded DNA ends that activate ATM (Lilley et al., 2007).\", \"location\": \"The source of DNA damage\", \"source\": \"double-stranded DNA ends\", \"target\": \"ATM\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 11082,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 3236,
+    "output_tokens_details": {
+      "reasoning_tokens": 2987
+    },
+    "total_tokens": 14318
+  }
+}

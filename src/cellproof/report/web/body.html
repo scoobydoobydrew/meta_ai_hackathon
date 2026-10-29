@@ -1,0 +1,151 @@
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">CellProof <small>hackathon build</small></a>
+    <nav aria-label="Sections">
+      <a href="#model">The cell</a><a href="#agent">The agent</a><a href="#cases">Case files</a><a href="#evidence">Evidence</a><a href="#limits">Limits</a>
+    </nav>
+    <button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme" title="Switch theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 13.2A8.5 8.5 0 1 1 10.8 3a6.8 6.8 0 0 0 10.2 10.2z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Meta Global AI Developer Hackathon · Indie track · Push the Frontier</div>
+        <h1>A cell hit by radiation has to <em>decide.</em></h1>
+        <p class="lede">A published model of that decision has 30 genes. The literature knows more. Muse Spark reads the papers and proposes new rules. An exact solver decides which ones the model can take.</p>
+        <div class="cta">
+          <a class="btn primary" href="#model">Try the cell</a>
+          <a class="btn" href="#cases">Watch a rule get judged</a>
+        </div>
+      </div>
+      <div class="hero-col"><div class="hero-art" aria-hidden="true"><canvas id="heroCanvas"></canvas></div><div class="hero-tag" id="heroTag"></div></div>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="why">
+      <blockquote class="quote" style="margin:0">Radiotherapy is commonly used to treat a variety of solid tumors.<cite>Bridges et al. 2011, Clin Cancer Res · PMC3167033</cite></blockquote>
+      <blockquote class="quote" style="margin:0">Tumor cells with wild-type p53 and cells of normal tissue origin were not similarly radiosensitized.<cite>Bridges et al. 2011 · same study, a drug tested across cell lines</cite></blockquote>
+      <p class="quote" id="whyStates"></p>
+    </div>
+  </div>
+</section>
+
+<section id="model" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The cell</div>
+      <h2 class="h2">A damaged cell can pause, age, recycle itself or die.</h2>
+      <p class="lede">This is the published network plus the four kinases the agent added. Switch DNA damage on, click a gene to knock it out or force it on, and see which fates remain. Every state shown was enumerated exactly by the solver. Nothing on this page is a simulation.</p>
+    </div>
+    <div class="lab">
+      <div class="stage" id="stage"><svg id="net" viewBox="0 0 1000 760" role="img" aria-label="Gene regulatory network. Click a gene to knock it out or switch it on."></svg><div class="tip" id="tip"></div></div>
+      <div class="panel" id="labPanel">
+        <div><h3>Model</h3><div class="seg" id="netPick"></div></div>
+        <div><h3>Input</h3><button class="switch" id="damage" type="button" aria-pressed="true"><span><b>DNA damage</b><br><small class="faint" id="damageNote">The cell has been irradiated</small></span><span class="knob"></span></button></div>
+        <div><h3>Perturb (up to two genes)</h3><div class="perts" id="perts"></div><div class="presets" id="presets"></div></div>
+        <div><h3>Stable fates</h3><div class="fates" id="fateCards"></div><p class="readline" id="fateLine" style="margin-top:10px"></p></div>
+        <div><h3>Why</h3><div class="steps" id="steps"></div><div style="display:flex;gap:8px;align-items:center;margin-top:8px"><button class="btn small" id="play" type="button">Play the cascade</button><span class="hint" id="whyNote"></span></div></div>
+        <p class="check" id="selfcheck"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="agent">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The agent</div>
+      <h2 class="h2">Read, propose, verify, repair.</h2>
+      <p class="lede">Language models read well and guess with confidence. Solvers check exactly and cannot read. CellProof gives each the job it is good at and logs every step.</p>
+    </div>
+    <div class="flow" id="flow"><div class="pulse"></div></div>
+    <div class="detail" id="stepDetail"></div>
+    <div style="margin-top:48px">
+      <h3 style="font-family:var(--display);font-weight:400;font-size:30px">Where the claims go</h3>
+      <p class="muted" style="margin-top:6px;max-width:64ch">Most of what a paper says does not become a rule. Each stage below removes what cannot or should not be used.</p>
+      <div class="funnel" id="funnel"></div>
+      <div class="legend" id="funnelLegend"></div>
+    </div>
+  </div>
+</section>
+
+<section id="cases" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Case files</div>
+      <h2 class="h2">Watch a rule get judged.</h2>
+      <p class="lede">Every edit the agent considered has a file: the papers behind it, the rule it became, the solver's verdict and, when the verdict was no, what the model did next. Pick the first rejected one to see the whole loop.</p>
+    </div>
+    <div class="docket-wrap">
+      <div class="docket">
+        <div class="filters">
+          <div class="tabs" id="armTabs"></div>
+          <div class="tabs" id="statusTabs"></div>
+        </div>
+        <div class="rows" id="rows"></div>
+      </div>
+      <div class="casefile" id="casefile"></div>
+    </div>
+  </div>
+</section>
+
+<section id="evidence">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Evidence</div>
+      <h2 class="h2">What the checks found.</h2>
+      <p class="lede">The numbers below are read from the files the pipeline wrote. Where a result is weak or negative, it is shown as it is.</p>
+    </div>
+
+    <div class="stats" id="take" style="margin:0 0 22px"></div>
+
+    <div class="card" style="margin-bottom:22px">
+      <h3 id="heatTitle"></h3>
+      <p class="muted" id="heatNote" style="max-width:70ch"></p>
+      <div class="scroll-x"><div class="heat" id="heat"></div></div>
+      <div class="legend"><span><i style="background:var(--bad)"></i>the network contradicts the case</span><span><i style="background:var(--raised);border:1px solid var(--line)"></i>passes</span></div>
+    </div>
+
+    <div class="twocol" style="margin-bottom:22px">
+      <div class="card" id="ruleStats"></div>
+      <div class="card" id="repairStats"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:22px" id="auditCard">
+      <h3>Audit against outcomes the system never saw</h3>
+      <div id="audit"></div>
+    </div>
+
+    <div class="twocol" style="margin-bottom:22px">
+      <div class="card" id="intervCard"></div>
+      <div class="card" id="costCard"></div>
+    </div>
+
+    <div class="card chart" id="scalingCard" hidden>
+      <h3>Does the checker scale?</h3>
+      <div id="scaling"></div>
+    </div>
+  </div>
+</section>
+
+<section id="limits" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Limits</div>
+      <h2 class="h2">What this does not show.</h2>
+      <p class="lede">CellProof ranks hypotheses for lab testing. It gives no medical advice and makes no clinical claim.</p>
+    </div>
+    <div class="limits" id="limitsGrid"></div>
+  </div>
+</section>
+</main>
+
+<div class="wrap"><footer>
+  <div><b style="color:var(--fg)">Built this week:</b> everything in this repository except the published base model (Gupta et al. 2023, CC BY), the open-access papers and the open-source solvers and libraries listed in <code>THIRD_PARTY.md</code>.</div>
+  <pre>make verify    # rebuilds every number on this page from cached model outputs: no API call, no cost</pre>
+  <div class="kv" id="footKv"></div>
+</footer></div>

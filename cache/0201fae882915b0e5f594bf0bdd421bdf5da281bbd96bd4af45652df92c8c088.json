@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "fbb6973d3b12dea60b4a51741616fbb7c7818fe2943b1871425f7d0b0f3e95d7",
+      "chars": 48700,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"wild-type neurons\", \"effect\": \"activates\", \"evidence_quote\": \"camptothecin-induced cell death was associated with an approximate ninefold increase in caspase-3 activity at 16 h (Fig. 1 B)\", \"location\": \"P53 can induce neuronal cell death via Apaf1-dependent and -independent pathways\", \"source\": \"camptothecin\", \"target\": \"CASP3\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 11032,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2515,
+    "output_tokens_details": {
+      "reasoning_tokens": 2409
+    },
+    "total_tokens": 13547
+  }
+}

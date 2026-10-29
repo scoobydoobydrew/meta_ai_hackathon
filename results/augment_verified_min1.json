@@ -1,0 +1,2501 @@
+[
+ {
+  "edge": "DNA_damage|activates|ATM_pH2AX",
+  "papers": 15,
+  "support": [
+   {
+    "pmcid": "PMC1904188",
+    "quote": "Etoposide generates double-strand breaks and activates the G2 checkpoint through a combination of pathways that activate ATM, ATR and/or DNA-PK.",
+    "context": "etoposide-treated cells, general statement",
+    "location": "DCAF1 is required for induction of G2 arrest by HIV-1 Vpr",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC2243162",
+    "quote": "Ataxia–telangiectasia mutated is activated by DNA damage from ionising radiation, whereas ATR is activated by DNA damage and DNA replication stress.",
+    "context": "general mammalian checkpoint review",
+    "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC2243162",
+    "quote": "In the case of ATM, DNA double-strand breaks (DSBs) induce ATM homodimer dissociation.",
+    "context": "general",
+    "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC2745661",
+    "quote": "In response to double-strand breaks or changes in chromatin, ATM is activated through the autophosphorylation of inactive, dimeric ATM on serine 1981, followed by dissociation into active monomers [30].",
+    "context": "general cellular response, cited from prior work",
+    "location": "HPV induces a DNA damage response",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3049316",
+    "quote": "Signaling downstream of oncogenic stress involves activation of the single-stranded DNA-dependent ATR pathway and the double-stranded break-induced ATM pathway.",
+    "context": "downstream of oncogenic stress",
+    "location": "INTRODUCTION",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3120867",
+    "quote": "γH2AX is induced by DNA DSBs [27] and was observed as a consequence of the DNA damage treatments that enhanced RPA2 hyperphosphorylation (Fig. 1A).",
+    "context": "general, cited from other work",
+    "location": "The levels of DNA double-strand breaks correspond to hyperphosphorylation of RPA2",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3461360",
+    "quote": "The generation of double-strand breaks (DSBs) is related to the phosphorylation of the H2AX C-terminal tail at Ser139 that yields γH2AX.",
+    "context": "general, cited as background",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3759859",
+    "quote": "While ATM and DNA-PK mainly become activated in response to ionizing radiation, ATR predominantly responds to UV radiation, causing phosphorylation of histone H2AX, phosphorylation of check point kinases (Chk1/2), and phosphorylation of p53 at Ser15 and Ser20 [14,46,47].",
+    "context": "general DNA damage response, as stated in review citing other work",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3819289",
+    "quote": "DNA damage response is initiated with the formation of foci consisting of γ-H2AX, 53BP1, NBS1, and MDC1, and leads to activation of ATM/ATR and Chk1/Chk2, which in turn phosphorylate and stabilize p53 [18].",
+    "context": "general DNA damage response, cited from other work [18]",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3913755",
+    "quote": "Phosphorylation of the histone variant H2AX on Ser-139 (γH2AX) is an early cellular response to the induction of DNA DSBs, forming discrete nuclear foci at the damaged sites [32], [33].",
+    "context": "general, cited from other work",
+    "location": "Cuc B induced DNA double-strand breaks (DSBs)",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3913755",
+    "quote": "Response to DNA damage, ATM and ATR are the firstly activated by autophosphorylation [19], [46], [47].",
+    "context": "general, cited from other work",
+    "location": "Discussion",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC4633921",
+    "quote": "Whereas ATM and DNA-PK are predominantly activated by DNA double strand breaks (DSBs)",
+    "context": "general statement cited from prior work",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC509302",
+    "quote": "DSBs and other genome stress lead to a rapid conversion of the ATM pool into active S1981–P monomers",
+    "context": "general, cited from Bakkenist and Kastan 2003",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC509302",
+    "quote": "Phosphorylation of ATM on S1981, an early and essential step in the activation of this kinase, can be detected rapidly after IR, even when a low level of DNA damage is induced (Bakkenist and Kastan 2003).",
+    "context": "general, cited from Bakkenist and Kastan 2003; low level of DNA damage",
+    "location": "Results",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC5762302",
+    "quote": "It has been reported that DNA damage and replication stress induce γH2AX phosphorylation, either with separate foci formation in damaged cells or pan-nuclear staining in apoptotic cells by immunofluorescence [50].",
+    "context": "general, cited from other work",
+    "location": "DISCUSSION",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6547644",
+    "quote": "ATM activation is further promoted by a C-terminal acetylation induced by DSB-associated chromatin changes exposing the H3K9me3 histone mark that recruits and activates, via shielding from dephosphorylation37, the TIP60/Kat9 acetyltransferase38.",
+    "context": "general",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6547644",
+    "quote": "Exposure of 82-6 hTert cells to IR induces DSBs as indicated by the formation of 53BP1 foci and activates ATM:",
+    "context": "82-6 hTert cells",
+    "location": "At low IR doses, the ATM/ATR module is organized as a linear array with ATM upstream and with ATR mainly interfacing with the cell cycle engine through Chk1",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6755978",
+    "quote": "In contrast to IR-exposed positive control (PC) group (Fig. 1c, d, g), P-ATM and γH2AX were not observed in active AKT-induced senescence (Fig. 1g).",
+    "context": "MCF7 cells, IR-exposed positive control",
+    "location": "PTEN depletion induces cellular senescence via the p53-p21 signaling pathway without triggering a DNA damage response",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6755978",
+    "quote": "In contrast to IR-exposed positive control (PC) group (Fig. 1c, d, g), P-ATM and γH2AX were not observed in active AKT-induced senescence (Fig. 1g).",
+    "context": "MCF7 cells, IR-exposed positive control",
+    "location": "PTEN depletion induces cellular senescence via the p53-p21 signaling pathway without triggering a DNA damage response",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "In terms of the DNA lesions, DNA-PKcs is activated by DSBs ends [6], ATR by extended ssDNA [7] and ATM by potentially diverse DNA structures including chromosomal DNA DSBs and others [8].",
+    "context": "mammalian DDR",
+    "location": "Background",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "also contribute to the residual IR induced phosphorylation of ATM substrates (e.g., H2AX, SMC1 and KAP1) in ATM-deficient or inhibited cells [20, 30, 31]",
+    "context": "in ATM-deficient or inhibited cells",
+    "location": "DNA-dependent protein kinase catalytic subunit (DNA-PKcs)",
+    "pass": "stimulus"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "DNA_damage already acts on ATM_pH2AX with sign +"
+ },
+ {
+  "edge": "p53|activates|p21",
+  "papers": 13,
+  "support": [
+   {
+    "pmcid": "PMC2063734",
+    "quote": "These genes are targets of p53 transactivation known to be involved in regulating the progression of primary cells from G1 into S phase of the cell cycle",
+    "context": "postconfluent differentiating mouse calvarial osteoblast cultures",
+    "location": "Results - Negative regulation of p53 by Mdm2 is required for proper osteoblast differentiation",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC2243162",
+    "quote": "p53 activates transcription of the CDK inhibitor p21, which in turn inhibits cyclin E(A)/CDK2 (Harper et al, 1993) and preserves the association of Rb with E2F.",
+    "context": "review statement in cycling cells in response to DNA damage",
+    "location": "G1 checkpoint",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC2829054",
+    "quote": "Stabilization of p53 and the induction of its downstream target p21 after IR were not affected by CDK2 disruption (Figure S1C).",
+    "context": "HCT116 human cells after ionizing radiation",
+    "location": "Results - Stabilization of Cdc25A in Cdk2-deficient cells",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3759859",
+    "quote": "Modified histone H2AX serves as a binding site for repair enzymes and checkpoint proteins while activated and stabilized p53 triggers transient cell cycle arrest in G1 via up-regulation of p21 and contributes to effective G2/M transition control [14,48,49].",
+    "context": "review statement citing other work",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3819289",
+    "quote": "The expression of p21 (CIP1/WAF1), one of the p53 targets, is upregulated in senescent cells [19], and overexpression of p21 could induce a senescence-like growth arrest in some cells [20].",
+    "context": "review statement about senescent cells",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4331756",
+    "quote": "Upon activation, p53 upregulates the cyclin-dependent kinase inhibitor, p21CIP1/WAF1/SDI1, that inhibits the Cyclin A-, Cyclin E-, and Cyclin D-dependent kinase complexes (Lowe & Sherr, 2003).",
+    "context": "review statement citing Lowe & Sherr, 2003",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4705690",
+    "quote": "The gene of the cyclin-dependent kinase (CDK) inhibitor p21 (WAF1, CIP1, CDKN1A) was the first p53 transcriptional target to be identified and shown to be activated by p53 (3).",
+    "context": "review statement in cultured human and mouse cells",
+    "location": "INTRODUCTION",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4772976",
+    "quote": "p21 gene, the primarily identified as downstream gene of p53, encodes an inhibitor of cyclin‐dependent kinases and mediates the ability of p53 to inhibit cell proliferation 58.",
+    "context": "review statement",
+    "location": "Discussion",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC509302",
+    "quote": "Both the relative level of p53 protein and the induction of its downstream targets p21, Bax, and Hdm2 were dampened.",
+    "context": "IMR90 human cells, 0-36 h after 5 Gy IR, stated as downstream targets relationship",
+    "location": "Results",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC5595683",
+    "quote": "p53 is a master cell cycle regulator, which induces cell cycle arrest or senescence mainly through inducing p21, a cyclin‐dependent kinase inhibitor.",
+    "context": "cultured rat ATII (L2) cells, review statement about p53 function",
+    "location": "Silencing PAI‐1 with PAI‐1 siRNA/shRNA reduces p53 and p21 expressions, increases Rb protein phosphorylation, and attenuates bleomycin‐induced ATII cell senescence",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6156293",
+    "quote": "In addition, we observed an increase in p53 phosphorylation (p‐p53) at Ser15, an increase in total p53 and its downstream target p21, and a decrease in Rb phosphorylation (pRb) (Figure 2b).",
+    "context": "H9C2 cells stimulated with Tyr for 72 hr",
+    "location": "MAO‐A stimulation promotes cyclin‐dependent kinase inhibitor (CDKi) activation and SIPS in H9C2 and primary cardiomyocytes",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6755978",
+    "quote": "When p53 S15A was overexpressed, p21 induction was barely detectable and SA-β-Gal positivity was dramatically decreased in PTEN-depleted cells (Fig. 5d).",
+    "context": "PTEN-depleted MCF7 cells exogenously expressing WT p53 or S15A mutant p53",
+    "location": "Results - mTORC1 and mTORC2 physically associate with p53 and directly phosphorylate it at serine 15 during PICS",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC9090780",
+    "quote": "The CDKN1A gene is transcriptionally activated by p53.",
+    "context": "review statement",
+    "location": "ABSTRACT",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "p53 -> p53_A -> p21"
+ },
+ {
+  "edge": "ATM_pH2AX|activates|CHK2",
+  "papers": 10,
+  "support": [
+   {
+    "pmcid": "PMC2243162",
+    "quote": "Ataxia–telangiectasia mutated phosphorylates Chk2 at threonine 68, and ATR phosphorylates Chk1 at serines 317 and 345.",
+    "context": "review statement, in models of DNA damage response",
+    "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC2745661",
+    "quote": "ATM phosphorylates CHK2 leading to arrest in S- and G2-phases by inhibiting the action of Cdc25 phosphatases [21],[22].",
+    "context": "review statement",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC2829054",
+    "quote": "ATM phosphorylates the checkpoint kinase Chk2 [34], which then triggers Cdc25A degradation [12].",
+    "context": "review statement about IR response",
+    "location": "Results - Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3049316",
+    "quote": "We also observed a transient activation and attenuation of the ATM-specific phosphorylation of Chk2 on Thr68 (Fig. 2E) as well as accumulation of 53BP1 into DDR foci (Fig. 2F).",
+    "context": "EBV-infected primary human B cells sorted by population doubling, ATM-specific phosphorylation finding",
+    "location": "The EBV-induced DNA damage response is associated with a transient period of hyper-proliferation",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3120867",
+    "quote": "As expected, ATM, DNA-PKcs, or TEL2 silencing compromised CHK2 activation phospho-CHK2 (T68) in response to UV (Fig. 2A).",
+    "context": "HEK293T cells in response to UV",
+    "location": "Results",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3236337",
+    "quote": "activating cellular responses to DNA double-strand breaks through downstream phosphorylation of central players in the DNA damage-response pathways, including BRCA1, p53, and Chk2 [1].",
+    "context": "review statement citing prior work, DNA double-strand break response",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3913755",
+    "quote": "Generally, ATM activates Chk2 by phosphorylation it on Thr-68 [48], [49], while ATR activates Chk1 [50].",
+    "context": "review statement citing prior work",
+    "location": "Discussion",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4633921",
+    "quote": "Activated ATR and ATM phosphorylate Chk1 or Chk2 respectively.",
+    "context": "review statement citing prior DDR work",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6547644",
+    "quote": "A relevant substrate of ATM is the Chk2 kinase, which is activated by ATM and phosphorylated on multiple sites including T6826–29, that is routinely used as evidence for ATM activation.",
+    "context": "review statement",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "In addition, ATM also orchestrates cell cycle checkpoints by phosphorylating CHK2 kinase [102] at the G2/M transition and p53 Serine 15 (Serine 18 in mouse) at the G1/S transition [103, 104].",
+    "context": "cell cycle checkpoints at G2/M transition, review statement",
+    "location": "## Ataxia-telangiectasia mutated (ATM)",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "anchor",
+  "node": "CHK2",
+  "old_rule": null,
+  "template_rule": "ATM_pH2AX",
+  "status": "accepted",
+  "final_rule": "ATM_pH2AX",
+  "effect": "introduces",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "ATM_pH2AX",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "introduces"
+   }
+  ]
+ },
+ {
+  "edge": "ATM_pH2AX|activates|p53",
+  "papers": 8,
+  "support": [
+   {
+    "pmcid": "PMC2243162",
+    "quote": "It has been proposed that G1 arrest is sustained by ATM/Chk2-mediated phosphorylation of murine double minute protein and p53, resulting in p53 stabilisation (Takai et al, 2002) and accumulation.",
+    "context": "proposed model for sustaining G1 arrest",
+    "location": "G1 checkpoint",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC2745661",
+    "quote": "ATM directly activates p53 by phosphorylation at serine 15, as well as by phosphorylating Mdm2, the ubiquitin ligase that regulates p53 stability [18],[19],[20].",
+    "context": "review statement",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3236337",
+    "quote": "activating cellular responses to DNA double-strand breaks through downstream phosphorylation of central players in the DNA damage-response pathways, including BRCA1, p53, and Chk2 [1].",
+    "context": "review statement citing prior work, DNA double-strand break response",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3913755",
+    "quote": "In response to DNA damage, enhanced phosphorylation of p53 on Ser-15 by ATM has been reported [37].",
+    "context": "review statement citing prior work",
+    "location": "Cuc B activated p53 and enhanced the binding of phosphorylation Cdc25C on Ser-216 and 14-3-3-σ",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4506520",
+    "quote": "To summarize, chromosome missegregation caused by CENP-E inhibition and SAC attenuation generated DSBs, and the activated DDR contributed to p53 phosphorylation by ATM and ATR.",
+    "context": "cultured human HeLa cells with BubR1 knockdown and CENP-E inhibition (siBubR1+Cmpd-A)",
+    "location": "Aneuploidy generates replication stress-mediated DSBs",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC509302",
+    "quote": "ATM phosphorylates and stabilizes p53 in response to DNA damage (reviewed in Kastan and Lim 2000).",
+    "context": "review statement, cultured human cells after DNA damage",
+    "location": "Results",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6547644",
+    "quote": "ATM activation is also documented by the phosphorylation of ATM downstream targets: KAP1 on Serine 824 (KAP1-pS824) (Fig. 2C), p53 on Serine 15 (p53-pS15) (Fig. 2D) and Chk2 on Threonine 68 (Chk2-pT68) (Figs 2E and S2A for A549 cells).",
+    "context": "82-6 hTert cells after IR, review of ATM downstream targets",
+    "location": "At low IR doses, the ATM/ATR module is organized as a linear array with ATM upstream and with ATR mainly interfacing with the cell cycle engine through Chk1",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "In addition, ATM also orchestrates cell cycle checkpoints by phosphorylating CHK2 kinase [102] at the G2/M transition and p53 Serine 15 (Serine 18 in mouse) at the G1/S transition [103, 104].",
+    "context": "cell cycle checkpoints at G1/S transition, human Serine 15 (mouse Serine 18)",
+    "location": "## Ataxia-telangiectasia mutated (ATM)",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "ATM_pH2AX already acts on p53 with sign +"
+ },
+ {
+  "edge": "DNA_damage|activates|ATR",
+  "papers": 8,
+  "support": [
+   {
+    "pmcid": "PMC1904188",
+    "quote": "Etoposide generates double-strand breaks and activates the G2 checkpoint through a combination of pathways that activate ATM, ATR and/or DNA-PK.",
+    "context": "etoposide-treated cells, general statement",
+    "location": "DCAF1 is required for induction of G2 arrest by HIV-1 Vpr",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC1904188",
+    "quote": "Dissociation of DDB1/DDB2 then leads to inability to recognize and repair DNA damage, and this DNA damage is the ultimate trigger of ATR activation and G2 arrest [31].",
+    "context": "model proposed by Schrofelbauer et al., cited from other work",
+    "location": "Results and Discussion",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC2829054",
+    "quote": "IR-induced ATR activation is restricted to the S- and G2-phases [37], when Cdk2 is normally active.",
+    "context": "S- and G2-phases, when Cdk2 is normally active; cited from other work",
+    "location": "Discussion",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3510507",
+    "quote": "RPA bound to ssDNA, either at resected DSBs or stalled replication forks, recruits ATRIP-ATR leading to ATR activation and phosphorylation of downstream checkpoint proteins (18).",
+    "context": "at resected DSBs with RPA bound to ssDNA, cited (18)",
+    "location": "RPA32 Ser4/Ser8 phosphorylation regulates replication checkpoint signaling via MRE11 and TopBP1 phosphorylation",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3819289",
+    "quote": "DNA damage response is initiated with the formation of foci consisting of γ-H2AX, 53BP1, NBS1, and MDC1, and leads to activation of ATM/ATR and Chk1/Chk2, which in turn phosphorylate and stabilize p53 [18].",
+    "context": "general DNA damage response, cited from other work [18]",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3913755",
+    "quote": "Response to DNA damage, ATM and ATR are the firstly activated by autophosphorylation [19], [46], [47].",
+    "context": "general, cited from other work",
+    "location": "Discussion",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC5762302",
+    "quote": "Phosphorylation of S317 and S345 Chk1 reflect ATR activation in response to DNA damage, and S296 Chk1 is the activating autophosphorylation site, essential for downstream Chk1 phosphorylation activity [17, 30, 31].",
+    "context": "HGSOC cell lines, description of Chk1 phosphorylation as marker of ATR activation, cited from other work",
+    "location": "Prexasertib does not affect PAR incorporation and olaparib does not alter Chk1 activity",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6547644",
+    "quote": "Notable and relevant here is the ATR activation induced at resected DSBs.",
+    "context": "general",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "In addition to resected DSBs, R-loops generated during transcription, DNA replication stresses induced by polymerase poisons and deoxyribonucleotide triphosphate (dNTPs) depletion can all activate ATR [127].",
+    "context": "general",
+    "location": "Ataxia-telangiectasia and Rad3 related (ATR)",
+    "pass": "stimulus"
+   }
+  ],
+  "kind": "anchor",
+  "node": "ATR",
+  "old_rule": null,
+  "template_rule": "DNA_damage",
+  "status": "accepted",
+  "final_rule": "DNA_damage",
+  "effect": "introduces",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "DNA_damage",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "introduces"
+   }
+  ]
+ },
+ {
+  "edge": "Mdm2|inhibits|p53",
+  "papers": 8,
+  "support": [
+   {
+    "pmcid": "PMC1334386",
+    "quote": "In normal cells, p53 is maintained at a low level mainly through MDM2-mediated ubiquitylation and subsequent degradation [7–9].",
+    "context": "in normal cells",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC2063734",
+    "quote": "Mdm2 complexes with p53 and negatively regulates p53-induced transcription of target genes, including the Mdm2 gene",
+    "context": "review statement of prior work",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3759859",
+    "quote": "It prevents the transactivation capacity of p53 and/or designates it for proteasomal degradation.",
+    "context": "review statement",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4772976",
+    "quote": "Mdm2 is a ubiquitin ligase which functions as an essential inhibitor of p53 6, 7, 8.",
+    "context": "review statement",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4925817",
+    "quote": "The p53 oncosuppressor protein is normally kept at low level because subject to negative regulation by MDM2-dependent proteasome degradation [132]; in response to genotoxic stress, however, p53 undergoes post-translational modifications that allow the protein to escape MDM2 control, accumulate, and become active [133].",
+    "context": "review statement of basal p53 regulation",
+    "location": "Waking up the guardian: p53 as a druggable target",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC5595683",
+    "quote": "murine double minute 2 (MDM2), a major E3 ubiquitin ligase involved in p53 degradation",
+    "context": "review statement cited from other work on p53 stability",
+    "location": "Discussion",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6755978",
+    "quote": "Astle et al. showed that PI3K/AKT-induced senescence requires mTORC1-dependent accumulation of p53, and that this occurs via increases in the synthesis and stability (mediated by MDM2 inactivation) of p53.",
+    "context": "review statement citing Astle et al. on PI3K/AKT-induced senescence in Discussion",
+    "location": "Discussion",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC9090780",
+    "quote": "For instance, viral oncoproteins or overexpression of MDM2 cause p53 proteolysis [27, 28, 30].",
+    "context": "review statement, human cancers",
+    "location": "p53 – tumor suppressor and guardian of the genome",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "Mdm2 already acts on p53 with sign -"
+ },
+ {
+  "edge": "DNA_damage|activates|p53",
+  "papers": 7,
+  "support": [
+   {
+    "pmcid": "PMC2063734",
+    "quote": "The p53 transcription factor is activated by inappropriate cell growth stimulation or by certain types of DNA damage and regulates the expression of other genes involved in cell growth arrest, DNA repair, and apoptosis (Vousden, 2000).",
+    "context": "general statement cited from other work (Vousden, 2000)",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC2829054",
+    "quote": "Stabilization of p53 and the induction of its downstream target p21 after IR were not affected by CDK2 disruption (Figure S1C).",
+    "context": "HCT116 cells, irrespective of CDK2 genotype; cited as not affected by CDK2 disruption",
+    "location": "Stabilization of Cdc25A in Cdk2-deficient cells",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3819289",
+    "quote": "DNA damage response is initiated with the formation of foci consisting of γ-H2AX, 53BP1, NBS1, and MDC1, and leads to activation of ATM/ATR and Chk1/Chk2, which in turn phosphorylate and stabilize p53 [18].",
+    "context": "general DNA damage response, cited from other work [18]",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC4772976",
+    "quote": "As a genome guardian, p53 is stabilized after DNA damage to maintain genome stability and determine cell fate 43.",
+    "context": "general, cited from other work",
+    "location": "NAT10 regulates stress‐induced p53 activation",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC4925817",
+    "quote": "The tumor suppressor p53 is a transcription factor that, upon DNA damage, is activated to induce sequence-specific target genes involved in either cancer cell growth arrest or apoptosis [112].",
+    "context": "upon DNA damage, in general",
+    "location": "Oncosuppressor p53 and apoptosis",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC4925817",
+    "quote": "in response to genotoxic stress, however, p53 undergoes post-translational modifications that allow the protein to escape MDM2 control, accumulate, and become active [133].",
+    "context": "in response to genotoxic stress",
+    "location": "Waking up the guardian: p53 as a druggable target",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC509302",
+    "quote": "ATM phosphorylates and stabilizes p53 in response to DNA damage (reviewed in Kastan and Lim 2000).",
+    "context": "general, reviewed in Kastan and Lim 2000",
+    "location": "Results",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC9090780",
+    "quote": "p53 levels are induced by cellular stress, for example following DNA damage or viral infection.",
+    "context": "general",
+    "location": "p53-p21-RB signaling",
+    "pass": "stimulus"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "DNA_damage -> ATM_pH2AX -> p53"
+ },
+ {
+  "edge": "DNA_damage|activates|DNA_PK",
+  "papers": 5,
+  "support": [
+   {
+    "pmcid": "PMC1904188",
+    "quote": "Etoposide generates double-strand breaks and activates the G2 checkpoint through a combination of pathways that activate ATM, ATR and/or DNA-PK.",
+    "context": "etoposide-treated cells, general statement",
+    "location": "DCAF1 is required for induction of G2 arrest by HIV-1 Vpr",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3759859",
+    "quote": "While ATM and DNA-PK mainly become activated in response to ionizing radiation, ATR predominantly responds to UV radiation, causing phosphorylation of histone H2AX, phosphorylation of check point kinases (Chk1/2), and phosphorylation of p53 at Ser15 and Ser20 [14,46,47].",
+    "context": "general DNA damage response, as stated in review citing other work",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC4633921",
+    "quote": "Whereas ATM and DNA-PK are predominantly activated by DNA double strand breaks (DSBs)",
+    "context": "general statement cited from prior work",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6547644",
+    "quote": "DNA-PKcs acts as a sensor for DSBs through recruitment by Ku that causes its activation6.",
+    "context": "general",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "In terms of the DNA lesions, DNA-PKcs is activated by DSBs ends [6], ATR by extended ssDNA [7] and ATM by potentially diverse DNA structures including chromosomal DNA DSBs and others [8].",
+    "context": "mammalian DDR",
+    "location": "Background",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "Upon radiation, the S2056 cluster is primarily phosphorylated by DNA-PKcs itself [70].",
+    "context": "general",
+    "location": "DNA-dependent protein kinase catalytic subunit (DNA-PKcs)",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "Following IR or UV, T2609 is phosphorylated by ATM and ATR, respectively [71, 72].",
+    "context": "general",
+    "location": "DNA-dependent protein kinase catalytic subunit (DNA-PKcs)",
+    "pass": "stimulus"
+   }
+  ],
+  "kind": "anchor",
+  "node": "DNA_PK",
+  "old_rule": null,
+  "template_rule": "DNA_damage",
+  "status": "accepted",
+  "final_rule": "DNA_damage",
+  "effect": "introduces",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "DNA_damage",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "introduces"
+   }
+  ]
+ },
+ {
+  "edge": "mTORC2|activates|AKT",
+  "papers": 4,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "AKT gains its full kinase activity upon additional phosphorylation of Ser473 by the mTOR complex 2 (mTORC2) [26,32].",
+    "context": "review statement",
+    "location": "3. AKT Potently Mediates Oncogenic Signaling",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3819289",
+    "quote": "Insulin activates mTORC2 leading to the activation of protein kinase B (PKB)/AKT.",
+    "context": "review statement about insulin signalling",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4331756",
+    "quote": "mTORC2, then works in conjunction with PDK1 to fully activate AKT.",
+    "context": "review statement",
+    "location": "Nutrient and metabolic signaling",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6755978",
+    "quote": "The recruited AKT is phosphorylated at T308 by PDK1 and at S473 by an mTORC2 complex that includes mTOR, Rictor, mLST8, DEPTOR, Protor1/2, and SIN1.",
+    "context": "review statement of growth factor signaling in Introduction",
+    "location": "Introduction",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "mTORC2 already acts on AKT with sign +"
+ },
+ {
+  "edge": "p53|activates|BAX",
+  "papers": 4,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "p53-triggered up-regulation of genes coding for pro-apoptotic Bax, Bak, PUMA and Noxa proteins in concert with trans-repression of anti-apoptotic Bcl-2, Bcl-xL [53,54]",
+    "context": "upon UV-induced DNA damage, review statement",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4925817",
+    "quote": "as enhanced p53 can substitute for PUMA to promote BAX activation in response to BH3 mimetics [102].",
+    "context": "review statement, BH3 mimetic inhibition of BCL-xL",
+    "location": "Pharmacological targeting of the apoptotic pathways",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC509302",
+    "quote": "Both the relative level of p53 protein and the induction of its downstream targets p21, Bax, and Hdm2 were dampened.",
+    "context": "IMR90 human cells, 0-36 h after 5 Gy IR, stated as downstream targets relationship",
+    "location": "Results",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC9090780",
+    "quote": "Prominent targets for its direct transcriptional activation are the apoptosis inducers BAX and PUMA/BBC3 [33, 34].",
+    "context": "review statement, direct transcriptional activation by p53",
+    "location": "p53 – tumor suppressor and guardian of the genome",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "p53 -> p53_K -> BAX"
+ },
+ {
+  "edge": "p53|activates|PUMA",
+  "papers": 4,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "p53-triggered up-regulation of genes coding for pro-apoptotic Bax, Bak, PUMA and Noxa proteins in concert with trans-repression of anti-apoptotic Bcl-2, Bcl-xL [53,54]",
+    "context": "upon UV-induced DNA damage, review statement",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3950324",
+    "quote": "In turn, active p53 induces pro-oxidant genes, such as PUMA and PIGs, increasing ROS and further feeding activating signals to JNK and thus, itself.",
+    "context": "model of synthetic lethality upon activation of p53 and inhibition of TrxR",
+    "location": "Discussion",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4925817",
+    "quote": "Indeed, a key subset of the Bcl-2 family genes are p53 targets, including Bax, Noxa, PUMA and Bid [120-122] (Figure 6).",
+    "context": "review statement of p53 Bcl-2 family targets",
+    "location": "Oncosuppressor p53 and apoptosis",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC9090780",
+    "quote": "Prominent targets for its direct transcriptional activation are the apoptosis inducers BAX and PUMA/BBC3 [33, 34].",
+    "context": "review statement, direct transcriptional activation by p53",
+    "location": "p53 – tumor suppressor and guardian of the genome",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "p53 -> p53_K -> PUMA"
+ },
+ {
+  "edge": "ATR|activates|ATM_pH2AX",
+  "papers": 3,
+  "support": [
+   {
+    "pmcid": "PMC2243162",
+    "quote": "In another model, ATR interacts with the mediator TopBP1 to phosphorylate a number of proteins, including H2AX (Liu et al, 2006).",
+    "context": "review statement, in another model with mediator TopBP1",
+    "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC2745661",
+    "quote": "An additional downstream activity of ATM, as well as ATR, that is important for S-phase checkpoint control is phosphorylation of the tail of a histone variant H2AX",
+    "context": "review statement",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3759859",
+    "quote": "While ATM and DNA-PK mainly become activated in response to ionizing radiation, ATR predominantly responds to UV radiation, causing phosphorylation of histone H2AX, phosphorylation of check point kinases (Chk1/2), and phosphorylation of p53 at Ser15 and Ser20 [14,46,47].",
+    "context": "UV radiation response, review statement citing other work",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "ATM_pH2AX",
+  "old_rule": "DNA_damage & (!Wip1 | !Cdc25 | E2F1)",
+  "template_rule": "(DNA_damage & (!Wip1 | !Cdc25 | E2F1)) | ATR",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(DNA_damage & (!Wip1 | !Cdc25 | E2F1)) | ATR",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'DNA_damage': 1, 'ATM_pH2AX': 1, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'E2F1': 0, 'Cdc25': 1, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'ATR': 1}",
+     "V05 (Figure 3, miR-221 E1); setting {'DNA_damage': 1, 'miR221': 1}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'DNA_damage': 1, 'ATM_pH2AX': 1, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'E2F1': 0, 'Cdc25': 1, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'ATR': 1}",
+     "V06 (Figure 3, miR-221 E1 + TUG1 KO); setting {'DNA_damage': 1, 'miR221': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'DNA_damage': 1, 'ATM_pH2AX': 1, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'E2F1': 0, 'Cdc25': 1, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'ATR': 1}"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "ATR|activates|CHK2",
+  "papers": 3,
+  "support": [
+   {
+    "pmcid": "PMC2745661",
+    "quote": "We next wanted to confirm that ATM activity was responsible for CHK2 phosphorylation in HPV positive cells, as CHK2 can also be phosphorylated and activated by the ATR kinase [22],[34].",
+    "context": "review statement citing other work in HPV-31 positive human keratinocytes",
+    "location": "Results",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3759859",
+    "quote": "While ATM and DNA-PK mainly become activated in response to ionizing radiation, ATR predominantly responds to UV radiation, causing phosphorylation of histone H2AX, phosphorylation of check point kinases (Chk1/2), and phosphorylation of p53 at Ser15 and Ser20 [14,46,47].",
+    "context": "UV radiation response, review statement citing other work",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC5762302",
+    "quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+    "context": "review statement citing prior work, in response to DNA replication stress or DNA damage",
+    "location": "INTRODUCTION",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "CHK2",
+  "old_rule": "ATM_pH2AX",
+  "template_rule": "(ATM_pH2AX) | ATR",
+  "status": "accepted",
+  "final_rule": "(ATM_pH2AX) | ATR",
+  "effect": "active",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(ATM_pH2AX) | ATR",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "active"
+   }
+  ]
+ },
+ {
+  "edge": "CHK2|activates|p53",
+  "papers": 3,
+  "support": [
+   {
+    "pmcid": "PMC2243162",
+    "quote": "It has been proposed that G1 arrest is sustained by ATM/Chk2-mediated phosphorylation of murine double minute protein and p53, resulting in p53 stabilisation (Takai et al, 2002) and accumulation.",
+    "context": "proposed model for sustaining G1 arrest",
+    "location": "G1 checkpoint",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3819289",
+    "quote": "DNA damage response is initiated with the formation of foci consisting of γ-H2AX, 53BP1, NBS1, and MDC1, and leads to activation of ATM/ATR and Chk1/Chk2, which in turn phosphorylate and stabilize p53 [18].",
+    "context": "review statement about DNA damage response",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3913755",
+    "quote": "p53 could also be activated by Chk1/Chk2 at Ser-20.",
+    "context": "review statement citing prior work",
+    "location": "Cuc B activated p53 and enhanced the binding of phosphorylation Cdc25C on Ser-216 and 14-3-3-σ",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "p53",
+  "old_rule": "ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)",
+  "template_rule": "(ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)) | CHK2",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)) | CHK2",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK2': 1}",
+     "V05 (Figure 3, miR-221 E1); setting {'DNA_damage': 1, 'miR221': 1}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK2': 1}",
+     "V06 (Figure 3, miR-221 E1 + TUG1 KO); setting {'DNA_damage': 1, 'miR221': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK2': 1}"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "CHK2|inhibits|Cdc25",
+  "papers": 3,
+  "support": [
+   {
+    "pmcid": "PMC2243162",
+    "quote": "Checkpoint kinase-2 and Chk1 inactivate CDC25 phosphatases, culminating in cell cycle arrest.",
+    "context": "review statement of checkpoint pathways",
+    "location": "Cell cycle checkpoint pathways. Once DNA damage is identified with the aid of sensors, the checkpoint transducers ATM and ATR undergo conformational change and/or localisation, resulting in their activation. Together with their mediators, ATM and ATR activate a series of downstream molecules, including the checkpoint transducer kinases. Checkpoint kinase-2 and Chk1 inactivate CDC25 phosphatases, culminating in cell cycle arrest.",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC2745661",
+    "quote": "Upon activation, CHK2 phosphorylates the Cdc25a and Cdc25c phosphatases to initiate cell cycle arrest in G1/S or G2/M through their degradation or cytoplasmic sequestration, respectively [52].",
+    "context": "review statement citing other work",
+    "location": "Discussion",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3913755",
+    "quote": "Cdc25 can be phosphorylated by Chk1/Chk2 on Ser-323 (Cdc25B) and Ser-216 (Cdc25C) and functionally inactivated by binding to 14-3-3 proteins [26]–[28].",
+    "context": "review statement citing prior work",
+    "location": "Introduction",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "inhibitor",
+  "node": "Cdc25",
+  "old_rule": "(!ATM_pH2AX | !AMPK_MAPK) & !Wee1 & !PTEN",
+  "template_rule": "((!ATM_pH2AX | !AMPK_MAPK) & !Wee1 & !PTEN) & !CHK2",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "((!ATM_pH2AX | !AMPK_MAPK) & !Wee1 & !PTEN) & !CHK2",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 1, 'AMPK_MAPK': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc25': 0, 'Cdc2_CycB': 0, 'Wee1': 0, 'PTEN': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK2': 1}",
+     "V05 (Figure 3, miR-221 E1); setting {'DNA_damage': 1, 'miR221': 1}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 1, 'AMPK_MAPK': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc25': 0, 'Cdc2_CycB': 0, 'Wee1': 0, 'PTEN': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK2': 1}",
+     "V06 (Figure 3, miR-221 E1 + TUG1 KO); setting {'DNA_damage': 1, 'miR221': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 1, 'AMPK_MAPK': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc25': 0, 'Cdc2_CycB': 0, 'Wee1': 0, 'PTEN': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK2': 1}"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "DNA_PK|activates|ATM_pH2AX",
+  "papers": 3,
+  "support": [
+   {
+    "pmcid": "PMC3461360",
+    "quote": "Employing a pharmacological approach and gene knockout cells, we also demonstrate in this paper that the phosphatidylinositol-3-OH kinase-related kinases (PIKKs) ATM (ataxia telangiectasia mutated) and DNA-dependent protein kinase (DNA-PK) mediate γH2AX generation and, consequently, MNNG-induced necroptosis.",
+    "context": "in MNNG-treated cells, pharmacological and gene knockout experiments",
+    "location": "ABSTRACT",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6547644",
+    "quote": "Expression of ATM is regulated by DNA-PKcs such that ATM protein levels are decreased in DNA-PKcs-deficient cells72.",
+    "context": "review statement, DNA-PKcs-deficient cells",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "also contribute to the residual IR induced phosphorylation of ATM substrates (e.g., H2AX, SMC1 and KAP1) in ATM-deficient or inhibited cells [20, 30, 31]",
+    "context": "ATM-deficient or inhibited cells, residual IR-induced phosphorylation",
+    "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "ATM_pH2AX",
+  "old_rule": "DNA_damage & (!Wip1 | !Cdc25 | E2F1)",
+  "template_rule": "(DNA_damage & (!Wip1 | !Cdc25 | E2F1)) | DNA_PK",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(DNA_damage & (!Wip1 | !Cdc25 | E2F1)) | DNA_PK",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'DNA_damage': 1, 'ATM_pH2AX': 1, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'E2F1': 0, 'Cdc25': 1, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'DNA_PK': 1}",
+     "V05 (Figure 3, miR-221 E1); setting {'DNA_damage': 1, 'miR221': 1}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'DNA_damage': 1, 'ATM_pH2AX': 1, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'E2F1': 0, 'Cdc25': 1, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'DNA_PK': 1}",
+     "V06 (Figure 3, miR-221 E1 + TUG1 KO); setting {'DNA_damage': 1, 'miR221': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'DNA_damage': 1, 'ATM_pH2AX': 1, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'E2F1': 0, 'Cdc25': 1, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'DNA_PK': 1}"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "DNA_damage|activates|CHK2",
+  "papers": 3,
+  "support": [
+   {
+    "pmcid": "PMC2243162",
+    "quote": "Checkpoint kinase-2, expressed throughout the cell cycle, is activated in the presence of DNA damage (Lukas et al, 2001).",
+    "context": "expressed throughout the cell cycle",
+    "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3819289",
+    "quote": "DNA damage response is initiated with the formation of foci consisting of γ-H2AX, 53BP1, NBS1, and MDC1, and leads to activation of ATM/ATR and Chk1/Chk2, which in turn phosphorylate and stabilize p53 [18].",
+    "context": "general DNA damage response, cited from other work [18]",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC5762302",
+    "quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+    "context": "general checkpoint signaling, cited from other work",
+    "location": "INTRODUCTION",
+    "pass": "stimulus"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "DNA_damage -> ATM_pH2AX -> CHK2"
+ },
+ {
+  "edge": "DNA_damage|activates|p21",
+  "papers": 3,
+  "support": [
+   {
+    "pmcid": "PMC2829054",
+    "quote": "Stabilization of p53 and the induction of its downstream target p21 after IR were not affected by CDK2 disruption (Figure S1C).",
+    "context": "HCT116 cells, irrespective of CDK2 genotype; cited as not affected by CDK2 disruption",
+    "location": "Stabilization of Cdc25A in Cdk2-deficient cells",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3819289",
+    "quote": "On the contrary, p21 protein level was strongly upregulated by DNA damage only in the presence of BCAAs, and the elevation of p21 protein was suppressed by rapamycin.",
+    "context": "HepG2 cells cultured in BCAA_3 vs BCAA_0 with or without etoposide",
+    "location": "BCAAs upregulate p21 protein level mediated through the mTORC1 pathway",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC9090780",
+    "quote": "Following activation of p53, for example by viral infection or induction of DNA damage, p21 expression is upregulated.",
+    "context": "following activation of p53",
+    "location": "ABSTRACT",
+    "pass": "stimulus"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "DNA_damage -> ATM_pH2AX -> AMPK_MAPK -> p21"
+ },
+ {
+  "edge": "p53|activates|Mdm2",
+  "papers": 3,
+  "support": [
+   {
+    "pmcid": "PMC1334386",
+    "quote": "The MDM2 gene is a transcriptional target of p53 [17–19], so activation of the MDM2 gene by p53 would lead to repression of p53 activity.",
+    "context": "review statement citing other work on transcriptional regulation",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC2063734",
+    "quote": "During times of cellular insult, p53 activates Mdm2 gene expression by binding to a p53 response element within the first intron of the Mdm2 gene",
+    "context": "review statement of response to cellular insult",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC509302",
+    "quote": "Both the relative level of p53 protein and the induction of its downstream targets p21, Bax, and Hdm2 were dampened.",
+    "context": "IMR90 human cells, 0-36 h after 5 Gy IR, stated as downstream targets relationship",
+    "location": "Results",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "p53 already acts on Mdm2 with sign +"
+ },
+ {
+  "edge": "ATM_pH2AX|activates|DNA_PK",
+  "papers": 2,
+  "support": [
+   {
+    "pmcid": "PMC6547644",
+    "quote": "Vice-versa, DNA-PKcs is phosphorylated by ATM at residues T2609 and T2647 in response to DNA damage75",
+    "context": "review statement, in response to DNA damage",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "Following IR or UV, T2609 is phosphorylated by ATM and ATR, respectively [71, 72].",
+    "context": "following IR, review statement cited from other work",
+    "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "DNA_PK",
+  "old_rule": "DNA_damage",
+  "template_rule": "(DNA_damage) | ATM_pH2AX",
+  "status": "accepted",
+  "final_rule": "(DNA_damage) | ATM_pH2AX",
+  "effect": "neutral",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(DNA_damage) | ATM_pH2AX",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "neutral"
+   }
+  ]
+ },
+ {
+  "edge": "ATR|activates|DNA_PK",
+  "papers": 2,
+  "support": [
+   {
+    "pmcid": "PMC6547644",
+    "quote": "DNA-PKcs associates with ATR in vivo and is phosphorylated by ATR in vitro85.",
+    "context": "in vivo and in vitro, review statement",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "Following IR or UV, T2609 is phosphorylated by ATM and ATR, respectively [71, 72].",
+    "context": "following UV, review statement cited from other work",
+    "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "DNA_PK",
+  "old_rule": "(DNA_damage) | ATM_pH2AX",
+  "template_rule": "((DNA_damage) | ATM_pH2AX) | ATR",
+  "status": "accepted",
+  "final_rule": "((DNA_damage) | ATM_pH2AX) | ATR",
+  "effect": "neutral",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "((DNA_damage) | ATM_pH2AX) | ATR",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "neutral"
+   }
+  ]
+ },
+ {
+  "edge": "ATR|activates|p53",
+  "papers": 2,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "While ATM and DNA-PK mainly become activated in response to ionizing radiation, ATR predominantly responds to UV radiation, causing phosphorylation of histone H2AX, phosphorylation of check point kinases (Chk1/2), and phosphorylation of p53 at Ser15 and Ser20 [14,46,47].",
+    "context": "UV radiation response, review statement citing other work",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4506520",
+    "quote": "To summarize, chromosome missegregation caused by CENP-E inhibition and SAC attenuation generated DSBs, and the activated DDR contributed to p53 phosphorylation by ATM and ATR.",
+    "context": "cultured human HeLa cells with BubR1 knockdown and CENP-E inhibition (siBubR1+Cmpd-A)",
+    "location": "Aneuploidy generates replication stress-mediated DSBs",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "p53",
+  "old_rule": "ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)",
+  "template_rule": "(ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)) | ATR",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)) | ATR",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'ATR': 1}",
+     "V05 (Figure 3, miR-221 E1); setting {'DNA_damage': 1, 'miR221': 1}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'ATR': 1}",
+     "V06 (Figure 3, miR-221 E1 + TUG1 KO); setting {'DNA_damage': 1, 'miR221': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'ATR': 1}"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "Cdc25|activates|Cdc2_CycB",
+  "papers": 2,
+  "support": [
+   {
+    "pmcid": "PMC2243162",
+    "quote": "Activating this phosphatase results in dephosphorylation and activation of cyclin B/CDK1, causing cell cycle progression to M phase.",
+    "context": "review statement in conjunction with DNA damage",
+    "location": "Manipulation of CDC25 and WEE1",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3913755",
+    "quote": "Cdc25C is essential for promoting mitosis though dephosphorylating Tyr-15 on Cdk1 [53].",
+    "context": "review statement citing prior work",
+    "location": "Discussion",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "Cdc25 already acts on Cdc2_CycB with sign +"
+ },
+ {
+  "edge": "PTEN|inhibits|AKT",
+  "papers": 2,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "Activation of AKT is negatively regulated by the PTEN (Phosphatase and Tensin homolog deleted from chromosome ten) phosphatase, a tumor suppressor frequently mutated in different tumors, including melanoma [31,33].",
+    "context": "review statement, including melanoma",
+    "location": "3. AKT Potently Mediates Oncogenic Signaling",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6755978",
+    "quote": "PTEN-depleted MCF7 cells displayed prematurely senescent phenotypes in a p53/p21-dependent manner (Fig. 1a, b) and showed increased phosphorylation of AKT at serine 473 (S473) and threonine 308 (T308) (Supplementary Fig. S1a–c).",
+    "context": "cultured MCF7 cells, PTEN siRNA, review of PTEN function in Introduction and Results",
+    "location": "Results - PTEN depletion induces cellular senescence via the p53-p21 signaling pathway without triggering a DNA damage response",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "PTEN already acts on AKT with sign -"
+ },
+ {
+  "edge": "p21|activates|RB",
+  "papers": 2,
+  "support": [
+   {
+    "pmcid": "PMC5595683",
+    "quote": "p53 plays a central role in the induction of cellular senescence (Marudamuthu et al., 2015), mainly through inducing p21, an inhibitor of cyclin‐dependent kinases (CDKs), leading to dephosphorylation and activation of cell cycle repressor retinoblastoma (Rb).",
+    "context": "review statement about senescence regulation",
+    "location": "Discussion",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC9090780",
+    "quote": "Thus, p21 can stimulate RB-E2F complex formation.",
+    "context": "cultured human cells",
+    "location": "RB-E2F complex formation is controlled by p21",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "p21 -> Cdc2_CycB -> RB"
+ },
+ {
+  "edge": "p53|requires|p21",
+  "papers": 2,
+  "support": [
+   {
+    "pmcid": "PMC4705690",
+    "quote": "Based on these findings, we conclude that p53-dependent repression of these CHR-containing genes requires p21.",
+    "context": "HCT116 wild-type vs HCT116 p21-/- and HFF cells with p53 activation, for CHR-containing genes",
+    "location": "Repression of non-canonical CHR-containing genes by p53 requires p21 and is conserved between mouse and human",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC9090780",
+    "quote": "Indirect transcriptional repression by p53 requires the cyclin-dependent kinase inhibitor p21/WAF1/CIP1/CDKN1A [23, 37, 38].",
+    "context": "review statement, genome-wide analyses of p53-dependent repression",
+    "location": "p53 – tumor suppressor and guardian of the genome",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "requirement",
+  "node": "p53",
+  "old_rule": "ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)",
+  "template_rule": "(ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)) & p21",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)) & p21",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V02 (Section 3.2, damage: the four stable fates); setting {'DNA_damage': 1}: missing; expected phenotypes ['apoptosis', 'arrest', 'autophagy', 'senescence'] (exact), found ['arrest', 'senescence']; witness fixed point {'ATM_pH2AX': 1, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 0, 'mTORC2': 0, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0}",
+     "V03 (Figure 3, TUG1 E1); setting {'DNA_damage': 1, 'TUG1': 1}: missing; expected phenotypes ['apoptosis', 'arrest', 'autophagy', 'senescence'] (exact), found ['arrest', 'senescence']; witness fixed point {'ATM_pH2AX': 1, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 0, 'mTORC2': 0, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0}",
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: missing; expected phenotypes ['apoptosis'] (exact), found []",
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: oscillation; expected phenotypes ['apoptosis'] (exact), found []",
+     "V05 (Figure 3, miR-221 E1); setting {'DNA_damage': 1, 'miR221': 1}: missing; expected phenotypes ['apoptosis'] (exact), found []",
+     "V05 (Figure 3, miR-221 E1); setting {'DNA_damage': 1, 'miR221': 1}: oscillation; expected phenotypes ['apoptosis'] (exact), found []"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "AKT|activates|Mdm2",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "Therefore, AKT-mediated activation of MDM2, a negative regulator of p53, can have a significant impact on UV stress responses by preventing p53-mediated cell cycle arrest and apoptosis induction (Figure 2) [40,41].",
+    "context": "UV stress responses, review statement",
+    "location": "3. AKT Potently Mediates Oncogenic Signaling",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "AKT already acts on Mdm2 with sign +"
+ },
+ {
+  "edge": "AKT|activates|mTORC1",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3819289",
+    "quote": "Activated PKB/AKT mediates the metabolic actions of insulin such as potentiating glucose transport and promoting mTORC1 signalling to drive protein synthesis and cell growth.",
+    "context": "review statement about insulin signalling",
+    "location": "Introduction",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "AKT already acts on mTORC1 with sign +"
+ },
+ {
+  "edge": "AKT|inhibits|p21",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "Thus, AKT prevents nuclear translocation of cell cycle inhibitors p21Cip1/WAF1 and p27Kip1, and by phosphorylation and inhibition of the glycogen synthase kinase 3 (GSK3) stabilizes cyclins and increases metabolic activity [2,26,27].",
+    "context": "review statement",
+    "location": "3. AKT Potently Mediates Oncogenic Signaling",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "AKT already acts on p21 with sign -"
+ },
+ {
+  "edge": "AKT|requires|mTORC2",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC6755978",
+    "quote": "These results indicate that mTORC2 is necessary for AKT phosphorylation at S473 and acts upstream of the mTORC1-p53-p21 signaling cascade in PICS.",
+    "context": "MCF7 cells with PTEN siRNA and SIN1 siRNA, PICS condition",
+    "location": "Results - mTORC1 and mTORC2 are essential for PICS",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "requirement",
+  "node": "AKT",
+  "old_rule": "!PTEN | mTORC2",
+  "template_rule": "(!PTEN | mTORC2) & mTORC2",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(!PTEN | mTORC2) & mTORC2",
+    "accepted": false,
+    "reasons": [
+     "structure"
+    ],
+    "messages": [
+     "the rule of AKT loses influences the base model has: [('PTEN', ['-'])]"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "AMPK_MAPK|activates|ULK1_Beclin1",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "Sestrins activate AMPK which positively regulates autophagy related targets, the TSC complex, ULK1 and p53 itself [94,102].",
+    "context": "review statement citing other work",
+    "location": "7. Alternative Roles of p53 and AKT/mTOR Pathways in UV Responses: Autophagy",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "AMPK_MAPK already acts on ULK1_Beclin1 with sign +"
+ },
+ {
+  "edge": "AMPK_MAPK|activates|p53",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "Sestrins activate AMPK which positively regulates autophagy related targets, the TSC complex, ULK1 and p53 itself [94,102].",
+    "context": "review statement citing other work",
+    "location": "7. Alternative Roles of p53 and AKT/mTOR Pathways in UV Responses: Autophagy",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "AMPK_MAPK already acts on p53 with sign +"
+ },
+ {
+  "edge": "ATM_pH2AX|activates|ATR",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC6547644",
+    "quote": "Notably, ATM-dependent resection is known to facilitate ATR activation in the S- and G2 –phase of the cell cycle, suggesting a directional crosstalk between ATM and ATR in response to DSBs33,49,50.",
+    "context": "review statement, S- and G2-phase of the cell cycle in response to DSBs",
+    "location": "Introduction",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "ATR",
+  "old_rule": "DNA_damage",
+  "template_rule": "(DNA_damage) | ATM_pH2AX",
+  "status": "accepted",
+  "final_rule": "(DNA_damage) | ATM_pH2AX",
+  "effect": "neutral",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(DNA_damage) | ATM_pH2AX",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "neutral"
+   }
+  ]
+ },
+ {
+  "edge": "ATM_pH2AX|activates|Mdm2",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC2745661",
+    "quote": "ATM directly activates p53 by phosphorylation at serine 15, as well as by phosphorylating Mdm2, the ubiquitin ligase that regulates p53 stability [18],[19],[20].",
+    "context": "review statement",
+    "location": "Introduction",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_conflict",
+  "detail": "the base rule of Mdm2 has ATM_pH2AX with sign -"
+ },
+ {
+  "edge": "ATM_pH2AX|activates|p21",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC4506520",
+    "quote": "Furthermore, inhibitors of ATM (Ku55933) and ATR (VE-821)36,37 suppressed p53 phosphorylation and p21 expression (Supplementary Fig. 12e).",
+    "context": "cultured human HeLa cells with BubR1 knockdown and CENP-E inhibition treated with ATM/ATR inhibitors",
+    "location": "Aneuploidy generates replication stress-mediated DSBs",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "ATM_pH2AX -> AMPK_MAPK -> p21"
+ },
+ {
+  "edge": "ATR|activates|p21",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC4506520",
+    "quote": "Furthermore, inhibitors of ATM (Ku55933) and ATR (VE-821)36,37 suppressed p53 phosphorylation and p21 expression (Supplementary Fig. 12e).",
+    "context": "cultured human HeLa cells with BubR1 knockdown and CENP-E inhibition treated with ATM/ATR inhibitors",
+    "location": "Aneuploidy generates replication stress-mediated DSBs",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "p21",
+  "old_rule": "p53_A | (!Myc & !AKT & !Caspase & AMPK_MAPK)",
+  "template_rule": "(p53_A | (!Myc & !AKT & !Caspase & AMPK_MAPK)) | ATR",
+  "status": "accepted",
+  "final_rule": "(p53_A | (!Myc & !AKT & !Caspase & AMPK_MAPK)) | ATR",
+  "effect": "active",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(p53_A | (!Myc & !AKT & !Caspase & AMPK_MAPK)) | ATR",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "active"
+   }
+  ]
+ },
+ {
+  "edge": "ATR|requires|DNA_PK",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC6547644",
+    "quote": "activation of endogenous ATR and Chk1 in human cell-free extracts depends under certain conditions on DNA-PKcs that acts by phosphorylating RPA32 and TopBP182.",
+    "context": "human cell-free extracts",
+    "location": "Introduction",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "requirement",
+  "node": "ATR",
+  "old_rule": "(DNA_damage) | ATM_pH2AX",
+  "template_rule": "((DNA_damage) | ATM_pH2AX) & DNA_PK",
+  "status": "accepted",
+  "final_rule": "((DNA_damage) | ATM_pH2AX) & DNA_PK",
+  "effect": "active",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "((DNA_damage) | ATM_pH2AX) & DNA_PK",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "active"
+   }
+  ]
+ },
+ {
+  "edge": "BAX|inhibits|BCL2",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC4925817",
+    "quote": "Subsequent activation of pro-apoptotic BH3-only members of the Bcl-2 family (Bax, Bak) neutralizes the antiapoptotic proteins Bcl-2, Bcl-xL, and Mcl-1, leading to disruption of mitochondrial membrane outer membrane permeability (MOMP)",
+    "context": "review statement, in response to stress conditions such as irradiation or chemotherapeutic agents",
+    "location": "Intrinsic apoptotic pathway",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "inhibitor",
+  "node": "BCL2",
+  "old_rule": "!PUMA & E2F1 & !p53_K",
+  "template_rule": "(!PUMA & E2F1 & !p53_K) & !BAX",
+  "status": "accepted",
+  "final_rule": "(!PUMA & E2F1 & !p53_K) & !BAX",
+  "effect": "neutral",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(!PUMA & E2F1 & !p53_K) & !BAX",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "neutral"
+   }
+  ]
+ },
+ {
+  "edge": "BCL2|inhibits|BAX",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC4925817",
+    "quote": "Anti-apoptotic multidomain members of the Bcl-2 protein family not only counteract the pore-forming activity of Bax and Bak by engaging in direct inhibitory interactions, but also prevent the generation of pro-apoptotic cytosolic Ca2+ waves",
+    "context": "review statement of Bcl-2 family regulation of mitochondrial permeability",
+    "location": "The B-cell lymphoma 2 (Bcl-2) family proteins",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "BCL2 already acts on BAX with sign -"
+ },
+ {
+  "edge": "BCL2|inhibits|ULK1_Beclin1",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "autophagy promoting Beclin-1-PI3KC3 complex is suppressed by Bcl proteins implying that, additionally to their anti-apoptotic function, Bcl proteins also act as inhibitors of autophagy.",
+    "context": "review statement citing other work",
+    "location": "7. Alternative Roles of p53 and AKT/mTOR Pathways in UV Responses: Autophagy",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "inhibitor",
+  "node": "ULK1_Beclin1",
+  "old_rule": "!mTORC2 & !mTORC1 & AMPK_MAPK",
+  "template_rule": "(!mTORC2 & !mTORC1 & AMPK_MAPK) & !BCL2",
+  "status": "accepted",
+  "final_rule": "(!mTORC2 & !mTORC1 & AMPK_MAPK) & !BCL2",
+  "effect": "active",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(!mTORC2 & !mTORC1 & AMPK_MAPK) & !BCL2",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "active"
+   }
+  ]
+ },
+ {
+  "edge": "CHK2|activates|Caspase",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC2745661",
+    "quote": "As shown in Figure 6, inhibition of CHK2 significantly impaired caspase-7 cleavage as compared to cells treated with DMSO alone, without affecting total levels of caspase-7.",
+    "context": "HPV-31 positive CIN612 cells differentiating in high calcium",
+    "location": "Results",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "Caspase",
+  "old_rule": "!(BCL2 & p21) & BAX",
+  "template_rule": "(!(BCL2 & p21) & BAX) | CHK2",
+  "status": "accepted",
+  "final_rule": "(!(BCL2 & p21) & BAX) | CHK2",
+  "effect": "active",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(!(BCL2 & p21) & BAX) | CHK2",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "active"
+   }
+  ]
+ },
+ {
+  "edge": "CHK2|activates|E2F1",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC2745661",
+    "quote": "In response to DNA damage, CHK2 phosphorylates E2F1, resulting in its stabilization, transcriptional activation, and induction of p53-dependent or -independent apoptosis [16],[43].",
+    "context": "review statement citing other work on DNA damage response",
+    "location": "Discussion",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "CHK2 -> Caspase -> p21 -> Myc -> E2F1"
+ },
+ {
+  "edge": "Caspase|inhibits|AKT",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "In turn, p53-induced apoptotic processes can commit AKT to cleavage by executioner caspases, thereby creating a feedback loop to protect cells from the adverse effects of AKT [40].",
+    "context": "p53-induced apoptotic processes, review statement",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "inhibitor",
+  "node": "AKT",
+  "old_rule": "!PTEN | mTORC2",
+  "template_rule": "(!PTEN | mTORC2) & !Caspase",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(!PTEN | mTORC2) & !Caspase",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V02 (Section 3.2, damage: the four stable fates); setting {'DNA_damage': 1}: missing; expected phenotypes ['apoptosis', 'arrest', 'autophagy', 'senescence'] (exact), found ['arrest', 'autophagy']; witness fixed point {'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc2_CycB': 0, 'PTEN': 1, 'AKT': 0, 'mTORC1': 0, 'mTORC2': 0, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 1}",
+     "V03 (Figure 3, TUG1 E1); setting {'DNA_damage': 1, 'TUG1': 1}: missing; expected phenotypes ['apoptosis', 'arrest', 'autophagy', 'senescence'] (exact), found ['arrest', 'autophagy']; witness fixed point {'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc2_CycB': 0, 'PTEN': 1, 'AKT': 0, 'mTORC1': 0, 'mTORC2': 0, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 1}",
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'arrest']; witness fixed point {'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc2_CycB': 0, 'PTEN': 0, 'AKT': 0, 'mTORC1': 0, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 1}",
+     "V05 (Figure 3, miR-221 E1); setting {'DNA_damage': 1, 'miR221': 1}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'arrest']; witness fixed point {'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc2_CycB': 0, 'PTEN': 0, 'AKT': 0, 'mTORC1': 0, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 1}",
+     "V06 (Figure 3, miR-221 E1 + TUG1 KO); setting {'DNA_damage': 1, 'miR221': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'arrest']; witness fixed point {'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc2_CycB': 0, 'PTEN': 0, 'AKT': 0, 'mTORC1': 0, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 1}",
+     "V07 (Figure 3, TUG1 E1 + miR-221 KO); setting {'DNA_damage': 1, 'TUG1': 1, 'miR221': 0}: missing; expected phenotypes ['apoptosis', 'arrest', 'autophagy', 'senescence'] (exact), found ['arrest', 'autophagy']; witness fixed point {'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc2_CycB': 0, 'PTEN': 1, 'AKT': 0, 'mTORC1': 0, 'mTORC2': 0, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 1}"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "Caspase|requires|BAX",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC2173837",
+    "quote": "We have previously demonstrated that Bax is required for p53-induced cytochrome-c release (Keramaris et al., 2000) and caspase activation in postmitotic neurons (Cregan et al., 1999).",
+    "context": "postmitotic neurons, previous work cited by this paper",
+    "location": "Discussion",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "requirement",
+  "node": "Caspase",
+  "old_rule": "(!(BCL2 & p21) & BAX) | CHK2",
+  "template_rule": "((!(BCL2 & p21) & BAX) | CHK2) & BAX",
+  "status": "accepted",
+  "final_rule": "((!(BCL2 & p21) & BAX) | CHK2) & BAX",
+  "effect": "active",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "((!(BCL2 & p21) & BAX) | CHK2) & BAX",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "active"
+   }
+  ]
+ },
+ {
+  "edge": "Cdc2_CycB|requires|Cdc25",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC2745661",
+    "quote": "Cdc25c is necessary for the activation of Cdc2/Cdk1, as well as entry into mitosis, and its inactivation plays a central role in inducing G2/M arrest [53].",
+    "context": "review statement citing other work",
+    "location": "Discussion",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "Cdc2_CycB already needs Cdc25"
+ },
+ {
+  "edge": "DNA_PK|activates|CHK2",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3120867",
+    "quote": "As expected, ATM, DNA-PKcs, or TEL2 silencing compromised CHK2 activation phospho-CHK2 (T68) in response to UV (Fig. 2A).",
+    "context": "HEK293T cells in response to UV",
+    "location": "Results",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "DNA_PK -> ATR -> CHK2"
+ },
+ {
+  "edge": "DNA_PK|inhibits|ATM_pH2AX",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC6547644",
+    "quote": "Also, DNA-PKcs regulates negatively ATM activity through phosphorylation at multiple sites73",
+    "context": "review statement",
+    "location": "Introduction",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "inhibitor",
+  "node": "ATM_pH2AX",
+  "old_rule": "DNA_damage & (!Wip1 | !Cdc25 | E2F1)",
+  "template_rule": "(DNA_damage & (!Wip1 | !Cdc25 | E2F1)) & !DNA_PK",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(DNA_damage & (!Wip1 | !Cdc25 | E2F1)) & !DNA_PK",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V02 (Section 3.2, damage: the four stable fates); setting {'DNA_damage': 1}: missing; expected phenotypes ['apoptosis', 'arrest', 'autophagy', 'senescence'] (exact), found []",
+     "V02 (Section 3.2, damage: the four stable fates); setting {'DNA_damage': 1}: g2_arrest; expected phenotypes ['apoptosis', 'arrest', 'autophagy', 'senescence'] (exact), found []",
+     "V02 (Section 3.2, damage: the four stable fates); setting {'DNA_damage': 1}: oscillation; expected phenotypes ['apoptosis', 'arrest', 'autophagy', 'senescence'] (exact), found []",
+     "V03 (Figure 3, TUG1 E1); setting {'DNA_damage': 1, 'TUG1': 1}: missing; expected phenotypes ['apoptosis', 'arrest', 'autophagy', 'senescence'] (exact), found []",
+     "V03 (Figure 3, TUG1 E1); setting {'DNA_damage': 1, 'TUG1': 1}: oscillation; expected phenotypes ['apoptosis', 'arrest', 'autophagy', 'senescence'] (exact), found []",
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: missing; expected phenotypes ['apoptosis'] (exact), found []"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "DNA_damage|activates|Cdc2_CycB",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC2829054",
+    "quote": "As expected, p53-deficient cells normally induced Cdk1Y15-P after IR (Figure 4B); in contrast, the levels of Cdk1Y15-P did not increase after IR in cells that were also Cdk2-deficient.",
+    "context": "p53-deficient cells with wild type Cdk2",
+    "location": "Deregulation of Cdc25A is a cause of G2/M checkpoint failure",
+    "pass": "stimulus"
+   }
+  ],
+  "kind": "activator",
+  "node": "Cdc2_CycB",
+  "old_rule": "Cdc25 & !Wee1 & !PTEN & !p21",
+  "template_rule": "(Cdc25 & !Wee1 & !PTEN & !p21) | DNA_damage",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(Cdc25 & !Wee1 & !PTEN & !p21) | DNA_damage",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V02 (Section 3.2, damage: the four stable fates); setting {'DNA_damage': 1}: g2_arrest; expected phenotypes ['apoptosis', 'arrest', 'autophagy', 'senescence'] (exact), found ['apoptosis', 'arrest', 'autophagy', 'senescence']; witness fixed point {'DNA_damage': 1, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc25': 0, 'Cdc2_CycB': 1, 'Wee1': 1, 'PTEN': 1, 'mTORC1': 0, 'mTORC2': 0, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0}",
+     "V08 (Table 1 rows 1 and 4, p53 E1 + PTEN KO); setting {'DNA_damage': 1, 'p53': 1, 'PTEN': 0}: missing; expected phenotypes ['apoptosis', 'senescence'] (exact), found ['apoptosis']; witness fixed point {'DNA_damage': 1, 'p53': 1, 'p53_A': 0, 'p53_K': 1, 'p21': 1, 'Wip1': 0, 'Cdc25': 0, 'Cdc2_CycB': 1, 'Wee1': 0, 'PTEN': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 1, 'Caspase': 1}"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "Mdm2|inhibits|RB",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC9090780",
+    "quote": "MDM2 causes proteolytic degradation of RB [13].",
+    "context": "review statement, tumors with MDM2 overexpression",
+    "location": "RB function is lost in many tumors",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "inhibitor",
+  "node": "RB",
+  "old_rule": "!(Cdc2_CycB & Cdc25)",
+  "template_rule": "(!(Cdc2_CycB & Cdc25)) & !Mdm2",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(!(Cdc2_CycB & Cdc25)) & !Mdm2",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V08 (Table 1 rows 1 and 4, p53 E1 + PTEN KO); setting {'DNA_damage': 1, 'p53': 1, 'PTEN': 0}: missing; expected phenotypes ['apoptosis', 'senescence'] (exact), found ['apoptosis']; witness fixed point {'Mdm2': 0, 'p53': 1, 'p53_A': 0, 'p53_K': 1, 'p21': 1, 'Wip1': 0, 'RB': 1, 'Cdc25': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 1, 'Caspase': 1}"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "Sirt1|inhibits|p53",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC4772976",
+    "quote": "Acetylation of p53 is reversible with deacetylases such as HDAC1 and SIRT1, suggesting that the transition between acetylation and deacetylation is crucial for p53 activity 24, 25.",
+    "context": "review statement, human cells",
+    "location": "Introduction",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "Sirt1 -> E2F1 -> ATM_pH2AX -> p53"
+ },
+ {
+  "edge": "ULK1_Beclin1|inhibits|mTORC1",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "Initiation of autophagy is regulated by ULK1/2 kinases (ATG1), which in a complex with the ATG13–FIP200 mediate inhibition of mTORC1.",
+    "context": "review statement",
+    "location": "7. Alternative Roles of p53 and AKT/mTOR Pathways in UV Responses: Autophagy",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "ULK1_Beclin1 already acts on mTORC1 with sign -"
+ },
+ {
+  "edge": "Wip1|activates|Mdm2",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3950324",
+    "quote": "p53 activation is opposed by Wip1, an oncogene that removes inactivating phosphorylation marks from Mdm2 and activating phosphorylation marks from p53, p14/p19ARF and checkpoint kinases,32 and dephosphorylates γH2AX,33, 34 thereby attenuating DDR.",
+    "context": "review statement citing other work",
+    "location": "Inhibition of Wip1 by p53 promotes the induction of γH2AX",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_conflict",
+  "detail": "the base rule of Mdm2 has Wip1 with sign -"
+ },
+ {
+  "edge": "Wip1|inhibits|ATM_pH2AX",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3950324",
+    "quote": "p53 activation is opposed by Wip1, an oncogene that removes inactivating phosphorylation marks from Mdm2 and activating phosphorylation marks from p53, p14/p19ARF and checkpoint kinases,32 and dephosphorylates γH2AX,33, 34 thereby attenuating DDR.",
+    "context": "review statement citing other work",
+    "location": "Inhibition of Wip1 by p53 promotes the induction of γH2AX",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "Wip1 already acts on ATM_pH2AX with sign -"
+ },
+ {
+  "edge": "Wip1|inhibits|p53",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3950324",
+    "quote": "p53 activation is opposed by Wip1, an oncogene that removes inactivating phosphorylation marks from Mdm2 and activating phosphorylation marks from p53, p14/p19ARF and checkpoint kinases,32 and dephosphorylates γH2AX,33, 34 thereby attenuating DDR.",
+    "context": "review statement citing other work",
+    "location": "Inhibition of Wip1 by p53 promotes the induction of γH2AX",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "Wip1 -> ATM_pH2AX -> p53"
+ },
+ {
+  "edge": "mTORC1|activates|p21",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3819289",
+    "quote": "p21 protein level was strongly upregulated by DNA damage only in the presence of BCAAs, and the elevation of p21 protein was suppressed by rapamycin.",
+    "context": "HepG2 cells cultured in BCAA_3 vs BCAA_0, with or without etoposide",
+    "location": "BCAAs upregulate p21 protein level mediated through the mTORC1 pathway",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "mTORC1 -> mTORC2 -> AKT -> p21"
+ },
+ {
+  "edge": "mTORC1|activates|p53",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC6755978",
+    "quote": "We found that immune-purified mTORC1 and mTORC2 evidently phosphorylated p53 at S15 and its phosphorylation levels were rp53 dose-dependent (Fig. 5c).",
+    "context": "in vitro kinase assay with immune-purified mTORC1 and mTORC2 from MCF7 cells 2 days after PTEN siRNA",
+    "location": "Results - mTORC1 and mTORC2 physically associate with p53 and directly phosphorylate it at serine 15 during PICS",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "mTORC1 -> mTORC2 -> AKT -> Mdm2 -> p53"
+ },
+ {
+  "edge": "mTORC1|inhibits|ULK1_Beclin1",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "Reciprocally, ULK1/2 becomes activated upon mTORC1 inhibition for instance during starvation [85,88,93,96].",
+    "context": "during starvation, review statement",
+    "location": "7. Alternative Roles of p53 and AKT/mTOR Pathways in UV Responses: Autophagy",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "mTORC1 already acts on ULK1_Beclin1 with sign -"
+ },
+ {
+  "edge": "mTORC2|activates|p53",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC6755978",
+    "quote": "We found that immune-purified mTORC1 and mTORC2 evidently phosphorylated p53 at S15 and its phosphorylation levels were rp53 dose-dependent (Fig. 5c).",
+    "context": "in vitro kinase assay with immune-purified mTORC1 and mTORC2 from MCF7 cells 2 days after PTEN siRNA",
+    "location": "Results - mTORC1 and mTORC2 physically associate with p53 and directly phosphorylate it at serine 15 during PICS",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "p53",
+  "old_rule": "ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)",
+  "template_rule": "(ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)) | mTORC2",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)) | mTORC2",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0}",
+     "V05 (Figure 3, miR-221 E1); setting {'DNA_damage': 1, 'miR221': 1}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0}",
+     "V06 (Figure 3, miR-221 E1 + TUG1 KO); setting {'DNA_damage': 1, 'miR221': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0}"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "p21|inhibits|Cdc2_CycB",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC2829054",
+    "quote": "The activity of Cdk1 is independently inhibited upon activation of the p53-p21 pathway, which is defective in many cancer cells.",
+    "context": "model proposed in this paper",
+    "location": "CAPTION: The proposed role of Cdk2 in the p53-independent regulation of Cdk1.",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "p21 already acts on Cdc2_CycB with sign -"
+ },
+ {
+  "edge": "p53|inhibits|BCL2",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "p53-triggered up-regulation of genes coding for pro-apoptotic Bax, Bak, PUMA and Noxa proteins in concert with trans-repression of anti-apoptotic Bcl-2, Bcl-xL [53,54]",
+    "context": "upon UV-induced DNA damage, review statement",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "p53 -> p53_K -> BCL2"
+ },
+ {
+  "edge": "p53|inhibits|CHK2",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC4705690",
+    "quote": "Indeed, we found all genes with non-canonical CHR elements to be downregulated upon p53 activation (Figure 2A, Supplementary Figure S1).",
+    "context": "NIH3T3, HCT116 wild-type and HFF cells treated with nutlin-3a, 5-FU or doxorubicin to activate p53; non-canonical CHR genes including CHEK2",
+    "location": "Repression of non-canonical CHR-containing genes by p53 requires p21 and is conserved between mouse and human",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "p53 -> p53_A -> Wip1 -> ATM_pH2AX -> CHK2"
+ },
+ {
+  "edge": "p53|inhibits|Cdc2_CycB",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC4705690",
+    "quote": "Indeed, we found all genes with non-canonical CHR elements to be downregulated upon p53 activation (Figure 2A, Supplementary Figure S1).",
+    "context": "NIH3T3, HCT116 wild-type and HFF cells treated with nutlin-3a, 5-FU or doxorubicin to activate p53; non-canonical CHR genes including CCNB1",
+    "location": "Repression of non-canonical CHR-containing genes by p53 requires p21 and is conserved between mouse and human",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "p53 -> p53_A -> p21 -> Cdc2_CycB"
+ },
+ {
+  "edge": "p53|inhibits|Wip1",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3950324",
+    "quote": "We identified several survival oncogenes inhibited by p53 in JNK-dependent manner, including Mcl1, PI3K, eIF4E, as well as p53 inhibitors Wip1 and MdmX.",
+    "context": "cancer cells upon pharmacological activation of p53, JNK-dependent",
+    "location": "ABSTRACT",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "p53 -> p53_K -> p53_A -> Wip1"
+ },
+ {
+  "edge": "ATR|activates|CHK1",
+  "papers": 11,
+  "support": [
+   {
+    "pmcid": "PMC2243162",
+    "quote": "Ataxia–telangiectasia mutated phosphorylates Chk2 at threonine 68, and ATR phosphorylates Chk1 at serines 317 and 345.",
+    "context": "review statement, in models of DNA damage response",
+    "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC2829054",
+    "quote": "Cdc25A is also targeted for IR-dependent degradation by Chk1 [21], which is activated after phosphorylation by ATR on residues S317 and S345 [35],[36].",
+    "context": "review statement about IR response",
+    "location": "Results - Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3120867",
+    "quote": "Silencing of ATR or CHK1 expression was also verified using a phospho-CHK1 (S345) antibody to confirm the inability of CHK1 to be activated in response to UV (Fig. 2A).",
+    "context": "HEK293T cells in response to UV, verified by phospho-CHK1 S345 antibody",
+    "location": "Results",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3510507",
+    "quote": "Replication stress activates ATR, which phosphorylates/activates Chk1, and this is a key step in transmitting DNA damage signals to downstream replication checkpoint effector proteins (52,55)",
+    "context": "cells in response to replication stress",
+    "location": "RESULTS - Replication-induced Chk1 phosphorylation is defective in DNA-PKcs and RPA32 Ser4/Ser8 mutants",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3759859",
+    "quote": "While ATM and DNA-PK mainly become activated in response to ionizing radiation, ATR predominantly responds to UV radiation, causing phosphorylation of histone H2AX, phosphorylation of check point kinases (Chk1/2), and phosphorylation of p53 at Ser15 and Ser20 [14,46,47].",
+    "context": "UV radiation response, review statement citing other work",
+    "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3913755",
+    "quote": "Generally, ATM activates Chk2 by phosphorylation it on Thr-68 [48], [49], while ATR activates Chk1 [50].",
+    "context": "review statement citing prior work",
+    "location": "Discussion",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC4633921",
+    "quote": "Activated ATR and ATM phosphorylate Chk1 or Chk2 respectively.",
+    "context": "review statement citing prior DDR work",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC5762302",
+    "quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+    "context": "review statement citing prior work, in response to DNA replication stress or DNA damage",
+    "location": "INTRODUCTION",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6144794",
+    "quote": "ATR and its downstream target CHK1 play essential roles in maintaining genome integrity and in the survival of neurons (32,39).",
+    "context": "spinal cord neurons, review statement of known function",
+    "location": "RESULTS: Chronic low levels of SMN cause down regulation of SETX and DNA-PKcs, accumulation of R-loops and activation of DDR pathways in spinal cord neurons from SMA mice",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6547644",
+    "quote": "An important function of ATR is to phosphorylate and activate the protein kinase Chk166–69",
+    "context": "review statement",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "Activated ATR phosphorylates and activates its downstream kinase CHK1 [137, 138].",
+    "context": "upon replication stress, review statement",
+    "location": "## Ataxia-telangiectasia and Rad3 related (ATR)",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "anchor",
+  "node": "CHK1",
+  "old_rule": null,
+  "template_rule": "ATR",
+  "status": "accepted",
+  "final_rule": "ATR",
+  "effect": "introduces",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "ATR",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "introduces"
+   }
+  ]
+ },
+ {
+  "edge": "CHK1|inhibits|Cdc25",
+  "papers": 6,
+  "support": [
+   {
+    "pmcid": "PMC2243162",
+    "quote": "Checkpoint kinase-2 and Chk1 inactivate CDC25 phosphatases, culminating in cell cycle arrest.",
+    "context": "review statement of checkpoint pathways",
+    "location": "Cell cycle checkpoint pathways. Once DNA damage is identified with the aid of sensors, the checkpoint transducers ATM and ATR undergo conformational change and/or localisation, resulting in their activation. Together with their mediators, ATM and ATR activate a series of downstream molecules, including the checkpoint transducer kinases. Checkpoint kinase-2 and Chk1 inactivate CDC25 phosphatases, culminating in cell cycle arrest.",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC2243162",
+    "quote": "At G2, Chk1 is activated by ATR to phosphorylate CDC25A, -B, and -C (Boutros, 2006), preventing cyclin B/CDK1 activation and resulting in G2 arrest.",
+    "context": "at G2 after DNA damage in G2 or escape from earlier checkpoints",
+    "location": "G2 checkpoint",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3631220",
+    "quote": "Upon to DDR, Chk1 is activated and inhibits the activation of the downstream target of Cdc25C, resulted in the downregulation of cyclinB1/Cdc2 kinase [57].",
+    "context": "review statement cited from other work, upon DDR",
+    "location": "Discussion",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3913755",
+    "quote": "Cdc25 can be phosphorylated by Chk1/Chk2 on Ser-323 (Cdc25B) and Ser-216 (Cdc25C) and functionally inactivated by binding to 14-3-3 proteins [26]–[28].",
+    "context": "review statement citing prior work",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC5762302",
+    "quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+    "context": "review statement citing prior work, leading to arrest at the G2/M checkpoint",
+    "location": "INTRODUCTION",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6547644",
+    "quote": "which in S-phase cells inactivates the Cdc25A and in G2–phase the Cdc25C phosphatase",
+    "context": "review statement, S-phase and G2-phase cells",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "The ATR-CHK1 axis activates the G2/M cell cycle checkpoint through phosphorylation and inactivation of CDC25 phosphatases",
+    "context": "G2/M cell cycle checkpoint regulation, review statement",
+    "location": "## Ataxia-telangiectasia and Rad3 related (ATR)",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "inhibitor",
+  "node": "Cdc25",
+  "old_rule": "(!ATM_pH2AX | !AMPK_MAPK) & !Wee1 & !PTEN",
+  "template_rule": "((!ATM_pH2AX | !AMPK_MAPK) & !Wee1 & !PTEN) & !CHK1",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "((!ATM_pH2AX | !AMPK_MAPK) & !Wee1 & !PTEN) & !CHK1",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 1, 'AMPK_MAPK': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc25': 0, 'Cdc2_CycB': 0, 'Wee1': 0, 'PTEN': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK1': 1}",
+     "V05 (Figure 3, miR-221 E1); setting {'DNA_damage': 1, 'miR221': 1}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 1, 'AMPK_MAPK': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc25': 0, 'Cdc2_CycB': 0, 'Wee1': 0, 'PTEN': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK1': 1}",
+     "V06 (Figure 3, miR-221 E1 + TUG1 KO); setting {'DNA_damage': 1, 'miR221': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 1, 'AMPK_MAPK': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'Cdc25': 0, 'Cdc2_CycB': 0, 'Wee1': 0, 'PTEN': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK1': 1}"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "DNA_damage|activates|CHK1",
+  "papers": 5,
+  "support": [
+   {
+    "pmcid": "PMC2243162",
+    "quote": "In contrast, Chk1, preferentially expressed during S and G2, has constitutive activity that is amplified in the presence of DNA damage (Zhao et al, 2002).",
+    "context": "preferentially expressed during S and G2",
+    "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC2829054",
+    "quote": "IR-induced phosphorylation of Chk1 S317 and S345 was reduced in CDK2-knockout cells, irrespective of P53 genotype (Figure 5).",
+    "context": "isogenic HCT116 cells, irrespective of P53 genotype",
+    "location": "Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3631220",
+    "quote": "Checkpoint kinase 1 (Chk1), which is an essential kinase required to preserve genome stability, is activated in response to DNA damage and is involved in the cell cycle checkpoint control, DNA damage repair and DNA damage-induced apoptosis [53], [54].",
+    "context": "general mammalian cells, statement cited from other work",
+    "location": "Discussion",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC3819289",
+    "quote": "DNA damage response is initiated with the formation of foci consisting of γ-H2AX, 53BP1, NBS1, and MDC1, and leads to activation of ATM/ATR and Chk1/Chk2, which in turn phosphorylate and stabilize p53 [18].",
+    "context": "general DNA damage response, cited from other work [18]",
+    "location": "Introduction",
+    "pass": "stimulus"
+   },
+   {
+    "pmcid": "PMC5762302",
+    "quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+    "context": "general checkpoint signaling, cited from other work",
+    "location": "INTRODUCTION",
+    "pass": "stimulus"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "DNA_damage -> ATR -> CHK1"
+ },
+ {
+  "edge": "ATM_pH2AX|activates|CHK1",
+  "papers": 2,
+  "support": [
+   {
+    "pmcid": "PMC3913755",
+    "quote": "However, Chk1 could be activated by both ATR and ATM on Ser-345 [51].",
+    "context": "review statement citing prior work",
+    "location": "Discussion",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC6990542",
+    "quote": "CHK1 is a relatively specific substrate of ATR upon replication stress, but can also be phosphorylated by ATM or DNA-PKcs in the absence of ATR kinase activity [21, 139].",
+    "context": "in the absence of ATR kinase activity, review statement cited from other work",
+    "location": "## Ataxia-telangiectasia and Rad3 related (ATR)",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_implied",
+  "detail": "ATM_pH2AX -> ATR -> CHK1"
+ },
+ {
+  "edge": "CHK1|activates|p53",
+  "papers": 2,
+  "support": [
+   {
+    "pmcid": "PMC3819289",
+    "quote": "DNA damage response is initiated with the formation of foci consisting of γ-H2AX, 53BP1, NBS1, and MDC1, and leads to activation of ATM/ATR and Chk1/Chk2, which in turn phosphorylate and stabilize p53 [18].",
+    "context": "review statement about DNA damage response",
+    "location": "Introduction",
+    "pass": "mechanism"
+   },
+   {
+    "pmcid": "PMC3913755",
+    "quote": "p53 could also be activated by Chk1/Chk2 at Ser-20.",
+    "context": "review statement citing prior work",
+    "location": "Cuc B activated p53 and enhanced the binding of phosphorylation Cdc25C on Ser-216 and 14-3-3-σ",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "activator",
+  "node": "p53",
+  "old_rule": "ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)",
+  "template_rule": "(ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)) | CHK1",
+  "status": "rejected",
+  "template_failed": true,
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)) | CHK1",
+    "accepted": false,
+    "reasons": [
+     "verification"
+    ],
+    "messages": [
+     "V04 (Figure 3, TUG1 KO); setting {'DNA_damage': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK1': 1}",
+     "V05 (Figure 3, miR-221 E1); setting {'DNA_damage': 1, 'miR221': 1}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK1': 1}",
+     "V06 (Figure 3, miR-221 E1 + TUG1 KO); setting {'DNA_damage': 1, 'miR221': 1, 'TUG1': 0}: unexpected; expected phenotypes ['apoptosis'] (exact), found ['apoptosis', 'senescence']; witness fixed point {'ATM_pH2AX': 0, 'AMPK_MAPK': 0, 'Mdm2': 0, 'p53': 1, 'p53_A': 1, 'p53_K': 0, 'p21': 1, 'Wip1': 1, 'hTERT': 0, 'Cdc2_CycB': 0, 'mTORC1': 1, 'mTORC2': 1, 'ULK1_Beclin1': 0, 'BAX': 0, 'Caspase': 0, 'CHK1': 1}"
+    ],
+    "effect": null
+   }
+  ]
+ },
+ {
+  "edge": "AKT|inhibits|CHK1",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC3759859",
+    "quote": "activation of the epidermal growth factor receptor 2 (Erbb2) was shown to suppress cell cycle arrest by PI3K/AKT-dependent inhibitory phosphorylation of Chk1 (Ser280) and by maintenance of the cell cycle regulator Cdc25a in UVB/UVA irradiated murine skin.",
+    "context": "UVB/UVA irradiated murine skin, Erbb2 activation cited work",
+    "location": "6. Implication of the AKT/mTOR Pathway in Photocarcinogenesis",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "inhibitor",
+  "node": "CHK1",
+  "old_rule": "ATR",
+  "template_rule": "(ATR) & !AKT",
+  "status": "accepted",
+  "final_rule": "(ATR) & !AKT",
+  "effect": "active",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "(ATR) & !AKT",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "active"
+   }
+  ]
+ },
+ {
+  "edge": "CHK1|requires|DNA_PK",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC6547644",
+    "quote": "activation of endogenous ATR and Chk1 in human cell-free extracts depends under certain conditions on DNA-PKcs that acts by phosphorylating RPA32 and TopBP182.",
+    "context": "human cell-free extracts",
+    "location": "Introduction",
+    "pass": "mechanism"
+   }
+  ],
+  "kind": "requirement",
+  "node": "CHK1",
+  "old_rule": "(ATR) & !AKT",
+  "template_rule": "((ATR) & !AKT) & DNA_PK",
+  "status": "accepted",
+  "final_rule": "((ATR) & !AKT) & DNA_PK",
+  "effect": "neutral",
+  "attempts": [
+   {
+    "source": "template",
+    "rule": "((ATR) & !AKT) & DNA_PK",
+    "accepted": true,
+    "reasons": [],
+    "messages": [],
+    "effect": "neutral"
+   }
+  ]
+ },
+ {
+  "edge": "DNA_PK|activates|CHK1",
+  "papers": 1,
+  "support": [
+   {
+    "pmcid": "PMC6990542",
+    "quote": "CHK1 is a relatively specific substrate of ATR upon replication stress, but can also be phosphorylated by ATM or DNA-PKcs in the absence of ATR kinase activity [21, 139].",
+    "context": "in the absence of ATR kinase activity, review statement cited from other work",
+    "location": "## Ataxia-telangiectasia and Rad3 related (ATR)",
+    "pass": "mechanism"
+   }
+  ],
+  "status": "skipped_present",
+  "detail": "DNA_PK already acts on CHK1 with sign +"
+ }
+]

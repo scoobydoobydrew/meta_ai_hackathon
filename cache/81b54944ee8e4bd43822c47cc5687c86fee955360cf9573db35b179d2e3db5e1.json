@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "1fe4ed11d0847434d01f8f80645721fd54988617c68e9e21499b8d4b133251ec",
+      "chars": 69637,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"general\", \"effect\": \"activates\", \"evidence_quote\": \"DNA-PKcs acts as a sensor for DSBs through recruitment by Ku that causes its activation6.\", \"location\": \"Introduction\", \"source\": \"DSBs\", \"target\": \"DNA-PKcs\"}, {\"context\": \"general\", \"effect\": \"activates\", \"evidence_quote\": \"ATR is activated by a wide range of genotoxic stresses, owing to its recruitment by ATRIP to extended tracts of ssDNA coated with the ssDNA binding protein complex, replication protein A (RPA)15.\", \"location\": \"Introduction\", \"source\": \"genotoxic stresses\", \"target\": \"ATR\"}, {\"context\": \"general\", \"effect\": \"activates\", \"evidence_quote\": \"Notable and relevant here is the ATR activation induced at resected DSBs.\", \"location\": \"Introduction\", \"source\": \"resected DSBs\", \"target\": \"ATR\"}, {\"context\": \"general\", \"effect\": \"activates\", \"evidence_quote\": \"ATM activation is further promoted by a C-terminal acetylation induced by DSB-associated chromatin changes exposing the H3K9me3 histone mark that recruits and activates, via shielding from dephosphorylation37, the TIP60/Kat9 acetyltransferase38.\", \"location\": \"Introduction\", \"source\": \"DSB-associated chromatin changes\", \"target\": \"ATM\"}, {\"context\": \"82-6 hTert cells\", \"effect\": \"activates\", \"evidence_quote\": \"Exposure of 82-6 hTert cells to IR induces DSBs as indicated by the formation of 53BP1 foci and activates ATM:\", \"location\": \"At low IR doses, the ATM/ATR module is organized as a linear array with ATM upstream and with ATR mainly interfacing with the cell cycle engine through Chk1\", \"source\": \"IR\", \"target\": \"ATM\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 16151,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 3500,
+    "output_tokens_details": {
+      "reasoning_tokens": 3084
+    },
+    "total_tokens": 19651
+  }
+}

@@ -1,0 +1,154 @@
+{
+ "new_nodes": [
+  "ATR",
+  "CHK1",
+  "CHK2",
+  "DNA_PK"
+ ],
+ "why_selected": {
+  "ATR": {
+   "in": [
+    [
+     "DNA_damage|activates|ATR",
+     8
+    ]
+   ],
+   "out": [
+    [
+     "ATR|activates|ATM_pH2AX",
+     3
+    ],
+    [
+     "ATR|activates|p53",
+     2
+    ]
+   ]
+  },
+  "CHK1": {
+   "in": [
+    [
+     "ATR|activates|CHK1",
+     11
+    ],
+    [
+     "ATM_pH2AX|activates|CHK1",
+     2
+    ],
+    [
+     "DNA_damage|activates|CHK1",
+     5
+    ]
+   ],
+   "out": [
+    [
+     "CHK1|inhibits|Cdc25",
+     6
+    ],
+    [
+     "CHK1|activates|p53",
+     2
+    ]
+   ]
+  },
+  "CHK2": {
+   "in": [
+    [
+     "ATM_pH2AX|activates|CHK2",
+     10
+    ],
+    [
+     "ATR|activates|CHK2",
+     3
+    ],
+    [
+     "DNA_damage|activates|CHK2",
+     3
+    ]
+   ],
+   "out": [
+    [
+     "CHK2|inhibits|Cdc25",
+     3
+    ],
+    [
+     "CHK2|activates|p53",
+     3
+    ]
+   ]
+  },
+  "DNA_PK": {
+   "in": [
+    [
+     "ATM_pH2AX|activates|DNA_PK",
+     2
+    ],
+    [
+     "ATR|activates|DNA_PK",
+     2
+    ],
+    [
+     "DNA_damage|activates|DNA_PK",
+     5
+    ]
+   ],
+   "out": [
+    [
+     "DNA_PK|activates|ATM_pH2AX",
+     3
+    ]
+   ]
+  }
+ },
+ "claims_dropped": {
+  "both ends are the same node": 10,
+  "an end is ambiguous or unmapped": 304
+ },
+ "edges": 244,
+ "runs": {
+  "repaired_wonder_min1": {
+   "edits_proposed": 21,
+   "accepted": 18,
+   "rejected": 3,
+   "skipped": {
+    "present": 20,
+    "implied": 28,
+    "conflict": 2
+   },
+   "accepted_by_effect": {
+    "introduces": 4,
+    "active": 9,
+    "neutral": 5
+   },
+   "template_failed": 9,
+   "template_contradiction_rate": 0.429,
+   "repaired": 6,
+   "repair_success_rate": 0.667,
+   "llm_calls": 15,
+   "vacuous_attempts": 5,
+   "nodes": 34,
+   "verification_cases_failing": []
+  },
+  "repaired_wonder_min2": {
+   "edits_proposed": 11,
+   "accepted": 9,
+   "rejected": 2,
+   "skipped": {
+    "present": 7,
+    "implied": 13
+   },
+   "accepted_by_effect": {
+    "introduces": 4,
+    "active": 3,
+    "neutral": 2
+   },
+   "template_failed": 4,
+   "template_contradiction_rate": 0.364,
+   "repaired": 2,
+   "repair_success_rate": 0.5,
+   "llm_calls": 6,
+   "vacuous_attempts": 3,
+   "nodes": 34,
+   "verification_cases_failing": []
+  }
+ }
+}

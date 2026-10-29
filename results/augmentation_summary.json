@@ -1,0 +1,241 @@
+{
+ "new_nodes": [
+  "ATR",
+  "CHK1",
+  "CHK2",
+  "DNA_PK"
+ ],
+ "why_selected": {
+  "ATR": {
+   "in": [
+    [
+     "DNA_damage|activates|ATR",
+     8
+    ]
+   ],
+   "out": [
+    [
+     "ATR|activates|ATM_pH2AX",
+     3
+    ],
+    [
+     "ATR|activates|p53",
+     2
+    ]
+   ]
+  },
+  "CHK1": {
+   "in": [
+    [
+     "ATR|activates|CHK1",
+     11
+    ],
+    [
+     "ATM_pH2AX|activates|CHK1",
+     2
+    ],
+    [
+     "DNA_damage|activates|CHK1",
+     5
+    ]
+   ],
+   "out": [
+    [
+     "CHK1|inhibits|Cdc25",
+     6
+    ],
+    [
+     "CHK1|activates|p53",
+     2
+    ]
+   ]
+  },
+  "CHK2": {
+   "in": [
+    [
+     "ATM_pH2AX|activates|CHK2",
+     10
+    ],
+    [
+     "ATR|activates|CHK2",
+     3
+    ],
+    [
+     "DNA_damage|activates|CHK2",
+     3
+    ]
+   ],
+   "out": [
+    [
+     "CHK2|inhibits|Cdc25",
+     3
+    ],
+    [
+     "CHK2|activates|p53",
+     3
+    ]
+   ]
+  },
+  "DNA_PK": {
+   "in": [
+    [
+     "ATM_pH2AX|activates|DNA_PK",
+     2
+    ],
+    [
+     "ATR|activates|DNA_PK",
+     2
+    ],
+    [
+     "DNA_damage|activates|DNA_PK",
+     5
+    ]
+   ],
+   "out": [
+    [
+     "DNA_PK|activates|ATM_pH2AX",
+     3
+    ]
+   ]
+  }
+ },
+ "claims_dropped": {
+  "both ends are the same node": 10,
+  "an end is ambiguous or unmapped": 304
+ },
+ "edges": 244,
+ "runs": {
+  "naive_min1": {
+   "edits_proposed": 22,
+   "accepted": 22,
+   "rejected": 0,
+   "skipped": {
+    "present": 20,
+    "implied": 26,
+    "conflict": 3
+   },
+   "accepted_by_effect": {},
+   "nodes": 34,
+   "verification_cases_failing": [
+    "V01",
+    "V02",
+    "V03",
+    "V07",
+    "V08",
+    "V09",
+    "V10"
+   ]
+  },
+  "verified_min1": {
+   "edits_proposed": 30,
+   "accepted": 16,
+   "rejected": 14,
+   "skipped": {
+    "present": 19,
+    "implied": 20,
+    "conflict": 2
+   },
+   "accepted_by_effect": {
+    "introduces": 4,
+    "active": 7,
+    "neutral": 5
+   },
+   "template_failed": 14,
+   "template_contradiction_rate": 0.467,
+   "repaired": 0,
+   "repair_success_rate": 0.0,
+   "llm_calls": 0,
+   "vacuous_attempts": 0,
+   "nodes": 34,
+   "verification_cases_failing": []
+  },
+  "repaired_min1": {
+   "edits_proposed": 21,
+   "accepted": 18,
+   "rejected": 3,
+   "skipped": {
+    "present": 20,
+    "implied": 27,
+    "conflict": 3
+   },
+   "accepted_by_effect": {
+    "introduces": 4,
+    "active": 10,
+    "neutral": 4
+   },
+   "template_failed": 9,
+   "template_contradiction_rate": 0.429,
+   "repaired": 6,
+   "repair_success_rate": 0.667,
+   "llm_calls": 13,
+   "vacuous_attempts": 3,
+   "nodes": 34,
+   "verification_cases_failing": []
+  },
+  "naive_min2": {
+   "edits_proposed": 11,
+   "accepted": 11,
+   "rejected": 0,
+   "skipped": {
+    "present": 7,
+    "implied": 13
+   },
+   "accepted_by_effect": {},
+   "nodes": 34,
+   "verification_cases_failing": [
+    "V02",
+    "V03",
+    "V04",
+    "V05",
+    "V06",
+    "V07",
+    "V09",
+    "V10"
+   ]
+  },
+  "verified_min2": {
+   "edits_proposed": 16,
+   "accepted": 8,
+   "rejected": 8,
+   "skipped": {
+    "present": 7,
+    "implied": 8
+   },
+   "accepted_by_effect": {
+    "introduces": 4,
+    "active": 2,
+    "neutral": 2
+   },
+   "template_failed": 8,
+   "template_contradiction_rate": 0.5,
+   "repaired": 0,
+   "repair_success_rate": 0.0,
+   "llm_calls": 0,
+   "vacuous_attempts": 0,
+   "nodes": 34,
+   "verification_cases_failing": []
+  },
+  "repaired_min2": {
+   "edits_proposed": 11,
+   "accepted": 10,
+   "rejected": 1,
+   "skipped": {
+    "present": 7,
+    "implied": 13
+   },
+   "accepted_by_effect": {
+    "introduces": 4,
+    "active": 5,
+    "neutral": 1
+   },
+   "template_failed": 4,
+   "template_contradiction_rate": 0.364,
+   "repaired": 3,
+   "repair_success_rate": 0.75,
+   "llm_calls": 4,
+   "vacuous_attempts": 1,
+   "nodes": 34,
+   "verification_cases_failing": []
+  }
+ }
+}

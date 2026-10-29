@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "0a1f9c391c022243f51c418708fffa571c3fb034c851bdf6ce332eb361472946",
+      "chars": 23841,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"general statement cited from prior work\", \"effect\": \"activates\", \"evidence_quote\": \"Whereas ATM and DNA-PK are predominantly activated by DNA double strand breaks (DSBs)\", \"location\": \"Introduction\", \"source\": \"DNA double strand breaks\", \"target\": \"ATM\"}, {\"context\": \"general statement cited from prior work\", \"effect\": \"activates\", \"evidence_quote\": \"Whereas ATM and DNA-PK are predominantly activated by DNA double strand breaks (DSBs)\", \"location\": \"Introduction\", \"source\": \"DNA double strand breaks\", \"target\": \"DNA-PK\"}, {\"context\": \"general statement cited from prior work\", \"effect\": \"activates\", \"evidence_quote\": \"ATR is activated in response to a number of DNA damaging lesions that involve single-stranded (SS)\\u2013double-stranded (DS) junctions\", \"location\": \"Introduction\", \"source\": \"a number of DNA damaging lesions that involve single-stranded (SS)\\u2013double-stranded (DS) junctions\", \"target\": \"ATR\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 5408,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 1972,
+    "output_tokens_details": {
+      "reasoning_tokens": 1736
+    },
+    "total_tokens": 7380
+  }
+}

@@ -1,0 +1,1304 @@
+{
+ "base": [
+  {
+   "item": "H01",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H03",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H04",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H05",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H05",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H06",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H06",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H07",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H07",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 1,
+   "category": "scoreable_with_new_nodes",
+   "mode": "contrast",
+   "verdict": "not_expressible",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H10",
+   "claim": 0,
+   "category": "scoreable_with_new_nodes",
+   "mode": "absolute",
+   "verdict": "not_expressible",
+   "baseline": "correct"
+  },
+  {
+   "item": "H11",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H11",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 1,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H15",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  }
+ ],
+ "naive_min2": [
+  {
+   "item": "H01",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H03",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H04",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H05",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H05",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H06",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H06",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H07",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H07",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H10",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H11",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H11",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 1,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H15",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  }
+ ],
+ "verified_min2": [
+  {
+   "item": "H01",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H03",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H04",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H05",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H05",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H06",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H06",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H07",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H07",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H10",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H11",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H11",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 1,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H15",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  }
+ ],
+ "repaired_min2": [
+  {
+   "item": "H01",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H03",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H04",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H05",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H05",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H06",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H06",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H07",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H07",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H10",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H11",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H11",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 1,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H15",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  }
+ ],
+ "naive_min1": [
+  {
+   "item": "H01",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H02",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H03",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H04",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H05",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H05",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H06",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H06",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H07",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H07",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H10",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H11",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H11",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 1,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H15",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  }
+ ],
+ "verified_min1": [
+  {
+   "item": "H01",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H03",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H04",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H05",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H05",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H06",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H06",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H07",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H07",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H10",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H11",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H11",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 1,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H15",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  }
+ ],
+ "repaired_min1": [
+  {
+   "item": "H01",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H02",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H03",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H04",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "wrong",
+   "baseline": "correct"
+  },
+  {
+   "item": "H05",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H05",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H06",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H06",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H07",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H07",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H08",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H09",
+   "claim": 1,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  },
+  {
+   "item": "H10",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "absolute",
+   "verdict": "correct",
+   "baseline": "correct"
+  },
+  {
+   "item": "H11",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H11",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 0,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H12",
+   "claim": 1,
+   "category": "survival_level",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 0,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H13",
+   "claim": 1,
+   "category": "direction_only",
+   "mode": "contrast",
+   "verdict": null,
+   "baseline": null
+  },
+  {
+   "item": "H15",
+   "claim": 0,
+   "category": "scoreable",
+   "mode": "contrast",
+   "verdict": "wrong",
+   "baseline": "wrong"
+  }
+ ]
+}

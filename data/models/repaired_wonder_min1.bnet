@@ -1,0 +1,36 @@
+# CellProof augmentation arm=repaired min_papers=1 new_nodes=ATR,CHK1,CHK2,DNA_PK; every change is in results/augment_repaired_wonder_min1.json
+targets, factors
+DNA_damage, DNA_damage
+ATM_pH2AX, (DNA_damage & (!Wip1 | !Cdc25 | E2F1)) | (ATR & DNA_damage & TUG1 & !miR221 & !DNA_PK)
+AMPK_MAPK, ATM_pH2AX & !Wip1
+Mdm2, (!Wip1 | p53) & !ATM_pH2AX & !miR221 & !PTEN & AKT
+p53, (ATM_pH2AX | (!Mdm2 & AMPK_MAPK & !hTERT)) | CHK2 | (mTORC2 & AMPK_MAPK)
+p53_A, !Sirt1 & !p53_K & (p53 | !p53_INP1)
+p53_INP1, p53_K | p53_A
+p53_K, !p53_A & (!Sirt1 | !Wip1) & p53
+p21, p53_A | (!Myc & !AKT & !Caspase & AMPK_MAPK)
+Wip1, p53_A
+RB, (!(Cdc2_CycB & Cdc25)) & (!Mdm2 | p21)
+Myc, (E2F1 | AMPK_MAPK | AKT) & !RB & !p21
+WWP1, Myc
+hTERT, (AKT | Myc) & !p53 & !PTEN
+E2F1, (!RB & ((Cdc25 & ATM_pH2AX) | !Sirt1 | !PTEN)) | Myc
+Cdc25, ((!ATM_pH2AX | !AMPK_MAPK) & !Wee1 & !PTEN) & (!CHK1 | p21)
+Sirt1, E2F1
+Cdc2_CycB, Cdc25 & !Wee1 & !PTEN & !p21
+Wee1, !AKT
+TUG1, p53
+miR221, !TUG1 | E2F1
+PTEN, !miR221 & (ATM_pH2AX | p53_K) & !WWP1
+AKT, (!PTEN | mTORC2) & !(Caspase & Cdc2_CycB)
+mTORC1, AKT & !(ULK1_Beclin1 & AMPK_MAPK)
+mTORC2, AKT | (!PTEN & (!mTORC1 | !Sirt1 | !hTERT | !AMPK_MAPK))
+ULK1_Beclin1, (!mTORC2 & !mTORC1 & AMPK_MAPK) & !BCL2
+BCL2, (!PUMA & E2F1 & !p53_K) & !BAX
+PUMA, p53_K & !miR221
+BAX, !BCL2 & p53_K
+Caspase, !(BCL2 & p21) & BAX
+CHK2, ATM_pH2AX
+ATR, ((DNA_damage) | ATM_pH2AX) & DNA_PK
+DNA_PK, (DNA_damage) | ATM_pH2AX
+CHK1, ((ATR) & !AKT) & DNA_PK

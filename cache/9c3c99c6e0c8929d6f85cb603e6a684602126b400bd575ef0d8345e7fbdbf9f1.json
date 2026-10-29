@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "b6375b70b8220ded950482dbee7ce7e10dae8d1c67852b12e0b8bef052bbde58",
+      "chars": 46254,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"general mammalian cells, statement cited from other work\", \"effect\": \"activates\", \"evidence_quote\": \"Checkpoint kinase 1 (Chk1), which is an essential kinase required to preserve genome stability, is activated in response to DNA damage and is involved in the cell cycle checkpoint control, DNA damage repair and DNA damage-induced apoptosis [53], [54].\", \"location\": \"Discussion\", \"source\": \"DNA damage\", \"target\": \"CHK1\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 9705,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2117,
+    "output_tokens_details": {
+      "reasoning_tokens": 2007
+    },
+    "total_tokens": 11822
+  }
+}

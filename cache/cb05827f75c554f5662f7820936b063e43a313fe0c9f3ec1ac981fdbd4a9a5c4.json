@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "d17628482da0c41506aed18c615401e1793a604e2bd7e4b35cdace416fd9ff6d",
+      "chars": 26317,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"general mammalian checkpoint review\", \"effect\": \"activates\", \"evidence_quote\": \"Ataxia\\u2013telangiectasia mutated is activated by DNA damage from ionising radiation, whereas ATR is activated by DNA damage and DNA replication stress.\", \"location\": \"MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS\", \"source\": \"DNA damage from ionising radiation\", \"target\": \"ATM\"}, {\"context\": \"general mammalian checkpoint review\", \"effect\": \"activates\", \"evidence_quote\": \"Ataxia\\u2013telangiectasia mutated is activated by DNA damage from ionising radiation, whereas ATR is activated by DNA damage and DNA replication stress.\", \"location\": \"MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS\", \"source\": \"DNA damage and DNA replication stress\", \"target\": \"ATR\"}, {\"context\": \"general\", \"effect\": \"activates\", \"evidence_quote\": \"In the case of ATM, DNA double-strand breaks (DSBs) induce ATM homodimer dissociation.\", \"location\": \"MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS\", \"source\": \"DNA double-strand breaks\", \"target\": \"ATM\"}, {\"context\": \"expressed throughout the cell cycle\", \"effect\": \"activates\", \"evidence_quote\": \"Checkpoint kinase-2, expressed throughout the cell cycle, is activated in the presence of DNA damage (Lukas et al, 2001).\", \"location\": \"MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS\", \"source\": \"DNA damage\", \"target\": \"CHK2\"}, {\"context\": \"preferentially expressed during S and G2\", \"effect\": \"activates\", \"evidence_quote\": \"In contrast, Chk1, preferentially expressed during S and G2, has constitutive activity that is amplified in the presence of DNA damage (Zhao et al, 2002).\", \"location\": \"MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS\", \"source\": \"DNA damage\", \"target\": \"CHK1\"}, {\"context\": \"p53-deficient cells\", \"effect\": \"activates\", \"evidence_quote\": \"MAPKAP kinase-2 is activated by cisplatin, camptothecin, and doxorubicin, and the MK2 response is essential for the survival of p53-deficient cells following exposure to these agents (Reinhardt et al, 2007).\", \"location\": \"MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS\", \"source\": \"cisplatin\", \"target\": \"MK2\"}, {\"context\": \"p53-deficient cells\", \"effect\": \"activates\", \"evidence_quote\": \"MAPKAP kinase-2 is activated by cisplatin, camptothecin, and doxorubicin, and the MK2 response is essential for the survival of p53-deficient cells following exposure to these agents (Reinhardt et al, 2007).\", \"location\": \"MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS\", \"source\": \"camptothecin\", \"target\": \"MK2\"}, {\"context\": \"p53-deficient cells\", \"effect\": \"activates\", \"evidence_quote\": \"MAPKAP kinase-2 is activated by cisplatin, camptothecin, and doxorubicin, and the MK2 response is essential for the survival of p53-deficient cells following exposure to these agents (Reinhardt et al, 2007).\", \"location\": \"MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS\", \"source\": \"doxorubicin\", \"target\": \"MK2\"}, {\"context\": \"panel of multiple solid tumour cell lines\", \"effect\": \"activates\", \"evidence_quote\": \"XL844 also resulted in an increase in gemcitabine-induced \\u03b3H2AX.\", \"location\": \"XL844\", \"source\": \"gemcitabine\", \"target\": \"H2AX\"}, {\"context\": \"panel of multiple solid tumour cell lines, S and G2 checkpoints\", \"effect\": \"activates\", \"evidence_quote\": \"XL844 was shown to affect both the S and G2 checkpoints by blocking gemcitabine-induced DSBs and CDC25A phosphorylation, inducing premature mitotic entry.\", \"location\": \"XL844\", \"source\": \"gemcitabine\", \"target\": \"CDC25A\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 6039,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 5446,
+    "output_tokens_details": {
+      "reasoning_tokens": 4514
+    },
+    "total_tokens": 11485
+  }
+}

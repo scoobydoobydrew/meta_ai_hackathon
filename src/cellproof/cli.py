@@ -279,6 +279,17 @@ def scaling(timeout: float = typer.Option(120.0), sizes: str = typer.Option("30,
 
 
 @app.command()
+def report(
+    out: Path = typer.Option(Path("results/report.html")),
+    fragment: Path = typer.Option(None, help="Also write the page without its document wrapper (for publishing as an artifact)."),
+) -> None:
+    """Build the interactive report page from the files the pipeline wrote and from the exact solver."""
+    from cellproof.report.build import write
+
+    typer.echo(f"wrote {write(out, fragment)}")
+
+
+@app.command()
 def explain(
     edge: str = typer.Argument(..., help="An edge id such as 'CHK1|inhibits|Cdc25'."),
     run: Path = typer.Option(Path("results/augment_repaired_min1.json"), help="Decision log written by `cellproof augment`."),
