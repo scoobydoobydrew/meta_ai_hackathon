@@ -1,0 +1,14 @@
+{
+ "muse-spark-1.3": {
+  "calls": 3,
+  "median_seconds": 39.7,
+  "median_output_tokens": 9278,
+  "median_cost_usd": 0.0413
+ },
+ "muse-wonder-1.0": {
+  "calls": 3,
+  "median_seconds": 102.6,
+  "median_output_tokens": 9626,
+  "median_cost_usd": 0.1929
+ }
+}

@@ -1,0 +1,292 @@
+[
+ {
+  "family": "cascade",
+  "nodes": 30,
+  "seed": 0,
+  "status": "ok",
+  "seconds": 2.09,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.007335199999943143,
+  "aeon_s": 0.07338389999949868
+ },
+ {
+  "family": "cascade",
+  "nodes": 30,
+  "seed": 1,
+  "status": "ok",
+  "seconds": 1.81,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.012502699999458855,
+  "aeon_s": 0.07212540000000445
+ },
+ {
+  "family": "cascade",
+  "nodes": 30,
+  "seed": 2,
+  "status": "ok",
+  "seconds": 2.31,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.007511599999816099,
+  "aeon_s": 0.0840769000005821
+ },
+ {
+  "family": "cascade",
+  "nodes": 50,
+  "seed": 0,
+  "status": "ok",
+  "seconds": 2.16,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.009049199999935809,
+  "aeon_s": 0.2590448999999353
+ },
+ {
+  "family": "cascade",
+  "nodes": 50,
+  "seed": 1,
+  "status": "ok",
+  "seconds": 2.24,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.00908049999998184,
+  "aeon_s": 0.2495625999999902
+ },
+ {
+  "family": "cascade",
+  "nodes": 50,
+  "seed": 2,
+  "status": "ok",
+  "seconds": 2.02,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.008460600000034901,
+  "aeon_s": 0.16894279999996797
+ },
+ {
+  "family": "cascade",
+  "nodes": 100,
+  "seed": 0,
+  "status": "ok",
+  "seconds": 3.32,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.015216699999655248,
+  "aeon_s": 1.113228600000184
+ },
+ {
+  "family": "cascade",
+  "nodes": 100,
+  "seed": 1,
+  "status": "ok",
+  "seconds": 3.18,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.01799479999954201,
+  "aeon_s": 1.1056063000005452
+ },
+ {
+  "family": "cascade",
+  "nodes": 100,
+  "seed": 2,
+  "status": "ok",
+  "seconds": 2.71,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.018157700000301702,
+  "aeon_s": 0.6447394999995595
+ },
+ {
+  "family": "cascade",
+  "nodes": 200,
+  "seed": 0,
+  "status": "ok",
+  "seconds": 5.03,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.019659899999169284,
+  "aeon_s": 3.048185300000114
+ },
+ {
+  "family": "cascade",
+  "nodes": 200,
+  "seed": 1,
+  "status": "ok",
+  "seconds": 5.61,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.02044449999993958,
+  "aeon_s": 3.54892000000018
+ },
+ {
+  "family": "cascade",
+  "nodes": 200,
+  "seed": 2,
+  "status": "ok",
+  "seconds": 3.37,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.019461699999737903,
+  "aeon_s": 1.5257790000005116
+ },
+ {
+  "family": "cascade",
+  "nodes": 400,
+  "seed": 0,
+  "status": "ok",
+  "seconds": 12.0,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.03505390000009356,
+  "aeon_s": 10.005362199999581
+ },
+ {
+  "family": "cascade",
+  "nodes": 400,
+  "seed": 1,
+  "status": "ok",
+  "seconds": 13.33,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.03235690000019531,
+  "aeon_s": 11.212951700000303
+ },
+ {
+  "family": "cascade",
+  "nodes": 400,
+  "seed": 2,
+  "status": "ok",
+  "seconds": 7.82,
+  "fixed_points": 5,
+  "attractors": 5,
+  "mpbn_s": 0.03240249999998923,
+  "aeon_s": 5.809043600000223
+ },
+ {
+  "family": "random",
+  "nodes": 30,
+  "seed": 0,
+  "status": "ok",
+  "seconds": 1.95,
+  "fixed_points": 1,
+  "attractors": 3,
+  "mpbn_s": 0.007412799999656272,
+  "aeon_s": 0.021121700000549026
+ },
+ {
+  "family": "random",
+  "nodes": 30,
+  "seed": 1,
+  "status": "ok",
+  "seconds": 2.3,
+  "fixed_points": 1,
+  "attractors": 2,
+  "mpbn_s": 0.006356999999297841,
+  "aeon_s": 0.3794296000005488
+ },
+ {
+  "family": "random",
+  "nodes": 30,
+  "seed": 2,
+  "status": "ok",
+  "seconds": 2.15,
+  "fixed_points": 1,
+  "attractors": 1,
+  "mpbn_s": 0.007188000000496686,
+  "aeon_s": 0.04268729999967036
+ },
+ {
+  "family": "random",
+  "nodes": 50,
+  "seed": 0,
+  "status": "ok",
+  "seconds": 4.27,
+  "fixed_points": 2,
+  "attractors": 2,
+  "mpbn_s": 0.007880500000283064,
+  "aeon_s": 2.413109799999802
+ },
+ {
+  "family": "random",
+  "nodes": 50,
+  "seed": 1,
+  "status": "timeout",
+  "seconds": 30.0
+ },
+ {
+  "family": "random",
+  "nodes": 50,
+  "seed": 2,
+  "status": "ok",
+  "seconds": 5.46,
+  "fixed_points": 0,
+  "attractors": 1,
+  "mpbn_s": 0.007042499999442953,
+  "aeon_s": 3.233865899999728
+ },
+ {
+  "family": "random",
+  "nodes": 100,
+  "seed": 0,
+  "status": "timeout",
+  "seconds": 30.0
+ },
+ {
+  "family": "random",
+  "nodes": 100,
+  "seed": 1,
+  "status": "timeout",
+  "seconds": 30.0
+ },
+ {
+  "family": "random",
+  "nodes": 100,
+  "seed": 2,
+  "status": "timeout",
+  "seconds": 30.0
+ },
+ {
+  "family": "random",
+  "nodes": 200,
+  "seed": 0,
+  "status": "timeout",
+  "seconds": 30.0
+ },
+ {
+  "family": "random",
+  "nodes": 200,
+  "seed": 1,
+  "status": "timeout",
+  "seconds": 30.0
+ },
+ {
+  "family": "random",
+  "nodes": 200,
+  "seed": 2,
+  "status": "timeout",
+  "seconds": 30.0
+ },
+ {
+  "family": "random",
+  "nodes": 400,
+  "seed": 0,
+  "status": "timeout",
+  "seconds": 30.0
+ },
+ {
+  "family": "random",
+  "nodes": 400,
+  "seed": 1,
+  "status": "timeout",
+  "seconds": 30.0
+ },
+ {
+  "family": "random",
+  "nodes": 400,
+  "seed": 2,
+  "status": "timeout",
+  "seconds": 30.0
+ }
+]

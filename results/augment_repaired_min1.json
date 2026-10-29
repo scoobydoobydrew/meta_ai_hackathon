@@ -858,7 +858,7 @@
     "source": "llm_answer",
     "explanation": "Restrict ATR-mediated activation to p53_K-active context: DNA_damage & (original-inhibition-release | (ATR & p53_K)). Evidence lists ATR phosphorylation of H2AX together with phosphorylation of p53 Ser15/20 and Chk1/2 in UV response, so joint ATR-p53 action marks where the claimed effect shows. Counterexamples stabilize ATM_pH2AX=1 with ATR=1 but p53_K=0, p21=1, mTOR=1 leading to extra senescence; gating by p53_K blocks those senescent fixed points (p53_K=0) while allowing ATR to turn ATM_pH2AX on when D=1,Wip1=1,Cdc25=1,E2F1=0 with p53_K=1 (apoptotic), preserving ATR-activates direction and all original influences.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1436,
      "input_tokens_details": {
@@ -888,7 +888,7 @@
     "source": "llm_answer",
     "explanation": "Chose condition ATR (require ATR activity alongside DNA_damage). Evidence shows ATR drives H2AX phosphorylation, predominantly in UV/S-phase checkpoint context. Template OR was vacuous because Old already 1 when ATR=1 in fixed points. Requiring ATR preserves WT damage behavior where ATR is ON (rule reduces to Old when ATR=1, keeping DNA_damage, Wip1, Cdc25, E2F1 influences) but makes ATR KO turn ATM_pH2AX OFF, so ATR positively switches the node ON and the change is non-vacuous.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1034,
      "input_tokens_details": {
@@ -1068,7 +1068,7 @@
     "source": "llm_answer",
     "explanation": "Keep DNA_damage and Wip1/Cdc25/E2F1 control for the new DNA_PK term and let DNA_PK substitute for ATR: DNA_damage & gate & (ATR|DNA_PK). Witnesses have DNA_damage=1, ATR=1, DNA_PK=1 but gate=(!Wip1|!Cdc25|E2F1)=0 with Wip1=1,Cdc25=1,E2F1=0, so template |DNA_PK forces ATM_pH2AX=1 causing extra senescence. Retaining the gate blocks that. Condition is justified: evidence is DNA-damage-induced gammaH2AX (MNNG, IR) with no evidence of bypassing Wip1 phosphatase, and PIKKs ATM/ATR/DNA-PK compensate each other with residual phosphorylation when one is deficient, so DNA-PK as ATR-alternative is supported. DNA_PK is purely activating, all old influences retained, and DNA_PK 0->1 can turn rule 0->1 when DNA_damage=1, gate=1, ATR=0.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1491,
      "input_tokens_details": {
@@ -1373,7 +1373,7 @@
     "source": "llm_answer",
     "explanation": "No p53-rule can satisfy both. Evidence is about downstream p53-dependent transcriptional repression of CHR genes requiring p21, not p53 activation itself requiring p21. Counterexamples show apoptosis/autophagy fates require p53=1 with p21=0: V02/V03 lose apoptosis/autophagy keeping only p21=1 arrest/senescence, V04 TUG1-KO loses apoptosis entirely/oscillates. Any rule that is 0 whenever p21=0 forces p53=0 in any p21=0 state, so any p53-dependent fixed point with p21=0 (BAX/Caspase=1, p21=0) is eliminated. Adding other conjuncts/disjuncts while keeping p21 necessary as p21 & F cannot create apoptosis with p21=1 if other rules make p21 incompatible with BAX/Caspase, and cannot bootstrap from p53=0/p21=0. Correct fix would be on downstream repression targets, not p53.",
     "give_up": true,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1274,
      "input_tokens_details": {
@@ -1478,7 +1478,7 @@
     "source": "llm_answer",
     "explanation": "Changed OR to AND: !PTEN & mTORC2. This is 0 whenever mTORC2 is 0, satisfying AKT requires mTORC2. Condition chosen is !PTEN (PTEN loss / PICS context) because evidence is PTEN siRNA + SIN1 siRNA in MCF7 PICS showing mTORC2 is still necessary even when PTEN is absent. Uses only existing regulators PTEN and mTORC2, no new mechanism. Preserves both influences: with mTORC2=1 rule is !PTEN (PTEN negative), with PTEN=0 rule is mTORC2 (mTORC2 positive), fixing the lost PTEN influence. Changes predictions e.g. PTEN=0,mTORC2=0 from 1 to 0.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 730,
      "input_tokens_details": {
@@ -1512,7 +1512,7 @@
     "source": "llm_answer",
     "explanation": "Any rule expressing AKT requires mTORC2 must imply mTORC2, i.e. be 0 when mTORC2=0. The most permissive such rule is AKT=mTORC2, which is the template (!PTEN|mTORC2)&mTORC2. It already fails V02,V03,V07,V09 losing apoptosis/senescence, leaving only arrest/autophagy. It deletes all original AKT=1,mTORC2=0 states (via !PTEN). Any other admissible rule R with R=>mTORC2 is stronger, so its AKT=1 fixed points are subset of template's and cannot restore the lost AKT=1 states. Restoration via new AKT=0,mTORC2=1 states would need extra regulators beyond PTEN/mTORC2. Evidence only supports mTORC2->AKT upstream of mTORC1-p53-p21 in PICS/PTEN-loss, which overlaps the DNA_damage PTEN=0 contexts needed for verification, so no supported DNA_damage/PTEN/mTORC1/p53/p21 gating separates evidence from verification without inventing feedback and without violating unconditional requires and keep-PTEN-influence and non-vacuous checks. Hence no rule can both require mTORC2 and keep exact four fates.",
     "give_up": true,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1587,
      "input_tokens_details": {
@@ -1801,7 +1801,7 @@
     "source": "llm_answer",
     "explanation": "Gated CHK2 effect with !RB: CHK2 can stabilize/activate E2F1 only when RB repression is absent. Witnesses for V02/V03/V07/V09 all have RB=1, Myc=0, CHK2=1 where template forces E2F1=1 but current rule gives 0, collapsing fates to apoptosis. Current rule already requires !RB for the ATM/Sirt1/PTEN inputs. Preserving that gate restores the cases while still letting CHK2 switch E2F1 0->1 when RB=0, Myc=0, Sirt1=1, PTEN=1, Cdc25&ATM=0. No new mechanism: RB control of E2F1 is kept, CHK2 remains purely activating.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1673,
      "input_tokens_details": {
@@ -1831,7 +1831,7 @@
     "source": "llm_answer",
     "explanation": "Gate CHK2 by ATM_pH2AX to reflect evidence context 'in response to DNA damage'. Move Myc inside the !RB gate so Myc-driven E2F1 requires RB off (canonical RB inhibition); otherwise Myc=1 whenever CHK2=1 masks any CHK2 addition making it vacuous. With Myc requiring !RB, RB=1+Myc=1 gives base OFF, letting CHK2&ATM provide RB-independent stabilization/activation as evidenced by CHK2 phosphorylation stabilizing E2F1.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 936,
      "input_tokens_details": {
@@ -1865,7 +1865,7 @@
     "source": "llm_answer",
     "explanation": "Restrict CHK2 activation of E2F1 to Sirt1-off context: (CHK2 & !Sirt1). Template OR CHK2 forces E2F1=1 when RB=1, Myc=0, destroying arrest/autophagy/senescence. All counterexamples have Sirt1=1, RB=1, Myc=0 with E2F1 needing to stay 0. Sirt1 is already a repressor in the current rule (!Sirt1), so requiring !Sirt1 preserves RB and Sirt1 repression while still allowing CHK2 to turn E2F1 on when Sirt1 is low, e.g. Sirt1 KO with damage, satisfying activation and non-vacuity.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1950,
      "input_tokens_details": {
@@ -1940,7 +1940,7 @@
     "source": "llm_answer",
     "explanation": "Keep AND-template but allow mTORC2 to override Caspase. New rule is (!PTEN|mTORC2) & (!Caspase|mTORC2) = mTORC2 | (!PTEN & !Caspase). Caspase still only inhibits AKT, PTEN still inhibits, mTORC2 still activates. Condition chosen is mTORC2-absent from counterexample: pure apoptosis (Caspase=1,ULK=0) needs AKT=1 to drive mTORC1 to suppress ULK1_Beclin1; with PTEN=1 this requires mTORC2=1. Template forces AKT=0 whenever Caspase=1, forcing ULK=1 and losing pure apoptosis (V09 witness Caspase=1,ULK=1). Evidence is p53-induced apoptosis feedback when survival wanes, so cleavage shows when mTORC2 survival signal absent, but strong mTORC2 maintains AKT. Effect still shows e.g. PTEN=0,mTORC2=0,Caspase=1 (PTEN-KO background) where AKT 1->0.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1455,
      "input_tokens_details": {
@@ -1970,7 +1970,7 @@
     "source": "llm_answer",
     "explanation": "Caspase unconditionally inhibits AKT (& !Caspase) to express cleavage. Added permissive condition !p53: (base | !p53). Evidence context is p53-induced apoptosis where AKT is cleaved; p53 already inhibits AKT via PTEN, so gating the extra survival activity by !p53 preserves damage-induced AKT-off (p53=1 -> extra off) while allowing AKT-on in p53-off survival where ectopic Caspase can switch it off. This makes the inhibition non-vacuous (e.g. PTEN=1,mTORC2=0,p53=0,Caspase 0->1 switches AKT 1->0) without inventing a new activator beyond known p53-AKT antagonism.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 872,
      "input_tokens_details": {
@@ -2004,7 +2004,7 @@
     "source": "llm_answer",
     "explanation": "Kept !PTEN|mTORC2 and gated Caspase inhibition as !Caspase | (DNA_damage & !p21). Unconditional inhibition deletes the mTORC2-sustained AKT=1/Caspase=1 apoptosis attractor causing V02/V03/V07/V09 loss; mTORC2-only protection is vacuous. Condition protects when DNA_damage=1 and p21=0. Killer apoptosis has p21=0 (V09 witness p21=0,p53_K=1) so preserved; cleavage still acts when p21=1 with damage (arrest/senescence) and when DNA_damage=0 (ectopic Caspase) so non-vacuous. p21 is p53-induced, consistent with p53-induced feedback to restrain AKT, only gating WHEN Caspase acts.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1688,
      "input_tokens_details": {
@@ -2141,7 +2141,7 @@
     "source": "llm_answer",
     "explanation": "Limit Mdm2 inhibition of RB to p21-low context: RB = base & (!Mdm2 | p21). Evidence is MDM2-overexpressing tumors where arrest is bypassed, while V08 forces p53=1 + PTEN KO expecting p21-driven senescence with RB=1. Gating protects that senescence (p21=1 makes term 1, restoring base) but still lets Mdm2 turn RB off when base=1, Mdm2=1, p21=0. No new direct mechanism claimed, only contextual restriction. Keeps Cdc2_CycB/Cdc25 inhibitory influence and Mdm2 only inhibitory.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 863,
      "input_tokens_details": {
@@ -2325,7 +2325,7 @@
     "source": "llm_answer",
     "explanation": "Restricted mTORC2 activation of p53 to AMPK_MAPK-active context: new term is (mTORC2 & AMPK_MAPK). Unrestricted OR mTORC2 drives p53=1 in V04-V06 witnesses where ATM_pH2AX=0, AMPK_MAPK=0, CHK2=0, causing spurious senescence. In vitro assay shows mTORC2 can phosphorylate p53 S15 but does not show it suffices alone in cells; requiring co-active damage/stress transducer AMPK_MAPK keeps the activates direction, blocks the witnesses (AMPK_MAPK=0), preserves all original influences, and is non-vacuous by overriding Mdm2/hTERT when AMPK_MAPK=1 and mTORC2=1.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1346,
      "input_tokens_details": {
@@ -2606,7 +2606,7 @@
     "source": "llm_answer",
     "explanation": "Gate CHK1 inhibition by G2 context marked by Cdc2_CycB. Evidence says 'At G2, Chk1 is activated by ATR... preventing cyclin B/CDK1 activation' - i.e. effect is G2-specific. Rule is base & !(CHK1 & Cdc2_CycB). In V04-V06 witness Cdc2_CycB=0 so term is 1 and Cdc25 stays 1 (base), removing spurious senescence fixed point, while when base=1 and Cdc2_CycB=1 CHK1 1->0 switches Cdc25 off, so CHK1 only inhibits and base influences remain.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1526,
      "input_tokens_details": {

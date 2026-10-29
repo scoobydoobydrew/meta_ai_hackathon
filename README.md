@@ -36,7 +36,27 @@ The model proposes; the solver decides. Every accepted or rejected rule is trace
 All numbers are produced by `make verify` and written to [`results/RESULTS.md`](results/RESULTS.md). Read the limits first:
 [`docs/limitations.md`](docs/limitations.md).
 
-RESULTS_PLACEHOLDER
+**The interactive report is [`results/report.html`](results/report.html)** (open it in a browser; `python -m cellproof.cli report`
+rebuilds it). The headline numbers, each also in `results/RESULTS.md`:
+
+| | |
+|---|---|
+| Papers read by Muse Spark | 36 open-access papers, each read twice (molecule on molecule; DNA damage on molecule) |
+| Claims extracted | 709, of which 708 have a quote found word for word in the paper |
+| New genes found by a mechanical rule | ATR, CHK1, CHK2, DNA-PK |
+| Rule edits from papers that contradict a known behaviour | 14 of 30 (47%), every edge with at least one paper |
+| Known behaviours broken when edits are applied without the solver | 7 of 10 (every edge) and 8 of 10 (at least two papers); with the solver, 0 |
+| Rejected edits repaired by Muse Spark and accepted by the solver | 6 of 9 (every edge), 3 of 4 (≥2 papers); Muse Wonder: 6 of 9 and 2 of 4 |
+| One repair call, Spark vs Wonder | 39.7 s and $0.04 against 102.6 s and $0.19 (median of 3) |
+| Held-out audit: 23 claims, 10 scoreable | published model 3 correct, 5 wrong, 2 not expressible; augmented networks 4 correct, 6 wrong; a rule that ignores the perturbation 5 correct |
+| Exact checker on 400-node chains | stable states in milliseconds, 13 s in all; random networks time out from 50 nodes |
+| Extraction accuracy (M4) | TBD: needs 50 claims labelled by a person |
+
+**What the audit says.** The augmented networks do not predict the held-out outcomes better than the published model: none of
+its 8 verdicts changed, and a rule that ignores the perturbation scores higher than any network. The published model disagrees
+with 5 of the 8 outcomes it can address (perturbations of p53, MDM2, WEE1 and MYC). So the useful result is the audit
+itself, an automatic comparison of a published model with the literature, and the solver loop that keeps added mechanisms
+from breaking what the model already gets right. Ten scoreable claims cannot show an improvement either way.
 
 ## Reproduce
 

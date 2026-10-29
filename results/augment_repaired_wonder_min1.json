@@ -858,7 +858,7 @@
     "source": "llm_answer",
     "explanation": "I restrict the ATR effect to the unperturbed DNA-damage context: DNA_damage present, TUG1 intact, and miR221 not overexpressed. These conditions are common to the evidence but absent in the counterexamples V04-V06 (TUG1 knockout and/or miR-221 overexpression), where unrestricted ATR overrides the Wip1/Cdc25/E2F1 state and creates the unwanted senescence fixed point. In the intact context the ATR term can still activate ATM_pH2AX when Wip1=1, Cdc25=1 and E2F1=0, so the effect is non-vacuous, while all original influences are retained unchanged.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1436,
      "input_tokens_details": {
@@ -1035,7 +1035,7 @@
     "source": "llm_answer",
     "explanation": "Gate the DNA-PK term by DNA_damage plus the TUG1/miR221-permissive context of the existing ATR-to-ATM_pH2AX branch: DNA_damage is required for the IR/MNNG-induced H2AX phosphorylation in the evidence, DNA-PK is presented as an alternative PIKK kinase for gamma-H2AX alongside ATM/ATR, and TUG1 present with miR221 absent is the context in which that kinase branch operates. This prevents DNA-PK from bypassing TUG1 knockout (V04), miR221 overexpression (V05), or both (V06) to drive p53_A/p21 senescence, while allowing DNA-PK to activate ATM_pH2AX under DNA damage when TUG1 is present, miR221 is absent, and the ATR branch is off.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1568,
      "input_tokens_details": {
@@ -1065,7 +1065,7 @@
     "source": "llm_answer",
     "explanation": "I restrict the claim to DNA-damaged, non-apoptotic cells: DNA_damage is the IR/MNNG context given in the evidence, in which the other PIKKs DNA-PK and ATR contribute to residual H2AX phosphorylation when canonical ATM signalling is absent or inhibited (evidence PMC6990542); !Caspase keeps the new term able to be switched off, so the original regulators (e.g. TUG1) still affect ATM_pH2AX via their original term. This allows DNA_PK (or its fellow PIKK ATR) to turn ATM_pH2AX on when the original terms are off, rather than adding DNA_PK alone which never changes a fixed point, or gating by TUG1/!miR221 as in the earlier vacuous attempt.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1123,
      "input_tokens_details": {
@@ -1095,7 +1095,7 @@
     "source": "llm_answer",
     "explanation": "I condition the new DNA-PK input on low CHK2 signaling. CHK2 is the principal downstream kinase of ATM, so !CHK2 marks the ATM-deficient/inhibited context in PMC6990542, where DNA-PK provides residual phosphorylation of ATM substrates including H2AX. In the CHK2-off scenario Cdc25 is derepressed and the original ATM_pH2AX terms can switch off, so the DNA-PK term is actually exercised and changes a fixed point, rather than being vacuous. DNA_PK appears only positively, and all original terms and influences are retained unchanged.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1250,
      "input_tokens_details": {
@@ -1404,7 +1404,7 @@
     "source": "llm_answer",
     "explanation": "The evidence concerns p53-dependent indirect transcriptional repression of CHR-containing cell-cycle genes, i.e. the p21-mediated arrest/repression programme, not p53's killer or autophagy programmes. The counterexamples lose only apoptosis and autophagy. I therefore require p21 only when neither the killer form p53_K nor the autophagy effector ULK1_Beclin1 is active: p53 = original AND (p21 OR p53_K OR ULK1_Beclin1). In arrest/senescence contexts, where the repression claim applies, p53_K and ULK1_Beclin1 are off, so p53 is switched off if p21 is absent; apoptosis (p53_K) and autophagy (ULK1_Beclin1) fates remain possible without p21. All original activatory/inhibitory influences are retained unchanged in the original sub-rule.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1274,
      "input_tokens_details": {
@@ -1434,7 +1434,7 @@
     "source": "llm_answer",
     "explanation": "The evidence does not show that p53 activation itself requires p21. It shows that p53-dependent indirect repression of CHR-containing target genes requires p21, with p53 activation studied in p21-/- HCT116 cells. p21 is a downstream effector of p53, so making p53 zero whenever p21 is zero inverts that causality, prevents p53 behaviour that must be retained in p21-off cases, and creates a bootstrap feedback through downstream p21 activation. Weakening this to p53 requiring p21 only under an added condition would no longer satisfy the stated unconditional requirement that p53 implies p21, and no listed node represents the CHR-gene repression context that could legitimately scope the p53 node itself. The requirement should instead be applied to the downstream repressed targets, not to p53.",
     "give_up": true,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 875,
      "input_tokens_details": {
@@ -1539,7 +1539,7 @@
     "source": "llm_answer",
     "explanation": "I chose the unconditional conjunction !PTEN & mTORC2. mTORC2 is necessary because the whole rule is ANDed with mTORC2, so AKT is 0 whenever mTORC2 is 0. The PTEN negative influence that the template lost (its rule collapsed to just mTORC2) is restored: with mTORC2=1, flipping PTEN toggles AKT. The change is not vacuous - in the evidence context of PTEN loss (PTEN=0), the old rule gave AKT=1 from !PTEN alone, whereas the new rule gives AKT=0 when mTORC2/SIN1 is absent, which is exactly the reported requirement of mTORC2 for AKT activation upstream of the mTORC1-p53-p21 cascade.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 730,
      "input_tokens_details": {
@@ -1573,7 +1573,7 @@
     "source": "llm_answer",
     "explanation": "Evidence is from siRNA-induced PICS in MCF7 cells, i.e. PTEN/SIN1 knockdown without DNA-damage induction, whereas every counterexample is in a DNA_damage=1 setting where AKT activity without mTORC2 is needed for apoptosis/senescence. I therefore gate the mTORC2 requirement by !DNA_damage: when DNA_damage=0 the rule reduces to mTORC2, so AKT is 0 whenever mTORC2 is 0, while under DNA damage the original !PTEN|mTORC2 behaviour is preserved. PTEN keeps its negative influence and mTORC2 its positive influence, and the gated term can act in the undamaged PTEN-low state.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1587,
      "input_tokens_details": {
@@ -1603,7 +1603,7 @@
     "source": "llm_answer",
     "explanation": "Condition chosen: DNA_damage. The counterexample is in the DNA_damage=1 setting, where PTEN is 1 (p53-induced) yet the apoptosis and senescence fixed points still need mTORC2-driven AKT, so the PTEN gate is waived under DNA damage. The evidence context (PTEN/SIN1 siRNA in PICS) is a non-damage, PTEN-loss context, so the negative PTEN influence is retained when DNA_damage=0. The mTORC2 requirement itself applies unconditionally: AKT is 0 whenever mTORC2 is 0, while mTORC2 retains a positive influence and PTEN a negative influence (e.g. with mTORC2=1, DNA_damage=0, AKT=!PTEN).",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 912,
      "input_tokens_details": {
@@ -1913,7 +1913,7 @@
     "source": "llm_answer",
     "explanation": "The counterexamples are DNA-damage states in which PTEN is 1, so AKT activity in the apoptosis fixed point is sustained through the mTORC2 arm rather than through loss of PTEN. The unconditional template therefore destroys that fixed point. I restrict caspase cleavage to AKT that is driven by PTEN loss when mTORC2 is inactive: caspase can then switch AKT off when !PTEN=1, mTORC2=0 and Caspase=1, while mTORC2-driven AKT in the required damage/apoptosis states is preserved. PTEN remains inhibitory and mTORC2 remains activating, and Caspase is purely inhibitory.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1455,
      "input_tokens_details": {
@@ -1943,7 +1943,7 @@
     "source": "llm_answer",
     "explanation": "The evidence places the cleavage in p53-induced apoptosis, with executioner caspases acting downstream of the apoptotic p53 programme. I therefore restrict caspase inhibition of AKT to that apoptotic context, marked by killer p53 and its effectors BAX/PUMA, rather than applying it whenever caspase is present. Those effectors can engage caspase without the separate p53-PTEN branch that otherwise already silences AKT, so the inhibition can be manifest when BAX, PUMA or p53_K is switched on. PTEN remains inhibitory and mTORC2 remains activating as in the current rule, and caspase can only switch AKT off.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 872,
      "input_tokens_details": {
@@ -1977,7 +1977,7 @@
     "source": "llm_answer",
     "explanation": "The counterexample apoptotic fate has Cdc2_CycB=0, with cell-cycle activity already shut off, whereas unconditional caspase inhibition of AKT destroys that required stable fate. I therefore restrict caspase-mediated AKT cleavage to Cdc2_CycB-active (cycling) cells: in that context Caspase can still switch AKT off, but the Cdc2_CycB=0 apoptotic, arrest, autophagy and senescence fates required under DNA damage are preserved. Caspase appears only negatively, and the original PTEN (negative) and mTORC2 (positive) influences are retained.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1724,
      "input_tokens_details": {
@@ -2089,7 +2089,7 @@
     "source": "llm_answer",
     "explanation": "The counterexamples have DNA_damage=1 and Wip1=0, so ATM_pH2AX is driven by the direct DNA-damage arm, while the ATR/TUG1 arm is off (miR221=1, and TUG1=0 in V02). A blanket !DNA_PK therefore removes the ATM/p53 response needed for the four damage fates. I restrict DNA_PK inhibition to the ATR/TUG1-dependent arm: DNA_PK can still switch ATM_pH2AX off when that arm would otherwise be its activator (ATR & DNA_damage & TUG1 & !miR221 present, with the direct arm off), but it does not abolish direct DNA-damage activation, as required by the verification cases. This is a scope restriction suggested by the counterexamples, not a new mechanism beyond the reviewed negative regulation.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1605,
      "input_tokens_details": {
@@ -2166,7 +2166,7 @@
     "source": "llm_answer",
     "explanation": "The counterexample is the DNA-damage-induced, p53-on/PTEN-null senescence case: senescence requires active RB even when Mdm2 is present, and that state is p21-high. The cited claim instead comes from MDM2-overexpressing tumours, not from the p21-driven damage-senescence program. I therefore restrict the Mdm2 inhibition of RB to p21-low contexts: RB = !(Cdc2_CycB & Cdc25) & (!Mdm2 | p21). This keeps the original Cdc2_CycB/Cdc25 inhibition, Mdm2 can only switch RB off (when p21=0), p21-high senescence keeps RB on, and in p21-low/Mdm2-high states the claimed RB switch-off still occurs.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 863,
      "input_tokens_details": {
@@ -2350,7 +2350,7 @@
     "source": "llm_answer",
     "explanation": "The counterexamples all have AMPK_MAPK=0 while mTORC2=1, and the extra p53 is sustained into a p21/Wip1-high senescence fixed point. I therefore restrict the new mTORC2 input to the AMPK_MAPK-active stress context, the same context in which the existing rule already places Ser15-type p53 activation via AMPK. This blocks the spurious attractor in V04-V06 (AMPK off), but is not vacuous: when AMPK_MAPK is on and the existing AMPK branch is blocked by Mdm2 or hTERT, mTORC2 can still switch p53 on, so mTORC2 acts only positively and all original influences keep their sign.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1346,
      "input_tokens_details": {
@@ -2631,7 +2631,7 @@
     "source": "llm_answer",
     "explanation": "All counterexamples have p21=1 together with the apoptotic p53_A program: there, shutting off Cdc25 (and hence Cdc2_CycB) converts an apoptosis-only fixed point into apoptosis+senescence. I therefore restrict the claimed inhibition to the early, pre-p21 checkpoint context (p21=0), consistent with the evidence that activated Chk1 phosphorylates/inactivates Cdc25 to impose arrest. When p21 is already high the p21-mediated arrest/senescence program dominates and the new Chk1 term is not applied; when p21=0, CHK1 can still switch Cdc25 off, so the claim is expressed non-vacuously and only ever inhibits Cdc25. All original influences (!ATM_pH2AX|!AMPK_MAPK), !Wee1 and !PTEN are retained unchanged.",
     "give_up": false,
-    "cached": false,
+    "cached": true,
     "usage": {
      "input_tokens": 1526,
      "input_tokens_details": {

@@ -261,8 +261,9 @@ const failCount = (arm) => Object.keys(D.verification.matrix[arm] || {}).length;
   /* G. scaling */
   if (D.scaling && D.scaling.length) {
     $("#scalingCard").hidden = false;
-    const rows = D.scaling, fam = ["cascade", "random"], xs = [...new Set(rows.map((r) => r.nodes))].sort((a, b) => a - b), W2 = 760, H2 = 300, m = { l: 56, r: 20, t: 16, b: 40 };
-    const tmax = Math.max(...rows.map((r) => r.seconds)), ymin = 0.01, ymax = 10 ** Math.ceil(Math.log10(Math.max(tmax, 1)));
+    const limit = Math.max(...D.scaling.filter((r) => r.status === "timeout").map((r) => r.seconds), 0);
+    const rows = D.scaling.map((r) => ({ ...r, t: r.status === "ok" ? r.mpbn_s + r.aeon_s : r.seconds })), fam = ["cascade", "random"], xs = [...new Set(rows.map((r) => r.nodes))].sort((a, b) => a - b), W2 = 760, H2 = 300, m = { l: 56, r: 20, t: 16, b: 40 };
+    const tmax = Math.max(...rows.map((r) => r.t)), ymin = 0.01, ymax = 10 ** Math.ceil(Math.log10(Math.max(tmax, 1)));
     const X = (n) => m.l + ((Math.log10(n) - Math.log10(xs[0])) / (Math.log10(xs[xs.length - 1]) - Math.log10(xs[0]) || 1)) * (W2 - m.l - m.r), Y = (s) => m.t + (1 - (Math.log10(Math.max(s, ymin)) - Math.log10(ymin)) / (Math.log10(ymax) - Math.log10(ymin))) * (H2 - m.t - m.b);
     const colour = { cascade: "var(--f-arrest)", random: "var(--f-senescence)" };
     let s = `<svg viewBox="0 0 ${W2} ${H2}" role="img" aria-label="Seconds to enumerate stable states against network size, log scale"><g class="axis">`;
@@ -270,12 +271,13 @@ const failCount = (arm) => Object.keys(D.verification.matrix[arm] || {}).length;
     xs.forEach((n) => (s += `<text x="${X(n)}" y="${H2 - 14}" text-anchor="middle">${n}</text>`));
     s += `<text x="${(m.l + W2 - m.r) / 2}" y="${H2 - 0}" text-anchor="middle">nodes</text></g>`;
     fam.forEach((f) => {
-      const pts = xs.map((n) => { const r = rows.filter((x) => x.family === f && x.nodes === n); return r.length ? [n, Math.max(...r.map((x) => x.seconds)), r.some((x) => x.status !== "ok")] : null; }).filter(Boolean);
+      const pts = xs.map((n) => { const r = rows.filter((x) => x.family === f && x.nodes === n); return r.length ? [n, Math.max(...r.map((x) => x.t)), r.some((x) => x.status !== "ok")] : null; }).filter(Boolean);
       s += `<polyline fill="none" stroke="${colour[f]}" stroke-width="2" points="${pts.map((p) => X(p[0]) + "," + Y(p[1])).join(" ")}"/>`;
       pts.forEach((p) => (s += p[2] ? `<path d="M${X(p[0]) - 5},${Y(p[1]) - 5} l10,10 m0,-10 l-10,10" stroke="${colour[f]}" stroke-width="2.4"/>` : `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="4" fill="${colour[f]}"/>`));
       const last = pts[pts.length - 1]; if (last) s += `<text x="${Math.min(W2 - 8, X(last[0]) + 8)}" y="${Y(last[1]) - 8}" text-anchor="end" fill="${colour[f]}" style="font:500 12px var(--sans)">${f === "cascade" ? "chains added to the base network" : "random networks"}</text>`;
     });
-    $("#scaling").innerHTML = s + `</svg><p class="muted">Slowest of three seeds at each size. A cross marks a run that hit the time limit. Random networks are hard on purpose; the other family grows the base network with downstream chains, the shape of effector cascades. No larger published model was tried.</p>`;
+    const slow = rows.filter((r) => r.family === "cascade" && r.status === "ok"), top = slow.length ? slow.reduce((a, b) => (b.nodes > a.nodes ? b : a)) : null;
+    $("#scaling").innerHTML = s + `</svg><p class="muted">Compute time of the slowest of three seeds at each size (about two seconds of process start-up not included). A cross marks a run that hit the ${limit} s limit. ${top ? `Chains of effectors added to the base network stay tractable up to ${top.nodes} nodes, where the stable states take milliseconds and attractor analysis dominates. ` : ""}Random networks are hard on purpose, and most time out from 50 nodes. This measures the checker, not biology: no larger published model was tried.</p>`;
   }
 
   /* limits */

@@ -191,10 +191,12 @@ def verify() -> None:
     interventions(
         networks="base=data/base/gupta2023.bnet,repaired_min2=data/models/repaired_min2.bnet", max_size=2, out=Path("results/interventions.md")
     )
+    from cellproof.report.build import write as write_report
     from cellproof.results_md import render
 
     Path("results/RESULTS.md").write_text(render(), encoding="utf-8")
     typer.echo("wrote results/RESULTS.md")
+    typer.echo(f"wrote {write_report()}")
 
 
 @app.command()
