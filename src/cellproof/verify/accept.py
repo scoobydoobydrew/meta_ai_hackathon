@@ -45,9 +45,19 @@ def _faithful(edge: Edge, rule: str) -> str | None:
     return None
 
 
+VACUOUS = (
+    "the rule passes every verification case but changes no fixed point in any scenario tested (wild type with and "
+    "without damage, and the nodes of the claim and of the rule each switched off and on): the condition you added is "
+    "never met where it matters, so the claim is expressed in name only. Choose a condition that is met in at least one "
+    "such scenario."
+)
+
+
 def evaluate_rule(
-    rules: dict[str, str], node: str, candidate: str, edge: Edge, cases: list[Case] | None = None
+    rules: dict[str, str], node: str, candidate: str, edge: Edge, cases: list[Case] | None = None, require_active: bool = False
 ) -> Decision:
+    """`require_active` is set for rules proposed by the model after a rejection: a repair that only restores the cases by
+    making the claimed effect inert would otherwise count as a success."""
     cases = cases or load_cases()
     old = rules.get(node)
     unknown = regulators(candidate) - (set(rules) | {node})
@@ -71,7 +81,10 @@ def evaluate_rule(
         by_id = {c.id: c for c in cases}
         messages = [f.describe(by_id[f.case], shown) for f in result.failures]
         return Decision(False, ["verification"], messages, result.failures)
-    return Decision(True, effect="introduces" if old is None else behaviour_effect(rules, after, edge, node))
+    effect = "introduces" if old is None else behaviour_effect(rules, after, edge, node)
+    if require_active and effect == "neutral":
+        return Decision(False, ["vacuous"], [VACUOUS], effect=effect)
+    return Decision(True, effect=effect)
 
 
 def _panel(before: dict[str, str], after: dict[str, str], edge: Edge, node: str) -> list[dict[str, int]]:

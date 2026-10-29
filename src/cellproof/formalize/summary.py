@@ -25,5 +25,6 @@ def summarize_records(records: list[dict]) -> dict:
             repaired=len(repaired),
             repair_success_rate=round(len(repaired) / len(template_failed), 3) if template_failed else None,
             llm_calls=sum(1 for r in decided for a in r["attempts"] if a["source"] == "llm" and a["rule"] is not None),
+            vacuous_attempts=sum(1 for r in decided for a in r["attempts"] if a["source"] == "llm" and "vacuous" in a["reasons"]),
         )
     return out

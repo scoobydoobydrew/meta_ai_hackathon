@@ -54,7 +54,16 @@ def test_a_conditional_version_that_passes_the_cases_is_accepted_and_labelled_by
     # CHK1 inhibits Cdc25 only where p53 is absent: consistent with all ten cases, and it changes the p53-null fixed points.
     active = evaluate_rule(WITH_CHK1, "Cdc25", f"({OLD_CDC25}) & !(CHK1 & !p53)", CHK1_INHIBITS_CDC25)
     assert active.accepted and active.effect == "active"
-    # Conditioned on AMPK_MAPK it is allowed too, but it changes nothing a single-node perturbation of its inputs shows
-    # beyond ATM loss, which is why the label exists: passing the cases is not the same as mattering.
-    other = evaluate_rule(WITH_CHK1, "Cdc25", f"({OLD_CDC25}) & !(CHK1 & AMPK_MAPK)", CHK1_INHIBITS_CDC25)
-    assert other.accepted and other.effect in ("active", "neutral")
+    # Conditioned on AMPK_MAPK it passes the cases too, but AMPK_MAPK is on only where ATM_pH2AX is on, and then the old rule
+    # is already off: the claimed effect never shows. That is why the label exists: passing the cases is not mattering.
+    vacuous = f"({OLD_CDC25}) & !(CHK1 & AMPK_MAPK)"
+    other = evaluate_rule(WITH_CHK1, "Cdc25", vacuous, CHK1_INHIBITS_CDC25)
+    assert other.accepted and other.effect == "neutral"
+
+
+def test_a_repair_must_be_active_a_vacuous_one_is_refused_with_the_reason_to_feed_back():
+    vacuous = f"({OLD_CDC25}) & !(CHK1 & AMPK_MAPK)"
+    refused = evaluate_rule(WITH_CHK1, "Cdc25", vacuous, CHK1_INHIBITS_CDC25, require_active=True)
+    assert not refused.accepted and refused.reasons == ["vacuous"] and "never met where it matters" in refused.messages[0]
+    active = evaluate_rule(WITH_CHK1, "Cdc25", f"({OLD_CDC25}) & !(CHK1 & !p53)", CHK1_INHIBITS_CDC25, require_active=True)
+    assert active.accepted and active.effect == "active"

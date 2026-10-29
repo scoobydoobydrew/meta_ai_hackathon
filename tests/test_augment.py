@@ -57,6 +57,18 @@ def test_repaired_accepts_a_rule_that_passes_and_counts_it_as_a_repair():
     assert s["template_contradiction_rate"] == 0.333
 
 
+def test_a_vacuous_repair_does_not_count_as_a_repair():
+    def vacuous(p, d, history, rules):
+        return f"({p.old_rule}) & !(CHK1 & AMPK_MAPK)"  # passes the cases, but its condition is never met where it matters
+
+    _, records = run(BASE, EDGES, NEW, arm="repaired", repair=vacuous, max_attempts=2)
+    rejected = next(r for r in records if r["edge"] == "CHK1|inhibits|Cdc25")
+    assert rejected["status"] == "rejected"
+    assert [a["reasons"] for a in rejected["attempts"][1:]] == [["vacuous"], ["vacuous"]]
+    s = summarize_records(records)
+    assert s["repaired"] == 0 and s["vacuous_attempts"] == 2
+
+
 def test_a_repair_that_gives_up_or_keeps_failing_stays_rejected_after_k_attempts():
     calls = []
 

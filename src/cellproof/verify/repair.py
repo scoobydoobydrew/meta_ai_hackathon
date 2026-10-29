@@ -51,6 +51,9 @@ fixed points; the witness is a fixed point of the edited network):
 Requirements, all checked by the solver afterwards:
 - {sign_rule}
 - Keep every influence the current rule has: every node in the current rule must still affect the new rule in the same way.
+- The rule must change at least one prediction. If you only restore the cases by gating the new term with a condition that
+  is never true where it matters (for example a node that is always on or off whenever the term could act), the solver
+  rejects it as vacuous. The condition should be one under which the claimed effect actually shows.
 - Use only the nodes listed above. Do not use {node} in its own rule.
 - You may restrict WHEN the claimed effect applies by combining it with other nodes, if the evidence context (cell
   type, condition) or the counterexample suggests a condition. Say which condition you chose and why. Do not invent a

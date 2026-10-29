@@ -92,7 +92,7 @@ def _decide(p: Proposal, rules: dict[str, str], arm: str, cases: list[Case], rep
             if candidate is None:
                 attempts.append({"source": "llm", "rule": None, "accepted": False, "reasons": ["gave_up"], "messages": []})
                 break
-            decision = evaluate_rule(rules, p.node, candidate, p.edge, cases)
+            decision = evaluate_rule(rules, p.node, candidate, p.edge, cases, require_active=True)
             attempts.append({"source": "llm", "rule": candidate, **_summary(decision)})
             if decision.accepted:
                 return {**base, "status": "accepted", "final_rule": candidate, "effect": decision.effect,
