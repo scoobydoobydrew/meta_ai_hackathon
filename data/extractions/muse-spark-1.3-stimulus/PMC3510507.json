@@ -1,0 +1,173 @@
+{
+  "pmcid": "PMC3510507",
+  "title": "Distinct roles for DNA-PK, ATM and ATR in RPA phosphorylation and checkpoint activation in response to replication stress",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 18,
+    "grounded": 18,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "single-stranded DNA",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "in replication stress, cited as background",
+      "evidence_quote": "characterized by accumulation of single-stranded DNA bound by replication protein A (RPA), which triggers activation of ataxia telangiectasia and Rad3 related (ATR)",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "single-stranded DNA",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "in replication stress, cited as background",
+      "evidence_quote": "characterized by accumulation of single-stranded DNA bound by replication protein A (RPA), which triggers activation of ataxia telangiectasia and Rad3 related (ATR) and phosphorylation of the RPA32, subunit of RPA",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "replication stress",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "cited from other work (19,20)",
+      "evidence_quote": "Previous studies revealed that DNA-PKcs and ATR phosphorylate the RPA32 subunit of RPA in response to replication stress (19,20)",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "DSBs induced by ionizing radiation",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "cited from other work (21), DSBs induced by ionizing radiation",
+      "evidence_quote": "and that ATM and DNA-PKcs phosphorylate RPA32 in response to DSBs induced by ionizing radiation (21).",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "genotoxic stress",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "during interphase, cited from other work (28,29)",
+      "evidence_quote": "CDK phosphorylation of Ser23 and Ser29 is also induced during interphase by genotoxic stress (28,29)",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "etoposide",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "in UM-SCC-38 cells expressing HA-RPA32",
+      "evidence_quote": "phosphorylation of Ser4/Ser8, Thr21 and Ser33 was normally induced by replication stress caused by etoposide (Figure. 1C).",
+      "location": "PIKK phosphorylation of RPA32 after replication stress"
+    },
+    {
+      "source": "replication stress",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "in cells expressing mutant RPA32 or DNA-PKcs",
+      "evidence_quote": "Cells expressing mutant RPA32 or DNA-PKcs show sustained H2AX phosphorylation in response to replication stress that persists in cells entering mitosis, indicating inappropriate mitotic entry with unrepaired damage.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "replication stress",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general replication checkpoint signaling, cited (52,55)",
+      "evidence_quote": "Replication stress activates ATR, which phosphorylates/activates Chk1, and this is a key step in transmitting DNA damage signals to downstream replication checkpoint effector proteins (52,55).",
+      "location": "Replication-induced Chk1 phosphorylation is defective in DNA-PKcs and RPA32 Ser4/Ser8 mutants"
+    },
+    {
+      "source": "stalled replication forks",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "at resected DSBs or stalled forks with RPA bound to ssDNA, cited (18)",
+      "evidence_quote": "RPA bound to ssDNA, either at resected DSBs or stalled replication forks, recruits ATRIP-ATR leading to ATR activation and phosphorylation of downstream checkpoint proteins (18).",
+      "location": "RPA32 Ser4/Ser8 phosphorylation regulates replication checkpoint signaling via MRE11 and TopBP1 phosphorylation"
+    },
+    {
+      "source": "resected DSBs",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "at resected DSBs with RPA bound to ssDNA, cited (18)",
+      "evidence_quote": "RPA bound to ssDNA, either at resected DSBs or stalled replication forks, recruits ATRIP-ATR leading to ATR activation and phosphorylation of downstream checkpoint proteins (18).",
+      "location": "RPA32 Ser4/Ser8 phosphorylation regulates replication checkpoint signaling via MRE11 and TopBP1 phosphorylation"
+    },
+    {
+      "source": "HU",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "in CHO cells, DNA-PKcs null and kinase-dead vs WT",
+      "evidence_quote": "DNA-PKcs null and kinase dead mutant CHO cells showed a marked reduction in Chk1 phosphorylation in response to HU, CPT or etoposide (Figure 4A and B)",
+      "location": "Replication-induced Chk1 phosphorylation is defective in DNA-PKcs and RPA32 Ser4/Ser8 mutants"
+    },
+    {
+      "source": "CPT",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "in CHO cells, DNA-PKcs null and kinase-dead vs WT",
+      "evidence_quote": "DNA-PKcs null and kinase dead mutant CHO cells showed a marked reduction in Chk1 phosphorylation in response to HU, CPT or etoposide (Figure 4A and B)",
+      "location": "Replication-induced Chk1 phosphorylation is defective in DNA-PKcs and RPA32 Ser4/Ser8 mutants"
+    },
+    {
+      "source": "etoposide",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "in CHO cells, DNA-PKcs null and kinase-dead vs WT",
+      "evidence_quote": "DNA-PKcs null and kinase dead mutant CHO cells showed a marked reduction in Chk1 phosphorylation in response to HU, CPT or etoposide (Figure 4A and B)",
+      "location": "Replication-induced Chk1 phosphorylation is defective in DNA-PKcs and RPA32 Ser4/Ser8 mutants"
+    },
+    {
+      "source": "HU",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "in WT, null and kinase-dead DNA-PKcs CHO cells",
+      "evidence_quote": "DNA-PKcs status did not affect the initial induction of γ-H2AX by HU",
+      "location": "DNA-PKcs phosphorylation of RPA32 Ser4/Ser8 promotes repair of replication-stress-induced DSBs"
+    },
+    {
+      "source": "etoposide",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "in UM-SCC-38 cells expressing WT or S4A/S8A RPA32",
+      "evidence_quote": "S4A/S8A mutant cells showed more persistent γ-H2AX signals after release from etoposide, assayed by immunofluorescence microscopy (Figure 7A and B) and flow cytometry (Figure 7C).",
+      "location": "DNA-PKcs phosphorylation of RPA32 Ser4/Ser8 promotes repair of replication-stress-induced DSBs"
+    },
+    {
+      "source": "cis-platin",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "in UM-SCC-38 cells after 3 h cis-platin treatment and release",
+      "evidence_quote": "Ser4/Ser8, Thr21 and Ser33 showed maximum phosphorylation from 24 to 48 h after release from cis-platin (Figure 5A), correlating with replication suppression (Figure 5B).",
+      "location": "RPA32 Ser12 phosphorylation correlates with replication recovery after replication stress"
+    },
+    {
+      "source": "etoposide",
+      "target": "MRE11",
+      "effect": "activates",
+      "context": "in UM-SCC-38 cells expressing WT vs S4A/S8A RPA32",
+      "evidence_quote": "etoposide-induced MRE11 phosphorylation was significantly reduced in UM-SCC-38 cells expressing S4A/S8A mutant RPA32 compared with WT",
+      "location": "RPA32 Ser4/Ser8 phosphorylation regulates replication checkpoint signaling via MRE11 and TopBP1 phosphorylation"
+    },
+    {
+      "source": "etoposide",
+      "target": "TOPBP1",
+      "effect": "activates",
+      "context": "in UM-SCC-38 cells expressing WT vs S4A/S8A RPA32",
+      "evidence_quote": "Similar to MRE11, etoposide-induced TopBP1 phosphorylation was reduced in UM-SCC-38 cells to ∼50% of WT levels in the S4A/S8A mutant (Figure 3B and C).",
+      "location": "RPA32 Ser4/Ser8 phosphorylation regulates replication checkpoint signaling via MRE11 and TopBP1 phosphorylation"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 12764,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 8245,
+    "output_tokens_details": {
+      "reasoning_tokens": 6386
+    },
+    "total_tokens": 21009
+  },
+  "from_cache": false
+}

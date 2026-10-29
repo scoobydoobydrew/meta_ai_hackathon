@@ -1,0 +1,53 @@
+{
+  "pmcid": "PMC9090780",
+  "title": "Cell cycle regulation: p53-p21-RB signaling",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 3,
+    "grounded": 3,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "induction of DNA damage",
+      "target": "CDKN1A",
+      "effect": "activates",
+      "context": "following activation of p53",
+      "evidence_quote": "Following activation of p53, for example by viral infection or induction of DNA damage, p21 expression is upregulated.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "DNA damage",
+      "target": "p53",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "p53 levels are induced by cellular stress, for example following DNA damage or viral infection.",
+      "location": "p53-p21-RB signaling"
+    },
+    {
+      "source": "doxorubicin",
+      "target": "p53",
+      "effect": "activates",
+      "context": "HCT116 wild-type and knockout cells",
+      "evidence_quote": "We have employed HCT116 wild-type and knockout cells that were treated with the MDM2 antagonist nutlin-3a and the DNA-damaging agent doxorubicin to increase p53 levels.",
+      "location": "RB and DREAM pathways – both are required for proper cell cycle control"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 14914,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2496,
+    "output_tokens_details": {
+      "reasoning_tokens": 2245
+    },
+    "total_tokens": 17410
+  },
+  "from_cache": false
+}

@@ -60,6 +60,7 @@ def corpus(
 @app.command()
 def extract(
     model: str = typer.Option(DEFAULT_MODEL, help="Standard model id."),
+    kind: str = typer.Option("mechanism", help="mechanism (molecule on molecule) or stimulus (DNA damage on molecule)."),
     limit: int = typer.Option(0, help="Only the first N papers of the manifest (0 = all)."),
     dry_run: bool = typer.Option(False, help="Estimate tokens and cost, call nothing."),
     texts: Path = typer.Option(Path("data/raw/corpus")),
@@ -71,20 +72,21 @@ def extract(
     papers = [p for p in papers if (texts / f"{p['pmcid']}.txt").exists()][: limit or None]
     price = PRICES.get(model)
     if dry_run:
-        tokens = sum(len(build_prompt(p["pmcid"], (texts / f"{p['pmcid']}.txt").read_text(encoding="utf-8"))) for p in papers) // 4
+        tokens = sum(len(build_prompt(p["pmcid"], (texts / f"{p['pmcid']}.txt").read_text(encoding="utf-8"), kind)) for p in papers) // 4
         typer.echo(f"{len(papers)} papers, about {tokens:,} input tokens (chars/4), at least ${tokens * price[1] / 1e6:.2f} input only")
         return
-    target = out / model
+    target = out / (model if kind == "mechanism" else f"{model}-{kind}")
     target.mkdir(parents=True, exist_ok=True)
     spent = 0.0
     for p in papers:
-        result = extract_paper(p["pmcid"], (texts / f"{p['pmcid']}.txt").read_text(encoding="utf-8"), model=model)
+        result = extract_paper(p["pmcid"], (texts / f"{p['pmcid']}.txt").read_text(encoding="utf-8"), model=model, kind=kind)
         cost = 0.0 if result.llm.from_cache else cost_usd(result.llm.usage, model)
         spent += cost
         record = {
             "pmcid": p["pmcid"],
             "title": p["title"],
             "model": model,
+            "kind": kind,
             "counts": result.counts,
             "grounded": [c.model_dump() for c in result.grounded],
             "ungrounded": [c.model_dump() for c in result.ungrounded],
@@ -95,6 +97,46 @@ def extract(
         (target / f"{p['pmcid']}.json").write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         typer.echo(f"{p['pmcid']:<12} {json.dumps(result.counts)}  cached={result.llm.from_cache}  ${cost:.3f}")
     typer.echo(f"spent this run: ${spent:.3f}")
+
+
+@app.command()
+def augment(
+    arms: str = typer.Option("naive,verified,repaired", help="Comma-separated: naive, verified, repaired."),
+    min_papers: str = typer.Option("1,2", help="Comma-separated: keep only edges supported by at least this many papers."),
+    model: str = typer.Option(DEFAULT_MODEL, help="Model for the repair step."),
+    out_models: Path = typer.Option(Path("data/models")),
+    out_results: Path = typer.Option(Path("results")),
+) -> None:
+    """Ground the claims, build the edges, apply them in each arm, and write the networks and decision logs."""
+    from cellproof.formalize.augment import run
+    from cellproof.formalize.claims_to_edges import build_edges, load_pass
+    from cellproof.formalize.edits import select_new_nodes
+    from cellproof.formalize.entities import Grounder, Hgnc
+    from cellproof.formalize.summary import summarize_records
+    from cellproof.network.bnet import format_bnet, load_bnet
+    from cellproof.verify.checker import check
+    from cellproof.verify.repair import make_repair
+
+    base = load_bnet("data/base/gupta2023.bnet")
+    hgnc = Hgnc()
+    sets = {"mechanism": load_pass("data/extractions/muse-spark-1.3"), "stimulus": load_pass("data/extractions/muse-spark-1.3-stimulus")}
+    edges, dropped, names = build_edges(sets, Grounder(hgnc))
+    hgnc.save()
+    new_nodes, why = select_new_nodes(edges, set(base))
+    out_models.mkdir(parents=True, exist_ok=True)
+    out_results.mkdir(parents=True, exist_ok=True)
+    summary = {"new_nodes": new_nodes, "why_selected": why, "claims_dropped": dict(dropped), "edges": len(edges), "runs": {}}
+    for k in (int(x) for x in min_papers.split(",")):
+        for arm in arms.split(","):
+            rules, records = run(base, edges, new_nodes, arm=arm, min_papers=k, repair=make_repair(model) if arm == "repaired" else None)
+            failing = sorted({f.case for f in check(rules).failures})
+            name = f"{arm}_min{k}"
+            header = f"# CellProof augmentation arm={arm} min_papers={k} new_nodes={','.join(new_nodes)}; every change is in results/augment_{name}.json\n"
+            (out_models / f"{name}.bnet").write_text(header + format_bnet(rules), encoding="utf-8")
+            (out_results / f"augment_{name}.json").write_text(json.dumps(records, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+            summary["runs"][name] = {**summarize_records(records), "nodes": len(rules), "verification_cases_failing": failing}
+            typer.echo(f"{name:18s} {json.dumps(summary['runs'][name])}")
+    (out_results / "augmentation_summary.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 @app.command("extract-stats")

@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from cellproof.extract.claims import PROMPT, Claim, extract_paper, is_grounded, names_an_outcome
+from cellproof.extract.claims import PROMPTS, Claim, extract_paper, is_grounded, names_an_outcome
 from cellproof.meta_client import cost_usd
 
 PAPER = (
@@ -49,10 +49,18 @@ def test_outcome_level_names(source, target, expected):
     assert names_an_outcome(claim("x" * 20, source=source, target=target)) is expected
 
 
-def test_the_prompt_asks_for_mechanisms_and_contains_nothing_from_the_held_out_set():
-    assert "Do NOT extract outcomes" in PROMPT
+@pytest.mark.parametrize("kind", sorted(PROMPTS))
+def test_the_prompts_ask_for_mechanisms_and_contain_nothing_from_the_held_out_set(kind):
+    prompt = PROMPTS[kind]
+    assert "Do NOT extract outcomes" in prompt
     for token in ("VE-821", "MK-1775", "MK-8776", "NU7026", "KU-60019", "nutlin", "HCT116", "H1299", "A549", "U2OS"):
-        assert token.lower() not in PROMPT.lower(), token
+        assert token.lower() not in prompt.lower(), (kind, token)
+
+
+def test_the_stimulus_prompt_is_the_one_sent_for_that_kind(tmp_path):
+    client = FakeClient(json.dumps({"claims": []}))
+    extract_paper("PMC1", PAPER, kind="stimulus", client=client, cache_dir=tmp_path)
+    assert "DNA-damaging stimulus" in client.responses.calls[0]["input"]
 
 
 class _Resp:

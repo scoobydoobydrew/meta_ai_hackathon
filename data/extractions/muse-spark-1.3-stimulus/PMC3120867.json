@@ -1,0 +1,157 @@
+{
+  "pmcid": "PMC3120867",
+  "title": "DNA-PK-dependent RPA2 hyperphosphorylation facilitates DNA repair and suppresses sister chromatid exchange",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 16,
+    "grounded": 16,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "DNA damage",
+      "target": "RPA2",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "RPA2 is differentially phosphorylated during the cell cycle and in response to DNA damage.",
+      "location": "Introduction"
+    },
+    {
+      "source": "genotoxic stresses that cause high levels of DNA double-strand breaks (DSBs)",
+      "target": "RPA2",
+      "effect": "activates",
+      "context": "in vivo",
+      "evidence_quote": "In this study we demonstrate that RPA2 hyperphosphorylation occurs primarily in response to genotoxic stresses that cause high levels of DNA double-strand breaks (DSBs) and that the DNA-dependent protein kinase complex (DNA-PK) is responsible for the modifications in vivo.",
+      "location": "Abstract"
+    },
+    {
+      "source": "HU",
+      "target": "RPA2",
+      "effect": "activates",
+      "context": "human HEK293T cells, chromatin-bound fraction, 4 hours treatment",
+      "evidence_quote": "Similar to PCNA ubiquitination, the phosphorylation of RPA2 was induced in response to HU, MMS, or HU, 4NQO, or CPT treatments, but not to γ-irradiation.",
+      "location": "RPA2 hyperphosphorylation is induced by DNA damage associated with stalled DNA replication"
+    },
+    {
+      "source": "MMS",
+      "target": "RPA2",
+      "effect": "activates",
+      "context": "human HEK293T cells, chromatin-bound fraction, 4 hours treatment",
+      "evidence_quote": "Similar to PCNA ubiquitination, the phosphorylation of RPA2 was induced in response to HU, MMS, or HU, 4NQO, or CPT treatments, but not to γ-irradiation.",
+      "location": "RPA2 hyperphosphorylation is induced by DNA damage associated with stalled DNA replication"
+    },
+    {
+      "source": "4NQO",
+      "target": "RPA2",
+      "effect": "activates",
+      "context": "human HEK293T cells, chromatin-bound fraction, 4 hours treatment",
+      "evidence_quote": "Similar to PCNA ubiquitination, the phosphorylation of RPA2 was induced in response to HU, MMS, or HU, 4NQO, or CPT treatments, but not to γ-irradiation.",
+      "location": "RPA2 hyperphosphorylation is induced by DNA damage associated with stalled DNA replication"
+    },
+    {
+      "source": "CPT",
+      "target": "RPA2",
+      "effect": "activates",
+      "context": "human HEK293T cells, chromatin-bound fraction, 4 hours treatment",
+      "evidence_quote": "Similar to PCNA ubiquitination, the phosphorylation of RPA2 was induced in response to HU, MMS, or HU, 4NQO, or CPT treatments, but not to γ-irradiation.",
+      "location": "RPA2 hyperphosphorylation is induced by DNA damage associated with stalled DNA replication"
+    },
+    {
+      "source": "UV",
+      "target": "RPA2",
+      "effect": "activates",
+      "context": "HeLa cells irradiated with 60 J/m2 UV",
+      "evidence_quote": "RPA2 phosphorylation was induced at approximately the same time as when the level of γH2AX was induced.",
+      "location": "The levels of DNA double-strand breaks correspond to hyperphosphorylation of RPA2"
+    },
+    {
+      "source": "γ-irradiation",
+      "target": "RPA2",
+      "effect": "activates",
+      "context": "HEK293T cells, 4 hours post-treatment",
+      "evidence_quote": "Interestingly, when cells were treated with high dose of γ-irradiation (e.g. 40 Gy) that generates 2.3 fold more DSBs, we observed the RPA2 hyperphosphorylation at 4 hours post-treatment.",
+      "location": "The levels of DNA double-strand breaks correspond to hyperphosphorylation of RPA2"
+    },
+    {
+      "source": "high levels of resected DSBs",
+      "target": "RPA2",
+      "effect": "activates",
+      "context": "general, after γ-irradiation when DSBs are resected to produce ssDNA",
+      "evidence_quote": "Therefore, the hyperphosphorylation of RPA2 likely results from high levels of resected DSBs.",
+      "location": "The levels of DNA double-strand breaks correspond to hyperphosphorylation of RPA2"
+    },
+    {
+      "source": "DNA DSBs",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "general, cited from other work",
+      "evidence_quote": "γH2AX is induced by DNA DSBs [27] and was observed as a consequence of the DNA damage treatments that enhanced RPA2 hyperphosphorylation (Fig. 1A).",
+      "location": "The levels of DNA double-strand breaks correspond to hyperphosphorylation of RPA2"
+    },
+    {
+      "source": "UV",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "human HEK293T cells stained after UV irradiation",
+      "evidence_quote": "UV treatment markedly increased the number of cells and the number of foci in the nuclei that positively stained with a γH2AX antibody.",
+      "location": "The levels of DNA double-strand breaks correspond to hyperphosphorylation of RPA2"
+    },
+    {
+      "source": "UV",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "human HEK293T cells, 4 hours treatment",
+      "evidence_quote": "Interestingly, stalled replication induced by UV, MMS, HU, 4NQO, or CPT causes much stronger intensity of the phosphorylation of H2AX (γH2AX) that marks DNA DSBs than by g-irradiation (Fig. 1A).",
+      "location": "RPA2 hyperphosphorylation is induced by DNA damage associated with stalled DNA replication"
+    },
+    {
+      "source": "MMS",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "human HEK293T cells, 4 hours treatment",
+      "evidence_quote": "Interestingly, stalled replication induced by UV, MMS, HU, 4NQO, or CPT causes much stronger intensity of the phosphorylation of H2AX (γH2AX) that marks DNA DSBs than by g-irradiation (Fig. 1A).",
+      "location": "RPA2 hyperphosphorylation is induced by DNA damage associated with stalled DNA replication"
+    },
+    {
+      "source": "HU",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "human HEK293T cells, 4 hours treatment",
+      "evidence_quote": "Interestingly, stalled replication induced by UV, MMS, HU, 4NQO, or CPT causes much stronger intensity of the phosphorylation of H2AX (γH2AX) that marks DNA DSBs than by g-irradiation (Fig. 1A).",
+      "location": "RPA2 hyperphosphorylation is induced by DNA damage associated with stalled DNA replication"
+    },
+    {
+      "source": "4NQO",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "human HEK293T cells, 4 hours treatment",
+      "evidence_quote": "Interestingly, stalled replication induced by UV, MMS, HU, 4NQO, or CPT causes much stronger intensity of the phosphorylation of H2AX (γH2AX) that marks DNA DSBs than by g-irradiation (Fig. 1A).",
+      "location": "RPA2 hyperphosphorylation is induced by DNA damage associated with stalled DNA replication"
+    },
+    {
+      "source": "CPT",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "human HEK293T cells, 4 hours treatment",
+      "evidence_quote": "Interestingly, stalled replication induced by UV, MMS, HU, 4NQO, or CPT causes much stronger intensity of the phosphorylation of H2AX (γH2AX) that marks DNA DSBs than by g-irradiation (Fig. 1A).",
+      "location": "RPA2 hyperphosphorylation is induced by DNA damage associated with stalled DNA replication"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 9322,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 6384,
+    "output_tokens_details": {
+      "reasoning_tokens": 4583
+    },
+    "total_tokens": 15706
+  },
+  "from_cache": false
+}

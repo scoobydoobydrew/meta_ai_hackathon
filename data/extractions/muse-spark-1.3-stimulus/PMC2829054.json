@@ -1,0 +1,85 @@
+{
+  "pmcid": "PMC2829054",
+  "title": "Cdk2 is required for p53-independent G2/M checkpoint control",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 7,
+    "grounded": 7,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "IR",
+      "target": "p53",
+      "effect": "activates",
+      "context": "HCT116 cells, irrespective of CDK2 genotype; cited as not affected by CDK2 disruption",
+      "evidence_quote": "Stabilization of p53 and the induction of its downstream target p21 after IR were not affected by CDK2 disruption (Figure S1C).",
+      "location": "Stabilization of Cdc25A in Cdk2-deficient cells"
+    },
+    {
+      "source": "IR",
+      "target": "p21",
+      "effect": "activates",
+      "context": "HCT116 cells, irrespective of CDK2 genotype; cited as not affected by CDK2 disruption",
+      "evidence_quote": "Stabilization of p53 and the induction of its downstream target p21 after IR were not affected by CDK2 disruption (Figure S1C).",
+      "location": "Stabilization of Cdc25A in Cdk2-deficient cells"
+    },
+    {
+      "source": "IR",
+      "target": "Cdc25A",
+      "effect": "inhibits",
+      "context": "wild type HCT116 cells",
+      "evidence_quote": "While Cdc25A was rapidly degraded after IR in wild type cells, Cdc25A levels remained high in cells lacking Cdk2 (Figure 4A).",
+      "location": "Deregulation of Cdc25A is a cause of G2/M checkpoint failure"
+    },
+    {
+      "source": "IR",
+      "target": "CDK1",
+      "effect": "activates",
+      "context": "p53-deficient cells with wild type Cdk2",
+      "evidence_quote": "As expected, p53-deficient cells normally induced Cdk1Y15-P after IR (Figure 4B); in contrast, the levels of Cdk1Y15-P did not increase after IR in cells that were also Cdk2-deficient.",
+      "location": "Deregulation of Cdc25A is a cause of G2/M checkpoint failure"
+    },
+    {
+      "source": "IR",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "isogenic HCT116 cells, irrespective of P53 genotype",
+      "evidence_quote": "IR-induced phosphorylation of Chk1 S317 and S345 was reduced in CDK2-knockout cells, irrespective of P53 genotype (Figure 5).",
+      "location": "Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6"
+    },
+    {
+      "source": "IR",
+      "target": "CDC6",
+      "effect": "activates",
+      "context": "checkpoint-deficient P53-/- HCT116 cells",
+      "evidence_quote": "In checkpoint-deficient P53−/− cells, Cdc6 levels increased after IR in tandem with Chk1 phosphoprotein (Figure 5).",
+      "location": "Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6"
+    },
+    {
+      "source": "IR",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "S- and G2-phases, when Cdk2 is normally active; cited from other work",
+      "evidence_quote": "IR-induced ATR activation is restricted to the S- and G2-phases [37], when Cdk2 is normally active.",
+      "location": "Discussion"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 9751,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 3182,
+    "output_tokens_details": {
+      "reasoning_tokens": 2466
+    },
+    "total_tokens": 12933
+  },
+  "from_cache": false
+}

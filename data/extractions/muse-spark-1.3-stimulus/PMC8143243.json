@@ -1,0 +1,37 @@
+{
+  "pmcid": "PMC8143243",
+  "title": "Autophagy in the physiological endometrium and cancer",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 1,
+    "grounded": 1,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "cisplatin",
+      "target": "LC3",
+      "effect": "activates",
+      "context": "in Ishikawa EC cells",
+      "evidence_quote": "Finally, another group found that cisplatin exposure in Ishikawa EC cells induces an autophagy response, with the increased number of autophagosomes and LC3 expression through inactivation of the PIK3CA-AKT-MTOR signaling pathway [73].",
+      "location": "Cisplatin and combination therapies"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 15612,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2555,
+    "output_tokens_details": {
+      "reasoning_tokens": 2442
+    },
+    "total_tokens": 18167
+  },
+  "from_cache": false
+}

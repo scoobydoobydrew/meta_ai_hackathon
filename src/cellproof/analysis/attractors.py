@@ -22,7 +22,10 @@ def fixed_points(rules: dict[str, str]) -> list[dict[str, int]]:
 
 def attractor_sizes(rules: dict[str, str]) -> list[int]:
     """State counts of the asynchronous attractors; all 1 means every attractor is a fixed point."""
-    graph = aeon.AsynchronousGraph(aeon.BooleanNetwork.from_bnet(format_bnet(rules)))
+    # from_bnet declares every variable of a rule as an essential regulator; a rule such as `(!a | b) & b` ignores `a`,
+    # so the regulatory graph is re-inferred from the update functions before the graph is built.
+    network = aeon.BooleanNetwork.from_bnet(format_bnet(rules)).infer_valid_graph()
+    graph = aeon.AsynchronousGraph(network)
     return sorted(int(a.vertices().cardinality()) for a in aeon.Attractors.attractors(graph))
 
 

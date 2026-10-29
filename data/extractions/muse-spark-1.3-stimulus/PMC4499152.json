@@ -1,0 +1,53 @@
+{
+  "pmcid": "PMC4499152",
+  "title": "DNA-PKcs phosphorylates hnRNP-A1 to facilitate the RPA-to-POT1 switch and telomere capping after replication",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 3,
+    "grounded": 3,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "single-stranded DNA",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general mammalian cells, cited from other work",
+      "evidence_quote": "When replication forks stall, the extension of single-stranded DNA and the coating of RPA trigger activation of ataxia-telangiectasia and Rad3-related (ATR) kinase and DDR (4,5).",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "replication stress",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "mammals, persistent RPA-coated ssDNA filaments, cited from other work",
+      "evidence_quote": "On the other hand, the presence of persistent RPA-coated ssDNA filaments upon replication stress or stalled replication forks will lead to recruitment of the ATR-ATRIP (ATR-interacting protein) complex, activation of the ATR signaling pathway and DDR (4,5).",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "stalled replication forks",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "mammals, persistent RPA-coated ssDNA filaments, cited from other work",
+      "evidence_quote": "On the other hand, the presence of persistent RPA-coated ssDNA filaments upon replication stress or stalled replication forks will lead to recruitment of the ATR-ATRIP (ATR-interacting protein) complex, activation of the ATR signaling pathway and DDR (4,5).",
+      "location": "DISCUSSION"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 12576,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2839,
+    "output_tokens_details": {
+      "reasoning_tokens": 2518
+    },
+    "total_tokens": 15415
+  },
+  "from_cache": false
+}

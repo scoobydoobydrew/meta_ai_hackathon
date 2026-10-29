@@ -1,0 +1,93 @@
+{
+  "pmcid": "PMC5762302",
+  "title": "Prexasertib, a cell cycle checkpoint kinases 1 and 2 inhibitor, increases &lt;i&gt;in vitro&lt;/i&gt; toxicity of PARP inhibition by preventing Rad51 foci formation in &lt;i&gt;BRCA&lt;/i&gt; wild type high-grade serous ovarian cancer",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 8,
+    "grounded": 8,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "DNA replication stress",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "general checkpoint signaling, cited from other work",
+      "evidence_quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "DNA replication stress",
+      "target": "CHK2",
+      "effect": "activates",
+      "context": "general checkpoint signaling, cited from other work",
+      "evidence_quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "DNA damage",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "general checkpoint signaling, cited from other work",
+      "evidence_quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "DNA damage",
+      "target": "CHK2",
+      "effect": "activates",
+      "context": "general checkpoint signaling, cited from other work",
+      "evidence_quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "DNA damage",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "HGSOC cell lines, description of Chk1 phosphorylation as marker of ATR activation, cited from other work",
+      "evidence_quote": "Phosphorylation of S317 and S345 Chk1 reflect ATR activation in response to DNA damage, and S296 Chk1 is the activating autophosphorylation site, essential for downstream Chk1 phosphorylation activity [17, 30, 31].",
+      "location": "Prexasertib does not affect PAR incorporation and olaparib does not alter Chk1 activity"
+    },
+    {
+      "source": "DNA damage",
+      "target": "RAD51",
+      "effect": "activates",
+      "context": "general HR response, cited from other work",
+      "evidence_quote": "Rad51 translocates into the nucleus upon DNA damage, forming foci and assisting the DNA strand-pairing step of HR [40, 41].",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "DNA damage",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "general, cited from other work",
+      "evidence_quote": "It has been reported that DNA damage and replication stress induce γH2AX phosphorylation, either with separate foci formation in damaged cells or pan-nuclear staining in apoptotic cells by immunofluorescence [50].",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "replication stress",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "general, cited from other work",
+      "evidence_quote": "It has been reported that DNA damage and replication stress induce γH2AX phosphorylation, either with separate foci formation in damaged cells or pan-nuclear staining in apoptotic cells by immunofluorescence [50].",
+      "location": "DISCUSSION"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 8109,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2968,
+    "output_tokens_details": {
+      "reasoning_tokens": 2125
+    },
+    "total_tokens": 11077
+  },
+  "from_cache": false
+}

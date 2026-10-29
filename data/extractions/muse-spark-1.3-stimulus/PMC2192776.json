@@ -1,0 +1,28 @@
+{
+  "pmcid": "PMC2192776",
+  "title": "Mitochondrial permeability transition is a central coordinating event of apoptosis",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 0,
+    "grounded": 0,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 933,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 732,
+    "output_tokens_details": {
+      "reasoning_tokens": 718
+    },
+    "total_tokens": 1665
+  },
+  "from_cache": false
+}

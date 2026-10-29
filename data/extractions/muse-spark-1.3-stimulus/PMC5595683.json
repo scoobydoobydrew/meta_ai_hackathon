@@ -1,0 +1,85 @@
+{
+  "pmcid": "PMC5595683",
+  "title": "Serpine 1 induces alveolar type II cell senescence through activating p53-p21-Rb pathway in fibrotic lung disease",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 7,
+    "grounded": 7,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "bleomycin",
+      "target": "PAI-1",
+      "effect": "activates",
+      "context": "rat ATII (L2) cells",
+      "evidence_quote": "The results show that treatment of L2 cells with bleomycin significantly increases the protein levels of PAI‐1, p53, and p21 as well as the activity of senescence associated beta‐galactosidase (SA‐β‐gal), a marker of cell senescence (Fig. 1A,B).",
+      "location": "Silencing PAI‐1 with PAI‐1 siRNA/shRNA reduces p53 and p21 expressions, increases Rb protein phosphorylation, and attenuates bleomycin‐induced ATII cell senescence"
+    },
+    {
+      "source": "bleomycin",
+      "target": "p53",
+      "effect": "activates",
+      "context": "rat ATII (L2) cells",
+      "evidence_quote": "The results show that treatment of L2 cells with bleomycin significantly increases the protein levels of PAI‐1, p53, and p21 as well as the activity of senescence associated beta‐galactosidase (SA‐β‐gal), a marker of cell senescence (Fig. 1A,B).",
+      "location": "Silencing PAI‐1 with PAI‐1 siRNA/shRNA reduces p53 and p21 expressions, increases Rb protein phosphorylation, and attenuates bleomycin‐induced ATII cell senescence"
+    },
+    {
+      "source": "bleomycin",
+      "target": "p21",
+      "effect": "activates",
+      "context": "rat ATII (L2) cells",
+      "evidence_quote": "The results show that treatment of L2 cells with bleomycin significantly increases the protein levels of PAI‐1, p53, and p21 as well as the activity of senescence associated beta‐galactosidase (SA‐β‐gal), a marker of cell senescence (Fig. 1A,B).",
+      "location": "Silencing PAI‐1 with PAI‐1 siRNA/shRNA reduces p53 and p21 expressions, increases Rb protein phosphorylation, and attenuates bleomycin‐induced ATII cell senescence"
+    },
+    {
+      "source": "bleomycin",
+      "target": "Rb",
+      "effect": "inhibits",
+      "context": "cultured ATII (L2) cells",
+      "evidence_quote": "This is associated with a decrease (by PAI‐1 protein or bleomycin) and an increase (by PAI‐1 siRNA/shRNA) in Rb phosphorylation, respectively.",
+      "location": "Discussion"
+    },
+    {
+      "source": "doxorubicin",
+      "target": "p53",
+      "effect": "activates",
+      "context": "L2 cells stably transfected with PAI-1 shRNA or NT shRNA, treated with doxorubicin",
+      "evidence_quote": "Silencing PAI‐1 also diminishes doxorubicin‐induced p53 and p21 expressions (Fig. 3A–D) as well as SA‐β‐gal activity (Fig. 3E,F).",
+      "location": "Silencing PAI‐1 with PAI‐1 shRNA suppresses doxorubicin‐induced L2 cell senescence"
+    },
+    {
+      "source": "doxorubicin",
+      "target": "p21",
+      "effect": "activates",
+      "context": "L2 cells stably transfected with PAI-1 shRNA or NT shRNA, treated with doxorubicin",
+      "evidence_quote": "Silencing PAI‐1 also diminishes doxorubicin‐induced p53 and p21 expressions (Fig. 3A–D) as well as SA‐β‐gal activity (Fig. 3E,F).",
+      "location": "Silencing PAI‐1 with PAI‐1 shRNA suppresses doxorubicin‐induced L2 cell senescence"
+    },
+    {
+      "source": "DNA damage",
+      "target": "IGFBP3",
+      "effect": "activates",
+      "context": "cited from other work (Shetty et al., 2008, 2012; Sisson et al., 2010)",
+      "evidence_quote": "Consensus sites for p53 binding have been identified in intronic regions of the IGFBP3 gene and wild‐type p53 increases IGFBP3 expression in response to DNA damage (Shetty et al., 2008, 2012; Sisson et al., 2010).",
+      "location": "Discussion"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 10618,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 4133,
+    "output_tokens_details": {
+      "reasoning_tokens": 3098
+    },
+    "total_tokens": 14751
+  },
+  "from_cache": false
+}

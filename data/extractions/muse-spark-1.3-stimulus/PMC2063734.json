@@ -1,0 +1,37 @@
+{
+  "pmcid": "PMC2063734",
+  "title": "Osteoblast differentiation and skeletal development are regulated by Mdm2-p53 signaling",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 1,
+    "grounded": 1,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "certain types of DNA damage",
+      "target": "p53",
+      "effect": "activates",
+      "context": "general statement cited from other work (Vousden, 2000)",
+      "evidence_quote": "The p53 transcription factor is activated by inappropriate cell growth stimulation or by certain types of DNA damage and regulates the expression of other genes involved in cell growth arrest, DNA repair, and apoptosis (Vousden, 2000).",
+      "location": "Introduction"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 13676,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 1369,
+    "output_tokens_details": {
+      "reasoning_tokens": 1257
+    },
+    "total_tokens": 15045
+  },
+  "from_cache": false
+}

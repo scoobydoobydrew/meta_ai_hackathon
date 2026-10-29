@@ -34,5 +34,10 @@ Licenses below were read from each package's installed metadata on 2026-10-29.
   `data/corpus/manifest.json`. The full texts are downloaded by `cellproof corpus` into `data/raw/corpus` (git-ignored)
   and are not redistributed; the committed LLM cache stores long prompts as a hash, not as text. Texts are sent to the
   Meta Model API (Standard, not contributor) only for mechanism extraction.
+- HGNC gene nomenclature (https://www.genenames.org, REST API, data released under CC0): approved symbols, aliases and
+  previous symbols used to map names in extracted claims to genes. The responses used are cached in
+  `data/ontology/hgnc_cache.json` so that grounding runs offline.
+- NCBI E-utilities (`efetch`, db=pmc): full text of three held-out source papers that Europe PMC would not serve; the text
+  is used only to find and check quotes and is not stored in the repository.
 - Held-out source papers (`data/heldout`, seven papers, listed with their licences in the item file): only short
   factual claims with a locator are kept; no text is copied.

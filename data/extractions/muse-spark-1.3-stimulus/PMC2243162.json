@@ -1,0 +1,109 @@
+{
+  "pmcid": "PMC2243162",
+  "title": "G2 checkpoint abrogation and checkpoint kinase-1 targeting in the treatment of cancer",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 10,
+    "grounded": 10,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "DNA damage from ionising radiation",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "general mammalian checkpoint review",
+      "evidence_quote": "Ataxia–telangiectasia mutated is activated by DNA damage from ionising radiation, whereas ATR is activated by DNA damage and DNA replication stress.",
+      "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS"
+    },
+    {
+      "source": "DNA damage and DNA replication stress",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general mammalian checkpoint review",
+      "evidence_quote": "Ataxia–telangiectasia mutated is activated by DNA damage from ionising radiation, whereas ATR is activated by DNA damage and DNA replication stress.",
+      "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS"
+    },
+    {
+      "source": "DNA double-strand breaks",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "In the case of ATM, DNA double-strand breaks (DSBs) induce ATM homodimer dissociation.",
+      "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS"
+    },
+    {
+      "source": "DNA damage",
+      "target": "CHK2",
+      "effect": "activates",
+      "context": "expressed throughout the cell cycle",
+      "evidence_quote": "Checkpoint kinase-2, expressed throughout the cell cycle, is activated in the presence of DNA damage (Lukas et al, 2001).",
+      "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS"
+    },
+    {
+      "source": "DNA damage",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "preferentially expressed during S and G2",
+      "evidence_quote": "In contrast, Chk1, preferentially expressed during S and G2, has constitutive activity that is amplified in the presence of DNA damage (Zhao et al, 2002).",
+      "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS"
+    },
+    {
+      "source": "cisplatin",
+      "target": "MK2",
+      "effect": "activates",
+      "context": "p53-deficient cells",
+      "evidence_quote": "MAPKAP kinase-2 is activated by cisplatin, camptothecin, and doxorubicin, and the MK2 response is essential for the survival of p53-deficient cells following exposure to these agents (Reinhardt et al, 2007).",
+      "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS"
+    },
+    {
+      "source": "camptothecin",
+      "target": "MK2",
+      "effect": "activates",
+      "context": "p53-deficient cells",
+      "evidence_quote": "MAPKAP kinase-2 is activated by cisplatin, camptothecin, and doxorubicin, and the MK2 response is essential for the survival of p53-deficient cells following exposure to these agents (Reinhardt et al, 2007).",
+      "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS"
+    },
+    {
+      "source": "doxorubicin",
+      "target": "MK2",
+      "effect": "activates",
+      "context": "p53-deficient cells",
+      "evidence_quote": "MAPKAP kinase-2 is activated by cisplatin, camptothecin, and doxorubicin, and the MK2 response is essential for the survival of p53-deficient cells following exposure to these agents (Reinhardt et al, 2007).",
+      "location": "MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS"
+    },
+    {
+      "source": "gemcitabine",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "panel of multiple solid tumour cell lines",
+      "evidence_quote": "XL844 also resulted in an increase in gemcitabine-induced γH2AX.",
+      "location": "XL844"
+    },
+    {
+      "source": "gemcitabine",
+      "target": "CDC25A",
+      "effect": "activates",
+      "context": "panel of multiple solid tumour cell lines, S and G2 checkpoints",
+      "evidence_quote": "XL844 was shown to affect both the S and G2 checkpoints by blocking gemcitabine-induced DSBs and CDC25A phosphorylation, inducing premature mitotic entry.",
+      "location": "XL844"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 6039,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 5446,
+    "output_tokens_details": {
+      "reasoning_tokens": 4514
+    },
+    "total_tokens": 11485
+  },
+  "from_cache": false
+}

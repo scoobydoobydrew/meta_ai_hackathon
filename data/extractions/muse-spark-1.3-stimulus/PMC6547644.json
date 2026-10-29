@@ -1,0 +1,69 @@
+{
+  "pmcid": "PMC6547644",
+  "title": "Radiation-dose-dependent functional synergisms between ATM, ATR and DNA-PKcs in checkpoint control and resection in G<sub>2</sub>-phase",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 5,
+    "grounded": 5,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "DSBs",
+      "target": "DNA-PKcs",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "DNA-PKcs acts as a sensor for DSBs through recruitment by Ku that causes its activation6.",
+      "location": "Introduction"
+    },
+    {
+      "source": "genotoxic stresses",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "ATR is activated by a wide range of genotoxic stresses, owing to its recruitment by ATRIP to extended tracts of ssDNA coated with the ssDNA binding protein complex, replication protein A (RPA)15.",
+      "location": "Introduction"
+    },
+    {
+      "source": "resected DSBs",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "Notable and relevant here is the ATR activation induced at resected DSBs.",
+      "location": "Introduction"
+    },
+    {
+      "source": "DSB-associated chromatin changes",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "ATM activation is further promoted by a C-terminal acetylation induced by DSB-associated chromatin changes exposing the H3K9me3 histone mark that recruits and activates, via shielding from dephosphorylation37, the TIP60/Kat9 acetyltransferase38.",
+      "location": "Introduction"
+    },
+    {
+      "source": "IR",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "82-6 hTert cells",
+      "evidence_quote": "Exposure of 82-6 hTert cells to IR induces DSBs as indicated by the formation of 53BP1 foci and activates ATM:",
+      "location": "At low IR doses, the ATM/ATR module is organized as a linear array with ATM upstream and with ATR mainly interfacing with the cell cycle engine through Chk1"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 16151,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 3500,
+    "output_tokens_details": {
+      "reasoning_tokens": 3084
+    },
+    "total_tokens": 19651
+  },
+  "from_cache": false
+}

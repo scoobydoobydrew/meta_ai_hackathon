@@ -1,0 +1,69 @@
+{
+  "pmcid": "PMC509302",
+  "title": "The telomeric protein TRF2 binds the ATM kinase and can inhibit the ATM-dependent DNA damage response",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 5,
+    "grounded": 5,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "DSBs and other genome stress",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "general, cited from Bakkenist and Kastan 2003",
+      "evidence_quote": "DSBs and other genome stress lead to a rapid conversion of the ATM pool into active S1981–P monomers",
+      "location": "Introduction"
+    },
+    {
+      "source": "IR",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "general, cited from Bakkenist and Kastan 2003; low level of DNA damage",
+      "evidence_quote": "Phosphorylation of ATM on S1981, an early and essential step in the activation of this kinase, can be detected rapidly after IR, even when a low level of DNA damage is induced (Bakkenist and Kastan 2003).",
+      "location": "Results"
+    },
+    {
+      "source": "DNA damage",
+      "target": "p53",
+      "effect": "activates",
+      "context": "general, reviewed in Kastan and Lim 2000",
+      "evidence_quote": "ATM phosphorylates and stabilizes p53 in response to DNA damage (reviewed in Kastan and Lim 2000).",
+      "location": "Results"
+    },
+    {
+      "source": "irradiation",
+      "target": "p53",
+      "effect": "activates",
+      "context": "in IMR90 primary fibroblasts",
+      "evidence_quote": "Quantitative immunoblotting showed that cells overexpressing TRF2 had a diminished ability to induce p53 after irradiation (Figures 2A and 2B).",
+      "location": "Results"
+    },
+    {
+      "source": "irradiation",
+      "target": "NBS1",
+      "effect": "activates",
+      "context": "in irradiated IMR90 control cells exposed to 20 Gy IR",
+      "evidence_quote": "Extracts from irradiated control cells showed the previously reported retardation of Nbs1 and its reactivity with the S343–P-specific Nbs1 antibody (Figure 2C).",
+      "location": "Results"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 8505,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 4037,
+    "output_tokens_details": {
+      "reasoning_tokens": 3594
+    },
+    "total_tokens": 12542
+  },
+  "from_cache": false
+}

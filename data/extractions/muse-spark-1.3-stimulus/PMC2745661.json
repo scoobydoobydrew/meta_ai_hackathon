@@ -1,0 +1,53 @@
+{
+  "pmcid": "PMC2745661",
+  "title": "Human papillomaviruses activate the ATM DNA damage pathway for viral genome amplification upon differentiation",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 3,
+    "grounded": 3,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "double-strand breaks",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "general cellular response, cited from prior work",
+      "evidence_quote": "In response to double-strand breaks or changes in chromatin, ATM is activated through the autophosphorylation of inactive, dimeric ATM on serine 1981, followed by dissociation into active monomers [30].",
+      "location": "HPV induces a DNA damage response"
+    },
+    {
+      "source": "UV damage",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general cellular response, cited from prior work",
+      "evidence_quote": "ATM is a prime mediator of the cellular response to double strand breaks [10], while ATR controls the response to UV damage, as well as stalled DNA replication forks [11].",
+      "location": "Introduction"
+    },
+    {
+      "source": "stalled DNA replication forks",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general cellular response, cited from prior work",
+      "evidence_quote": "ATM is a prime mediator of the cellular response to double strand breaks [10], while ATR controls the response to UV damage, as well as stalled DNA replication forks [11].",
+      "location": "Introduction"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 11739,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2088,
+    "output_tokens_details": {
+      "reasoning_tokens": 1811
+    },
+    "total_tokens": 13827
+  },
+  "from_cache": false
+}

@@ -1,0 +1,69 @@
+{
+  "pmcid": "PMC6144794",
+  "title": "Combined deficiency of Senataxin and DNA-PKcs causes DNA damage accumulation and neurodegeneration in spinal muscular atrophy",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 5,
+    "grounded": 5,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "ssDNA",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "dividing non-SMA human cells; general statement cited from prior work (ref 31)",
+      "evidence_quote": "Indeed, SMN-deficient cells showed increased phosphorylation also of the ATR kinase (Figure 2F), which responds to ssDNA and is activated following DSB processing (31) and of the ATR-downstream kinase, CHK1 (Figure 2G) (32).",
+      "location": "SMN deficiency causes DSBs and DDR activation in dividing non-SMA cells"
+    },
+    {
+      "source": "SSB",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "spinal cord tissues from SMA mice and severe SMA type I patients, SMA neurons",
+      "evidence_quote": "suggesting activation of the ATR/CHK1 pathway due to increased SSB or ssDNA-associated DNA damage in SMA neurons.",
+      "location": "Combined deficiency of SETX and DNA-PKcs in SMA mice and patient spinal cords tissues causes DNA damage accumulation and activation of DDR pathways"
+    },
+    {
+      "source": "SSB",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "spinal cord tissues from SMA mice and severe SMA type I patients, SMA neurons",
+      "evidence_quote": "suggesting activation of the ATR/CHK1 pathway due to increased SSB or ssDNA-associated DNA damage in SMA neurons.",
+      "location": "Combined deficiency of SETX and DNA-PKcs in SMA mice and patient spinal cords tissues causes DNA damage accumulation and activation of DDR pathways"
+    },
+    {
+      "source": "ssDNA-associated DNA damage",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "spinal cord tissues from SMA mice and severe SMA type I patients, SMA neurons",
+      "evidence_quote": "suggesting activation of the ATR/CHK1 pathway due to increased SSB or ssDNA-associated DNA damage in SMA neurons.",
+      "location": "Combined deficiency of SETX and DNA-PKcs in SMA mice and patient spinal cords tissues causes DNA damage accumulation and activation of DDR pathways"
+    },
+    {
+      "source": "ssDNA-associated DNA damage",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "spinal cord tissues from SMA mice and severe SMA type I patients, SMA neurons",
+      "evidence_quote": "suggesting activation of the ATR/CHK1 pathway due to increased SSB or ssDNA-associated DNA damage in SMA neurons.",
+      "location": "Combined deficiency of SETX and DNA-PKcs in SMA mice and patient spinal cords tissues causes DNA damage accumulation and activation of DDR pathways"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 22741,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 4425,
+    "output_tokens_details": {
+      "reasoning_tokens": 3866
+    },
+    "total_tokens": 27166
+  },
+  "from_cache": false
+}

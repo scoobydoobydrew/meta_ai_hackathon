@@ -1,0 +1,53 @@
+{
+  "pmcid": "PMC3950324",
+  "title": "ROS-dependent activation of JNK converts p53 into an efficient inhibitor of oncogenes leading to robust apoptosis",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 3,
+    "grounded": 3,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "UV",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "cited from other work; cell type not specified in this statement",
+      "evidence_quote": "As JNK has been shown to mediate the UV-induced γH2AX,30 we assessed the role of JNK in γH2AX accumulation.",
+      "location": "JNK activated by ROS contributes to the induction of DDR and converts p53 into an efficient inhibitor of oncogenes"
+    },
+    {
+      "source": "cisplatin",
+      "target": "p53",
+      "effect": "activates",
+      "context": "cited from other work (references 27, 28); tested in cancer cells upon pharmacological activation of p53",
+      "evidence_quote": "To elucidate whether ROS contribute to the apoptosis induction upon other types of pharmacological activation of p53, we used cisplatin (CDDP), which has been shown to activate p53 and inhibit the TrxR enzyme activity.27, 28",
+      "location": "Generation of ROS leads to DDR and confers synthetic lethality upon p53 reactivation"
+    },
+    {
+      "source": "cisplatin",
+      "target": "TXNRD1",
+      "effect": "inhibits",
+      "context": "cited from other work (references 27, 28); tested in cancer cells upon pharmacological activation of p53",
+      "evidence_quote": "To elucidate whether ROS contribute to the apoptosis induction upon other types of pharmacological activation of p53, we used cisplatin (CDDP), which has been shown to activate p53 and inhibit the TrxR enzyme activity.27, 28",
+      "location": "Generation of ROS leads to DDR and confers synthetic lethality upon p53 reactivation"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 10596,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 3118,
+    "output_tokens_details": {
+      "reasoning_tokens": 2739
+    },
+    "total_tokens": 13714
+  },
+  "from_cache": false
+}

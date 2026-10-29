@@ -65,6 +65,39 @@ PAPER ({pmcid}):
 {text}
 """
 
+STIMULUS_PROMPT = """You extract from one scientific paper about the DNA damage response the statements in which a
+DNA-damaging stimulus changes the activity or the level of a molecule.
+
+A stimulus is DNA damage itself or an agent that causes it: DNA double-strand breaks, ionizing radiation (IR, gamma
+rays, X-rays), UV, stalled replication forks, single-stranded DNA or replication stress, or a genotoxic drug. Write
+the stimulus as the paper does (for example "ionizing radiation", "DNA double-strand breaks", "UV", "replication
+stress"). Examples of the kind of statement: "Ionizing radiation activates ATM" (source "ionizing radiation", target
+ATM, effect activates); "DSBs activate DNA-PK" (source "DNA double-strand breaks", target DNA-PK).
+
+Rules:
+- The source is the stimulus. The target is the molecule (protein, gene or RNA) whose activity, phosphorylation or
+  level it raises (effect "activates") or lowers (effect "inhibits"). Effect "requires" is not used here.
+- Use the official gene or protein symbol for the target (MDM2, CHK1, ATR, DNA-PK, p53, ...). Do not write a
+  modification as a separate molecule: "phospho-p53" is p53.
+- Report only what this paper states or shows. If it only cites the statement from other work, you may still report it
+  and say so in "context".
+- Do NOT extract outcomes: cell survival, colony formation, sensitivity or resistance to radiation or to a drug, tumour
+  growth, or the fraction of cells that die, arrest or senesce. Do NOT extract statements in which one molecule acts on
+  another molecule; those are collected separately.
+- "evidence_quote" must be copied exactly, character for character, from the paper text below: one sentence or less,
+  at most 40 words. Do not paraphrase, shorten with ellipses, or join separate sentences.
+- "context" is the cell type, species, or condition the statement holds in, as the paper gives it.
+- "location" is the section heading or the figure or table caption the quote comes from.
+- Be exhaustive: report every distinct stimulus-target-effect statement, including those in the discussion and in
+  figure and table captions. Do not report the same one twice.
+- If the paper contains no such statement, return an empty list. Do not invent claims to fill the list.
+
+PAPER ({pmcid}):
+{text}
+"""
+
+PROMPTS = {"mechanism": PROMPT, "stimulus": STIMULUS_PROMPT}
+
 SCHEMA = {
     "type": "object",
     "properties": {
@@ -135,13 +168,13 @@ class PaperResult:
         }
 
 
-def build_prompt(pmcid: str, text: str) -> str:
-    return PROMPT.format(pmcid=pmcid, text=text)
+def build_prompt(pmcid: str, text: str, kind: str = "mechanism") -> str:
+    return PROMPTS[kind].format(pmcid=pmcid, text=text)
 
 
-def extract_paper(pmcid: str, text: str, *, model: str = DEFAULT_MODEL, **kwargs) -> PaperResult:
+def extract_paper(pmcid: str, text: str, *, model: str = DEFAULT_MODEL, kind: str = "mechanism", **kwargs) -> PaperResult:
     result = complete(
-        build_prompt(pmcid, text), model=model, text=TEXT_FORMAT, reasoning={"effort": EFFORT}, **kwargs
+        build_prompt(pmcid, text, kind), model=model, text=TEXT_FORMAT, reasoning={"effort": EFFORT}, **kwargs
     )
     claims = Extraction.model_validate(json.loads(result.text)).claims
     grounded, ungrounded, outcome_level = [], [], []

@@ -1,0 +1,53 @@
+{
+  "pmcid": "PMC4633921",
+  "title": "ATM, ATR and DNA-PKcs expressions correlate to adverse clinical outcomes in epithelial ovarian cancers",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 3,
+    "grounded": 3,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "DNA double strand breaks",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "general statement cited from prior work",
+      "evidence_quote": "Whereas ATM and DNA-PK are predominantly activated by DNA double strand breaks (DSBs)",
+      "location": "Introduction"
+    },
+    {
+      "source": "DNA double strand breaks",
+      "target": "DNA-PK",
+      "effect": "activates",
+      "context": "general statement cited from prior work",
+      "evidence_quote": "Whereas ATM and DNA-PK are predominantly activated by DNA double strand breaks (DSBs)",
+      "location": "Introduction"
+    },
+    {
+      "source": "a number of DNA damaging lesions that involve single-stranded (SS)–double-stranded (DS) junctions",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general statement cited from prior work",
+      "evidence_quote": "ATR is activated in response to a number of DNA damaging lesions that involve single-stranded (SS)–double-stranded (DS) junctions",
+      "location": "Introduction"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 5408,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 1972,
+    "output_tokens_details": {
+      "reasoning_tokens": 1736
+    },
+    "total_tokens": 7380
+  },
+  "from_cache": false
+}

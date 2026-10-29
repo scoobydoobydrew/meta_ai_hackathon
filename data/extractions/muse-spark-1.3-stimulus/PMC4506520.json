@@ -1,0 +1,28 @@
+{
+  "pmcid": "PMC4506520",
+  "title": "Aneuploidy generates proteotoxic stress and DNA damage concurrently with p53-mediated post-mitotic apoptosis in SAC-impaired cells",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 0,
+    "grounded": 0,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 13956,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 1154,
+    "output_tokens_details": {
+      "reasoning_tokens": 1140
+    },
+    "total_tokens": 15110
+  },
+  "from_cache": false
+}

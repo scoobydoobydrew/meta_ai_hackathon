@@ -1,0 +1,61 @@
+{
+  "pmcid": "PMC4925817",
+  "title": "Apoptosis as anticancer mechanism: function and dysfunction of its modulators and targeted therapeutic strategies",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 4,
+    "grounded": 4,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "DNA damage",
+      "target": "p53",
+      "effect": "activates",
+      "context": "upon DNA damage, in general",
+      "evidence_quote": "The tumor suppressor p53 is a transcription factor that, upon DNA damage, is activated to induce sequence-specific target genes involved in either cancer cell growth arrest or apoptosis [112].",
+      "location": "Oncosuppressor p53 and apoptosis"
+    },
+    {
+      "source": "genotoxic stress",
+      "target": "p53",
+      "effect": "activates",
+      "context": "in response to genotoxic stress",
+      "evidence_quote": "in response to genotoxic stress, however, p53 undergoes post-translational modifications that allow the protein to escape MDM2 control, accumulate, and become active [133].",
+      "location": "Waking up the guardian: p53 as a druggable target"
+    },
+    {
+      "source": "UV irradiation",
+      "target": "p53",
+      "effect": "activates",
+      "context": "in response to UV irradiation and chemotherapy",
+      "evidence_quote": "a key determinant in shifting the p53 pro-apoptotic transcription in response, for instance, to UV irradiation and chemotherapy [136,137].",
+      "location": "Waking up the guardian: p53 as a druggable target"
+    },
+    {
+      "source": "low genotoxic damage",
+      "target": "HIPK2",
+      "effect": "inhibits",
+      "context": "in response to low genotoxic damage",
+      "evidence_quote": "MDM2 can also trigger, in response to low genotoxic damage, the downregulation of p53 apoptotic activator HIPK2 [148].",
+      "location": "Waking up the guardian: p53 as a druggable target"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 9518,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 3158,
+    "output_tokens_details": {
+      "reasoning_tokens": 2788
+    },
+    "total_tokens": 12676
+  },
+  "from_cache": false
+}

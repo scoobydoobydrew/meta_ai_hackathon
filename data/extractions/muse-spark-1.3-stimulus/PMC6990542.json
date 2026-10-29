@@ -1,0 +1,125 @@
+{
+  "pmcid": "PMC6990542",
+  "title": "ATM, ATR and DNA-PKcs kinases-the lessons from the mouse models: inhibition ≠ deletion",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 12,
+    "grounded": 12,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "DSBs ends",
+      "target": "DNA-PKcs",
+      "effect": "activates",
+      "context": "mammalian DDR",
+      "evidence_quote": "In terms of the DNA lesions, DNA-PKcs is activated by DSBs ends [6], ATR by extended ssDNA [7] and ATM by potentially diverse DNA structures including chromosomal DNA DSBs and others [8].",
+      "location": "Background"
+    },
+    {
+      "source": "extended ssDNA",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "mammalian DDR",
+      "evidence_quote": "In terms of the DNA lesions, DNA-PKcs is activated by DSBs ends [6], ATR by extended ssDNA [7] and ATM by potentially diverse DNA structures including chromosomal DNA DSBs and others [8].",
+      "location": "Background"
+    },
+    {
+      "source": "chromosomal DNA DSBs",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "mammalian DDR",
+      "evidence_quote": "In terms of the DNA lesions, DNA-PKcs is activated by DSBs ends [6], ATR by extended ssDNA [7] and ATM by potentially diverse DNA structures including chromosomal DNA DSBs and others [8].",
+      "location": "Background"
+    },
+    {
+      "source": "IR",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "in ATM-deficient or inhibited cells",
+      "evidence_quote": "also contribute to the residual IR induced phosphorylation of ATM substrates (e.g., H2AX, SMC1 and KAP1) in ATM-deficient or inhibited cells [20, 30, 31]",
+      "location": "DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "IR",
+      "target": "SMC1",
+      "effect": "activates",
+      "context": "in ATM-deficient or inhibited cells",
+      "evidence_quote": "also contribute to the residual IR induced phosphorylation of ATM substrates (e.g., H2AX, SMC1 and KAP1) in ATM-deficient or inhibited cells [20, 30, 31]",
+      "location": "DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "IR",
+      "target": "KAP1",
+      "effect": "activates",
+      "context": "in ATM-deficient or inhibited cells",
+      "evidence_quote": "also contribute to the residual IR induced phosphorylation of ATM substrates (e.g., H2AX, SMC1 and KAP1) in ATM-deficient or inhibited cells [20, 30, 31]",
+      "location": "DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "radiation",
+      "target": "DNA-PKcs",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "Upon radiation, the S2056 cluster is primarily phosphorylated by DNA-PKcs itself [70].",
+      "location": "DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "IR",
+      "target": "DNA-PKcs",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "Following IR or UV, T2609 is phosphorylated by ATM and ATR, respectively [71, 72].",
+      "location": "DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "UV",
+      "target": "DNA-PKcs",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "Following IR or UV, T2609 is phosphorylated by ATM and ATR, respectively [71, 72].",
+      "location": "DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "resected DSBs",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "In addition to resected DSBs, R-loops generated during transcription, DNA replication stresses induced by polymerase poisons and deoxyribonucleotide triphosphate (dNTPs) depletion can all activate ATR [127].",
+      "location": "Ataxia-telangiectasia and Rad3 related (ATR)"
+    },
+    {
+      "source": "DNA replication stresses",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general",
+      "evidence_quote": "In addition to resected DSBs, R-loops generated during transcription, DNA replication stresses induced by polymerase poisons and deoxyribonucleotide triphosphate (dNTPs) depletion can all activate ATR [127].",
+      "location": "Ataxia-telangiectasia and Rad3 related (ATR)"
+    },
+    {
+      "source": "replication stress",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "upon replication stress",
+      "evidence_quote": "CHK1 is a relatively specific substrate of ATR upon replication stress, but can also be phosphorylated by ATM or DNA-PKcs in the absence of ATR kinase activity [21, 139].",
+      "location": "Ataxia-telangiectasia and Rad3 related (ATR)"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 10243,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 5435,
+    "output_tokens_details": {
+      "reasoning_tokens": 4352
+    },
+    "total_tokens": 15678
+  },
+  "from_cache": false
+}

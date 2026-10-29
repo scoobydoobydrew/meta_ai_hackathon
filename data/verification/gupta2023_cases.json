@@ -1,0 +1,17 @@
+{
+  "description": "The verification set: wild-type and perturbed behaviours that an augmented network must keep. Used inside the repair loop. Disjoint from the held-out set (data/heldout), which only scores the final networks.",
+  "source": "Gupta S, Panda PK, Silveira DA, Ahuja R, Hashimoto RF. Cells 2023;12(7):1085, doi 10.3390/cells12071085: Section 3.2, Figure 3 and Table 1. The expected phenotypes are the ones that paper reports for its own model; the base network reproduces all of them (tests/test_phenotypes.py).",
+  "notes": "A perturbation sets nodes to 0 (knock-out) or 1 (E1, gain of function). exact means the set of phenotypes over all fixed points must equal the listed set; covers means it must contain it. g2_arrest is the readout of docs/heldout_protocol.md (Cdc2_CycB off while DNA_damage is on); its expectation is the base network's own wild-type behaviour, kept as a regression constraint, not a literature fact.",
+  "cases": [
+    {"id": "V01", "from": "Section 3.2, no damage", "stimulus": {"DNA_damage": 0}, "perturbation": {}, "phenotypes": ["proliferation"], "match": "exact", "g2_arrest": false},
+    {"id": "V02", "from": "Section 3.2, damage: the four stable fates", "stimulus": {"DNA_damage": 1}, "perturbation": {}, "phenotypes": ["arrest", "senescence", "autophagy", "apoptosis"], "match": "exact", "g2_arrest": true},
+    {"id": "V03", "from": "Figure 3, TUG1 E1", "stimulus": {"DNA_damage": 1}, "perturbation": {"TUG1": 1}, "phenotypes": ["arrest", "senescence", "autophagy", "apoptosis"], "match": "exact"},
+    {"id": "V04", "from": "Figure 3, TUG1 KO", "stimulus": {"DNA_damage": 1}, "perturbation": {"TUG1": 0}, "phenotypes": ["apoptosis"], "match": "exact"},
+    {"id": "V05", "from": "Figure 3, miR-221 E1", "stimulus": {"DNA_damage": 1}, "perturbation": {"miR221": 1}, "phenotypes": ["apoptosis"], "match": "exact"},
+    {"id": "V06", "from": "Figure 3, miR-221 E1 + TUG1 KO", "stimulus": {"DNA_damage": 1}, "perturbation": {"miR221": 1, "TUG1": 0}, "phenotypes": ["apoptosis"], "match": "exact"},
+    {"id": "V07", "from": "Figure 3, TUG1 E1 + miR-221 KO", "stimulus": {"DNA_damage": 1}, "perturbation": {"TUG1": 1, "miR221": 0}, "phenotypes": ["arrest", "senescence", "autophagy", "apoptosis"], "match": "exact"},
+    {"id": "V08", "from": "Table 1 rows 1 and 4, p53 E1 + PTEN KO", "stimulus": {"DNA_damage": 1}, "perturbation": {"p53": 1, "PTEN": 0}, "phenotypes": ["senescence", "apoptosis"], "match": "exact"},
+    {"id": "V09", "from": "Table 1 row 10, PTEN E1 + WWP1 KO (a prediction of the paper)", "stimulus": {"DNA_damage": 1}, "perturbation": {"PTEN": 1, "WWP1": 0}, "phenotypes": ["arrest", "senescence", "autophagy", "apoptosis"], "match": "exact"},
+    {"id": "V10", "from": "Table 1 rows 2, 3, 5, 6, 7, PTEN E1", "stimulus": {"DNA_damage": 1}, "perturbation": {"PTEN": 1}, "phenotypes": ["arrest", "autophagy", "apoptosis"], "match": "covers"}
+  ]
+}

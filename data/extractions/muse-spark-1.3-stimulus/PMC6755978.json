@@ -1,0 +1,45 @@
+{
+  "pmcid": "PMC6755978",
+  "title": "mTOR kinase leads to PTEN-loss-induced cellular senescence by phosphorylating p53",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 2,
+    "grounded": 2,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "IR",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "MCF7 cells, IR-exposed positive control",
+      "evidence_quote": "In contrast to IR-exposed positive control (PC) group (Fig. 1c, d, g), P-ATM and γH2AX were not observed in active AKT-induced senescence (Fig. 1g).",
+      "location": "PTEN depletion induces cellular senescence via the p53-p21 signaling pathway without triggering a DNA damage response"
+    },
+    {
+      "source": "IR",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "MCF7 cells, IR-exposed positive control",
+      "evidence_quote": "In contrast to IR-exposed positive control (PC) group (Fig. 1c, d, g), P-ATM and γH2AX were not observed in active AKT-induced senescence (Fig. 1g).",
+      "location": "PTEN depletion induces cellular senescence via the p53-p21 signaling pathway without triggering a DNA damage response"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 9501,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2399,
+    "output_tokens_details": {
+      "reasoning_tokens": 2148
+    },
+    "total_tokens": 11900
+  },
+  "from_cache": false
+}

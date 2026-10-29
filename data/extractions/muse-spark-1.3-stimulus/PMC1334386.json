@@ -1,0 +1,28 @@
+{
+  "pmcid": "PMC1334386",
+  "title": "Structural basis of competitive recognition of p53 and MDM2 by HAUSP/USP7: implications for the regulation of the p53-MDM2 pathway",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 0,
+    "grounded": 0,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 11834,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 518,
+    "output_tokens_details": {
+      "reasoning_tokens": 504
+    },
+    "total_tokens": 12352
+  },
+  "from_cache": false
+}

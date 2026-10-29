@@ -1,0 +1,85 @@
+{
+  "pmcid": "PMC1904188",
+  "title": "HIV-1 Vpr activates the G2 checkpoint through manipulation of the ubiquitin proteasome system",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 7,
+    "grounded": 7,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "DNA replication stress",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general statement in abstract, no specific cell type given",
+      "evidence_quote": "HIV-1 Vpr is a viral accessory protein that activates ATR through the induction of DNA replication stress.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "double-strand breaks",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "etoposide-treated cells, general statement",
+      "evidence_quote": "Etoposide generates double-strand breaks and activates the G2 checkpoint through a combination of pathways that activate ATM, ATR and/or DNA-PK.",
+      "location": "DCAF1 is required for induction of G2 arrest by HIV-1 Vpr"
+    },
+    {
+      "source": "double-strand breaks",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "etoposide-treated cells, general statement",
+      "evidence_quote": "Etoposide generates double-strand breaks and activates the G2 checkpoint through a combination of pathways that activate ATM, ATR and/or DNA-PK.",
+      "location": "DCAF1 is required for induction of G2 arrest by HIV-1 Vpr"
+    },
+    {
+      "source": "double-strand breaks",
+      "target": "DNA-PK",
+      "effect": "activates",
+      "context": "etoposide-treated cells, general statement",
+      "evidence_quote": "Etoposide generates double-strand breaks and activates the G2 checkpoint through a combination of pathways that activate ATM, ATR and/or DNA-PK.",
+      "location": "DCAF1 is required for induction of G2 arrest by HIV-1 Vpr"
+    },
+    {
+      "source": "low-dose aphidicolin",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "in cells treated with low-dose aphidicolin, cited from other work",
+      "evidence_quote": "Low-dose aphidicolin induces mild DNA polymerase inhibition and results in specific activation of ATR [22].",
+      "location": "DCAF1 is required for induction of G2 arrest by HIV-1 Vpr"
+    },
+    {
+      "source": "DNA damage",
+      "target": "CDT1",
+      "effect": "inhibits",
+      "context": "dividing cells upon DNA damage, cited from other work",
+      "evidence_quote": "Upon DNA damage or firing of origins of replication, Cdt1 becomes ubiquitinated by the Cul4A-DDB1 E3 ligase complex resulting in its proteasomal degradation [28-30].",
+      "location": "Vpr does not affect the steady-state levels of Cdt1"
+    },
+    {
+      "source": "DNA damage",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "model proposed by Schrofelbauer et al., cited from other work",
+      "evidence_quote": "Dissociation of DDB1/DDB2 then leads to inability to recognize and repair DNA damage, and this DNA damage is the ultimate trigger of ATR activation and G2 arrest [31].",
+      "location": "Results and Discussion"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 6593,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 3412,
+    "output_tokens_details": {
+      "reasoning_tokens": 2763
+    },
+    "total_tokens": 10005
+  },
+  "from_cache": false
+}

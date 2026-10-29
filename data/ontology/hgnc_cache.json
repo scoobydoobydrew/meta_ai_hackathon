@@ -1,0 +1,4780 @@
+{
+ "alias_symbol:14-3-3": [
+  {
+   "alias_name": [
+    "protein tau",
+    "14-3-3 theta"
+   ],
+   "alias_symbol": [
+    "HS1",
+    "14-3-3"
+   ],
+   "hgnc_id": "HGNC:12854",
+   "name": "tyrosine 3-monooxygenase/tryptophan 5-monooxygenase activation protein theta",
+   "prev_symbol": null,
+   "symbol": "YWHAQ"
+  }
+ ],
+ "alias_symbol:14-3-3-Σ": [],
+ "alias_symbol:14-3-3-σ": [],
+ "alias_symbol:1433Σ": [],
+ "alias_symbol:1433σ": [],
+ "alias_symbol:4E-BP1": [
+  {
+   "alias_name": [
+    "phosphorylated heat- and acid-stable protein regulated by insulin 1"
+   ],
+   "alias_symbol": [
+    "PHAS-I",
+    "4E-BP1"
+   ],
+   "hgnc_id": "HGNC:3288",
+   "name": "eukaryotic translation initiation factor 4E binding protein 1",
+   "prev_symbol": null,
+   "symbol": "EIF4EBP1"
+  }
+ ],
+ "alias_symbol:4EBP1": [],
+ "alias_symbol:4NQO": [],
+ "alias_symbol:53BP1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "53BP1",
+    "p202",
+    "TDRD30"
+   ],
+   "hgnc_id": "HGNC:11999",
+   "name": "tumor protein p53 binding protein 1",
+   "prev_symbol": null,
+   "symbol": "TP53BP1"
+  }
+ ],
+ "alias_symbol:A NUMBER OF DNA DAMAGING LESIONS THAT INVOLVE SINGLE-STRANDED (SS)–DOUBLE-STRANDED (DS) JUNCTIONS": [],
+ "alias_symbol:ACTINOMYCIN D": [],
+ "alias_symbol:ACTINOMYCIND": [],
+ "alias_symbol:AIF": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "AIF",
+    "CMTX4",
+    "DFNX5"
+   ],
+   "hgnc_id": "HGNC:8768",
+   "name": "apoptosis inducing factor mitochondria associated 1",
+   "prev_symbol": [
+    "PDCD8",
+    "NAMSD",
+    "AUNX1"
+   ],
+   "symbol": "AIFM1"
+  }
+ ],
+ "alias_symbol:ALKALINE PHOSPHATASE": [],
+ "alias_symbol:ALKALINEPHOSPHATASE": [],
+ "alias_symbol:ANUMBEROFDNADAMAGINGLESIONSTHATINVOLVESINGLESTRANDED(SS)–DOUBLESTRANDED(DS)JUNCTIONS": [],
+ "alias_symbol:APHIDICOLIN": [],
+ "alias_symbol:ARF": [
+  {
+   "alias_name": [
+    "CDKN2A/ARF Intron 2 lncRNA",
+    "multiple tumour suppressor 1",
+    "cyclin-dependent kinase 4 inhibitor A",
+    "p19 alternate open reading frame",
+    "p14 alternate open reading frame",
+    "inhibitor of cdk4 A"
+   ],
+   "alias_symbol": [
+    "CDK4I",
+    "p16",
+    "INK4a",
+    "MTS1",
+    "CMM2",
+    "ARF",
+    "p19",
+    "p14",
+    "INK4",
+    "p16INK4a",
+    "p19Arf",
+    "p14ARF",
+    "P16-INK4A",
+    "CAI2"
+   ],
+   "hgnc_id": "HGNC:1787",
+   "name": "cyclin dependent kinase inhibitor 2A",
+   "prev_symbol": [
+    "CDKN2",
+    "MLM"
+   ],
+   "symbol": "CDKN2A"
+  }
+ ],
+ "alias_symbol:AURORA B": [],
+ "alias_symbol:AURORAB": [],
+ "alias_symbol:Apaf-1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "CED4",
+    "APAF-1"
+   ],
+   "hgnc_id": "HGNC:576",
+   "name": "apoptotic peptidase activating factor 1",
+   "prev_symbol": null,
+   "symbol": "APAF1"
+  }
+ ],
+ "alias_symbol:Artemis": [
+  {
+   "alias_name": [
+    "PSO2 homolog (S. cerevisiae)"
+   ],
+   "alias_symbol": [
+    "ARTEMIS",
+    "FLJ11360",
+    "SNM1C",
+    "A-SCID"
+   ],
+   "hgnc_id": "HGNC:17642",
+   "name": "DNA cross-link repair 1C",
+   "prev_symbol": [
+    "SCIDA"
+   ],
+   "symbol": "DCLRE1C"
+  }
+ ],
+ "alias_symbol:Aura": [
+  {
+   "alias_name": [
+    "protein phosphatase 1, regulatory subunit 47",
+    "Aurora-A kinase"
+   ],
+   "alias_symbol": [
+    "BTAK",
+    "AurA",
+    "STK7",
+    "ARK1",
+    "PPP1R47",
+    "AIK"
+   ],
+   "hgnc_id": "HGNC:11393",
+   "name": "aurora kinase A",
+   "prev_symbol": [
+    "STK15",
+    "STK6"
+   ],
+   "symbol": "AURKA"
+  }
+ ],
+ "alias_symbol:Aurora B": [],
+ "alias_symbol:AuroraB": [],
+ "alias_symbol:B-MYB": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "BMYB",
+    "B-MYB"
+   ],
+   "hgnc_id": "HGNC:7548",
+   "name": "MYB proto-oncogene like 2",
+   "prev_symbol": null,
+   "symbol": "MYBL2"
+  }
+ ],
+ "alias_symbol:BCAAS": [],
+ "alias_symbol:BCAAs": [],
+ "alias_symbol:BH3 MIMETICS": [],
+ "alias_symbol:BH3 mimetics": [],
+ "alias_symbol:BH3MIMETICS": [],
+ "alias_symbol:BH3mimetics": [],
+ "alias_symbol:BLEOMYCIN": [],
+ "alias_symbol:Bak": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "BCL2L7",
+    "BAK"
+   ],
+   "hgnc_id": "HGNC:949",
+   "name": "BCL2 antagonist/killer 1",
+   "prev_symbol": [
+    "CDN1"
+   ],
+   "symbol": "BAK1"
+  }
+ ],
+ "alias_symbol:Bcl-x": [
+  {
+   "alias_name": [
+    "protein phosphatase 1, regulatory subunit 52"
+   ],
+   "alias_symbol": [
+    "BCLX",
+    "BCL2L",
+    "Bcl-X",
+    "bcl-xL",
+    "bcl-xS",
+    "PPP1R52"
+   ],
+   "hgnc_id": "HGNC:992",
+   "name": "BCL2 like 1",
+   "prev_symbol": null,
+   "symbol": "BCL2L1"
+  }
+ ],
+ "alias_symbol:Bcl-xL": [
+  {
+   "alias_name": [
+    "protein phosphatase 1, regulatory subunit 52"
+   ],
+   "alias_symbol": [
+    "BCLX",
+    "BCL2L",
+    "Bcl-X",
+    "bcl-xL",
+    "bcl-xS",
+    "PPP1R52"
+   ],
+   "hgnc_id": "HGNC:992",
+   "name": "BCL2 like 1",
+   "prev_symbol": null,
+   "symbol": "BCL2L1"
+  }
+ ],
+ "alias_symbol:BubR1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "BUBR1",
+    "MAD3L",
+    "Bub1A",
+    "SSK1"
+   ],
+   "hgnc_id": "HGNC:1149",
+   "name": "BUB1 mitotic checkpoint serine/threonine kinase B",
+   "prev_symbol": null,
+   "symbol": "BUB1B"
+  }
+ ],
+ "alias_symbol:CAFFEINE": [],
+ "alias_symbol:CALPAIN": [],
+ "alias_symbol:CAMPTOTHECIN": [],
+ "alias_symbol:CASEIN KINASE I": [],
+ "alias_symbol:CASEINKINASEI": [],
+ "alias_symbol:CASPASE-8": [],
+ "alias_symbol:CASPASE-9": [],
+ "alias_symbol:CASPASE8": [],
+ "alias_symbol:CASPASE9": [],
+ "alias_symbol:CASPPRO": [],
+ "alias_symbol:CBP/P300": [],
+ "alias_symbol:CBP/p300": [],
+ "alias_symbol:CD23": [
+  {
+   "alias_name": [
+    "Fc epsilon RII",
+    "C-type lectin domain family 4 member J"
+   ],
+   "alias_symbol": [
+    "CLEC4J",
+    "CD23",
+    "FCErII",
+    "FcepsilonRII"
+   ],
+   "hgnc_id": "HGNC:3612",
+   "name": "Fc epsilon receptor II",
+   "prev_symbol": [
+    "CD23A",
+    "FCE2"
+   ],
+   "symbol": "FCER2"
+  }
+ ],
+ "alias_symbol:CDDP": [],
+ "alias_symbol:CENP-E": [],
+ "alias_symbol:CIAP": [],
+ "alias_symbol:CIS-PLATIN": [],
+ "alias_symbol:CISPLATIN": [],
+ "alias_symbol:CMPD-A": [],
+ "alias_symbol:CMPDA": [],
+ "alias_symbol:COLLAGEN 1": [],
+ "alias_symbol:COLLAGEN1": [],
+ "alias_symbol:CPT": [],
+ "alias_symbol:CYCLIN A": [],
+ "alias_symbol:CYCLIN D": [],
+ "alias_symbol:CYCLIN D2": [],
+ "alias_symbol:CYCLIN E": [],
+ "alias_symbol:CYCLINA": [],
+ "alias_symbol:CYCLINA-CDK2": [],
+ "alias_symbol:CYCLINACDK2": [],
+ "alias_symbol:CYCLIND": [],
+ "alias_symbol:CYCLIND-CDK4/6": [],
+ "alias_symbol:CYCLIND2": [],
+ "alias_symbol:CYCLINDCDK4/6": [],
+ "alias_symbol:CYCLINE": [],
+ "alias_symbol:CYCLINE-CDK2": [],
+ "alias_symbol:CYCLINECDK2": [],
+ "alias_symbol:CYTOCHROME-C": [],
+ "alias_symbol:CYTOCHROMEC": [],
+ "alias_symbol:CaspPro": [],
+ "alias_symbol:Cmpd-A": [],
+ "alias_symbol:CmpdA": [],
+ "alias_symbol:CtIP": [
+  {
+   "alias_name": [
+    "CTBP-interacting protein"
+   ],
+   "alias_symbol": [
+    "CtIP",
+    "RIM",
+    "COM1"
+   ],
+   "hgnc_id": "HGNC:9891",
+   "name": "RB binding protein 8, endonuclease",
+   "prev_symbol": [
+    "SCKL2"
+   ],
+   "symbol": "RBBP8"
+  }
+ ],
+ "alias_symbol:Cyclin A": [],
+ "alias_symbol:Cyclin D": [],
+ "alias_symbol:Cyclin E": [],
+ "alias_symbol:CyclinA": [],
+ "alias_symbol:CyclinA-CDK2": [],
+ "alias_symbol:CyclinACDK2": [],
+ "alias_symbol:CyclinD": [],
+ "alias_symbol:CyclinD-CDK4/6": [],
+ "alias_symbol:CyclinDCDK4/6": [],
+ "alias_symbol:CyclinE": [],
+ "alias_symbol:CyclinE-CDK2": [],
+ "alias_symbol:CyclinECDK2": [],
+ "alias_symbol:DNA REPLICATION STRESS": [],
+ "alias_symbol:DNA REPLICATION STRESSES": [],
+ "alias_symbol:DNA TOPOISOMERASE": [],
+ "alias_symbol:DNA replication stress": [],
+ "alias_symbol:DNA replication stresses": [],
+ "alias_symbol:DNA topoisomerase": [],
+ "alias_symbol:DNA-PKcs": [
+  {
+   "alias_name": [
+    "DNA-dependent protein kinase catalytic subunit"
+   ],
+   "alias_symbol": [
+    "DNPK1",
+    "p350",
+    "DNAPK",
+    "XRCC7",
+    "DNA-PKcs",
+    "DNAPKc",
+    "DNA-PKC",
+    "p460"
+   ],
+   "hgnc_id": "HGNC:9413",
+   "name": "protein kinase, DNA-activated, catalytic subunit",
+   "prev_symbol": [
+    "HYRC",
+    "HYRC1"
+   ],
+   "symbol": "PRKDC"
+  }
+ ],
+ "alias_symbol:DNAREPLICATIONSTRESS": [],
+ "alias_symbol:DNAREPLICATIONSTRESSES": [],
+ "alias_symbol:DNATOPOISOMERASE": [],
+ "alias_symbol:DNAreplicationstress": [],
+ "alias_symbol:DNAreplicationstresses": [],
+ "alias_symbol:DNAtopoisomerase": [],
+ "alias_symbol:DOUBLE-STRANDED DNA ENDS": [],
+ "alias_symbol:DOUBLESTRANDEDDNAENDS": [],
+ "alias_symbol:DOXORUBICIN": [],
+ "alias_symbol:DR5": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "DR5",
+    "KILLER",
+    "TRICK2A",
+    "TRAIL-R2",
+    "TRICKB",
+    "CD262",
+    "TRAILR2"
+   ],
+   "hgnc_id": "HGNC:11905",
+   "name": "TNF receptor superfamily member 10b",
+   "prev_symbol": null,
+   "symbol": "TNFRSF10B"
+  }
+ ],
+ "alias_symbol:DREAM": [
+  {
+   "alias_name": [
+    "calsenilin",
+    "DRE-antagonist modulator"
+   ],
+   "alias_symbol": [
+    "DREAM",
+    "KCHIP3"
+   ],
+   "hgnc_id": "HGNC:15523",
+   "name": "potassium voltage-gated channel interacting protein 3",
+   "prev_symbol": [
+    "CSEN"
+   ],
+   "symbol": "KCNIP3"
+  }
+ ],
+ "alias_symbol:E2F": [],
+ "alias_symbol:E6/E7": [],
+ "alias_symbol:E7": [],
+ "alias_symbol:EBNA-LP": [],
+ "alias_symbol:EBNA1": [],
+ "alias_symbol:EBNA2": [],
+ "alias_symbol:EBNA3A": [],
+ "alias_symbol:EBNA3C": [],
+ "alias_symbol:EBNALP": [],
+ "alias_symbol:ETOPOSIDE": [],
+ "alias_symbol:EXTENDED SSDNA": [],
+ "alias_symbol:EXTENDEDSSDNA": [],
+ "alias_symbol:FLIP": [
+  {
+   "alias_name": [
+    "associating protein with POLO1",
+    "Fidgetin-like-1 interacting protein"
+   ],
+   "alias_symbol": [
+    "FLJ10706",
+    "Apolo1",
+    "FLIP",
+    "MEICA1"
+   ],
+   "hgnc_id": "HGNC:25565",
+   "name": "FIGNL1 interacting regulator of recombination and mitosis",
+   "prev_symbol": [
+    "C1orf112"
+   ],
+   "symbol": "FIRRM"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "CASH",
+    "Casper",
+    "CLARP",
+    "FLAME",
+    "FLIP",
+    "I-FLICE",
+    "MRIT",
+    "c-FLIP",
+    "cFLIP"
+   ],
+   "hgnc_id": "HGNC:1876",
+   "name": "CASP8 and FADD like apoptosis regulator",
+   "prev_symbol": [
+    "CASP8AP1"
+   ],
+   "symbol": "CFLAR"
+  }
+ ],
+ "alias_symbol:FORMAZAN": [],
+ "alias_symbol:FOXO": [],
+ "alias_symbol:GEMCITABINE": [],
+ "alias_symbol:GENOTOXIC STRESSES": [],
+ "alias_symbol:GENOTOXICSTRESSES": [],
+ "alias_symbol:GSH-PX": [],
+ "alias_symbol:GSH-Px": [],
+ "alias_symbol:GSHPX": [],
+ "alias_symbol:GSHPx": [],
+ "alias_symbol:GSK3": [],
+ "alias_symbol:GSK3Β": [],
+ "alias_symbol:GSK3β": [],
+ "alias_symbol:H2O2": [],
+ "alias_symbol:HAUSP": [],
+ "alias_symbol:HSP-90": [],
+ "alias_symbol:HSP70": [],
+ "alias_symbol:HSP90": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "Hsp89",
+    "Hsp90",
+    "FLJ31884",
+    "HSP90N"
+   ],
+   "hgnc_id": "HGNC:5253",
+   "name": "heat shock protein 90 alpha family class A member 1",
+   "prev_symbol": [
+    "HSPC1",
+    "HSPCA",
+    "HSPCAL4"
+   ],
+   "symbol": "HSP90AA1"
+  }
+ ],
+ "alias_symbol:HU": [],
+ "alias_symbol:IAPS": [],
+ "alias_symbol:IAPs": [],
+ "alias_symbol:IGF": [
+  {
+   "alias_name": [
+    "somatomedin C"
+   ],
+   "alias_symbol": [
+    "IGF1A",
+    "IGFI",
+    "IGF-I",
+    "IGF"
+   ],
+   "hgnc_id": "HGNC:5464",
+   "name": "insulin like growth factor 1",
+   "prev_symbol": null,
+   "symbol": "IGF1"
+  }
+ ],
+ "alias_symbol:INSULIN": [],
+ "alias_symbol:IRRADIATION": [],
+ "alias_symbol:JNK1": [
+  {
+   "alias_name": [
+    "c-jun N-terminal kinase 1",
+    "stress-activated protein kinase 1",
+    "JUN N-terminal kinase"
+   ],
+   "alias_symbol": [
+    "JNK",
+    "JNK1",
+    "SAPK1"
+   ],
+   "hgnc_id": "HGNC:6881",
+   "name": "mitogen-activated protein kinase 8",
+   "prev_symbol": [
+    "PRKM8"
+   ],
+   "symbol": "MAPK8"
+  }
+ ],
+ "alias_symbol:KAP1": [
+  {
+   "alias_name": [
+    "protein phosphatase 1, regulatory subunit 157",
+    "Transcription intermediary factor 1-beta",
+    "RING finger protein 96",
+    "KRAB-associated protein 1"
+   ],
+   "alias_symbol": [
+    "TIF1B",
+    "KAP1",
+    "TF1B",
+    "RNF96",
+    "PPP1R157",
+    "KAP-1",
+    "TIF1-beta",
+    "TIF1beta"
+   ],
+   "hgnc_id": "HGNC:16384",
+   "name": "tripartite motif containing 28",
+   "prev_symbol": null,
+   "symbol": "TRIM28"
+  }
+ ],
+ "alias_symbol:KU": [],
+ "alias_symbol:KU86": [
+  {
+   "alias_name": [
+    "Ku autoantigen, 80kDa"
+   ],
+   "alias_symbol": [
+    "KU80",
+    "KARP-1",
+    "Ku86",
+    "KUB2"
+   ],
+   "hgnc_id": "HGNC:12833",
+   "name": "X-ray repair cross complementing 5",
+   "prev_symbol": null,
+   "symbol": "XRCC5"
+  }
+ ],
+ "alias_symbol:Ku80": [
+  {
+   "alias_name": [
+    "Ku autoantigen, 80kDa"
+   ],
+   "alias_symbol": [
+    "KU80",
+    "KARP-1",
+    "Ku86",
+    "KUB2"
+   ],
+   "hgnc_id": "HGNC:12833",
+   "name": "X-ray repair cross complementing 5",
+   "prev_symbol": null,
+   "symbol": "XRCC5"
+  }
+ ],
+ "alias_symbol:Ku86": [
+  {
+   "alias_name": [
+    "Ku autoantigen, 80kDa"
+   ],
+   "alias_symbol": [
+    "KU80",
+    "KARP-1",
+    "Ku86",
+    "KUB2"
+   ],
+   "hgnc_id": "HGNC:12833",
+   "name": "X-ray repair cross complementing 5",
+   "prev_symbol": null,
+   "symbol": "XRCC5"
+  }
+ ],
+ "alias_symbol:LC3": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "MAP1BLC3",
+    "MAP1ALC3",
+    "LC3",
+    "LC3A",
+    "ATG8E"
+   ],
+   "hgnc_id": "HGNC:6838",
+   "name": "microtubule associated protein 1 light chain 3 alpha",
+   "prev_symbol": null,
+   "symbol": "MAP1LC3A"
+  }
+ ],
+ "alias_symbol:LET-7": [],
+ "alias_symbol:LET7": [],
+ "alias_symbol:LEUCINE": [],
+ "alias_symbol:LMP1": [],
+ "alias_symbol:LMP2A": [],
+ "alias_symbol:LOW GENOTOXIC DAMAGE": [],
+ "alias_symbol:LOW-DOSE APHIDICOLIN": [],
+ "alias_symbol:LOWDOSEAPHIDICOLIN": [],
+ "alias_symbol:LOWGENOTOXICDAMAGE": [],
+ "alias_symbol:MAO-A": [],
+ "alias_symbol:MDA": [],
+ "alias_symbol:METFORMIN": [],
+ "alias_symbol:MIR-204": [],
+ "alias_symbol:MIR-29": [],
+ "alias_symbol:MIR-30": [],
+ "alias_symbol:MIR-34A": [],
+ "alias_symbol:MIR-608": [],
+ "alias_symbol:MIR218": [],
+ "alias_symbol:MIR29": [],
+ "alias_symbol:MIR30": [],
+ "alias_symbol:MK2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "MK2"
+   ],
+   "hgnc_id": "HGNC:6887",
+   "name": "MAPK activated protein kinase 2",
+   "prev_symbol": null,
+   "symbol": "MAPKAPK2"
+  }
+ ],
+ "alias_symbol:MMNG-TREATMENT": [],
+ "alias_symbol:MMNG-treatment": [],
+ "alias_symbol:MMNGTREATMENT": [],
+ "alias_symbol:MMNGtreatment": [],
+ "alias_symbol:MMS": [],
+ "alias_symbol:MNNG": [],
+ "alias_symbol:MOZ": [
+  {
+   "alias_name": [
+    "Monocytic leukemia zinc finger protein"
+   ],
+   "alias_symbol": [
+    "MOZ"
+   ],
+   "hgnc_id": "HGNC:13013",
+   "name": "lysine acetyltransferase 6A",
+   "prev_symbol": [
+    "ZNF220",
+    "RUNXBP2",
+    "MYST3"
+   ],
+   "symbol": "KAT6A"
+  }
+ ],
+ "alias_symbol:MdmX": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "MDMX",
+    "HDMX"
+   ],
+   "hgnc_id": "HGNC:6974",
+   "name": "MDM4 regulator of p53",
+   "prev_symbol": null,
+   "symbol": "MDM4"
+  }
+ ],
+ "alias_symbol:NBS1": [
+  {
+   "alias_name": [
+    "nucleotide-binding oligomerization domain, leucine rich repeat and pyrin domain containing 2"
+   ],
+   "alias_symbol": [
+    "FLJ20510",
+    "PYPAF2",
+    "NBS1",
+    "PAN1",
+    "CLR19.9"
+   ],
+   "hgnc_id": "HGNC:22948",
+   "name": "NLR family pyrin domain containing 2",
+   "prev_symbol": [
+    "NALP2"
+   ],
+   "symbol": "NLRP2"
+  }
+ ],
+ "alias_symbol:NEC-1": [],
+ "alias_symbol:NEC1": [],
+ "alias_symbol:NEDD4-1": [
+  {
+   "alias_name": [
+    "receptor-potentiating factor 1"
+   ],
+   "alias_symbol": [
+    "KIAA0093",
+    "MGC176705",
+    "NEDD4-1",
+    "RPF1"
+   ],
+   "hgnc_id": "HGNC:7727",
+   "name": "NEDD4 E3 ubiquitin protein ligase",
+   "prev_symbol": null,
+   "symbol": "NEDD4"
+  }
+ ],
+ "alias_symbol:NFKB": [],
+ "alias_symbol:NFkB": [],
+ "alias_symbol:NOX2": [
+  {
+   "alias_name": [
+    "NADPH oxidase 2",
+    "Cytochrome b-245 heavy chain",
+    "Cytochrome b558 subunit beta"
+   ],
+   "alias_symbol": [
+    "GP91-PHOX",
+    "NOX2",
+    "GP91PHOX",
+    "p91-PHOX"
+   ],
+   "hgnc_id": "HGNC:2578",
+   "name": "cytochrome b-245 beta chain",
+   "prev_symbol": [
+    "CGD"
+   ],
+   "symbol": "CYBB"
+  }
+ ],
+ "alias_symbol:NUTLIN-3A": [],
+ "alias_symbol:NUTLIN3A": [],
+ "alias_symbol:Nbs1": [
+  {
+   "alias_name": [
+    "nucleotide-binding oligomerization domain, leucine rich repeat and pyrin domain containing 2"
+   ],
+   "alias_symbol": [
+    "FLJ20510",
+    "PYPAF2",
+    "NBS1",
+    "PAN1",
+    "CLR19.9"
+   ],
+   "hgnc_id": "HGNC:22948",
+   "name": "NLR family pyrin domain containing 2",
+   "prev_symbol": [
+    "NALP2"
+   ],
+   "symbol": "NLRP2"
+  }
+ ],
+ "alias_symbol:Nec-1": [],
+ "alias_symbol:Nec1": [],
+ "alias_symbol:Noxa": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "APR",
+    "NOXA"
+   ],
+   "hgnc_id": "HGNC:9108",
+   "name": "phorbol-12-myristate-13-acetate-induced protein 1",
+   "prev_symbol": null,
+   "symbol": "PMAIP1"
+  }
+ ],
+ "alias_symbol:OLAPARIB": [],
+ "alias_symbol:OMI/HTRA2": [],
+ "alias_symbol:OSTEOCALCIN": [],
+ "alias_symbol:Omi/HtrA2": [],
+ "alias_symbol:P21CIP1/WAF1/SDI1": [],
+ "alias_symbol:P38 MAPK": [],
+ "alias_symbol:P38MAPK": [],
+ "alias_symbol:P70 S6 KINASE": [],
+ "alias_symbol:P70S6K": [],
+ "alias_symbol:P70S6KINASE": [],
+ "alias_symbol:PAI-1": [],
+ "alias_symbol:PAI1": [],
+ "alias_symbol:PAR": [
+  {
+   "alias_name": [
+    "prostate androgen-regulated gene"
+   ],
+   "alias_symbol": [
+    "hJT",
+    "PAR"
+   ],
+   "hgnc_id": "HGNC:6201",
+   "name": "jumping translocation breakpoint",
+   "prev_symbol": null,
+   "symbol": "JTB"
+  }
+ ],
+ "alias_symbol:PARIS": [
+  {
+   "alias_name": [
+    "parkin interacting substrate"
+   ],
+   "alias_symbol": [
+    "FLJ31413",
+    "PARIS"
+   ],
+   "hgnc_id": "HGNC:21948",
+   "name": "zinc finger protein 746",
+   "prev_symbol": null,
+   "symbol": "ZNF746"
+  }
+ ],
+ "alias_symbol:PARP-1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "DKFZP434J214",
+    "DKFZp686N0351",
+    "DDF1",
+    "PARP7",
+    "PARP-7",
+    "PARP-1",
+    "pART14",
+    "RM1",
+    "ARTD14"
+   ],
+   "hgnc_id": "HGNC:23696",
+   "name": "TCDD inducible poly(ADP-ribose) polymerase",
+   "prev_symbol": null,
+   "symbol": "TIPARP"
+  }
+ ],
+ "alias_symbol:PCAF": [],
+ "alias_symbol:PI(3,4,5)P3": [],
+ "alias_symbol:PI3K": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "PI3K"
+   ],
+   "hgnc_id": "HGNC:8975",
+   "name": "phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit alpha",
+   "prev_symbol": null,
+   "symbol": "PIK3CA"
+  }
+ ],
+ "alias_symbol:PIFITHRIN-Α": [],
+ "alias_symbol:PIFITHRINΑ": [],
+ "alias_symbol:PKC": [
+  {
+   "alias_name": [
+    "interferon induced transmembrane protein domain containing 1",
+    "dispanin subfamily B member 3",
+    "Episodic kinesigenic dyskinesia 1",
+    "Paroxysmal kinesigenic dyskinesia"
+   ],
+   "alias_symbol": [
+    "FLJ25513",
+    "DKFZp547J199",
+    "IFITMD1",
+    "FICCA",
+    "DSPB3",
+    "PKC",
+    "EKD1"
+   ],
+   "hgnc_id": "HGNC:30500",
+   "name": "proline rich transmembrane protein 2",
+   "prev_symbol": [
+    "ICCA",
+    "DYT10"
+   ],
+   "symbol": "PRRT2"
+  }
+ ],
+ "alias_symbol:PLASMIN": [],
+ "alias_symbol:PPD": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "PPD",
+    "PPCD1"
+   ],
+   "hgnc_id": "HGNC:12723",
+   "name": "visual system homeobox 1",
+   "prev_symbol": [
+    "PPCD"
+   ],
+   "symbol": "VSX1"
+  }
+ ],
+ "alias_symbol:PRB": [],
+ "alias_symbol:PREXASERTIB": [],
+ "alias_symbol:PTDINS3P": [],
+ "alias_symbol:PTPRV": [],
+ "alias_symbol:PtdIns3P": [],
+ "alias_symbol:Ptprv": [],
+ "alias_symbol:R-LOOPS": [],
+ "alias_symbol:R-loops": [],
+ "alias_symbol:RAD001": [],
+ "alias_symbol:RAPAMYCIN": [],
+ "alias_symbol:RAS": [],
+ "alias_symbol:REPLICATION STRESS": [],
+ "alias_symbol:REPLICATIONSTRESS": [],
+ "alias_symbol:RIBOSOMAL S6 PROTEIN": [],
+ "alias_symbol:RIBOSOMALS6PROTEIN": [],
+ "alias_symbol:RIP1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "RLIP76",
+    "RIP1",
+    "RIP"
+   ],
+   "hgnc_id": "HGNC:9841",
+   "name": "ralA binding protein 1",
+   "prev_symbol": null,
+   "symbol": "RALBP1"
+  },
+  {
+   "alias_name": [
+    "receptor-interacting protein kinase 1"
+   ],
+   "alias_symbol": [
+    "RIP",
+    "RIP1",
+    "RIP-1"
+   ],
+   "hgnc_id": "HGNC:10019",
+   "name": "receptor interacting serine/threonine kinase 1",
+   "prev_symbol": null,
+   "symbol": "RIPK1"
+  },
+  {
+   "alias_name": [
+    "Subunit 9",
+    "Complex III subunit 9",
+    "cytochrome b-c1 complex subunit 5"
+   ],
+   "alias_symbol": [
+    "ISP",
+    "RIS1",
+    "RIP1",
+    "UQCR5",
+    "RISP"
+   ],
+   "hgnc_id": "HGNC:12587",
+   "name": "ubiquinol-cytochrome c reductase, Rieske iron-sulfur polypeptide 1",
+   "prev_symbol": null,
+   "symbol": "UQCRFS1"
+  }
+ ],
+ "alias_symbol:RITA": [
+  {
+   "alias_name": [
+    "RBP-J interacting and tubulin associated"
+   ],
+   "alias_symbol": [
+    "FLJ14827",
+    "RITA"
+   ],
+   "hgnc_id": "HGNC:25925",
+   "name": "RBPJ interacting and tubulin associated 1",
+   "prev_symbol": [
+    "C12orf52"
+   ],
+   "symbol": "RITA1"
+  },
+  {
+   "alias_name": [
+    "rearranged in thyroid adenomas"
+   ],
+   "alias_symbol": [
+    "RITA",
+    "ZNF463",
+    "ZNF361"
+   ],
+   "hgnc_id": "HGNC:15489",
+   "name": "zinc finger protein 331",
+   "prev_symbol": null,
+   "symbol": "ZNF331"
+  }
+ ],
+ "alias_symbol:RLOOPS": [],
+ "alias_symbol:RNASE H": [],
+ "alias_symbol:RNASEH": [],
+ "alias_symbol:RNase H": [],
+ "alias_symbol:RNaseH": [],
+ "alias_symbol:ROS": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "MCF3",
+    "ROS",
+    "c-ros-1"
+   ],
+   "hgnc_id": "HGNC:10261",
+   "name": "ROS proto-oncogene 1, receptor tyrosine kinase",
+   "prev_symbol": null,
+   "symbol": "ROS1"
+  }
+ ],
+ "alias_symbol:RPA": [],
+ "alias_symbol:RPA32": [],
+ "alias_symbol:Rapamycin": [],
+ "alias_symbol:Ras": [],
+ "alias_symbol:Rloops": [],
+ "alias_symbol:S6": [
+  {
+   "alias_name": [
+    "40S ribosomal protein S6",
+    "phosphoprotein NP33"
+   ],
+   "alias_symbol": [
+    "S6",
+    "eS6"
+   ],
+   "hgnc_id": "HGNC:10429",
+   "name": "ribosomal protein S6",
+   "prev_symbol": null,
+   "symbol": "RPS6"
+  },
+  {
+   "alias_name": [
+    "protease 26S subunit 6",
+    "Tat-binding protein 7",
+    "MB67 interacting protein"
+   ],
+   "alias_symbol": [
+    "TBP7",
+    "S6",
+    "MGC8570",
+    "MGC13687",
+    "MGC23214",
+    "TBP-7",
+    "RPT3"
+   ],
+   "hgnc_id": "HGNC:9551",
+   "name": "proteasome 26S subunit, ATPase 4",
+   "prev_symbol": [
+    "MIP224"
+   ],
+   "symbol": "PSMC4"
+  }
+ ],
+ "alias_symbol:S6K": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "S6K1",
+    "p70(S6K)-alpha",
+    "PS6K",
+    "S6K"
+   ],
+   "hgnc_id": "HGNC:10436",
+   "name": "ribosomal protein S6 kinase B1",
+   "prev_symbol": [
+    "STK14A"
+   ],
+   "symbol": "RPS6KB1"
+  }
+ ],
+ "alias_symbol:SCF(Β-TRCP)": [],
+ "alias_symbol:SCF(ΒTRCP)": [],
+ "alias_symbol:SCF(β-TrCP)": [],
+ "alias_symbol:SCF(βTrCP)": [],
+ "alias_symbol:SESTRIN": [],
+ "alias_symbol:SGK": [],
+ "alias_symbol:SHTSC2": [],
+ "alias_symbol:SIN1": [
+  {
+   "alias_name": [
+    "stress-activated protein kinase-interacting 1"
+   ],
+   "alias_symbol": [
+    "MGC2745",
+    "SIN1",
+    "MIP1"
+   ],
+   "hgnc_id": "HGNC:18752",
+   "name": "MAPK associated protein 1",
+   "prev_symbol": null,
+   "symbol": "MAPKAP1"
+  }
+ ],
+ "alias_symbol:SINGLE-STRANDED DNA": [],
+ "alias_symbol:SINGLESTRANDEDDNA": [],
+ "alias_symbol:SMAC MIMETICS": [],
+ "alias_symbol:SMAC/DIABLO": [],
+ "alias_symbol:SMACMIMETICS": [],
+ "alias_symbol:SMC1": [],
+ "alias_symbol:SMN": [
+  {
+   "alias_name": [
+    "tissue-specific splicing protein",
+    "SM protein N",
+    "small nuclear ribonucleoprotein N"
+   ],
+   "alias_symbol": [
+    "SMN",
+    "SM-D",
+    "HCERN3",
+    "SNRNP-N",
+    "SNURF-SNRPN",
+    "RT-LI"
+   ],
+   "hgnc_id": "HGNC:11164",
+   "name": "small nuclear ribonucleoprotein polypeptide N",
+   "prev_symbol": [
+    "PWCR"
+   ],
+   "symbol": "SNRPN"
+  },
+  {
+   "alias_name": [
+    "oncoprotein 18"
+   ],
+   "alias_symbol": [
+    "SMN",
+    "OP18",
+    "PR22",
+    "PP19",
+    "PP17",
+    "Lag",
+    "FLJ32206"
+   ],
+   "hgnc_id": "HGNC:6510",
+   "name": "stathmin 1",
+   "prev_symbol": [
+    "LAP18",
+    "C1orf215"
+   ],
+   "symbol": "STMN1"
+  }
+ ],
+ "alias_symbol:SOD": [],
+ "alias_symbol:SSDNA": [],
+ "alias_symbol:STALLED DNA REPLICATION FORKS": [],
+ "alias_symbol:STALLED REPLICATION FORKS": [],
+ "alias_symbol:STALLEDDNAREPLICATIONFORKS": [],
+ "alias_symbol:STALLEDREPLICATIONFORKS": [],
+ "alias_symbol:SUCCINATE DEHYDROGENASE": [],
+ "alias_symbol:SUCCINATEDEHYDROGENASE": [],
+ "alias_symbol:Smac mimetics": [],
+ "alias_symbol:Smac/DIABLO": [],
+ "alias_symbol:Smacmimetics": [],
+ "alias_symbol:T-BID": [],
+ "alias_symbol:TAMOXIFEN": [],
+ "alias_symbol:TBID": [],
+ "alias_symbol:TEL2": [
+  {
+   "alias_name": [
+    "TEL2 oncogene"
+   ],
+   "alias_symbol": [
+    "TEL2",
+    "TEL-2"
+   ],
+   "hgnc_id": "HGNC:18160",
+   "name": "ETS variant transcription factor 7",
+   "prev_symbol": null,
+   "symbol": "ETV7"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "KIAA0683",
+    "hCLK2",
+    "TEL2"
+   ],
+   "hgnc_id": "HGNC:29099",
+   "name": "telomere maintenance 2",
+   "prev_symbol": null,
+   "symbol": "TELO2"
+  }
+ ],
+ "alias_symbol:TERRA": [],
+ "alias_symbol:TNF-Α": [],
+ "alias_symbol:TNF-α": [],
+ "alias_symbol:TNFΑ": [],
+ "alias_symbol:TNFα": [],
+ "alias_symbol:TPA": [],
+ "alias_symbol:TRF2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "TRF2"
+   ],
+   "hgnc_id": "HGNC:11729",
+   "name": "telomeric repeat binding factor 2",
+   "prev_symbol": [
+    "TRBF2"
+   ],
+   "symbol": "TERF2"
+  },
+  {
+   "alias_name": [
+    "TBP-like factor"
+   ],
+   "alias_symbol": [
+    "TLP",
+    "STUD",
+    "TRF2",
+    "TLF"
+   ],
+   "hgnc_id": "HGNC:11589",
+   "name": "TATA-box binding protein like 1",
+   "prev_symbol": null,
+   "symbol": "TBPL1"
+  }
+ ],
+ "alias_symbol:TRXR": [],
+ "alias_symbol:TSC": [
+  {
+   "alias_name": [
+    "Na-Cl symporter",
+    "sodium-chloride co-transporter",
+    "Thiazide-sensitive sodium-chloride cotransporter"
+   ],
+   "alias_symbol": [
+    "NCCT",
+    "NCC",
+    "TSC"
+   ],
+   "hgnc_id": "HGNC:10912",
+   "name": "solute carrier family 12 member 3",
+   "prev_symbol": null,
+   "symbol": "SLC12A3"
+  },
+  {
+   "alias_name": [
+    "calcineurin-like EF hand protein 3"
+   ],
+   "alias_symbol": [
+    "TSC",
+    "FLJ20607",
+    "CHP3"
+   ],
+   "hgnc_id": "HGNC:26065",
+   "name": "tescalcin",
+   "prev_symbol": null,
+   "symbol": "TESC"
+  }
+ ],
+ "alias_symbol:Tip60": [
+  {
+   "alias_name": [
+    "Tat interacting protein, 60kDa",
+    "K-acetyltransferase 5"
+   ],
+   "alias_symbol": [
+    "TIP60",
+    "PLIP",
+    "cPLA2",
+    "HTATIP1",
+    "ESA1"
+   ],
+   "hgnc_id": "HGNC:5275",
+   "name": "lysine acetyltransferase 5",
+   "prev_symbol": [
+    "HTATIP"
+   ],
+   "symbol": "KAT5"
+  }
+ ],
+ "alias_symbol:TrxR": [],
+ "alias_symbol:TrxR1": [
+  {
+   "alias_name": [
+    "selenoprotein TXNRD1"
+   ],
+   "alias_symbol": [
+    "TXNR",
+    "GRIM-12",
+    "Trxr1",
+    "TXNR1"
+   ],
+   "hgnc_id": "HGNC:12437",
+   "name": "thioredoxin reductase 1",
+   "prev_symbol": null,
+   "symbol": "TXNRD1"
+  }
+ ],
+ "alias_symbol:U3": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "U3"
+   ],
+   "hgnc_id": "HGNC:10156",
+   "name": "RNA, U3 small nucleolar",
+   "prev_symbol": [
+    "RNU3"
+   ],
+   "symbol": "RNU3"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "u3"
+   ],
+   "hgnc_id": "HGNC:10169",
+   "name": "RNA, U3A2 small nucleolar",
+   "prev_symbol": [
+    "RNU3A2"
+   ],
+   "symbol": "RNU3A2"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "U3"
+   ],
+   "hgnc_id": "HGNC:10174",
+   "name": "RNA, U3B4 small nucleolar",
+   "prev_symbol": [
+    "RNU3B4"
+   ],
+   "symbol": "RNU3B4"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "U3"
+   ],
+   "hgnc_id": "HGNC:10175",
+   "name": "small nucleolar RNA, C/D box 3 pseudogene 1",
+   "prev_symbol": [
+    "RNU3P1"
+   ],
+   "symbol": "SNORD3P1"
+  },
+  {
+   "alias_name": [
+    "U3 snoRNA A",
+    "U3 small nucleolar RNA A"
+   ],
+   "alias_symbol": [
+    "U3",
+    "RNU3"
+   ],
+   "hgnc_id": "HGNC:33189",
+   "name": "small nucleolar RNA, C/D box 3A",
+   "prev_symbol": null,
+   "symbol": "SNORD3A"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "U3",
+    "U3.2"
+   ],
+   "hgnc_id": "HGNC:52239",
+   "name": "small nucleolar RNA, C/D box 3F",
+   "prev_symbol": [
+    "SNORD3P2",
+    "RNU3P2"
+   ],
+   "symbol": "SNORD3F"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "U3",
+    "U3.6"
+   ],
+   "hgnc_id": "HGNC:10178",
+   "name": "small nucleolar RNA, C/D box 3 pseudogene 4",
+   "prev_symbol": [
+    "RNU3P4"
+   ],
+   "symbol": "SNORD3P4"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "U3",
+    "U3A",
+    "U3B"
+   ],
+   "hgnc_id": "HGNC:32739",
+   "name": "small nucleolar RNA, C/D box 3 cluster",
+   "prev_symbol": null,
+   "symbol": "SNORD3@"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "U3",
+    "U3.5",
+    "u3.7"
+   ],
+   "hgnc_id": "HGNC:10177",
+   "name": "small nucleolar RNA, C/D box 3 pseudogene 3",
+   "prev_symbol": [
+    "RNU3P3"
+   ],
+   "symbol": "SNORD3P3"
+  }
+ ],
+ "alias_symbol:UV": [],
+ "alias_symbol:UV DAMAGE": [],
+ "alias_symbol:UV IRRADIATION": [],
+ "alias_symbol:UV RADIATION": [],
+ "alias_symbol:UV damage": [],
+ "alias_symbol:UV irradiation": [],
+ "alias_symbol:UV radiation": [],
+ "alias_symbol:UVA": [],
+ "alias_symbol:UVB": [],
+ "alias_symbol:UVDAMAGE": [],
+ "alias_symbol:UVIRRADIATION": [],
+ "alias_symbol:UVRADIATION": [],
+ "alias_symbol:UVdamage": [],
+ "alias_symbol:UVirradiation": [],
+ "alias_symbol:UVradiation": [],
+ "alias_symbol:VIF": [],
+ "alias_symbol:VPR": [],
+ "alias_symbol:Vif": [],
+ "alias_symbol:Vpr": [],
+ "alias_symbol:Vpu": [
+  {
+   "alias_name": [
+    "viral protein U-binding protein"
+   ],
+   "alias_symbol": [
+    "UBP",
+    "SGT1",
+    "Vpu",
+    "hSGT",
+    "alphaSGT"
+   ],
+   "hgnc_id": "HGNC:10819",
+   "name": "small glutamine rich tetratricopeptide repeat co-chaperone alpha",
+   "prev_symbol": [
+    "SGT"
+   ],
+   "symbol": "SGTA"
+  }
+ ],
+ "alias_symbol:a number of DNA damaging lesions that involve single-stranded (SS)–double-stranded (DS) junctions": [],
+ "alias_symbol:actinomycin D": [],
+ "alias_symbol:actinomycinD": [],
+ "alias_symbol:alkaline phosphatase": [],
+ "alias_symbol:alkalinephosphatase": [],
+ "alias_symbol:anumberofDNAdamaginglesionsthatinvolvesinglestranded(SS)–doublestranded(DS)junctions": [],
+ "alias_symbol:aphidicolin": [],
+ "alias_symbol:bleomycin": [],
+ "alias_symbol:c-Flip": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "CASH",
+    "Casper",
+    "CLARP",
+    "FLAME",
+    "FLIP",
+    "I-FLICE",
+    "MRIT",
+    "c-FLIP",
+    "cFLIP"
+   ],
+   "hgnc_id": "HGNC:1876",
+   "name": "CASP8 and FADD like apoptosis regulator",
+   "prev_symbol": [
+    "CASP8AP1"
+   ],
+   "symbol": "CFLAR"
+  }
+ ],
+ "alias_symbol:cIAP": [],
+ "alias_symbol:caffeine": [],
+ "alias_symbol:calpain": [],
+ "alias_symbol:camptothecin": [],
+ "alias_symbol:casein kinase I": [],
+ "alias_symbol:caseinkinaseI": [],
+ "alias_symbol:caspase-8": [],
+ "alias_symbol:caspase-9": [],
+ "alias_symbol:caspase8": [],
+ "alias_symbol:caspase9": [],
+ "alias_symbol:cis-platin": [],
+ "alias_symbol:cisplatin": [],
+ "alias_symbol:collagen 1": [],
+ "alias_symbol:collagen1": [],
+ "alias_symbol:cyclin D2": [],
+ "alias_symbol:cyclinD2": [],
+ "alias_symbol:cytochrome-c": [],
+ "alias_symbol:cytochromec": [],
+ "alias_symbol:double-stranded DNA ends": [],
+ "alias_symbol:doublestrandedDNAends": [],
+ "alias_symbol:doxorubicin": [],
+ "alias_symbol:etoposide": [],
+ "alias_symbol:extended ssDNA": [],
+ "alias_symbol:extendedssDNA": [],
+ "alias_symbol:formazan": [],
+ "alias_symbol:gemcitabine": [],
+ "alias_symbol:genotoxic stresses": [],
+ "alias_symbol:genotoxicstresses": [],
+ "alias_symbol:hMOF": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "MOF",
+    "FLJ14040",
+    "hMOF"
+   ],
+   "hgnc_id": "HGNC:17933",
+   "name": "lysine acetyltransferase 8",
+   "prev_symbol": [
+    "MYST1"
+   ],
+   "symbol": "KAT8"
+  }
+ ],
+ "alias_symbol:hTR": [
+  {
+   "alias_name": [
+    "small Cajal body-specific RNA 19"
+   ],
+   "alias_symbol": [
+    "TR",
+    "hTR",
+    "TRC3",
+    "SCARNA19",
+    "TER"
+   ],
+   "hgnc_id": "HGNC:11727",
+   "name": "telomerase RNA component",
+   "prev_symbol": null,
+   "symbol": "TERC"
+  }
+ ],
+ "alias_symbol:hnRNP-A1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "hnRNP-A1",
+    "ALS20"
+   ],
+   "hgnc_id": "HGNC:5031",
+   "name": "heterogeneous nuclear ribonucleoprotein A1",
+   "prev_symbol": [
+    "HNRPA1"
+   ],
+   "symbol": "HNRNPA1"
+  }
+ ],
+ "alias_symbol:insulin": [],
+ "alias_symbol:irradiation": [],
+ "alias_symbol:let-7": [],
+ "alias_symbol:let7": [],
+ "alias_symbol:leucine": [],
+ "alias_symbol:low genotoxic damage": [],
+ "alias_symbol:low-dose aphidicolin": [],
+ "alias_symbol:lowdoseaphidicolin": [],
+ "alias_symbol:lowgenotoxicdamage": [],
+ "alias_symbol:metformin": [],
+ "alias_symbol:miR-204": [],
+ "alias_symbol:miR-29": [],
+ "alias_symbol:miR-30": [],
+ "alias_symbol:miR-34a": [],
+ "alias_symbol:miR-608": [],
+ "alias_symbol:miR29": [],
+ "alias_symbol:miR30": [],
+ "alias_symbol:nutlin-3a": [],
+ "alias_symbol:nutlin3a": [],
+ "alias_symbol:olaparib": [],
+ "alias_symbol:osteocalcin": [],
+ "alias_symbol:p107": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "p107",
+    "cp107",
+    "PRB1"
+   ],
+   "hgnc_id": "HGNC:9893",
+   "name": "RB transcriptional corepressor like 1",
+   "prev_symbol": null,
+   "symbol": "RBL1"
+  }
+ ],
+ "alias_symbol:p130": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "Rb2",
+    "p130"
+   ],
+   "hgnc_id": "HGNC:9894",
+   "name": "RB transcriptional corepressor like 2",
+   "prev_symbol": null,
+   "symbol": "RBL2"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "P130",
+    "KIAA0035",
+    "NOPP140",
+    "NOPP130",
+    "Srp40"
+   ],
+   "hgnc_id": "HGNC:15608",
+   "name": "nucleolar and coiled-body phosphoprotein 1",
+   "prev_symbol": null,
+   "symbol": "NOLC1"
+  }
+ ],
+ "alias_symbol:p16": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "p16"
+   ],
+   "hgnc_id": "HGNC:43802",
+   "name": "H3 histone pseudogene 10",
+   "prev_symbol": null,
+   "symbol": "H3P10"
+  },
+  {
+   "alias_name": [
+    "CDKN2A/ARF Intron 2 lncRNA",
+    "multiple tumour suppressor 1",
+    "cyclin-dependent kinase 4 inhibitor A",
+    "p19 alternate open reading frame",
+    "p14 alternate open reading frame",
+    "inhibitor of cdk4 A"
+   ],
+   "alias_symbol": [
+    "CDK4I",
+    "p16",
+    "INK4a",
+    "MTS1",
+    "CMM2",
+    "ARF",
+    "p19",
+    "p14",
+    "INK4",
+    "p16INK4a",
+    "p19Arf",
+    "p14ARF",
+    "P16-INK4A",
+    "CAI2"
+   ],
+   "hgnc_id": "HGNC:1787",
+   "name": "cyclin dependent kinase inhibitor 2A",
+   "prev_symbol": [
+    "CDKN2",
+    "MLM"
+   ],
+   "symbol": "CDKN2A"
+  }
+ ],
+ "alias_symbol:p16INK4A": [
+  {
+   "alias_name": [
+    "CDKN2A/ARF Intron 2 lncRNA",
+    "multiple tumour suppressor 1",
+    "cyclin-dependent kinase 4 inhibitor A",
+    "p19 alternate open reading frame",
+    "p14 alternate open reading frame",
+    "inhibitor of cdk4 A"
+   ],
+   "alias_symbol": [
+    "CDK4I",
+    "p16",
+    "INK4a",
+    "MTS1",
+    "CMM2",
+    "ARF",
+    "p19",
+    "p14",
+    "INK4",
+    "p16INK4a",
+    "p19Arf",
+    "p14ARF",
+    "P16-INK4A",
+    "CAI2"
+   ],
+   "hgnc_id": "HGNC:1787",
+   "name": "cyclin dependent kinase inhibitor 2A",
+   "prev_symbol": [
+    "CDKN2",
+    "MLM"
+   ],
+   "symbol": "CDKN2A"
+  }
+ ],
+ "alias_symbol:p19ARF": [
+  {
+   "alias_name": [
+    "CDKN2A/ARF Intron 2 lncRNA",
+    "multiple tumour suppressor 1",
+    "cyclin-dependent kinase 4 inhibitor A",
+    "p19 alternate open reading frame",
+    "p14 alternate open reading frame",
+    "inhibitor of cdk4 A"
+   ],
+   "alias_symbol": [
+    "CDK4I",
+    "p16",
+    "INK4a",
+    "MTS1",
+    "CMM2",
+    "ARF",
+    "p19",
+    "p14",
+    "INK4",
+    "p16INK4a",
+    "p19Arf",
+    "p14ARF",
+    "P16-INK4A",
+    "CAI2"
+   ],
+   "hgnc_id": "HGNC:1787",
+   "name": "cyclin dependent kinase inhibitor 2A",
+   "prev_symbol": [
+    "CDKN2",
+    "MLM"
+   ],
+   "symbol": "CDKN2A"
+  }
+ ],
+ "alias_symbol:p21CIP1/WAF1/SDI1": [],
+ "alias_symbol:p27": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "p27"
+   ],
+   "hgnc_id": "HGNC:54457",
+   "name": "H3 histone pseudogene 23",
+   "prev_symbol": null,
+   "symbol": "H3P23"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "p27"
+   ],
+   "hgnc_id": "HGNC:11328",
+   "name": "zinc ribbon domain containing 2",
+   "prev_symbol": [
+    "SSSCA1"
+   ],
+   "symbol": "ZNRD2"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "p27",
+    "Rpn4"
+   ],
+   "hgnc_id": "HGNC:9567",
+   "name": "proteasome 26S subunit, non-ATPase 9",
+   "prev_symbol": null,
+   "symbol": "PSMD9"
+  },
+  {
+   "alias_name": [
+    "Dynactin subunit p27"
+   ],
+   "alias_symbol": [
+    "WS-3",
+    "p27"
+   ],
+   "hgnc_id": "HGNC:16964",
+   "name": "dynactin subunit 6",
+   "prev_symbol": null,
+   "symbol": "DCTN6"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "P27",
+    "FAM14D",
+    "ISG12"
+   ],
+   "hgnc_id": "HGNC:5397",
+   "name": "interferon alpha inducible protein 27",
+   "prev_symbol": null,
+   "symbol": "IFI27"
+  }
+ ],
+ "alias_symbol:p38 MAPK": [],
+ "alias_symbol:p38MAPK": [],
+ "alias_symbol:p70 S6 kinase": [],
+ "alias_symbol:p70S6K": [],
+ "alias_symbol:p70S6kinase": [],
+ "alias_symbol:pRB": [],
+ "alias_symbol:parkin": [
+  {
+   "alias_name": [
+    "E3 ubiquitin ligase"
+   ],
+   "alias_symbol": [
+    "PDJ",
+    "AR-JP",
+    "parkin"
+   ],
+   "hgnc_id": "HGNC:8607",
+   "name": "parkin RBR E3 ubiquitin protein ligase",
+   "prev_symbol": [
+    "PARK2"
+   ],
+   "symbol": "PRKN"
+  }
+ ],
+ "alias_symbol:pifithrin-α": [],
+ "alias_symbol:pifithrinα": [],
+ "alias_symbol:plasmin": [],
+ "alias_symbol:prexasertib": [],
+ "alias_symbol:rapamycin": [],
+ "alias_symbol:replication stress": [],
+ "alias_symbol:replicationstress": [],
+ "alias_symbol:ribosomal S6 protein": [],
+ "alias_symbol:ribosomalS6protein": [],
+ "alias_symbol:sestrin": [],
+ "alias_symbol:shTSC2": [],
+ "alias_symbol:single-stranded DNA": [],
+ "alias_symbol:singlestrandedDNA": [],
+ "alias_symbol:ssDNA": [],
+ "alias_symbol:stalled DNA replication forks": [],
+ "alias_symbol:stalled replication forks": [],
+ "alias_symbol:stalledDNAreplicationforks": [],
+ "alias_symbol:stalledreplicationforks": [],
+ "alias_symbol:succinate dehydrogenase": [],
+ "alias_symbol:succinatedehydrogenase": [],
+ "alias_symbol:survivin": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "EPR-1",
+    "survivin"
+   ],
+   "hgnc_id": "HGNC:593",
+   "name": "baculoviral IAP repeat containing 5",
+   "prev_symbol": [
+    "API4"
+   ],
+   "symbol": "BIRC5"
+  }
+ ],
+ "alias_symbol:t-Bid": [],
+ "alias_symbol:tBid": [],
+ "alias_symbol:tPA": [],
+ "alias_symbol:tamoxifen": [],
+ "alias_symbol:uPA": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "UPA"
+   ],
+   "hgnc_id": "HGNC:23304",
+   "name": "proline rich acidic protein 1",
+   "prev_symbol": null,
+   "symbol": "PRAP1"
+  },
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "URK",
+    "UPA"
+   ],
+   "hgnc_id": "HGNC:9052",
+   "name": "plasminogen activator, urokinase",
+   "prev_symbol": null,
+   "symbol": "PLAU"
+  }
+ ],
+ "prev_symbol:14-3-3-Σ": [],
+ "prev_symbol:14-3-3-σ": [],
+ "prev_symbol:1433Σ": [],
+ "prev_symbol:1433σ": [],
+ "prev_symbol:4EBP1": [],
+ "prev_symbol:4NQO": [],
+ "prev_symbol:A NUMBER OF DNA DAMAGING LESIONS THAT INVOLVE SINGLE-STRANDED (SS)–DOUBLE-STRANDED (DS) JUNCTIONS": [],
+ "prev_symbol:ACTINOMYCIN D": [],
+ "prev_symbol:ACTINOMYCIND": [],
+ "prev_symbol:ALKALINE PHOSPHATASE": [],
+ "prev_symbol:ALKALINEPHOSPHATASE": [],
+ "prev_symbol:ANUMBEROFDNADAMAGINGLESIONSTHATINVOLVESINGLESTRANDED(SS)–DOUBLESTRANDED(DS)JUNCTIONS": [],
+ "prev_symbol:APHIDICOLIN": [],
+ "prev_symbol:AURORA B": [],
+ "prev_symbol:AURORAB": [],
+ "prev_symbol:Aurora B": [],
+ "prev_symbol:AuroraB": [],
+ "prev_symbol:BCAAS": [],
+ "prev_symbol:BCAAs": [],
+ "prev_symbol:BH3 MIMETICS": [],
+ "prev_symbol:BH3 mimetics": [],
+ "prev_symbol:BH3MIMETICS": [],
+ "prev_symbol:BH3mimetics": [],
+ "prev_symbol:BLEOMYCIN": [],
+ "prev_symbol:CAFFEINE": [],
+ "prev_symbol:CALPAIN": [],
+ "prev_symbol:CAMPTOTHECIN": [],
+ "prev_symbol:CASEIN KINASE I": [],
+ "prev_symbol:CASEINKINASEI": [],
+ "prev_symbol:CASPASE-8": [],
+ "prev_symbol:CASPASE-9": [],
+ "prev_symbol:CASPASE8": [],
+ "prev_symbol:CASPASE9": [],
+ "prev_symbol:CASPPRO": [],
+ "prev_symbol:CBP/P300": [],
+ "prev_symbol:CBP/p300": [],
+ "prev_symbol:CDDP": [],
+ "prev_symbol:CENP-E": [],
+ "prev_symbol:CIAP": [],
+ "prev_symbol:CIS-PLATIN": [],
+ "prev_symbol:CISPLATIN": [],
+ "prev_symbol:CMPD-A": [],
+ "prev_symbol:CMPDA": [],
+ "prev_symbol:COLLAGEN 1": [],
+ "prev_symbol:COLLAGEN1": [],
+ "prev_symbol:CPT": [],
+ "prev_symbol:CYCLIN A": [],
+ "prev_symbol:CYCLIN D": [],
+ "prev_symbol:CYCLIN D2": [],
+ "prev_symbol:CYCLIN E": [],
+ "prev_symbol:CYCLINA": [],
+ "prev_symbol:CYCLINA-CDK2": [],
+ "prev_symbol:CYCLINACDK2": [],
+ "prev_symbol:CYCLIND": [],
+ "prev_symbol:CYCLIND-CDK4/6": [],
+ "prev_symbol:CYCLIND2": [],
+ "prev_symbol:CYCLINDCDK4/6": [],
+ "prev_symbol:CYCLINE": [],
+ "prev_symbol:CYCLINE-CDK2": [],
+ "prev_symbol:CYCLINECDK2": [],
+ "prev_symbol:CYTOCHROME-C": [],
+ "prev_symbol:CYTOCHROMEC": [],
+ "prev_symbol:CaspPro": [],
+ "prev_symbol:Cmpd-A": [],
+ "prev_symbol:CmpdA": [],
+ "prev_symbol:Cyclin A": [],
+ "prev_symbol:Cyclin D": [],
+ "prev_symbol:Cyclin E": [],
+ "prev_symbol:CyclinA": [],
+ "prev_symbol:CyclinA-CDK2": [],
+ "prev_symbol:CyclinACDK2": [],
+ "prev_symbol:CyclinD": [],
+ "prev_symbol:CyclinD-CDK4/6": [],
+ "prev_symbol:CyclinDCDK4/6": [],
+ "prev_symbol:CyclinE": [],
+ "prev_symbol:CyclinE-CDK2": [],
+ "prev_symbol:CyclinECDK2": [],
+ "prev_symbol:DNA REPLICATION STRESS": [],
+ "prev_symbol:DNA REPLICATION STRESSES": [],
+ "prev_symbol:DNA TOPOISOMERASE": [],
+ "prev_symbol:DNA replication stress": [],
+ "prev_symbol:DNA replication stresses": [],
+ "prev_symbol:DNA topoisomerase": [],
+ "prev_symbol:DNAREPLICATIONSTRESS": [],
+ "prev_symbol:DNAREPLICATIONSTRESSES": [],
+ "prev_symbol:DNATOPOISOMERASE": [],
+ "prev_symbol:DNAreplicationstress": [],
+ "prev_symbol:DNAreplicationstresses": [],
+ "prev_symbol:DNAtopoisomerase": [],
+ "prev_symbol:DOUBLE-STRANDED DNA ENDS": [],
+ "prev_symbol:DOUBLESTRANDEDDNAENDS": [],
+ "prev_symbol:DOXORUBICIN": [],
+ "prev_symbol:E2F": [],
+ "prev_symbol:E6/E7": [],
+ "prev_symbol:E7": [],
+ "prev_symbol:EBNA-LP": [],
+ "prev_symbol:EBNA1": [],
+ "prev_symbol:EBNA2": [],
+ "prev_symbol:EBNA3A": [],
+ "prev_symbol:EBNA3C": [],
+ "prev_symbol:EBNALP": [],
+ "prev_symbol:ETOPOSIDE": [],
+ "prev_symbol:EXTENDED SSDNA": [],
+ "prev_symbol:EXTENDEDSSDNA": [],
+ "prev_symbol:FORMAZAN": [],
+ "prev_symbol:FOXO": [],
+ "prev_symbol:GEMCITABINE": [],
+ "prev_symbol:GENOTOXIC STRESSES": [],
+ "prev_symbol:GENOTOXICSTRESSES": [],
+ "prev_symbol:GSH-PX": [],
+ "prev_symbol:GSH-Px": [],
+ "prev_symbol:GSHPX": [],
+ "prev_symbol:GSHPx": [],
+ "prev_symbol:GSK3": [],
+ "prev_symbol:GSK3Β": [],
+ "prev_symbol:GSK3β": [],
+ "prev_symbol:H2O2": [],
+ "prev_symbol:HAUSP": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:12630",
+   "name": "ubiquitin specific peptidase 7",
+   "prev_symbol": [
+    "HAUSP"
+   ],
+   "symbol": "USP7"
+  }
+ ],
+ "prev_symbol:HSP-90": [],
+ "prev_symbol:HSP70": [],
+ "prev_symbol:HU": [],
+ "prev_symbol:IAPS": [],
+ "prev_symbol:IAPs": [],
+ "prev_symbol:INSULIN": [],
+ "prev_symbol:IRRADIATION": [],
+ "prev_symbol:KU": [],
+ "prev_symbol:LET-7": [],
+ "prev_symbol:LET7": [],
+ "prev_symbol:LEUCINE": [],
+ "prev_symbol:LMP1": [],
+ "prev_symbol:LMP2A": [],
+ "prev_symbol:LOW GENOTOXIC DAMAGE": [],
+ "prev_symbol:LOW-DOSE APHIDICOLIN": [],
+ "prev_symbol:LOWDOSEAPHIDICOLIN": [],
+ "prev_symbol:LOWGENOTOXICDAMAGE": [],
+ "prev_symbol:MAO-A": [],
+ "prev_symbol:MDA": [],
+ "prev_symbol:METFORMIN": [],
+ "prev_symbol:MIR-204": [],
+ "prev_symbol:MIR-29": [],
+ "prev_symbol:MIR-30": [],
+ "prev_symbol:MIR-34A": [],
+ "prev_symbol:MIR-608": [],
+ "prev_symbol:MIR218": [],
+ "prev_symbol:MIR29": [],
+ "prev_symbol:MIR30": [],
+ "prev_symbol:MMNG-TREATMENT": [],
+ "prev_symbol:MMNG-treatment": [],
+ "prev_symbol:MMNGTREATMENT": [],
+ "prev_symbol:MMNGtreatment": [],
+ "prev_symbol:MMS": [],
+ "prev_symbol:MNNG": [],
+ "prev_symbol:NEC-1": [],
+ "prev_symbol:NFKB": [],
+ "prev_symbol:NFkB": [],
+ "prev_symbol:NUTLIN-3A": [],
+ "prev_symbol:NUTLIN3A": [],
+ "prev_symbol:Nec-1": [],
+ "prev_symbol:Nec1": [
+  {
+   "alias_name": [
+    "prohormone convertase 3",
+    "prohormone convertase 1",
+    "proprotein convertase 1/3"
+   ],
+   "alias_symbol": [
+    "PC1",
+    "PC3",
+    "SPC3",
+    "PC1/3"
+   ],
+   "hgnc_id": "HGNC:8743",
+   "name": "proprotein convertase subtilisin/kexin type 1",
+   "prev_symbol": [
+    "NEC1"
+   ],
+   "symbol": "PCSK1"
+  }
+ ],
+ "prev_symbol:OLAPARIB": [],
+ "prev_symbol:OMI/HTRA2": [],
+ "prev_symbol:OSTEOCALCIN": [],
+ "prev_symbol:Omi/HtrA2": [],
+ "prev_symbol:P21CIP1/WAF1/SDI1": [],
+ "prev_symbol:P38 MAPK": [],
+ "prev_symbol:P38MAPK": [],
+ "prev_symbol:P70 S6 KINASE": [],
+ "prev_symbol:P70S6K": [],
+ "prev_symbol:P70S6KINASE": [],
+ "prev_symbol:PAI-1": [],
+ "prev_symbol:PAI1": [
+  {
+   "alias_name": [
+    "plasminogen activator inhibitor, type I"
+   ],
+   "alias_symbol": [
+    "PAI"
+   ],
+   "hgnc_id": "HGNC:8583",
+   "name": "serpin family E member 1",
+   "prev_symbol": [
+    "PLANH1",
+    "PAI1"
+   ],
+   "symbol": "SERPINE1"
+  }
+ ],
+ "prev_symbol:PCAF": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "P/CAF",
+    "GCN5",
+    "GCN5L"
+   ],
+   "hgnc_id": "HGNC:8638",
+   "name": "lysine acetyltransferase 2B",
+   "prev_symbol": [
+    "PCAF"
+   ],
+   "symbol": "KAT2B"
+  }
+ ],
+ "prev_symbol:PI(3,4,5)P3": [],
+ "prev_symbol:PIFITHRIN-Α": [],
+ "prev_symbol:PIFITHRINΑ": [],
+ "prev_symbol:PLASMIN": [],
+ "prev_symbol:PRB": [],
+ "prev_symbol:PREXASERTIB": [],
+ "prev_symbol:PTDINS3P": [],
+ "prev_symbol:PtdIns3P": [],
+ "prev_symbol:Ptprv": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "OST-PTP",
+    "ESP"
+   ],
+   "hgnc_id": "HGNC:13421",
+   "name": "protein tyrosine phosphatase receptor type V, pseudogene",
+   "prev_symbol": [
+    "PTPRV"
+   ],
+   "symbol": "PTPRVP"
+  }
+ ],
+ "prev_symbol:R-LOOPS": [],
+ "prev_symbol:R-loops": [],
+ "prev_symbol:RAD001": [],
+ "prev_symbol:RAPAMYCIN": [],
+ "prev_symbol:RAS": [],
+ "prev_symbol:REPLICATION STRESS": [],
+ "prev_symbol:REPLICATIONSTRESS": [],
+ "prev_symbol:RIBOSOMAL S6 PROTEIN": [],
+ "prev_symbol:RIBOSOMALS6PROTEIN": [],
+ "prev_symbol:RLOOPS": [],
+ "prev_symbol:RNASE H": [],
+ "prev_symbol:RNASEH": [],
+ "prev_symbol:RNase H": [],
+ "prev_symbol:RNaseH": [],
+ "prev_symbol:RPA": [],
+ "prev_symbol:RPA32": [],
+ "prev_symbol:Rapamycin": [],
+ "prev_symbol:Ras": [],
+ "prev_symbol:Rloops": [],
+ "prev_symbol:SCF(Β-TRCP)": [],
+ "prev_symbol:SCF(ΒTRCP)": [],
+ "prev_symbol:SCF(β-TrCP)": [],
+ "prev_symbol:SCF(βTrCP)": [],
+ "prev_symbol:SESTRIN": [],
+ "prev_symbol:SGK": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:10810",
+   "name": "serum/glucocorticoid regulated kinase 1",
+   "prev_symbol": [
+    "SGK"
+   ],
+   "symbol": "SGK1"
+  }
+ ],
+ "prev_symbol:SHTSC2": [],
+ "prev_symbol:SINGLE-STRANDED DNA": [],
+ "prev_symbol:SINGLESTRANDEDDNA": [],
+ "prev_symbol:SMAC MIMETICS": [],
+ "prev_symbol:SMAC/DIABLO": [],
+ "prev_symbol:SMACMIMETICS": [],
+ "prev_symbol:SMC1": [],
+ "prev_symbol:SOD": [],
+ "prev_symbol:SSDNA": [],
+ "prev_symbol:STALLED DNA REPLICATION FORKS": [],
+ "prev_symbol:STALLED REPLICATION FORKS": [],
+ "prev_symbol:STALLEDDNAREPLICATIONFORKS": [],
+ "prev_symbol:STALLEDREPLICATIONFORKS": [],
+ "prev_symbol:SUCCINATE DEHYDROGENASE": [],
+ "prev_symbol:SUCCINATEDEHYDROGENASE": [],
+ "prev_symbol:Smac mimetics": [],
+ "prev_symbol:Smac/DIABLO": [],
+ "prev_symbol:Smacmimetics": [],
+ "prev_symbol:T-BID": [],
+ "prev_symbol:TAMOXIFEN": [],
+ "prev_symbol:TBID": [],
+ "prev_symbol:TERRA": [],
+ "prev_symbol:TNF-Α": [],
+ "prev_symbol:TNF-α": [],
+ "prev_symbol:TNFΑ": [],
+ "prev_symbol:TNFα": [],
+ "prev_symbol:TPA": [],
+ "prev_symbol:TRXR": [],
+ "prev_symbol:TrxR": [],
+ "prev_symbol:UV": [],
+ "prev_symbol:UV DAMAGE": [],
+ "prev_symbol:UV IRRADIATION": [],
+ "prev_symbol:UV RADIATION": [],
+ "prev_symbol:UV damage": [],
+ "prev_symbol:UV irradiation": [],
+ "prev_symbol:UV radiation": [],
+ "prev_symbol:UVA": [],
+ "prev_symbol:UVB": [],
+ "prev_symbol:UVDAMAGE": [],
+ "prev_symbol:UVIRRADIATION": [],
+ "prev_symbol:UVRADIATION": [],
+ "prev_symbol:UVdamage": [],
+ "prev_symbol:UVirradiation": [],
+ "prev_symbol:UVradiation": [],
+ "prev_symbol:VIF": [],
+ "prev_symbol:VPR": [],
+ "prev_symbol:Vif": [],
+ "prev_symbol:Vpr": [],
+ "prev_symbol:a number of DNA damaging lesions that involve single-stranded (SS)–double-stranded (DS) junctions": [],
+ "prev_symbol:actinomycin D": [],
+ "prev_symbol:actinomycinD": [],
+ "prev_symbol:alkaline phosphatase": [],
+ "prev_symbol:alkalinephosphatase": [],
+ "prev_symbol:anumberofDNAdamaginglesionsthatinvolvesinglestranded(SS)–doublestranded(DS)junctions": [],
+ "prev_symbol:aphidicolin": [],
+ "prev_symbol:bleomycin": [],
+ "prev_symbol:cIAP": [],
+ "prev_symbol:caffeine": [],
+ "prev_symbol:calpain": [],
+ "prev_symbol:camptothecin": [],
+ "prev_symbol:casein kinase I": [],
+ "prev_symbol:caseinkinaseI": [],
+ "prev_symbol:caspase-8": [],
+ "prev_symbol:caspase-9": [],
+ "prev_symbol:caspase8": [],
+ "prev_symbol:caspase9": [],
+ "prev_symbol:cis-platin": [],
+ "prev_symbol:cisplatin": [],
+ "prev_symbol:collagen 1": [],
+ "prev_symbol:collagen1": [],
+ "prev_symbol:cyclin D2": [],
+ "prev_symbol:cyclinD2": [],
+ "prev_symbol:cytochrome-c": [],
+ "prev_symbol:cytochromec": [],
+ "prev_symbol:double-stranded DNA ends": [],
+ "prev_symbol:doublestrandedDNAends": [],
+ "prev_symbol:doxorubicin": [],
+ "prev_symbol:etoposide": [],
+ "prev_symbol:extended ssDNA": [],
+ "prev_symbol:extendedssDNA": [],
+ "prev_symbol:formazan": [],
+ "prev_symbol:gemcitabine": [],
+ "prev_symbol:genotoxic stresses": [],
+ "prev_symbol:genotoxicstresses": [],
+ "prev_symbol:insulin": [],
+ "prev_symbol:irradiation": [],
+ "prev_symbol:let-7": [],
+ "prev_symbol:let7": [],
+ "prev_symbol:leucine": [],
+ "prev_symbol:low genotoxic damage": [],
+ "prev_symbol:low-dose aphidicolin": [],
+ "prev_symbol:lowdoseaphidicolin": [],
+ "prev_symbol:lowgenotoxicdamage": [],
+ "prev_symbol:metformin": [],
+ "prev_symbol:miR-204": [],
+ "prev_symbol:miR-29": [],
+ "prev_symbol:miR-30": [],
+ "prev_symbol:miR-34a": [],
+ "prev_symbol:miR-608": [],
+ "prev_symbol:miR29": [],
+ "prev_symbol:miR30": [],
+ "prev_symbol:nutlin-3a": [],
+ "prev_symbol:nutlin3a": [],
+ "prev_symbol:olaparib": [],
+ "prev_symbol:osteocalcin": [],
+ "prev_symbol:p21CIP1/WAF1/SDI1": [],
+ "prev_symbol:p38 MAPK": [],
+ "prev_symbol:p38MAPK": [],
+ "prev_symbol:p70 S6 kinase": [],
+ "prev_symbol:p70S6K": [],
+ "prev_symbol:p70S6kinase": [],
+ "prev_symbol:pRB": [],
+ "prev_symbol:pifithrin-α": [],
+ "prev_symbol:pifithrinα": [],
+ "prev_symbol:plasmin": [],
+ "prev_symbol:prexasertib": [],
+ "prev_symbol:rapamycin": [],
+ "prev_symbol:replication stress": [],
+ "prev_symbol:replicationstress": [],
+ "prev_symbol:ribosomal S6 protein": [],
+ "prev_symbol:ribosomalS6protein": [],
+ "prev_symbol:sestrin": [],
+ "prev_symbol:shTSC2": [],
+ "prev_symbol:single-stranded DNA": [],
+ "prev_symbol:singlestrandedDNA": [],
+ "prev_symbol:ssDNA": [],
+ "prev_symbol:stalled DNA replication forks": [],
+ "prev_symbol:stalled replication forks": [],
+ "prev_symbol:stalledDNAreplicationforks": [],
+ "prev_symbol:stalledreplicationforks": [],
+ "prev_symbol:succinate dehydrogenase": [],
+ "prev_symbol:succinatedehydrogenase": [],
+ "prev_symbol:t-Bid": [],
+ "prev_symbol:tBid": [],
+ "prev_symbol:tPA": [],
+ "prev_symbol:tamoxifen": [],
+ "symbol:14-3-3": [],
+ "symbol:14-3-3-Σ": [],
+ "symbol:14-3-3-σ": [],
+ "symbol:1433": [],
+ "symbol:1433Σ": [],
+ "symbol:1433σ": [],
+ "symbol:4E-BP1": [],
+ "symbol:4EBP1": [],
+ "symbol:4NQO": [],
+ "symbol:53BP1": [],
+ "symbol:A NUMBER OF DNA DAMAGING LESIONS THAT INVOLVE SINGLE-STRANDED (SS)–DOUBLE-STRANDED (DS) JUNCTIONS": [],
+ "symbol:ACTINOMYCIN D": [],
+ "symbol:ACTINOMYCIND": [],
+ "symbol:AIF": [],
+ "symbol:AKT1": [
+  {
+   "alias_name": [
+    "protein kinase B"
+   ],
+   "alias_symbol": [
+    "RAC",
+    "PKB",
+    "PRKBA",
+    "AKT",
+    "RAC-alpha"
+   ],
+   "hgnc_id": "HGNC:391",
+   "name": "AKT serine/threonine kinase 1",
+   "prev_symbol": null,
+   "symbol": "AKT1"
+  }
+ ],
+ "symbol:ALKALINE PHOSPHATASE": [],
+ "symbol:ALKALINEPHOSPHATASE": [],
+ "symbol:ANUMBEROFDNADAMAGINGLESIONSTHATINVOLVESINGLESTRANDED(SS)–DOUBLESTRANDED(DS)JUNCTIONS": [],
+ "symbol:APAF-1": [],
+ "symbol:APHIDICOLIN": [],
+ "symbol:APOBEC3F": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "ARP8",
+    "BK150C2.4.MRNA",
+    "KA6"
+   ],
+   "hgnc_id": "HGNC:17356",
+   "name": "apolipoprotein B mRNA editing enzyme catalytic subunit 3F",
+   "prev_symbol": null,
+   "symbol": "APOBEC3F"
+  }
+ ],
+ "symbol:APOBEC3G": [
+  {
+   "alias_name": [
+    "DNA dC->dU-editing enzyme APOBEC-3G"
+   ],
+   "alias_symbol": [
+    "CEM15",
+    "MDS019",
+    "dJ494G10.1",
+    "FLJ12740",
+    "bK150C2.7"
+   ],
+   "hgnc_id": "HGNC:17357",
+   "name": "apolipoprotein B mRNA editing enzyme catalytic subunit 3G",
+   "prev_symbol": null,
+   "symbol": "APOBEC3G"
+  }
+ ],
+ "symbol:ARF": [],
+ "symbol:ARTEMIS": [],
+ "symbol:ATM": [
+  {
+   "alias_name": [
+    "TEL1, telomere maintenance 1, homolog (S. cerevisiae)"
+   ],
+   "alias_symbol": [
+    "TEL1",
+    "TELO1"
+   ],
+   "hgnc_id": "HGNC:795",
+   "name": "ATM serine/threonine kinase",
+   "prev_symbol": [
+    "ATA",
+    "ATDC",
+    "ATC",
+    "ATD"
+   ],
+   "symbol": "ATM"
+  }
+ ],
+ "symbol:ATR": [
+  {
+   "alias_name": [
+    "MEC1, mitosis entry checkpoint 1, homolog (S. cerevisiae)"
+   ],
+   "alias_symbol": [
+    "FRP1",
+    "SCKL",
+    "SCKL1",
+    "MEC1"
+   ],
+   "hgnc_id": "HGNC:882",
+   "name": "ATR checkpoint kinase",
+   "prev_symbol": null,
+   "symbol": "ATR"
+  }
+ ],
+ "symbol:ATRIP": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "FLJ12343",
+    "MGC20625",
+    "MGC21482",
+    "MGC26740"
+   ],
+   "hgnc_id": "HGNC:33499",
+   "name": "ATR interacting protein",
+   "prev_symbol": null,
+   "symbol": "ATRIP"
+  }
+ ],
+ "symbol:AURA": [],
+ "symbol:AURORA B": [],
+ "symbol:AURORAB": [],
+ "symbol:Apaf-1": [],
+ "symbol:Apaf1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "CED4",
+    "APAF-1"
+   ],
+   "hgnc_id": "HGNC:576",
+   "name": "apoptotic peptidase activating factor 1",
+   "prev_symbol": null,
+   "symbol": "APAF1"
+  }
+ ],
+ "symbol:Artemis": [],
+ "symbol:Aura": [],
+ "symbol:Aurora B": [],
+ "symbol:AuroraB": [],
+ "symbol:B-MYB": [],
+ "symbol:BAK": [],
+ "symbol:BAX": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "BCL2L4"
+   ],
+   "hgnc_id": "HGNC:959",
+   "name": "BCL2 associated X, apoptosis regulator",
+   "prev_symbol": null,
+   "symbol": "BAX"
+  }
+ ],
+ "symbol:BBC3": [
+  {
+   "alias_name": [
+    "p53-upregulated modulator of apoptosis"
+   ],
+   "alias_symbol": [
+    "JFY1",
+    "PUMA"
+   ],
+   "hgnc_id": "HGNC:17868",
+   "name": "BCL2 binding component 3",
+   "prev_symbol": null,
+   "symbol": "BBC3"
+  }
+ ],
+ "symbol:BCAAS": [],
+ "symbol:BCAAs": [],
+ "symbol:BCL-X": [],
+ "symbol:BCL-XL": [],
+ "symbol:BCL2": [
+  {
+   "alias_name": [
+    "protein phosphatase 1, regulatory subunit 50"
+   ],
+   "alias_symbol": [
+    "Bcl-2",
+    "PPP1R50"
+   ],
+   "hgnc_id": "HGNC:990",
+   "name": "BCL2 apoptosis regulator",
+   "prev_symbol": null,
+   "symbol": "BCL2"
+  }
+ ],
+ "symbol:BCLX": [],
+ "symbol:BCLXL": [],
+ "symbol:BECN1": [
+  {
+   "alias_name": [
+    "ATG6 autophagy related 6 homolog (S. cerevisiae)"
+   ],
+   "alias_symbol": [
+    "ATG6",
+    "VPS30"
+   ],
+   "hgnc_id": "HGNC:1034",
+   "name": "beclin 1",
+   "prev_symbol": null,
+   "symbol": "BECN1"
+  }
+ ],
+ "symbol:BH3 MIMETICS": [],
+ "symbol:BH3 mimetics": [],
+ "symbol:BH3MIMETICS": [],
+ "symbol:BH3mimetics": [],
+ "symbol:BID": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:1050",
+   "name": "BH3 interacting domain death agonist",
+   "prev_symbol": null,
+   "symbol": "BID"
+  }
+ ],
+ "symbol:BIN2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "BRAP-1"
+   ],
+   "hgnc_id": "HGNC:1053",
+   "name": "bridging integrator 2",
+   "prev_symbol": null,
+   "symbol": "BIN2"
+  }
+ ],
+ "symbol:BLEOMYCIN": [],
+ "symbol:BMYB": [],
+ "symbol:BRCA1": [
+  {
+   "alias_name": [
+    "BRCA1/BRCA2-containing complex, subunit 1",
+    "protein phosphatase 1, regulatory subunit 53",
+    "Fanconi anemia, complementation group S"
+   ],
+   "alias_symbol": [
+    "RNF53",
+    "BRCC1",
+    "PPP1R53",
+    "FANCS"
+   ],
+   "hgnc_id": "HGNC:1100",
+   "name": "BRCA1 DNA repair associated",
+   "prev_symbol": null,
+   "symbol": "BRCA1"
+  }
+ ],
+ "symbol:BRCA2": [
+  {
+   "alias_name": [
+    "BRCA1/BRCA2-containing complex, subunit 2"
+   ],
+   "alias_symbol": [
+    "FAD",
+    "FAD1",
+    "BRCC2",
+    "XRCC11"
+   ],
+   "hgnc_id": "HGNC:1101",
+   "name": "BRCA2 DNA repair associated",
+   "prev_symbol": [
+    "FANCD1",
+    "FACD",
+    "FANCD"
+   ],
+   "symbol": "BRCA2"
+  }
+ ],
+ "symbol:BUB1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "hBUB1",
+    "BUB1A"
+   ],
+   "hgnc_id": "HGNC:1148",
+   "name": "BUB1 mitotic checkpoint serine/threonine kinase",
+   "prev_symbol": [
+    "BUB1L"
+   ],
+   "symbol": "BUB1"
+  }
+ ],
+ "symbol:BUBR1": [],
+ "symbol:Bad": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "BCL2L8",
+    "BBC2"
+   ],
+   "hgnc_id": "HGNC:936",
+   "name": "BCL2 associated agonist of cell death",
+   "prev_symbol": null,
+   "symbol": "BAD"
+  }
+ ],
+ "symbol:Bak": [],
+ "symbol:Bcl-x": [],
+ "symbol:Bcl-xL": [],
+ "symbol:Bclx": [],
+ "symbol:BclxL": [],
+ "symbol:Bid": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:1050",
+   "name": "BH3 interacting domain death agonist",
+   "prev_symbol": null,
+   "symbol": "BID"
+  }
+ ],
+ "symbol:BubR1": [],
+ "symbol:C-FLIP": [],
+ "symbol:CAFFEINE": [],
+ "symbol:CALPAIN": [],
+ "symbol:CAMPTOTHECIN": [],
+ "symbol:CASEIN KINASE I": [],
+ "symbol:CASEINKINASEI": [],
+ "symbol:CASP3": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "CPP32",
+    "CPP32B",
+    "Yama",
+    "apopain"
+   ],
+   "hgnc_id": "HGNC:1504",
+   "name": "caspase 3",
+   "prev_symbol": null,
+   "symbol": "CASP3"
+  }
+ ],
+ "symbol:CASP7": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "MCH3",
+    "CMH-1",
+    "ICE-LAP3"
+   ],
+   "hgnc_id": "HGNC:1508",
+   "name": "caspase 7",
+   "prev_symbol": null,
+   "symbol": "CASP7"
+  }
+ ],
+ "symbol:CASPASE-8": [],
+ "symbol:CASPASE-9": [],
+ "symbol:CASPASE8": [],
+ "symbol:CASPASE9": [],
+ "symbol:CASPPRO": [],
+ "symbol:CBP/P300": [],
+ "symbol:CBP/p300": [],
+ "symbol:CCNA2": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:1578",
+   "name": "cyclin A2",
+   "prev_symbol": [
+    "CCNA",
+    "CCN1"
+   ],
+   "symbol": "CCNA2"
+  }
+ ],
+ "symbol:CCNB1": [
+  {
+   "alias_name": [
+    "G2/mitotic-specific cyclin B1"
+   ],
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:1579",
+   "name": "cyclin B1",
+   "prev_symbol": [
+    "CCNB"
+   ],
+   "symbol": "CCNB1"
+  }
+ ],
+ "symbol:CCNB2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "HsT17299"
+   ],
+   "hgnc_id": "HGNC:1580",
+   "name": "cyclin B2",
+   "prev_symbol": null,
+   "symbol": "CCNB2"
+  }
+ ],
+ "symbol:CD23": [],
+ "symbol:CD4": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "T4",
+    "Leu-3"
+   ],
+   "hgnc_id": "HGNC:1678",
+   "name": "CD4 molecule",
+   "prev_symbol": null,
+   "symbol": "CD4"
+  }
+ ],
+ "symbol:CDC25C": [
+  {
+   "alias_name": [
+    "protein phosphatase 1, regulatory subunit 60",
+    "CDC25 homolog C (S. pombe)",
+    "M-phase inducer phosphatase 3"
+   ],
+   "alias_symbol": [
+    "PPP1R60"
+   ],
+   "hgnc_id": "HGNC:1727",
+   "name": "cell division cycle 25C",
+   "prev_symbol": [
+    "CDC25"
+   ],
+   "symbol": "CDC25C"
+  }
+ ],
+ "symbol:CDC6": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:1744",
+   "name": "cell division cycle 6",
+   "prev_symbol": [
+    "CDC18L"
+   ],
+   "symbol": "CDC6"
+  }
+ ],
+ "symbol:CDDP": [],
+ "symbol:CDK1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "CDC28A"
+   ],
+   "hgnc_id": "HGNC:1722",
+   "name": "cyclin dependent kinase 1",
+   "prev_symbol": [
+    "CDC2"
+   ],
+   "symbol": "CDK1"
+  }
+ ],
+ "symbol:CDK2": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:1771",
+   "name": "cyclin dependent kinase 2",
+   "prev_symbol": null,
+   "symbol": "CDK2"
+  }
+ ],
+ "symbol:CDKN1A": [
+  {
+   "alias_name": [
+    "p21 cdkn",
+    "Cdk-interacting protein 1"
+   ],
+   "alias_symbol": [
+    "P21",
+    "CIP1",
+    "WAF1",
+    "SDI1",
+    "CAP20",
+    "p21CIP1",
+    "p21Cip1/Waf1",
+    "p21"
+   ],
+   "hgnc_id": "HGNC:1784",
+   "name": "cyclin dependent kinase inhibitor 1A",
+   "prev_symbol": [
+    "CDKN1"
+   ],
+   "symbol": "CDKN1A"
+  }
+ ],
+ "symbol:CDT1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "DUP",
+    "RIS2"
+   ],
+   "hgnc_id": "HGNC:24576",
+   "name": "chromatin licensing and DNA replication factor 1",
+   "prev_symbol": null,
+   "symbol": "CDT1"
+  }
+ ],
+ "symbol:CENP-E": [],
+ "symbol:CENPE": [
+  {
+   "alias_name": [
+    "protein phosphatase 1, regulatory subunit 61"
+   ],
+   "alias_symbol": [
+    "KIF10",
+    "PPP1R61"
+   ],
+   "hgnc_id": "HGNC:1856",
+   "name": "centromere protein E",
+   "prev_symbol": null,
+   "symbol": "CENPE"
+  }
+ ],
+ "symbol:CFLIP": [],
+ "symbol:CHEK1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "CHK1"
+   ],
+   "hgnc_id": "HGNC:1925",
+   "name": "checkpoint kinase 1",
+   "prev_symbol": null,
+   "symbol": "CHEK1"
+  }
+ ],
+ "symbol:CHEK2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "CDS1",
+    "CHK2",
+    "HuCds1",
+    "PP1425",
+    "bA444G7"
+   ],
+   "hgnc_id": "HGNC:16627",
+   "name": "checkpoint kinase 2",
+   "prev_symbol": [
+    "RAD53"
+   ],
+   "symbol": "CHEK2"
+  }
+ ],
+ "symbol:CIAP": [],
+ "symbol:CIS-PLATIN": [],
+ "symbol:CISPLATIN": [],
+ "symbol:CMPD-A": [],
+ "symbol:CMPDA": [],
+ "symbol:COLLAGEN 1": [],
+ "symbol:COLLAGEN1": [],
+ "symbol:CPT": [],
+ "symbol:CTIP": [],
+ "symbol:CYCLIN A": [],
+ "symbol:CYCLIN D": [],
+ "symbol:CYCLIN D2": [],
+ "symbol:CYCLIN E": [],
+ "symbol:CYCLINA": [],
+ "symbol:CYCLINA-CDK2": [],
+ "symbol:CYCLINACDK2": [],
+ "symbol:CYCLIND": [],
+ "symbol:CYCLIND-CDK4/6": [],
+ "symbol:CYCLIND2": [],
+ "symbol:CYCLINDCDK4/6": [],
+ "symbol:CYCLINE": [],
+ "symbol:CYCLINE-CDK2": [],
+ "symbol:CYCLINECDK2": [],
+ "symbol:CYTOCHROME-C": [],
+ "symbol:CYTOCHROMEC": [],
+ "symbol:CaspPro": [],
+ "symbol:Cdc6": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:1744",
+   "name": "cell division cycle 6",
+   "prev_symbol": [
+    "CDC18L"
+   ],
+   "symbol": "CDC6"
+  }
+ ],
+ "symbol:Cdk2": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:1771",
+   "name": "cyclin dependent kinase 2",
+   "prev_symbol": null,
+   "symbol": "CDK2"
+  }
+ ],
+ "symbol:Cmpd-A": [],
+ "symbol:CmpdA": [],
+ "symbol:CtIP": [],
+ "symbol:Cyclin A": [],
+ "symbol:Cyclin D": [],
+ "symbol:Cyclin E": [],
+ "symbol:CyclinA": [],
+ "symbol:CyclinA-CDK2": [],
+ "symbol:CyclinACDK2": [],
+ "symbol:CyclinD": [],
+ "symbol:CyclinD-CDK4/6": [],
+ "symbol:CyclinDCDK4/6": [],
+ "symbol:CyclinE": [],
+ "symbol:CyclinE-CDK2": [],
+ "symbol:CyclinECDK2": [],
+ "symbol:DCAF1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "KIAA0800",
+    "MGC102804"
+   ],
+   "hgnc_id": "HGNC:30911",
+   "name": "DDB1 and CUL4 associated factor 1",
+   "prev_symbol": [
+    "VPRBP"
+   ],
+   "symbol": "DCAF1"
+  }
+ ],
+ "symbol:DDB1": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:2717",
+   "name": "damage specific DNA binding protein 1",
+   "prev_symbol": null,
+   "symbol": "DDB1"
+  }
+ ],
+ "symbol:DNA REPLICATION STRESS": [],
+ "symbol:DNA REPLICATION STRESSES": [],
+ "symbol:DNA TOPOISOMERASE": [],
+ "symbol:DNA replication stress": [],
+ "symbol:DNA replication stresses": [],
+ "symbol:DNA topoisomerase": [],
+ "symbol:DNA-PKCS": [],
+ "symbol:DNA-PKcs": [],
+ "symbol:DNAPKCS": [],
+ "symbol:DNAPKcs": [],
+ "symbol:DNAREPLICATIONSTRESS": [],
+ "symbol:DNAREPLICATIONSTRESSES": [],
+ "symbol:DNATOPOISOMERASE": [],
+ "symbol:DNAreplicationstress": [],
+ "symbol:DNAreplicationstresses": [],
+ "symbol:DNAtopoisomerase": [],
+ "symbol:DOUBLE-STRANDED DNA ENDS": [],
+ "symbol:DOUBLESTRANDEDDNAENDS": [],
+ "symbol:DOXORUBICIN": [],
+ "symbol:DR5": [],
+ "symbol:DREAM": [],
+ "symbol:DYRK1A": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:3091",
+   "name": "dual specificity tyrosine phosphorylation regulated kinase 1A",
+   "prev_symbol": [
+    "DYRK1",
+    "DYRK",
+    "MNBH"
+   ],
+   "symbol": "DYRK1A"
+  }
+ ],
+ "symbol:Dna2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "KIAA0083"
+   ],
+   "hgnc_id": "HGNC:2939",
+   "name": "DNA replication helicase/nuclease 2",
+   "prev_symbol": [
+    "DNA2L"
+   ],
+   "symbol": "DNA2"
+  }
+ ],
+ "symbol:E2F": [],
+ "symbol:E2F1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "RBP3"
+   ],
+   "hgnc_id": "HGNC:3113",
+   "name": "E2F transcription factor 1",
+   "prev_symbol": [
+    "RBBP3"
+   ],
+   "symbol": "E2F1"
+  }
+ ],
+ "symbol:E2F4": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "E2F-4"
+   ],
+   "hgnc_id": "HGNC:3118",
+   "name": "E2F transcription factor 4",
+   "prev_symbol": null,
+   "symbol": "E2F4"
+  }
+ ],
+ "symbol:E6/E7": [],
+ "symbol:E7": [],
+ "symbol:EBNA-LP": [],
+ "symbol:EBNA1": [],
+ "symbol:EBNA2": [],
+ "symbol:EBNA3A": [],
+ "symbol:EBNA3C": [],
+ "symbol:EBNALP": [],
+ "symbol:ESR1": [
+  {
+   "alias_name": [
+    "nuclear receptor subfamily 3 group A member 1",
+    "estrogen receptor alpha",
+    "oestrogen receptor alpha",
+    "E2 receptor alpha",
+    "estradiol receptor"
+   ],
+   "alias_symbol": [
+    "ER",
+    "NR3A1",
+    "Era",
+    "ER-alpha"
+   ],
+   "hgnc_id": "HGNC:3467",
+   "name": "estrogen receptor 1",
+   "prev_symbol": [
+    "ESR"
+   ],
+   "symbol": "ESR1"
+  }
+ ],
+ "symbol:ETAA1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "ETAA16"
+   ],
+   "hgnc_id": "HGNC:24648",
+   "name": "ETAA1 activator of ATR kinase",
+   "prev_symbol": null,
+   "symbol": "ETAA1"
+  }
+ ],
+ "symbol:ETOPOSIDE": [],
+ "symbol:EXTENDED SSDNA": [],
+ "symbol:EXTENDEDSSDNA": [],
+ "symbol:Exo1": [
+  {
+   "alias_name": [
+    "rad2 nuclease family member, homolog of S. cerevisiae exonuclease 1"
+   ],
+   "alias_symbol": [
+    "HEX1",
+    "hExoI"
+   ],
+   "hgnc_id": "HGNC:3511",
+   "name": "exonuclease 1",
+   "prev_symbol": null,
+   "symbol": "EXO1"
+  }
+ ],
+ "symbol:FLIP": [],
+ "symbol:FORMAZAN": [],
+ "symbol:FOXM1": [
+  {
+   "alias_name": [
+    "M-phase phosphoprotein 2"
+   ],
+   "alias_symbol": [
+    "HFH-11",
+    "trident",
+    "HNF-3",
+    "INS-1",
+    "MPP2",
+    "MPHOSPH2",
+    "TGT3"
+   ],
+   "hgnc_id": "HGNC:3818",
+   "name": "forkhead box M1",
+   "prev_symbol": [
+    "FKHL16"
+   ],
+   "symbol": "FOXM1"
+  }
+ ],
+ "symbol:FOXO": [],
+ "symbol:Fas": [
+  {
+   "alias_name": [
+    "TNF receptor superfamily member 6"
+   ],
+   "alias_symbol": [
+    "CD95",
+    "APO-1"
+   ],
+   "hgnc_id": "HGNC:11920",
+   "name": "Fas cell surface death receptor",
+   "prev_symbol": [
+    "FAS1",
+    "APT1",
+    "TNFRSF6"
+   ],
+   "symbol": "FAS"
+  }
+ ],
+ "symbol:GEMCITABINE": [],
+ "symbol:GENOTOXIC STRESSES": [],
+ "symbol:GENOTOXICSTRESSES": [],
+ "symbol:GLS": [
+  {
+   "alias_name": [
+    "glutaminase C",
+    "K-glutaminase"
+   ],
+   "alias_symbol": [
+    "KIAA0838",
+    "GLS1",
+    "GAC",
+    "GAM",
+    "KGA"
+   ],
+   "hgnc_id": "HGNC:4331",
+   "name": "glutaminase",
+   "prev_symbol": null,
+   "symbol": "GLS"
+  }
+ ],
+ "symbol:GSH-PX": [],
+ "symbol:GSH-Px": [],
+ "symbol:GSHPX": [],
+ "symbol:GSHPx": [],
+ "symbol:GSK3": [],
+ "symbol:GSK3Β": [],
+ "symbol:GSK3β": [],
+ "symbol:H2AX": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:4739",
+   "name": "H2A.X variant histone",
+   "prev_symbol": [
+    "H2AFX"
+   ],
+   "symbol": "H2AX"
+  }
+ ],
+ "symbol:H2O2": [],
+ "symbol:HAUSP": [],
+ "symbol:HDAC1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "HD1",
+    "GON-10",
+    "KDAC1"
+   ],
+   "hgnc_id": "HGNC:4852",
+   "name": "histone deacetylase 1",
+   "prev_symbol": [
+    "RPD3L1"
+   ],
+   "symbol": "HDAC1"
+  }
+ ],
+ "symbol:HIPK2": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:14402",
+   "name": "homeodomain interacting protein kinase 2",
+   "prev_symbol": null,
+   "symbol": "HIPK2"
+  }
+ ],
+ "symbol:HMGB1": [
+  {
+   "alias_name": [
+    "Sulfoglucuronyl carbohydrate binding protein",
+    "Amphoterin",
+    "high mobility group protein 1"
+   ],
+   "alias_symbol": [
+    "HMG3",
+    "SBP-1",
+    "DKFZp686A04236"
+   ],
+   "hgnc_id": "HGNC:4983",
+   "name": "high mobility group box 1",
+   "prev_symbol": [
+    "HMG1"
+   ],
+   "symbol": "HMGB1"
+  }
+ ],
+ "symbol:HMOF": [],
+ "symbol:HNRNP-A1": [],
+ "symbol:HSF1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "HSTF1"
+   ],
+   "hgnc_id": "HGNC:5224",
+   "name": "heat shock transcription factor 1",
+   "prev_symbol": null,
+   "symbol": "HSF1"
+  }
+ ],
+ "symbol:HSP-90": [],
+ "symbol:HSP70": [],
+ "symbol:HSP90": [],
+ "symbol:HTR": [],
+ "symbol:HU": [],
+ "symbol:IAPS": [],
+ "symbol:IAPs": [],
+ "symbol:IGF": [],
+ "symbol:IGF1": [
+  {
+   "alias_name": [
+    "somatomedin C"
+   ],
+   "alias_symbol": [
+    "IGF1A",
+    "IGFI",
+    "IGF-I",
+    "IGF"
+   ],
+   "hgnc_id": "HGNC:5464",
+   "name": "insulin like growth factor 1",
+   "prev_symbol": null,
+   "symbol": "IGF1"
+  }
+ ],
+ "symbol:IGFBP3": [
+  {
+   "alias_name": [
+    "growth hormone-dependent binding protein",
+    "acid stable subunit of the 140 K IGF complex",
+    "binding protein 53",
+    "binding protein 29",
+    "IGF-binding protein 3"
+   ],
+   "alias_symbol": [
+    "IBP3",
+    "BP-53"
+   ],
+   "hgnc_id": "HGNC:5472",
+   "name": "insulin like growth factor binding protein 3",
+   "prev_symbol": null,
+   "symbol": "IGFBP3"
+  }
+ ],
+ "symbol:IL27": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "IL-27",
+    "p28",
+    "IL27p28",
+    "IL-27A",
+    "IL27A",
+    "MGC71873"
+   ],
+   "hgnc_id": "HGNC:19157",
+   "name": "interleukin 27",
+   "prev_symbol": [
+    "IL30"
+   ],
+   "symbol": "IL27"
+  }
+ ],
+ "symbol:INSULIN": [],
+ "symbol:IRRADIATION": [],
+ "symbol:JNK1": [],
+ "symbol:KAP1": [],
+ "symbol:KIF23": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "MKLP1",
+    "MKLP-1"
+   ],
+   "hgnc_id": "HGNC:6392",
+   "name": "kinesin family member 23",
+   "prev_symbol": [
+    "KNSL5"
+   ],
+   "symbol": "KIF23"
+  }
+ ],
+ "symbol:KU": [],
+ "symbol:KU80": [],
+ "symbol:KU86": [],
+ "symbol:Ku80": [],
+ "symbol:Ku86": [],
+ "symbol:LC3": [],
+ "symbol:LET-7": [],
+ "symbol:LET7": [],
+ "symbol:LEUCINE": [],
+ "symbol:LIN52": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:19856",
+   "name": "lin-52 DREAM MuvB core complex component",
+   "prev_symbol": [
+    "C14orf46"
+   ],
+   "symbol": "LIN52"
+  }
+ ],
+ "symbol:LMP1": [],
+ "symbol:LMP2A": [],
+ "symbol:LOW GENOTOXIC DAMAGE": [],
+ "symbol:LOW-DOSE APHIDICOLIN": [],
+ "symbol:LOWDOSEAPHIDICOLIN": [],
+ "symbol:LOWGENOTOXICDAMAGE": [],
+ "symbol:MAO-A": [],
+ "symbol:MAOA": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:6833",
+   "name": "monoamine oxidase A",
+   "prev_symbol": null,
+   "symbol": "MAOA"
+  }
+ ],
+ "symbol:MAP1LC3B": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "ATG8F"
+   ],
+   "hgnc_id": "HGNC:13352",
+   "name": "microtubule associated protein 1 light chain 3 beta",
+   "prev_symbol": null,
+   "symbol": "MAP1LC3B"
+  }
+ ],
+ "symbol:MAPK8": [
+  {
+   "alias_name": [
+    "c-jun N-terminal kinase 1",
+    "stress-activated protein kinase 1",
+    "JUN N-terminal kinase"
+   ],
+   "alias_symbol": [
+    "JNK",
+    "JNK1",
+    "SAPK1"
+   ],
+   "hgnc_id": "HGNC:6881",
+   "name": "mitogen-activated protein kinase 8",
+   "prev_symbol": [
+    "PRKM8"
+   ],
+   "symbol": "MAPK8"
+  }
+ ],
+ "symbol:MAPK9": [
+  {
+   "alias_name": [
+    "c-Jun N-terminal kinase 2",
+    "Jun kinase"
+   ],
+   "alias_symbol": [
+    "JNK2",
+    "p54a",
+    "SAPK"
+   ],
+   "hgnc_id": "HGNC:6886",
+   "name": "mitogen-activated protein kinase 9",
+   "prev_symbol": [
+    "PRKM9"
+   ],
+   "symbol": "MAPK9"
+  }
+ ],
+ "symbol:MDA": [],
+ "symbol:MDC1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "NFBD1",
+    "KIAA0170",
+    "Em:AB023051.5"
+   ],
+   "hgnc_id": "HGNC:21163",
+   "name": "mediator of DNA damage checkpoint 1",
+   "prev_symbol": null,
+   "symbol": "MDC1"
+  }
+ ],
+ "symbol:MDM2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "HDM2",
+    "MGC5370"
+   ],
+   "hgnc_id": "HGNC:6973",
+   "name": "MDM2 proto-oncogene",
+   "prev_symbol": null,
+   "symbol": "MDM2"
+  }
+ ],
+ "symbol:MDMX": [],
+ "symbol:MELK": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "KIAA0175"
+   ],
+   "hgnc_id": "HGNC:16870",
+   "name": "maternal embryonic leucine zipper kinase",
+   "prev_symbol": null,
+   "symbol": "MELK"
+  }
+ ],
+ "symbol:METFORMIN": [],
+ "symbol:MIR-204": [],
+ "symbol:MIR-29": [],
+ "symbol:MIR-30": [],
+ "symbol:MIR-34A": [],
+ "symbol:MIR-608": [],
+ "symbol:MIR218": [],
+ "symbol:MIR221": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "hsa-mir-221"
+   ],
+   "hgnc_id": "HGNC:31601",
+   "name": "microRNA 221",
+   "prev_symbol": [
+    "MIRN221"
+   ],
+   "symbol": "MIR221"
+  }
+ ],
+ "symbol:MIR29": [],
+ "symbol:MIR30": [],
+ "symbol:MK2": [],
+ "symbol:MMNG-TREATMENT": [],
+ "symbol:MMNG-treatment": [],
+ "symbol:MMNGTREATMENT": [],
+ "symbol:MMNGtreatment": [],
+ "symbol:MMS": [],
+ "symbol:MNNG": [],
+ "symbol:MOZ": [],
+ "symbol:MRE11": [
+  {
+   "alias_name": [
+    "AT-like disease"
+   ],
+   "alias_symbol": [
+    "ATLD"
+   ],
+   "hgnc_id": "HGNC:7230",
+   "name": "MRE11 double strand break repair nuclease",
+   "prev_symbol": [
+    "MRE11A"
+   ],
+   "symbol": "MRE11"
+  }
+ ],
+ "symbol:MST1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "MSP",
+    "NF15S2"
+   ],
+   "hgnc_id": "HGNC:7380",
+   "name": "macrophage stimulating 1",
+   "prev_symbol": [
+    "D3F15S2",
+    "HGFL",
+    "DNF15S2"
+   ],
+   "symbol": "MST1"
+  }
+ ],
+ "symbol:MYBL2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "BMYB",
+    "B-MYB"
+   ],
+   "hgnc_id": "HGNC:7548",
+   "name": "MYB proto-oncogene like 2",
+   "prev_symbol": null,
+   "symbol": "MYBL2"
+  }
+ ],
+ "symbol:MYC": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "c-Myc",
+    "bHLHe39",
+    "MYCC"
+   ],
+   "hgnc_id": "HGNC:7553",
+   "name": "MYC proto-oncogene, bHLH transcription factor",
+   "prev_symbol": null,
+   "symbol": "MYC"
+  }
+ ],
+ "symbol:MYCBP": [
+  {
+   "alias_name": [
+    "associate of myc-1"
+   ],
+   "alias_symbol": [
+    "AMY-1"
+   ],
+   "hgnc_id": "HGNC:7554",
+   "name": "MYC binding protein",
+   "prev_symbol": null,
+   "symbol": "MYCBP"
+  }
+ ],
+ "symbol:Mcl1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "BCL2L3",
+    "Mcl-1"
+   ],
+   "hgnc_id": "HGNC:6943",
+   "name": "MCL1 apoptosis regulator, BCL2 family member",
+   "prev_symbol": null,
+   "symbol": "MCL1"
+  }
+ ],
+ "symbol:MdmX": [],
+ "symbol:Mre11": [
+  {
+   "alias_name": [
+    "AT-like disease"
+   ],
+   "alias_symbol": [
+    "ATLD"
+   ],
+   "hgnc_id": "HGNC:7230",
+   "name": "MRE11 double strand break repair nuclease",
+   "prev_symbol": [
+    "MRE11A"
+   ],
+   "symbol": "MRE11"
+  }
+ ],
+ "symbol:NAT10": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "hALP",
+    "FLJ10774",
+    "FLJ12179",
+    "NET43",
+    "KIAA1709",
+    "Kre33"
+   ],
+   "hgnc_id": "HGNC:29830",
+   "name": "N-acetyltransferase 10",
+   "prev_symbol": null,
+   "symbol": "NAT10"
+  }
+ ],
+ "symbol:NBN": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "ATV",
+    "AT-V2",
+    "AT-V1"
+   ],
+   "hgnc_id": "HGNC:7652",
+   "name": "nibrin",
+   "prev_symbol": [
+    "NBS",
+    "NBS1"
+   ],
+   "symbol": "NBN"
+  }
+ ],
+ "symbol:NBS1": [],
+ "symbol:NEC-1": [],
+ "symbol:NEC1": [],
+ "symbol:NEDD4-1": [],
+ "symbol:NEDD41": [],
+ "symbol:NFE2L2": [
+  {
+   "alias_name": [
+    "NF-E2-related factor 2"
+   ],
+   "alias_symbol": [
+    "NRF2",
+    "NRF-2"
+   ],
+   "hgnc_id": "HGNC:7782",
+   "name": "NFE2 like bZIP transcription factor 2",
+   "prev_symbol": null,
+   "symbol": "NFE2L2"
+  }
+ ],
+ "symbol:NFKB": [],
+ "symbol:NFkB": [],
+ "symbol:NOX2": [],
+ "symbol:NOXA": [],
+ "symbol:NUTLIN-3A": [],
+ "symbol:NUTLIN3A": [],
+ "symbol:Nbs1": [],
+ "symbol:Nec-1": [],
+ "symbol:Nec1": [],
+ "symbol:Noxa": [],
+ "symbol:OLAPARIB": [],
+ "symbol:OMI/HTRA2": [],
+ "symbol:OSTEOCALCIN": [],
+ "symbol:Omi/HtrA2": [],
+ "symbol:P107": [],
+ "symbol:P130": [],
+ "symbol:P16": [],
+ "symbol:P16INK4A": [],
+ "symbol:P19ARF": [],
+ "symbol:P21CIP1/WAF1/SDI1": [],
+ "symbol:P27": [],
+ "symbol:P38 MAPK": [],
+ "symbol:P38MAPK": [],
+ "symbol:P70 S6 KINASE": [],
+ "symbol:P70S6K": [],
+ "symbol:P70S6KINASE": [],
+ "symbol:PAI-1": [],
+ "symbol:PAI1": [],
+ "symbol:PAR": [],
+ "symbol:PARIS": [],
+ "symbol:PARKIN": [],
+ "symbol:PARP-1": [],
+ "symbol:PARP1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "PARP",
+    "ARTD1",
+    "Poly-PARP",
+    "PARS"
+   ],
+   "hgnc_id": "HGNC:270",
+   "name": "poly(ADP-ribose) polymerase 1",
+   "prev_symbol": [
+    "PPOL",
+    "ADPRT"
+   ],
+   "symbol": "PARP1"
+  }
+ ],
+ "symbol:PCAF": [],
+ "symbol:PDK1": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:8809",
+   "name": "pyruvate dehydrogenase kinase 1",
+   "prev_symbol": null,
+   "symbol": "PDK1"
+  }
+ ],
+ "symbol:PI(3,4,5)P3": [],
+ "symbol:PI3K": [],
+ "symbol:PIFITHRIN-Α": [],
+ "symbol:PIFITHRINΑ": [],
+ "symbol:PIK3CA": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "PI3K"
+   ],
+   "hgnc_id": "HGNC:8975",
+   "name": "phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit alpha",
+   "prev_symbol": null,
+   "symbol": "PIK3CA"
+  }
+ ],
+ "symbol:PINK1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "BRPK"
+   ],
+   "hgnc_id": "HGNC:14581",
+   "name": "PTEN induced kinase 1",
+   "prev_symbol": [
+    "PARK6"
+   ],
+   "symbol": "PINK1"
+  }
+ ],
+ "symbol:PKC": [],
+ "symbol:PLASMIN": [],
+ "symbol:PLK4": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "Sak"
+   ],
+   "hgnc_id": "HGNC:11397",
+   "name": "polo like kinase 4",
+   "prev_symbol": [
+    "STK18"
+   ],
+   "symbol": "PLK4"
+  }
+ ],
+ "symbol:POLD1": [
+  {
+   "alias_name": [
+    "CDC2 homolog (S. cerevisiae)"
+   ],
+   "alias_symbol": [
+    "CDC2"
+   ],
+   "hgnc_id": "HGNC:9175",
+   "name": "DNA polymerase delta 1, catalytic subunit",
+   "prev_symbol": [
+    "POLD"
+   ],
+   "symbol": "POLD1"
+  }
+ ],
+ "symbol:POT1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "hPot1",
+    "DKFZp586D211"
+   ],
+   "hgnc_id": "HGNC:17284",
+   "name": "protection of telomeres 1",
+   "prev_symbol": null,
+   "symbol": "POT1"
+  }
+ ],
+ "symbol:PPD": [],
+ "symbol:PPM1D": [
+  {
+   "alias_name": [
+    "wild-type p53-induced phosphatase 1",
+    "protein phosphatase 2C, delta isoform"
+   ],
+   "alias_symbol": [
+    "Wip1",
+    "PP2C-DELTA"
+   ],
+   "hgnc_id": "HGNC:9277",
+   "name": "protein phosphatase, Mg2+/Mn2+ dependent 1D",
+   "prev_symbol": null,
+   "symbol": "PPM1D"
+  }
+ ],
+ "symbol:PRB": [],
+ "symbol:PREXASERTIB": [],
+ "symbol:PRKAA1": [
+  {
+   "alias_name": [
+    "AMPK, alpha, 1"
+   ],
+   "alias_symbol": [
+    "AMPKa1"
+   ],
+   "hgnc_id": "HGNC:9376",
+   "name": "protein kinase AMP-activated catalytic subunit alpha 1",
+   "prev_symbol": null,
+   "symbol": "PRKAA1"
+  }
+ ],
+ "symbol:PRKAA2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "AMPK",
+    "AMPKa2"
+   ],
+   "hgnc_id": "HGNC:9377",
+   "name": "protein kinase AMP-activated catalytic subunit alpha 2",
+   "prev_symbol": [
+    "PRKAA"
+   ],
+   "symbol": "PRKAA2"
+  }
+ ],
+ "symbol:PRKCD": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "PKCδ"
+   ],
+   "hgnc_id": "HGNC:9399",
+   "name": "protein kinase C delta",
+   "prev_symbol": null,
+   "symbol": "PRKCD"
+  }
+ ],
+ "symbol:PRKDC": [
+  {
+   "alias_name": [
+    "DNA-dependent protein kinase catalytic subunit"
+   ],
+   "alias_symbol": [
+    "DNPK1",
+    "p350",
+    "DNAPK",
+    "XRCC7",
+    "DNA-PKcs",
+    "DNAPKc",
+    "DNA-PKC",
+    "p460"
+   ],
+   "hgnc_id": "HGNC:9413",
+   "name": "protein kinase, DNA-activated, catalytic subunit",
+   "prev_symbol": [
+    "HYRC",
+    "HYRC1"
+   ],
+   "symbol": "PRKDC"
+  }
+ ],
+ "symbol:PTDINS3P": [],
+ "symbol:PTEN": [
+  {
+   "alias_name": [
+    "mutated in multiple advanced cancers 1",
+    "Phosphatidylinositol 3,4,5-trisphosphate 3-phosphatase and dual-specificity protein phosphatase PTEN"
+   ],
+   "alias_symbol": [
+    "MMAC1",
+    "TEP1",
+    "PTEN1"
+   ],
+   "hgnc_id": "HGNC:9588",
+   "name": "phosphatase and tensin homolog",
+   "prev_symbol": [
+    "BZS",
+    "MHAM"
+   ],
+   "symbol": "PTEN"
+  }
+ ],
+ "symbol:PTPRV": [],
+ "symbol:PtdIns3P": [],
+ "symbol:Ptprv": [],
+ "symbol:R-LOOPS": [],
+ "symbol:R-loops": [],
+ "symbol:RAD001": [],
+ "symbol:RAD18": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "RNF73"
+   ],
+   "hgnc_id": "HGNC:18278",
+   "name": "RAD18 E3 ubiquitin protein ligase",
+   "prev_symbol": null,
+   "symbol": "RAD18"
+  }
+ ],
+ "symbol:RAD51": [
+  {
+   "alias_name": [
+    "BRCA1/BRCA2-containing complex, subunit 5"
+   ],
+   "alias_symbol": [
+    "HsRad51",
+    "HsT16930",
+    "BRCC5",
+    "FANCR"
+   ],
+   "hgnc_id": "HGNC:9817",
+   "name": "RAD51 recombinase",
+   "prev_symbol": [
+    "RAD51A",
+    "RECA"
+   ],
+   "symbol": "RAD51"
+  }
+ ],
+ "symbol:RAD54L": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "hHR54",
+    "hRAD54",
+    "RAD54A"
+   ],
+   "hgnc_id": "HGNC:9826",
+   "name": "RAD54 like",
+   "prev_symbol": null,
+   "symbol": "RAD54L"
+  }
+ ],
+ "symbol:RAPAMYCIN": [],
+ "symbol:RAS": [],
+ "symbol:RB1": [
+  {
+   "alias_name": [
+    "prepro-retinoblastoma-associated protein",
+    "protein phosphatase 1, regulatory subunit 130"
+   ],
+   "alias_symbol": [
+    "RB",
+    "PPP1R130"
+   ],
+   "hgnc_id": "HGNC:9884",
+   "name": "RB transcriptional corepressor 1",
+   "prev_symbol": [
+    "OSRC"
+   ],
+   "symbol": "RB1"
+  }
+ ],
+ "symbol:REPLICATION STRESS": [],
+ "symbol:REPLICATIONSTRESS": [],
+ "symbol:RIBOSOMAL S6 PROTEIN": [],
+ "symbol:RIBOSOMALS6PROTEIN": [],
+ "symbol:RICTOR": [
+  {
+   "alias_name": [
+    "rapamycin-insensitive companion of mTOR",
+    "pianissimo"
+   ],
+   "alias_symbol": [
+    "MGC39830",
+    "AVO3",
+    "PIA",
+    "KIAA1999"
+   ],
+   "hgnc_id": "HGNC:28611",
+   "name": "RPTOR independent companion of MTOR complex 2",
+   "prev_symbol": null,
+   "symbol": "RICTOR"
+  }
+ ],
+ "symbol:RIP1": [],
+ "symbol:RITA": [],
+ "symbol:RLOOPS": [],
+ "symbol:RNASE H": [],
+ "symbol:RNASEH": [],
+ "symbol:RNase H": [],
+ "symbol:RNaseH": [],
+ "symbol:ROS": [],
+ "symbol:RPA": [],
+ "symbol:RPA2": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:10290",
+   "name": "replication protein A2",
+   "prev_symbol": null,
+   "symbol": "RPA2"
+  }
+ ],
+ "symbol:RPA32": [],
+ "symbol:RPS6KB1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "S6K1",
+    "p70(S6K)-alpha",
+    "PS6K",
+    "S6K"
+   ],
+   "hgnc_id": "HGNC:10436",
+   "name": "ribosomal protein S6 kinase B1",
+   "prev_symbol": [
+    "STK14A"
+   ],
+   "symbol": "RPS6KB1"
+  }
+ ],
+ "symbol:RPTOR": [
+  {
+   "alias_name": [
+    "regulatory associated protein of mTOR"
+   ],
+   "alias_symbol": [
+    "KOG1",
+    "Mip1",
+    "KIAA1303",
+    "raptor"
+   ],
+   "hgnc_id": "HGNC:30287",
+   "name": "regulatory associated protein of MTOR complex 1",
+   "prev_symbol": null,
+   "symbol": "RPTOR"
+  }
+ ],
+ "symbol:Rad17": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "Rad24",
+    "RAD17Sp",
+    "CCYC"
+   ],
+   "hgnc_id": "HGNC:9807",
+   "name": "RAD17 checkpoint clamp loader component",
+   "prev_symbol": null,
+   "symbol": "RAD17"
+  }
+ ],
+ "symbol:Rapamycin": [],
+ "symbol:Ras": [],
+ "symbol:Rheb": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:10011",
+   "name": "Ras homolog, mTORC1 binding",
+   "prev_symbol": [
+    "RHEB2"
+   ],
+   "symbol": "RHEB"
+  }
+ ],
+ "symbol:Rloops": [],
+ "symbol:Runx2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "AML3",
+    "PEBP2A1",
+    "PEBP2aA1"
+   ],
+   "hgnc_id": "HGNC:10472",
+   "name": "RUNX family transcription factor 2",
+   "prev_symbol": [
+    "CCD",
+    "CBFA1",
+    "CCD1"
+   ],
+   "symbol": "RUNX2"
+  }
+ ],
+ "symbol:S6": [],
+ "symbol:S6K": [],
+ "symbol:SCF(Β-TRCP)": [],
+ "symbol:SCF(ΒTRCP)": [],
+ "symbol:SCF(β-TrCP)": [],
+ "symbol:SCF(βTrCP)": [],
+ "symbol:SESTRIN": [],
+ "symbol:SETX": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "KIAA0625",
+    "AOA2",
+    "Sen1",
+    "STEX"
+   ],
+   "hgnc_id": "HGNC:445",
+   "name": "senataxin",
+   "prev_symbol": [
+    "ALS4",
+    "SCAR1"
+   ],
+   "symbol": "SETX"
+  }
+ ],
+ "symbol:SGK": [],
+ "symbol:SGK1": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:10810",
+   "name": "serum/glucocorticoid regulated kinase 1",
+   "prev_symbol": [
+    "SGK"
+   ],
+   "symbol": "SGK1"
+  }
+ ],
+ "symbol:SHTSC2": [],
+ "symbol:SIN1": [],
+ "symbol:SINGLE-STRANDED DNA": [],
+ "symbol:SINGLESTRANDEDDNA": [],
+ "symbol:SIRT1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "SIR2L1"
+   ],
+   "hgnc_id": "HGNC:14929",
+   "name": "sirtuin 1",
+   "prev_symbol": null,
+   "symbol": "SIRT1"
+  }
+ ],
+ "symbol:SKP2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "FBXL1",
+    "FBL1",
+    "p45"
+   ],
+   "hgnc_id": "HGNC:10901",
+   "name": "S-phase kinase associated protein 2",
+   "prev_symbol": null,
+   "symbol": "SKP2"
+  }
+ ],
+ "symbol:SMAC MIMETICS": [],
+ "symbol:SMAC/DIABLO": [],
+ "symbol:SMACMIMETICS": [],
+ "symbol:SMC1": [],
+ "symbol:SMN": [],
+ "symbol:SOD": [],
+ "symbol:SQSTM1": [
+  {
+   "alias_name": [
+    "autophagy receptor p62"
+   ],
+   "alias_symbol": [
+    "p62",
+    "p60",
+    "p62B",
+    "A170"
+   ],
+   "hgnc_id": "HGNC:11280",
+   "name": "sequestosome 1",
+   "prev_symbol": [
+    "PDB3",
+    "OSIL"
+   ],
+   "symbol": "SQSTM1"
+  }
+ ],
+ "symbol:SSB": [
+  {
+   "alias_name": [
+    "La ribonucleoprotein domain family, member 3",
+    "Lupus La protein",
+    "La autoantigen"
+   ],
+   "alias_symbol": [
+    "SSB/La",
+    "LARP3",
+    "La",
+    "La/SSB"
+   ],
+   "hgnc_id": "HGNC:11316",
+   "name": "small RNA binding exonuclease protection factor La",
+   "prev_symbol": null,
+   "symbol": "SSB"
+  }
+ ],
+ "symbol:SSDNA": [],
+ "symbol:STALLED DNA REPLICATION FORKS": [],
+ "symbol:STALLED REPLICATION FORKS": [],
+ "symbol:STALLEDDNAREPLICATIONFORKS": [],
+ "symbol:STALLEDREPLICATIONFORKS": [],
+ "symbol:STAT3": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "APRF"
+   ],
+   "hgnc_id": "HGNC:11364",
+   "name": "signal transducer and activator of transcription 3",
+   "prev_symbol": null,
+   "symbol": "STAT3"
+  }
+ ],
+ "symbol:SUCCINATE DEHYDROGENASE": [],
+ "symbol:SUCCINATEDEHYDROGENASE": [],
+ "symbol:SURVIVIN": [],
+ "symbol:Smac mimetics": [],
+ "symbol:Smac/DIABLO": [],
+ "symbol:Smacmimetics": [],
+ "symbol:T-BID": [],
+ "symbol:TAMOXIFEN": [],
+ "symbol:TBID": [],
+ "symbol:TEL2": [],
+ "symbol:TERF2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "TRF2"
+   ],
+   "hgnc_id": "HGNC:11729",
+   "name": "telomeric repeat binding factor 2",
+   "prev_symbol": [
+    "TRBF2"
+   ],
+   "symbol": "TERF2"
+  }
+ ],
+ "symbol:TERRA": [],
+ "symbol:TERT": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "TRT",
+    "TP2",
+    "TCS1",
+    "hEST2",
+    "EST2"
+   ],
+   "hgnc_id": "HGNC:11730",
+   "name": "telomerase reverse transcriptase",
+   "prev_symbol": null,
+   "symbol": "TERT"
+  }
+ ],
+ "symbol:TIP60": [],
+ "symbol:TNF-Α": [],
+ "symbol:TNF-α": [],
+ "symbol:TNFΑ": [],
+ "symbol:TNFα": [],
+ "symbol:TOPBP1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "KIAA0259",
+    "TOP2BP1",
+    "Dpb11"
+   ],
+   "hgnc_id": "HGNC:17008",
+   "name": "DNA topoisomerase II binding protein 1",
+   "prev_symbol": null,
+   "symbol": "TOPBP1"
+  }
+ ],
+ "symbol:TP53": [
+  {
+   "alias_name": [
+    "Li-Fraumeni syndrome"
+   ],
+   "alias_symbol": [
+    "p53",
+    "LFS1"
+   ],
+   "hgnc_id": "HGNC:11998",
+   "name": "tumor protein p53",
+   "prev_symbol": null,
+   "symbol": "TP53"
+  }
+ ],
+ "symbol:TP53INP1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "DKFZp434M1317",
+    "FLJ22139",
+    "P53DINP1",
+    "SIP",
+    "TP53INP1A",
+    "TP53INP1B",
+    "Teap"
+   ],
+   "hgnc_id": "HGNC:18022",
+   "name": "tumor protein p53 inducible nuclear protein 1",
+   "prev_symbol": null,
+   "symbol": "TP53INP1"
+  }
+ ],
+ "symbol:TPA": [],
+ "symbol:TRAF1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "EBI6"
+   ],
+   "hgnc_id": "HGNC:12031",
+   "name": "TNF receptor associated factor 1",
+   "prev_symbol": null,
+   "symbol": "TRAF1"
+  }
+ ],
+ "symbol:TRAF2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "TRAP3",
+    "RNF117"
+   ],
+   "hgnc_id": "HGNC:12032",
+   "name": "TNF receptor associated factor 2",
+   "prev_symbol": null,
+   "symbol": "TRAF2"
+  }
+ ],
+ "symbol:TRF2": [],
+ "symbol:TRIB3": [
+  {
+   "alias_name": [
+    "p65-interacting inhibitor of NF-κB"
+   ],
+   "alias_symbol": [
+    "dJ1103G7.3",
+    "TRB3",
+    "SINK"
+   ],
+   "hgnc_id": "HGNC:16228",
+   "name": "tribbles pseudokinase 3",
+   "prev_symbol": [
+    "C20orf97"
+   ],
+   "symbol": "TRIB3"
+  }
+ ],
+ "symbol:TRXR": [],
+ "symbol:TRXR1": [],
+ "symbol:TSC": [],
+ "symbol:TSC2": [
+  {
+   "alias_name": [
+    "protein phosphatase 1, regulatory subunit 160"
+   ],
+   "alias_symbol": [
+    "tuberin",
+    "LAM",
+    "PPP1R160"
+   ],
+   "hgnc_id": "HGNC:12363",
+   "name": "TSC complex subunit 2",
+   "prev_symbol": [
+    "TSC4"
+   ],
+   "symbol": "TSC2"
+  }
+ ],
+ "symbol:TUG1": [
+  {
+   "alias_name": [
+    "non-protein coding RNA 80",
+    "long intergenic non-protein coding RNA 80"
+   ],
+   "alias_symbol": [
+    "FLJ20618",
+    "NCRNA00080",
+    "LINC00080"
+   ],
+   "hgnc_id": "HGNC:26066",
+   "name": "taurine up-regulated 1",
+   "prev_symbol": null,
+   "symbol": "TUG1"
+  }
+ ],
+ "symbol:TXNRD1": [
+  {
+   "alias_name": [
+    "selenoprotein TXNRD1"
+   ],
+   "alias_symbol": [
+    "TXNR",
+    "GRIM-12",
+    "Trxr1",
+    "TXNR1"
+   ],
+   "hgnc_id": "HGNC:12437",
+   "name": "thioredoxin reductase 1",
+   "prev_symbol": null,
+   "symbol": "TXNRD1"
+  }
+ ],
+ "symbol:Tip60": [],
+ "symbol:TopBP1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "KIAA0259",
+    "TOP2BP1",
+    "Dpb11"
+   ],
+   "hgnc_id": "HGNC:17008",
+   "name": "DNA topoisomerase II binding protein 1",
+   "prev_symbol": null,
+   "symbol": "TOPBP1"
+  }
+ ],
+ "symbol:TrxR": [],
+ "symbol:TrxR1": [],
+ "symbol:U3": [],
+ "symbol:ULK1": [
+  {
+   "alias_name": [
+    "ATG1 autophagy related 1 homolog (S. cerevisiae)"
+   ],
+   "alias_symbol": [
+    "ATG1",
+    "ATG1A"
+   ],
+   "hgnc_id": "HGNC:12558",
+   "name": "unc-51 like autophagy activating kinase 1",
+   "prev_symbol": null,
+   "symbol": "ULK1"
+  }
+ ],
+ "symbol:UNG": [
+  {
+   "alias_name": [
+    "uracil-DNA glycosylase 1, uracil-DNA glycosylase 2"
+   ],
+   "alias_symbol": [
+    "UDG",
+    "UNG1",
+    "UNG2",
+    "HIGM4"
+   ],
+   "hgnc_id": "HGNC:12572",
+   "name": "uracil DNA glycosylase",
+   "prev_symbol": [
+    "DGU"
+   ],
+   "symbol": "UNG"
+  }
+ ],
+ "symbol:UPA": [],
+ "symbol:UV": [],
+ "symbol:UV DAMAGE": [],
+ "symbol:UV IRRADIATION": [],
+ "symbol:UV RADIATION": [],
+ "symbol:UV damage": [],
+ "symbol:UV irradiation": [],
+ "symbol:UV radiation": [],
+ "symbol:UVA": [],
+ "symbol:UVB": [],
+ "symbol:UVDAMAGE": [],
+ "symbol:UVIRRADIATION": [],
+ "symbol:UVRADIATION": [],
+ "symbol:UVRAG": [
+  {
+   "alias_name": [
+    "beclin 1 binding protein"
+   ],
+   "alias_symbol": [
+    "VPS38"
+   ],
+   "hgnc_id": "HGNC:12640",
+   "name": "UV radiation resistance associated",
+   "prev_symbol": null,
+   "symbol": "UVRAG"
+  }
+ ],
+ "symbol:UVdamage": [],
+ "symbol:UVirradiation": [],
+ "symbol:UVradiation": [],
+ "symbol:VIF": [],
+ "symbol:VPR": [],
+ "symbol:VPU": [],
+ "symbol:VRK1": [
+  {
+   "alias_name": null,
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:12718",
+   "name": "VRK serine/threonine kinase 1",
+   "prev_symbol": null,
+   "symbol": "VRK1"
+  }
+ ],
+ "symbol:Vif": [],
+ "symbol:Vpr": [],
+ "symbol:Vpu": [],
+ "symbol:WEE1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "WEE1A"
+   ],
+   "hgnc_id": "HGNC:12761",
+   "name": "WEE1 G2 checkpoint kinase",
+   "prev_symbol": null,
+   "symbol": "WEE1"
+  }
+ ],
+ "symbol:WIPI2": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "ATG21",
+    "CGI-50",
+    "FLJ12979",
+    "FLJ14217",
+    "FLJ42984",
+    "DKFZP434J154",
+    "DKFZp686P02188",
+    "ATG18B"
+   ],
+   "hgnc_id": "HGNC:32225",
+   "name": "WD repeat domain, phosphoinositide interacting 2",
+   "prev_symbol": null,
+   "symbol": "WIPI2"
+  }
+ ],
+ "symbol:WWP1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "AIP5",
+    "DKFZP434D2111"
+   ],
+   "hgnc_id": "HGNC:17004",
+   "name": "WW domain containing E3 ubiquitin protein ligase 1",
+   "prev_symbol": null,
+   "symbol": "WWP1"
+  }
+ ],
+ "symbol:XIAP": [
+  {
+   "alias_name": [
+    "IAP-like protein 1"
+   ],
+   "alias_symbol": [
+    "hILP",
+    "ILP-1"
+   ],
+   "hgnc_id": "HGNC:592",
+   "name": "X-linked inhibitor of apoptosis",
+   "prev_symbol": [
+    "API3",
+    "BIRC4"
+   ],
+   "symbol": "XIAP"
+  }
+ ],
+ "symbol:XRCC1": [
+  {
+   "alias_name": [
+    "DNA repair protein XRCC1"
+   ],
+   "alias_symbol": null,
+   "hgnc_id": "HGNC:12828",
+   "name": "X-ray repair cross complementing 1",
+   "prev_symbol": [
+    "RCC"
+   ],
+   "symbol": "XRCC1"
+  }
+ ],
+ "symbol:a number of DNA damaging lesions that involve single-stranded (SS)–double-stranded (DS) junctions": [],
+ "symbol:actinomycin D": [],
+ "symbol:actinomycinD": [],
+ "symbol:alkaline phosphatase": [],
+ "symbol:alkalinephosphatase": [],
+ "symbol:anumberofDNAdamaginglesionsthatinvolvesinglestranded(SS)–doublestranded(DS)junctions": [],
+ "symbol:aphidicolin": [],
+ "symbol:bleomycin": [],
+ "symbol:c-Flip": [],
+ "symbol:cFlip": [],
+ "symbol:cIAP": [],
+ "symbol:caffeine": [],
+ "symbol:calpain": [],
+ "symbol:camptothecin": [],
+ "symbol:casein kinase I": [],
+ "symbol:caseinkinaseI": [],
+ "symbol:caspase-8": [],
+ "symbol:caspase-9": [],
+ "symbol:caspase8": [],
+ "symbol:caspase9": [],
+ "symbol:cis-platin": [],
+ "symbol:cisplatin": [],
+ "symbol:collagen 1": [],
+ "symbol:collagen1": [],
+ "symbol:cyclin D2": [],
+ "symbol:cyclinD2": [],
+ "symbol:cytochrome-c": [],
+ "symbol:cytochromec": [],
+ "symbol:double-stranded DNA ends": [],
+ "symbol:doublestrandedDNAends": [],
+ "symbol:doxorubicin": [],
+ "symbol:eIF4E": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "EIF4E1"
+   ],
+   "hgnc_id": "HGNC:3287",
+   "name": "eukaryotic translation initiation factor 4E",
+   "prev_symbol": [
+    "EIF4EL1",
+    "EIF4F"
+   ],
+   "symbol": "EIF4E"
+  }
+ ],
+ "symbol:etoposide": [],
+ "symbol:extended ssDNA": [],
+ "symbol:extendedssDNA": [],
+ "symbol:formazan": [],
+ "symbol:gemcitabine": [],
+ "symbol:genotoxic stresses": [],
+ "symbol:genotoxicstresses": [],
+ "symbol:hMOF": [],
+ "symbol:hTR": [],
+ "symbol:hnRNP-A1": [],
+ "symbol:hnRNPA1": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "hnRNP-A1",
+    "ALS20"
+   ],
+   "hgnc_id": "HGNC:5031",
+   "name": "heterogeneous nuclear ribonucleoprotein A1",
+   "prev_symbol": [
+    "HNRPA1"
+   ],
+   "symbol": "HNRNPA1"
+  }
+ ],
+ "symbol:insulin": [],
+ "symbol:irradiation": [],
+ "symbol:let-7": [],
+ "symbol:let7": [],
+ "symbol:leucine": [],
+ "symbol:low genotoxic damage": [],
+ "symbol:low-dose aphidicolin": [],
+ "symbol:lowdoseaphidicolin": [],
+ "symbol:lowgenotoxicdamage": [],
+ "symbol:metformin": [],
+ "symbol:miR-204": [],
+ "symbol:miR-29": [],
+ "symbol:miR-30": [],
+ "symbol:miR-34a": [],
+ "symbol:miR-608": [],
+ "symbol:miR204": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "hsa-mir-204"
+   ],
+   "hgnc_id": "HGNC:31582",
+   "name": "microRNA 204",
+   "prev_symbol": [
+    "MIRN204"
+   ],
+   "symbol": "MIR204"
+  }
+ ],
+ "symbol:miR29": [],
+ "symbol:miR30": [],
+ "symbol:miR34a": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "hsa-mir-34a"
+   ],
+   "hgnc_id": "HGNC:31635",
+   "name": "microRNA 34a",
+   "prev_symbol": [
+    "MIRN34A"
+   ],
+   "symbol": "MIR34A"
+  }
+ ],
+ "symbol:miR608": [
+  {
+   "alias_name": null,
+   "alias_symbol": [
+    "hsa-mir-608"
+   ],
+   "hgnc_id": "HGNC:32864",
+   "name": "microRNA 608",
+   "prev_symbol": [
+    "MIRN608"
+   ],
+   "symbol": "MIR608"
+  }
+ ],
+ "symbol:nutlin-3a": [],
+ "symbol:nutlin3a": [],
+ "symbol:olaparib": [],
+ "symbol:osteocalcin": [],
+ "symbol:p107": [],
+ "symbol:p130": [],
+ "symbol:p16": [],
+ "symbol:p16INK4A": [],
+ "symbol:p19ARF": [],
+ "symbol:p21CIP1/WAF1/SDI1": [],
+ "symbol:p27": [],
+ "symbol:p38 MAPK": [],
+ "symbol:p38MAPK": [],
+ "symbol:p70 S6 kinase": [],
+ "symbol:p70S6K": [],
+ "symbol:p70S6kinase": [],
+ "symbol:pRB": [],
+ "symbol:parkin": [],
+ "symbol:pifithrin-α": [],
+ "symbol:pifithrinα": [],
+ "symbol:plasmin": [],
+ "symbol:prexasertib": [],
+ "symbol:rapamycin": [],
+ "symbol:replication stress": [],
+ "symbol:replicationstress": [],
+ "symbol:ribosomal S6 protein": [],
+ "symbol:ribosomalS6protein": [],
+ "symbol:sestrin": [],
+ "symbol:shTSC2": [],
+ "symbol:single-stranded DNA": [],
+ "symbol:singlestrandedDNA": [],
+ "symbol:ssDNA": [],
+ "symbol:stalled DNA replication forks": [],
+ "symbol:stalled replication forks": [],
+ "symbol:stalledDNAreplicationforks": [],
+ "symbol:stalledreplicationforks": [],
+ "symbol:succinate dehydrogenase": [],
+ "symbol:succinatedehydrogenase": [],
+ "symbol:survivin": [],
+ "symbol:t-Bid": [],
+ "symbol:tBid": [],
+ "symbol:tPA": [],
+ "symbol:tamoxifen": [],
+ "symbol:uPA": []
+}

@@ -1,0 +1,141 @@
+{
+  "pmcid": "PMC3759859",
+  "title": "The role of AKT/mTOR pathway in stress response to UV-irradiation: implication in skin carcinogenesis by regulation of apoptosis, autophagy and senescence",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 14,
+    "grounded": 14,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "ionizing radiation",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "general DNA damage response, as stated in review citing other work",
+      "evidence_quote": "While ATM and DNA-PK mainly become activated in response to ionizing radiation, ATR predominantly responds to UV radiation, causing phosphorylation of histone H2AX, phosphorylation of check point kinases (Chk1/2), and phosphorylation of p53 at Ser15 and Ser20 [14,46,47].",
+      "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses"
+    },
+    {
+      "source": "ionizing radiation",
+      "target": "DNA-PK",
+      "effect": "activates",
+      "context": "general DNA damage response, as stated in review citing other work",
+      "evidence_quote": "While ATM and DNA-PK mainly become activated in response to ionizing radiation, ATR predominantly responds to UV radiation, causing phosphorylation of histone H2AX, phosphorylation of check point kinases (Chk1/2), and phosphorylation of p53 at Ser15 and Ser20 [14,46,47].",
+      "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses"
+    },
+    {
+      "source": "UV radiation",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "general DNA damage response, as stated in review citing other work",
+      "evidence_quote": "While ATM and DNA-PK mainly become activated in response to ionizing radiation, ATR predominantly responds to UV radiation, causing phosphorylation of histone H2AX, phosphorylation of check point kinases (Chk1/2), and phosphorylation of p53 at Ser15 and Ser20 [14,46,47].",
+      "location": "4. Interplay Between AKT and p53 Modulates UV-Induced DNA Damage Responses"
+    },
+    {
+      "source": "UV radiation",
+      "target": "AKT",
+      "effect": "activates",
+      "context": "general, in response to UV radiation",
+      "evidence_quote": "In response to UV radiation AKT can be activated in an autocrine fashion or by ligand-independent but ROS-dependent triggering of growth factor receptors bearing RTK activity [22,23,34–37], as well as by functional loss of PTEN [38,39].",
+      "location": "3. AKT Potently Mediates Oncogenic Signaling"
+    },
+    {
+      "source": "UVA",
+      "target": "MTOR",
+      "effect": "activates",
+      "context": "in vitro and in vivo as well as in murine skin, at sub-lethal as well as apoptotic doses",
+      "evidence_quote": "Indeed both, UVA (20/40 kJ/m2) and UVB (200/400 J/m2) at sub-lethal as well as apoptotic doses were shown to activate mTOR and its target S6K in a phosphorylation-dependent manner [81].",
+      "location": "6. Implication of the AKT/mTOR Pathway in Photocarcinogenesis"
+    },
+    {
+      "source": "UVA",
+      "target": "S6K",
+      "effect": "activates",
+      "context": "in vitro and in vivo as well as in murine skin, at sub-lethal as well as apoptotic doses",
+      "evidence_quote": "Indeed both, UVA (20/40 kJ/m2) and UVB (200/400 J/m2) at sub-lethal as well as apoptotic doses were shown to activate mTOR and its target S6K in a phosphorylation-dependent manner [81].",
+      "location": "6. Implication of the AKT/mTOR Pathway in Photocarcinogenesis"
+    },
+    {
+      "source": "UVB",
+      "target": "MTOR",
+      "effect": "activates",
+      "context": "in vitro and in vivo as well as in murine skin, at sub-lethal as well as apoptotic doses",
+      "evidence_quote": "Indeed both, UVA (20/40 kJ/m2) and UVB (200/400 J/m2) at sub-lethal as well as apoptotic doses were shown to activate mTOR and its target S6K in a phosphorylation-dependent manner [81].",
+      "location": "6. Implication of the AKT/mTOR Pathway in Photocarcinogenesis"
+    },
+    {
+      "source": "UVB",
+      "target": "S6K",
+      "effect": "activates",
+      "context": "in vitro and in vivo as well as in murine skin, at sub-lethal as well as apoptotic doses",
+      "evidence_quote": "Indeed both, UVA (20/40 kJ/m2) and UVB (200/400 J/m2) at sub-lethal as well as apoptotic doses were shown to activate mTOR and its target S6K in a phosphorylation-dependent manner [81].",
+      "location": "6. Implication of the AKT/mTOR Pathway in Photocarcinogenesis"
+    },
+    {
+      "source": "UV radiation",
+      "target": "UVRAG",
+      "effect": "activates",
+      "context": "in tumor cells exposed to chemotherapy or UV radiation",
+      "evidence_quote": "In tumor cells exposed to chemotherapy or UV radiation, up-regulated UVRAG exerted its anti-apoptotic function by preventing the translocation of Bax to the mitochondria [101].",
+      "location": "7. Alternative Roles of p53 and AKT/mTOR Pathways in UV Responses: Autophagy"
+    },
+    {
+      "source": "UVB",
+      "target": "AKT",
+      "effect": "activates",
+      "context": "at single cell level, cited from other work",
+      "evidence_quote": "At the single cell level, activation of AKT in response to UVB seems to precede a weak and delayed activation of NFκB [24,72], implying possible uncoupling of these pathways during UV responses.",
+      "location": "5. AKT/mTOR Pathway Impedes UV-Induced Apoptosis"
+    },
+    {
+      "source": "UVB",
+      "target": "NFkB",
+      "effect": "activates",
+      "context": "at single cell level, cited from other work",
+      "evidence_quote": "At the single cell level, activation of AKT in response to UVB seems to precede a weak and delayed activation of NFκB [24,72], implying possible uncoupling of these pathways during UV responses.",
+      "location": "5. AKT/mTOR Pathway Impedes UV-Induced Apoptosis"
+    },
+    {
+      "source": "UVB",
+      "target": "FLIP",
+      "effect": "inhibits",
+      "context": "mouse keratinocytes in vitro and epidermis of irradiated mice, cited from other work on infrared modulation of UVB response",
+      "evidence_quote": "Furthermore, IR also reversed UVB-induced down-regulation of anti-apoptotic FLIP and Bcl-xL, and mediated up-regulation of Bax.",
+      "location": "9. UV Does Not Act Alone: Impact of Heat Shock and Infrared on UV Response"
+    },
+    {
+      "source": "UVB",
+      "target": "Bcl-xL",
+      "effect": "inhibits",
+      "context": "mouse keratinocytes in vitro and epidermis of irradiated mice, cited from other work on infrared modulation of UVB response",
+      "evidence_quote": "Furthermore, IR also reversed UVB-induced down-regulation of anti-apoptotic FLIP and Bcl-xL, and mediated up-regulation of Bax.",
+      "location": "9. UV Does Not Act Alone: Impact of Heat Shock and Infrared on UV Response"
+    },
+    {
+      "source": "UVB",
+      "target": "MAP1LC3B",
+      "effect": "activates",
+      "context": "JB6 murine epidermal cells exposed to UVB 1000 J/m2",
+      "evidence_quote": "UVB-induced (1000 J/m2) appearance of the autophagy marker LC3-II was decreased by over-expression of wild-type or constitutively active GSK3β and was accompanied by increased UVB-induced cell death [110].",
+      "location": "7. Alternative Roles of p53 and AKT/mTOR Pathways in UV Responses: Autophagy"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 9968,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 5524,
+    "output_tokens_details": {
+      "reasoning_tokens": 3824
+    },
+    "total_tokens": 15492
+  },
+  "from_cache": false
+}

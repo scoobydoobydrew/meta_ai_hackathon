@@ -1,0 +1,53 @@
+{
+  "pmcid": "PMC3049316",
+  "title": "An ATM/Chk2-mediated DNA damage-responsive signaling pathway suppresses Epstein-Barr virus transformation of primary human B cells",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 3,
+    "grounded": 3,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "single-stranded DNA",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "downstream of oncogenic stress",
+      "evidence_quote": "Signaling downstream of oncogenic stress involves activation of the single-stranded DNA-dependent ATR pathway and the double-stranded break-induced ATM pathway.",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "double-stranded break",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "downstream of oncogenic stress",
+      "evidence_quote": "Signaling downstream of oncogenic stress involves activation of the single-stranded DNA-dependent ATR pathway and the double-stranded break-induced ATM pathway.",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "double-stranded DNA ends",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "replication intermediates of DNA viruses and retroviruses",
+      "evidence_quote": "In addition to oncogenic stress, replication intermediates of DNA viruses and retroviruses contain double-stranded DNA ends that activate ATM (Lilley et al., 2007).",
+      "location": "The source of DNA damage"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 11082,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 3236,
+    "output_tokens_details": {
+      "reasoning_tokens": 2987
+    },
+    "total_tokens": 14318
+  },
+  "from_cache": false
+}

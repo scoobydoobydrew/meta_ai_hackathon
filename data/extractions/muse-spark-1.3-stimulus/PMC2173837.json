@@ -1,0 +1,37 @@
+{
+  "pmcid": "PMC2173837",
+  "title": "Apoptosis-inducing factor is involved in the regulation of caspase-independent neuronal cell death",
+  "model": "muse-spark-1.3",
+  "kind": "stimulus",
+  "counts": {
+    "proposed": 1,
+    "grounded": 1,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "camptothecin",
+      "target": "CASP3",
+      "effect": "activates",
+      "context": "wild-type neurons",
+      "evidence_quote": "camptothecin-induced cell death was associated with an approximate ninefold increase in caspase-3 activity at 16 h (Fig. 1 B)",
+      "location": "P53 can induce neuronal cell death via Apaf1-dependent and -independent pathways"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 11032,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2515,
+    "output_tokens_details": {
+      "reasoning_tokens": 2409
+    },
+    "total_tokens": 13547
+  },
+  "from_cache": false
+}
