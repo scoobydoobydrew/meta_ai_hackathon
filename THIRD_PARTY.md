@@ -15,6 +15,7 @@ Licenses below were read from each package's installed metadata on 2026-10-29.
 | mpbn | 4.4 | CeCILL | https://github.com/bnediction/mpbn | Most-permissive Boolean network analysis |
 | biodivine_aeon | 1.4.2 | MIT | https://pypi.org/project/biodivine-aeon/ | Boolean network symbolic analysis |
 | pyboolnet | 3.0.16 | LGPL (trove classifier) | https://github.com/hklarner/pyboolnet | Trap spaces, model checking |
+| openpyxl | 3.1.5 | MIT | https://openpyxl.readthedocs.org | Reads Supplementary Table S2 of the base network paper |
 | pytest | 9.2.0 | MIT | https://github.com/pytest-dev/pytest | Tests (dev only) |
 
 ## Services
@@ -23,5 +24,9 @@ Licenses below were read from each package's installed metadata on 2026-10-29.
 
 ## Data and models
 
-- Base Boolean network: TBD (source, license and verified node count to be recorded here once chosen).
+- Base Boolean network (proposed, pending the human's decision): Gupta S, Panda PK, Silveira DA, Ahuja R,
+  Hashimoto RF. "Quadra-stable Dynamics of p53 and PTEN in the DNA Damage Response". Cells 2023;12(7):1085,
+  doi 10.3390/cells12071085. Article license CC BY 4.0; the supplement's license is not stated separately.
+  Rules taken from Supplementary Table S2 into `data/base/gupta2023.bnet` with attribution in its header.
+  Node count counted from the file: 30 (1 input + 29 rules). Supplement obtained via the Europe PMC REST API.
 - Open-access paper corpus (Europe PMC): TBD.

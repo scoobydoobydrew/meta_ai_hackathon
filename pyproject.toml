@@ -18,6 +18,7 @@ dependencies = [
     "mpbn==4.4",
     "biodivine_aeon==1.4.2",
     "pyboolnet==3.0.16",
+    "openpyxl==3.1.5",
 ]
 
 [project.optional-dependencies]
