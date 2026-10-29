@@ -24,7 +24,7 @@ Licenses below were read from each package's installed metadata on 2026-10-29.
 
 ## Data and models
 
-- Base Boolean network (proposed, pending the human's decision): Gupta S, Panda PK, Silveira DA, Ahuja R,
+- Base Boolean network (chosen by the human on 2026-10-29): Gupta S, Panda PK, Silveira DA, Ahuja R,
   Hashimoto RF. "Quadra-stable Dynamics of p53 and PTEN in the DNA Damage Response". Cells 2023;12(7):1085,
   doi 10.3390/cells12071085. Article license CC BY 4.0; the supplement's license is not stated separately.
   Rules taken from Supplementary Table S2 into `data/base/gupta2023.bnet` with attribution in its header.

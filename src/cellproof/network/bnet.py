@@ -26,5 +26,9 @@ def load_bnet(path: str | Path) -> dict[str, str]:
     return parse_bnet(Path(path).read_text(encoding="utf-8"))
 
 
+def format_bnet(rules: dict[str, str]) -> str:
+    return "targets, factors\n" + "".join(f"{node}, {rule}\n" for node, rule in rules.items())
+
+
 def regulators(rule: str) -> set[str]:
     return set(_NAME.findall(rule))
