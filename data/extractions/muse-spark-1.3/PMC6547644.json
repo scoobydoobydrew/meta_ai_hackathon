@@ -1,0 +1,236 @@
+{
+  "pmcid": "PMC6547644",
+  "title": "Radiation-dose-dependent functional synergisms between ATM, ATR and DNA-PKcs in checkpoint control and resection in G<sub>2</sub>-phase",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 26,
+    "grounded": 26,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "ATM",
+      "target": "NBS1",
+      "effect": "requires",
+      "context": "review statement",
+      "evidence_quote": "ATM is recruited by NBS114, ATR by ATRIP15, and DNA-PKcs by Ku8016,17.",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATR",
+      "target": "ATRIP",
+      "effect": "requires",
+      "context": "review statement",
+      "evidence_quote": "ATM is recruited by NBS114, ATR by ATRIP15, and DNA-PKcs by Ku8016,17.",
+      "location": "Introduction"
+    },
+    {
+      "source": "DNA-PKcs",
+      "target": "Ku80",
+      "effect": "requires",
+      "context": "review statement",
+      "evidence_quote": "ATM is recruited by NBS114, ATR by ATRIP15, and DNA-PKcs by Ku8016,17.",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "Chk2",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "A relevant substrate of ATM is the Chk2 kinase, which is activated by ATM and phosphorylated on multiple sites including T6826–29, that is routinely used as evidence for ATM activation.",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "ATM rapidly initiates and sustains chromatin-based DDR signaling through phosphorylation of S139 of histone variant H2AX to generate γ-H2AX.",
+      "location": "Introduction"
+    },
+    {
+      "source": "BRCA1",
+      "target": "53BP1",
+      "effect": "inhibits",
+      "context": "review statement",
+      "evidence_quote": "The function of 53BP1 is antagonized by BRCA1, a protein favoring DSB processing by HRR, through mechanisms that are being elucidated44.",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "CtIP",
+      "effect": "activates",
+      "context": "review statement, regulation of DNA-end resection",
+      "evidence_quote": "In this function, it is primarily involved in the regulation of DNA-end resection33,47–50, in part through phosphorylation of the key resection factor CtIP51–53.",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATR",
+      "target": "Chk1",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "An important function of ATR is to phosphorylate and activate the protein kinase Chk166–69",
+      "location": "Introduction"
+    },
+    {
+      "source": "Chk1",
+      "target": "Cdc25A",
+      "effect": "inhibits",
+      "context": "review statement, S-phase and G2-phase cells",
+      "evidence_quote": "which in S-phase cells inactivates the Cdc25A and in G2–phase the Cdc25C phosphatase",
+      "location": "Introduction"
+    },
+    {
+      "source": "Chk1",
+      "target": "Cdc25C",
+      "effect": "inhibits",
+      "context": "review statement, S-phase and G2-phase cells",
+      "evidence_quote": "which in S-phase cells inactivates the Cdc25A and in G2–phase the Cdc25C phosphatase",
+      "location": "Introduction"
+    },
+    {
+      "source": "Cdc25C",
+      "target": "CDKs",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "the Cdc25C phosphatase that removes inhibitory modifications from cyclin dependent kinases (CDKs)70,71",
+      "location": "Introduction"
+    },
+    {
+      "source": "DNA-PKcs",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "review statement, DNA-PKcs-deficient cells",
+      "evidence_quote": "Expression of ATM is regulated by DNA-PKcs such that ATM protein levels are decreased in DNA-PKcs-deficient cells72.",
+      "location": "Introduction"
+    },
+    {
+      "source": "DNA-PKcs",
+      "target": "ATM",
+      "effect": "inhibits",
+      "context": "review statement",
+      "evidence_quote": "Also, DNA-PKcs regulates negatively ATM activity through phosphorylation at multiple sites73",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "DNA-PKcs",
+      "effect": "activates",
+      "context": "review statement, in response to DNA damage",
+      "evidence_quote": "Vice-versa, DNA-PKcs is phosphorylated by ATM at residues T2609 and T2647 in response to DNA damage75",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "review statement, S- and G2-phase of the cell cycle in response to DSBs",
+      "evidence_quote": "Notably, ATM-dependent resection is known to facilitate ATR activation in the S- and G2 –phase of the cell cycle, suggesting a directional crosstalk between ATM and ATR in response to DSBs33,49,50.",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATR",
+      "target": "DNA-PKcs",
+      "effect": "requires",
+      "context": "human cell-free extracts",
+      "evidence_quote": "activation of endogenous ATR and Chk1 in human cell-free extracts depends under certain conditions on DNA-PKcs that acts by phosphorylating RPA32 and TopBP182.",
+      "location": "Introduction"
+    },
+    {
+      "source": "Chk1",
+      "target": "DNA-PKcs",
+      "effect": "requires",
+      "context": "human cell-free extracts",
+      "evidence_quote": "activation of endogenous ATR and Chk1 in human cell-free extracts depends under certain conditions on DNA-PKcs that acts by phosphorylating RPA32 and TopBP182.",
+      "location": "Introduction"
+    },
+    {
+      "source": "DNA-PKcs",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "human cell-free extracts",
+      "evidence_quote": "activation of endogenous ATR and Chk1 in human cell-free extracts depends under certain conditions on DNA-PKcs that acts by phosphorylating RPA32 and TopBP182.",
+      "location": "Introduction"
+    },
+    {
+      "source": "DNA-PKcs",
+      "target": "TopBP1",
+      "effect": "activates",
+      "context": "human cell-free extracts",
+      "evidence_quote": "activation of endogenous ATR and Chk1 in human cell-free extracts depends under certain conditions on DNA-PKcs that acts by phosphorylating RPA32 and TopBP182.",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATR",
+      "target": "DNA-PKcs",
+      "effect": "activates",
+      "context": "in vivo and in vitro, review statement",
+      "evidence_quote": "DNA-PKcs associates with ATR in vivo and is phosphorylated by ATR in vitro85.",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATR",
+      "target": "CtIP",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "The role for ATR in resection may not be surprising since ATR is known to phosphorylate CtIP108, but we anticipate additional regulatory branches that remain to be elucidated105.",
+      "location": "Discussion"
+    },
+    {
+      "source": "Mre11",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "review statement, responses to DSBs",
+      "evidence_quote": "Consistently, depletion, or inactivation of Mre11, Exo1, and Dna2 leads to diminished ATR responses to DSBs48–50,104,105.",
+      "location": "Discussion"
+    },
+    {
+      "source": "Exo1",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "review statement, responses to DSBs",
+      "evidence_quote": "Consistently, depletion, or inactivation of Mre11, Exo1, and Dna2 leads to diminished ATR responses to DSBs48–50,104,105.",
+      "location": "Discussion"
+    },
+    {
+      "source": "Dna2",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "review statement, responses to DSBs",
+      "evidence_quote": "Consistently, depletion, or inactivation of Mre11, Exo1, and Dna2 leads to diminished ATR responses to DSBs48–50,104,105.",
+      "location": "Discussion"
+    },
+    {
+      "source": "ATM",
+      "target": "KAP1",
+      "effect": "activates",
+      "context": "82-6 hTert cells after IR, review of ATM downstream targets",
+      "evidence_quote": "ATM activation is also documented by the phosphorylation of ATM downstream targets: KAP1 on Serine 824 (KAP1-pS824) (Fig. 2C), p53 on Serine 15 (p53-pS15) (Fig. 2D) and Chk2 on Threonine 68 (Chk2-pT68) (Figs 2E and S2A for A549 cells).",
+      "location": "At low IR doses, the ATM/ATR module is organized as a linear array with ATM upstream and with ATR mainly interfacing with the cell cycle engine through Chk1"
+    },
+    {
+      "source": "ATM",
+      "target": "p53",
+      "effect": "activates",
+      "context": "82-6 hTert cells after IR, review of ATM downstream targets",
+      "evidence_quote": "ATM activation is also documented by the phosphorylation of ATM downstream targets: KAP1 on Serine 824 (KAP1-pS824) (Fig. 2C), p53 on Serine 15 (p53-pS15) (Fig. 2D) and Chk2 on Threonine 68 (Chk2-pT68) (Figs 2E and S2A for A549 cells).",
+      "location": "At low IR doses, the ATM/ATR module is organized as a linear array with ATM upstream and with ATR mainly interfacing with the cell cycle engine through Chk1"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 16155,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 8176,
+    "output_tokens_details": {
+      "reasoning_tokens": 6012
+    },
+    "total_tokens": 24331
+  },
+  "from_cache": false
+}

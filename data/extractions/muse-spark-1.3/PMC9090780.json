@@ -1,0 +1,124 @@
+{
+  "pmcid": "PMC9090780",
+  "title": "Cell cycle regulation: p53-p21-RB signaling",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 12,
+    "grounded": 12,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "p53",
+      "target": "p21",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "The CDKN1A gene is transcriptionally activated by p53.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "p21",
+      "target": "RB",
+      "effect": "activates",
+      "context": "cultured human cells",
+      "evidence_quote": "Thus, p21 can stimulate RB-E2F complex formation.",
+      "location": "RB-E2F complex formation is controlled by p21"
+    },
+    {
+      "source": "CDK",
+      "target": "RB",
+      "effect": "inhibits",
+      "context": "review statement on RB phosphorylation",
+      "evidence_quote": "The hypophosphorylated state of RB can be switched to hyperphosphorylation through kinase activity of cyclin-CDK complexes.",
+      "location": "RB-E2F complex formation is controlled by p21"
+    },
+    {
+      "source": "MDM2",
+      "target": "RB",
+      "effect": "inhibits",
+      "context": "review statement, tumors with MDM2 overexpression",
+      "evidence_quote": "MDM2 causes proteolytic degradation of RB [13].",
+      "location": "RB function is lost in many tumors"
+    },
+    {
+      "source": "MDM2",
+      "target": "p53",
+      "effect": "inhibits",
+      "context": "review statement, human cancers",
+      "evidence_quote": "For instance, viral oncoproteins or overexpression of MDM2 cause p53 proteolysis [27, 28, 30].",
+      "location": "p53 – tumor suppressor and guardian of the genome"
+    },
+    {
+      "source": "p53",
+      "target": "BAX",
+      "effect": "activates",
+      "context": "review statement, direct transcriptional activation by p53",
+      "evidence_quote": "Prominent targets for its direct transcriptional activation are the apoptosis inducers BAX and PUMA/BBC3 [33, 34].",
+      "location": "p53 – tumor suppressor and guardian of the genome"
+    },
+    {
+      "source": "p53",
+      "target": "BBC3",
+      "effect": "activates",
+      "context": "review statement, direct transcriptional activation by p53",
+      "evidence_quote": "Prominent targets for its direct transcriptional activation are the apoptosis inducers BAX and PUMA/BBC3 [33, 34].",
+      "location": "p53 – tumor suppressor and guardian of the genome"
+    },
+    {
+      "source": "p53",
+      "target": "p21",
+      "effect": "requires",
+      "context": "review statement, genome-wide analyses of p53-dependent repression",
+      "evidence_quote": "Indirect transcriptional repression by p53 requires the cyclin-dependent kinase inhibitor p21/WAF1/CIP1/CDKN1A [23, 37, 38].",
+      "location": "p53 – tumor suppressor and guardian of the genome"
+    },
+    {
+      "source": "DYRK1A",
+      "target": "LIN52",
+      "effect": "activates",
+      "context": "in vitro binding mechanism, LIN52 phosphorylation",
+      "evidence_quote": "Only phosphorylation of S28 in LIN52 close to the LxSxExL motif by the kinase DYRK1A increases affinity of LIN52 towards p107 and p130 pocket proteins to a similar level as observed for the LxCxE motif.",
+      "location": "RB cannot substitute for p107 or p130 in the DREAM complex"
+    },
+    {
+      "source": "RB",
+      "target": "SKP2",
+      "effect": "inhibits",
+      "context": "review statement, RB non-canonical function independent of E2F binding",
+      "evidence_quote": "RB binds to SKP2, a component of the SCF complex, and thereby prevents that SKP2 initiates ubiquitination and subsequent degradation of p27 [77].",
+      "location": "Non-canonical RB function controlling DREAM: the RB-SKP2-p27-cyclin A/E-CDK2-p130-DREAM mechanism"
+    },
+    {
+      "source": "SKP2",
+      "target": "p27",
+      "effect": "inhibits",
+      "context": "review statement, RB non-canonical function independent of E2F binding",
+      "evidence_quote": "RB binds to SKP2, a component of the SCF complex, and thereby prevents that SKP2 initiates ubiquitination and subsequent degradation of p27 [77].",
+      "location": "Non-canonical RB function controlling DREAM: the RB-SKP2-p27-cyclin A/E-CDK2-p130-DREAM mechanism"
+    },
+    {
+      "source": "p27",
+      "target": "CDK2",
+      "effect": "inhibits",
+      "context": "review statement, RB-dependent formation of DREAM",
+      "evidence_quote": "Importantly, p27 can inhibit cyclin E/CDK2 and cyclin A/CDK2 kinase activity.",
+      "location": "Non-canonical RB function controlling DREAM: the RB-SKP2-p27-cyclin A/E-CDK2-p130-DREAM mechanism"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 14918,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 6001,
+    "output_tokens_details": {
+      "reasoning_tokens": 4929
+    },
+    "total_tokens": 20919
+  },
+  "from_cache": false
+}

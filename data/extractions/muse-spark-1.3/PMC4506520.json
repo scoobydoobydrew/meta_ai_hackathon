@@ -1,0 +1,76 @@
+{
+  "pmcid": "PMC4506520",
+  "title": "Aneuploidy generates proteotoxic stress and DNA damage concurrently with p53-mediated post-mitotic apoptosis in SAC-impaired cells",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 6,
+    "grounded": 6,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "Cmpd-A",
+      "target": "CENP-E",
+      "effect": "inhibits",
+      "context": "in vitro ATPase assay with CENP-E motor domain",
+      "evidence_quote": "Cmpd-A inhibits the ATPase activity of the CENP-E-motor domain, with an IC50 value of 2.2 nM.",
+      "location": "Aneuploidy generates replication stress-mediated DSBs"
+    },
+    {
+      "source": "ATM",
+      "target": "p53",
+      "effect": "activates",
+      "context": "cultured human HeLa cells with BubR1 knockdown and CENP-E inhibition (siBubR1+Cmpd-A)",
+      "evidence_quote": "To summarize, chromosome missegregation caused by CENP-E inhibition and SAC attenuation generated DSBs, and the activated DDR contributed to p53 phosphorylation by ATM and ATR.",
+      "location": "Aneuploidy generates replication stress-mediated DSBs"
+    },
+    {
+      "source": "ATR",
+      "target": "p53",
+      "effect": "activates",
+      "context": "cultured human HeLa cells with BubR1 knockdown and CENP-E inhibition (siBubR1+Cmpd-A)",
+      "evidence_quote": "To summarize, chromosome missegregation caused by CENP-E inhibition and SAC attenuation generated DSBs, and the activated DDR contributed to p53 phosphorylation by ATM and ATR.",
+      "location": "Aneuploidy generates replication stress-mediated DSBs"
+    },
+    {
+      "source": "ATM",
+      "target": "p21",
+      "effect": "activates",
+      "context": "cultured human HeLa cells with BubR1 knockdown and CENP-E inhibition treated with ATM/ATR inhibitors",
+      "evidence_quote": "Furthermore, inhibitors of ATM (Ku55933) and ATR (VE-821)36,37 suppressed p53 phosphorylation and p21 expression (Supplementary Fig. 12e).",
+      "location": "Aneuploidy generates replication stress-mediated DSBs"
+    },
+    {
+      "source": "ATR",
+      "target": "p21",
+      "effect": "activates",
+      "context": "cultured human HeLa cells with BubR1 knockdown and CENP-E inhibition treated with ATM/ATR inhibitors",
+      "evidence_quote": "Furthermore, inhibitors of ATM (Ku55933) and ATR (VE-821)36,37 suppressed p53 phosphorylation and p21 expression (Supplementary Fig. 12e).",
+      "location": "Aneuploidy generates replication stress-mediated DSBs"
+    },
+    {
+      "source": "E6/E7",
+      "target": "p53",
+      "effect": "inhibits",
+      "context": "cultured human HeLa cells, basal condition",
+      "evidence_quote": "Although HeLa cells possess wild-type p53, human papillomavirus (HPV)-encoded E6/E7 genes downregulate the expression of the p53 protein.",
+      "location": "Aneuploidy upregulates the p53 pathway in SAC-impaired cells"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 13960,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 4494,
+    "output_tokens_details": {
+      "reasoning_tokens": 3858
+    },
+    "total_tokens": 18454
+  },
+  "from_cache": false
+}

@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "775665ce95916ab5447a32cd9091b85bcd33ecb8361bc1afbccedf30f16648d9",
+      "chars": 33746,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"review statement citing prior work, in response to DNA replication stress or DNA damage\", \"effect\": \"activates\", \"evidence_quote\": \"They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].\", \"location\": \"INTRODUCTION\", \"source\": \"ATR\", \"target\": \"CHK1\"}, {\"context\": \"review statement citing prior work, in response to DNA replication stress or DNA damage\", \"effect\": \"activates\", \"evidence_quote\": \"They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].\", \"location\": \"INTRODUCTION\", \"source\": \"ATR\", \"target\": \"CHK2\"}, {\"context\": \"review statement citing prior work, leading to arrest at the G2/M checkpoint\", \"effect\": \"inhibits\", \"evidence_quote\": \"They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].\", \"location\": \"INTRODUCTION\", \"source\": \"CHK1\", \"target\": \"CDC25C\"}, {\"context\": \"review statement citing prior work, leading to arrest at the G2/M checkpoint\", \"effect\": \"inhibits\", \"evidence_quote\": \"They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].\", \"location\": \"INTRODUCTION\", \"source\": \"CHK1\", \"target\": \"CDC25A\"}, {\"context\": \"review statement citing prior work, in HR DNA repair in response to DSBs\", \"effect\": \"activates\", \"evidence_quote\": \"by facilitating the BRCA2-Rad51 interaction through phosphorylation of the BRCA2 C-terminal domain and Rad51 at T309\", \"location\": \"INTRODUCTION\", \"source\": \"CHK1\", \"target\": \"BRCA2\"}, {\"context\": \"review statement citing prior work, in HR DNA repair in response to DSBs\", \"effect\": \"activates\", \"evidence_quote\": \"by facilitating the BRCA2-Rad51 interaction through phosphorylation of the BRCA2 C-terminal domain and Rad51 at T309\", \"location\": \"INTRODUCTION\", \"source\": \"CHK1\", \"target\": \"RAD51\"}, {\"context\": \"drug description, selective ATP competitive small molecule inhibitor\", \"effect\": \"inhibits\", \"evidence_quote\": \"Prexasertib mesylate monohydrate (hereafter referred to as prexasertib; LY2606368) is a selective ATP competitive small molecule inhibitor of Chk1 and Chk2 [24].\", \"location\": \"INTRODUCTION\", \"source\": \"prexasertib\", \"target\": \"CHK1\"}, {\"context\": \"drug description, selective ATP competitive small molecule inhibitor\", \"effect\": \"inhibits\", \"evidence_quote\": \"Prexasertib mesylate monohydrate (hereafter referred to as prexasertib; LY2606368) is a selective ATP competitive small molecule inhibitor of Chk1 and Chk2 [24].\", \"location\": \"INTRODUCTION\", \"source\": \"prexasertib\", \"target\": \"CHK2\"}, {\"context\": \"HGSOC cell lines, monotherapy and in combination treatment\", \"effect\": \"inhibits\", \"evidence_quote\": \"Olaparib significantly reduced PAR incorporation in all cell lines both in monotherapy and in combination, and prexasertib neither stimulated nor inhibited PAR incorporation (Figure 2A).\", \"location\": \"Prexasertib does not affect PAR incorporation and olaparib does not alter Chk1 activity\", \"source\": \"olaparib\", \"target\": \"PAR\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 8113,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 4035,
+    "output_tokens_details": {
+      "reasoning_tokens": 3101
+    },
+    "total_tokens": 12148
+  }
+}

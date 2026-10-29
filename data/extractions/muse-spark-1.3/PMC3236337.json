@@ -1,0 +1,52 @@
+{
+  "pmcid": "PMC3236337",
+  "title": "Rare variants in the ATM gene and risk of breast cancer",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 3,
+    "grounded": 3,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "ATM",
+      "target": "BRCA1",
+      "effect": "activates",
+      "context": "review statement citing prior work, DNA double-strand break response",
+      "evidence_quote": "activating cellular responses to DNA double-strand breaks through downstream phosphorylation of central players in the DNA damage-response pathways, including BRCA1, p53, and Chk2 [1].",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement citing prior work, DNA double-strand break response",
+      "evidence_quote": "activating cellular responses to DNA double-strand breaks through downstream phosphorylation of central players in the DNA damage-response pathways, including BRCA1, p53, and Chk2 [1].",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "Chk2",
+      "effect": "activates",
+      "context": "review statement citing prior work, DNA double-strand break response",
+      "evidence_quote": "activating cellular responses to DNA double-strand breaks through downstream phosphorylation of central players in the DNA damage-response pathways, including BRCA1, p53, and Chk2 [1].",
+      "location": "Introduction"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 7640,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2341,
+    "output_tokens_details": {
+      "reasoning_tokens": 2066
+    },
+    "total_tokens": 9981
+  },
+  "from_cache": false
+}

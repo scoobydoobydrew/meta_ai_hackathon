@@ -1,0 +1,132 @@
+{
+  "pmcid": "PMC509302",
+  "title": "The telomeric protein TRF2 binds the ATM kinase and can inhibit the ATM-dependent DNA damage response",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 13,
+    "grounded": 13,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "ATM",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement, cultured human cells after DNA damage",
+      "evidence_quote": "ATM phosphorylates and stabilizes p53 in response to DNA damage (reviewed in Kastan and Lim 2000).",
+      "location": "Results"
+    },
+    {
+      "source": "ATM",
+      "target": "Nbs1",
+      "effect": "activates",
+      "context": "IMR90 human cells, 45 min after 20 Gy IR, review statement citing other work",
+      "evidence_quote": "We also examined the phosphorylation of Nbs1 on S343, a target of ATM (Gatei et al. 2000; Lim et al. 2000; Wu et al. 2000; Zhao et al. 2000).",
+      "location": "Results"
+    },
+    {
+      "source": "TRF2",
+      "target": "ATM",
+      "effect": "inhibits",
+      "context": "human cells overexpressing TRF2, after ionizing radiation",
+      "evidence_quote": "TRF2 inhibited autophosphorylation of ATM on S1981, an early step in the activation of this kinase.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "TRF2",
+      "target": "p53",
+      "effect": "inhibits",
+      "context": "IMR90 primary human fibroblasts overexpressing TRF2, after irradiation",
+      "evidence_quote": "Quantitative immunoblotting showed that cells overexpressing TRF2 had a diminished ability to induce p53 after irradiation (Figures 2A and 2B).",
+      "location": "Results"
+    },
+    {
+      "source": "TRF2",
+      "target": "Nbs1",
+      "effect": "inhibits",
+      "context": "IMR90 primary human fibroblasts overexpressing TRF2, 45 min after 20 Gy IR",
+      "evidence_quote": "In contrast, irradiation did not appear to induce phosphorylation of Nbs1 in cells overexpressing TRF2, indicating that TRF2 diminished the ATM-dependent phosphorylation of Nbs1 (Figure 2C).",
+      "location": "Results"
+    },
+    {
+      "source": "TRF2",
+      "target": "p21",
+      "effect": "inhibits",
+      "context": "IMR90 primary human fibroblasts overexpressing TRF2, 0-36 h after 5 Gy IR",
+      "evidence_quote": "Both the relative level of p53 protein and the induction of its downstream targets p21, Bax, and Hdm2 were dampened.",
+      "location": "Results"
+    },
+    {
+      "source": "TRF2",
+      "target": "Bax",
+      "effect": "inhibits",
+      "context": "IMR90 primary human fibroblasts overexpressing TRF2, 0-36 h after 5 Gy IR",
+      "evidence_quote": "Both the relative level of p53 protein and the induction of its downstream targets p21, Bax, and Hdm2 were dampened.",
+      "location": "Results"
+    },
+    {
+      "source": "TRF2",
+      "target": "Hdm2",
+      "effect": "inhibits",
+      "context": "IMR90 primary human fibroblasts overexpressing TRF2, 0-36 h after 5 Gy IR",
+      "evidence_quote": "Both the relative level of p53 protein and the induction of its downstream targets p21, Bax, and Hdm2 were dampened.",
+      "location": "Results"
+    },
+    {
+      "source": "p53",
+      "target": "p21",
+      "effect": "activates",
+      "context": "IMR90 human cells, 0-36 h after 5 Gy IR, stated as downstream targets relationship",
+      "evidence_quote": "Both the relative level of p53 protein and the induction of its downstream targets p21, Bax, and Hdm2 were dampened.",
+      "location": "Results"
+    },
+    {
+      "source": "p53",
+      "target": "Bax",
+      "effect": "activates",
+      "context": "IMR90 human cells, 0-36 h after 5 Gy IR, stated as downstream targets relationship",
+      "evidence_quote": "Both the relative level of p53 protein and the induction of its downstream targets p21, Bax, and Hdm2 were dampened.",
+      "location": "Results"
+    },
+    {
+      "source": "p53",
+      "target": "Hdm2",
+      "effect": "activates",
+      "context": "IMR90 human cells, 0-36 h after 5 Gy IR, stated as downstream targets relationship",
+      "evidence_quote": "Both the relative level of p53 protein and the induction of its downstream targets p21, Bax, and Hdm2 were dampened.",
+      "location": "Results"
+    },
+    {
+      "source": "caffeine",
+      "target": "ATM",
+      "effect": "inhibits",
+      "context": "IMR90 human cells after 4 Gy IR, review statement citing inhibitor specificity",
+      "evidence_quote": "Caffeine, an inhibitor of ATM and the related kinase ATR, suppressed IR-induced arrest to a similar extent as TRF2 (Figure 1).",
+      "location": "Results"
+    },
+    {
+      "source": "caffeine",
+      "target": "ATR",
+      "effect": "inhibits",
+      "context": "IMR90 human cells after 4 Gy IR, review statement citing inhibitor specificity",
+      "evidence_quote": "Caffeine, an inhibitor of ATM and the related kinase ATR, suppressed IR-induced arrest to a similar extent as TRF2 (Figure 1).",
+      "location": "Results"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 8509,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 5594,
+    "output_tokens_details": {
+      "reasoning_tokens": 4418
+    },
+    "total_tokens": 14103
+  },
+  "from_cache": false
+}

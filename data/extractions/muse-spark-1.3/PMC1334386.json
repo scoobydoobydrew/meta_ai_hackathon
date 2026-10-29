@@ -1,0 +1,92 @@
+{
+  "pmcid": "PMC1334386",
+  "title": "Structural basis of competitive recognition of p53 and MDM2 by HAUSP/USP7: implications for the regulation of the p53-MDM2 pathway",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 8,
+    "grounded": 8,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "HAUSP",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement, to unknown effect",
+      "evidence_quote": "HAUSP specifically deubiquitinates both p53 and MDM2, to unknown effect.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "HAUSP",
+      "target": "MDM2",
+      "effect": "activates",
+      "context": "review statement, to unknown effect",
+      "evidence_quote": "HAUSP specifically deubiquitinates both p53 and MDM2, to unknown effect.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "MDM2",
+      "target": "p53",
+      "effect": "inhibits",
+      "context": "in normal cells",
+      "evidence_quote": "In normal cells, p53 is maintained at a low level mainly through MDM2-mediated ubiquitylation and subsequent degradation [7–9].",
+      "location": "Introduction"
+    },
+    {
+      "source": "MDM2",
+      "target": "MDM2",
+      "effect": "inhibits",
+      "context": "review statement citing other work",
+      "evidence_quote": "The C-terminal RING-finger motif of MDM2 not only promotes p53 ubiquitylation [10,15], but also targets MDM2 itself for auto-ubiquitylation and subsequent degradation [10,15].",
+      "location": "Introduction"
+    },
+    {
+      "source": "p53",
+      "target": "MDM2",
+      "effect": "activates",
+      "context": "review statement citing other work on transcriptional regulation",
+      "evidence_quote": "The MDM2 gene is a transcriptional target of p53 [17–19], so activation of the MDM2 gene by p53 would lead to repression of p53 activity.",
+      "location": "Introduction"
+    },
+    {
+      "source": "HAUSP",
+      "target": "p53",
+      "effect": "activates",
+      "context": "in vivo",
+      "evidence_quote": "Expression of HAUSP was shown to stabilize p53 in vivo and to promote p53-dependent apoptosis and cell-growth arrest [24].",
+      "location": "Introduction"
+    },
+    {
+      "source": "HAUSP",
+      "target": "MDM2",
+      "effect": "activates",
+      "context": "both in vivo and in vitro, cited from other work",
+      "evidence_quote": "HAUSP can deubiquitylate MDM2, both in vivo and in vitro, and is required for the stability of MDM2 in normal cells [26–28].",
+      "location": "Introduction"
+    },
+    {
+      "source": "MDM2",
+      "target": "HAUSP",
+      "effect": "requires",
+      "context": "in normal cells, cited from other work",
+      "evidence_quote": "HAUSP can deubiquitylate MDM2, both in vivo and in vitro, and is required for the stability of MDM2 in normal cells [26–28].",
+      "location": "Introduction"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 11838,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2102,
+    "output_tokens_details": {
+      "reasoning_tokens": 1475
+    },
+    "total_tokens": 13940
+  },
+  "from_cache": false
+}

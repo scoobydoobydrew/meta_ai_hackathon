@@ -1,0 +1,124 @@
+{
+  "pmcid": "PMC3510507",
+  "title": "Distinct roles for DNA-PK, ATM and ATR in RPA phosphorylation and checkpoint activation in response to replication stress",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 12,
+    "grounded": 12,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "CDK1",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "cultured cells during mitosis, review statement",
+      "evidence_quote": "RPA32 Ser23 and Ser29 are fully phosphorylated during mitosis by cyclin-dependent kinase 1 (CDK1)/cyclin B (24,25)",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "CDK2",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "cultured cells at the G1/S boundary, review statement",
+      "evidence_quote": "and partially phosphorylated by CDK2/cyclin A at the G1/S boundary (24,26,27)",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "CDK",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "cultured cells during interphase after genotoxic stress, review statement",
+      "evidence_quote": "CDK phosphorylation of Ser23 and Ser29 is also induced during interphase by genotoxic stress (28,29)",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "ATR",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "cells in response to DNA damage, review statement",
+      "evidence_quote": "which stimulates phosphorylation of Ser33 by ATR that in turn promotes PIKK-mediated phosphorylation of residues closer to the N-terminus, including Thr21, Ser12, Ser4 and Ser8 (20,26,28–31)",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "DNA-PK",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "in vitro kinase assay with purified proteins",
+      "evidence_quote": "RPA32 Ser4/Ser8 and Thr21 were phosphorylated by DNA-PK (Figure 2A–C), but not CDK",
+      "location": "RESULTS - Defining PIKK roles in RPA32 phosphorylation in vitro and in vivo after replication stress"
+    },
+    {
+      "source": "ATM",
+      "target": "RPA32",
+      "effect": "activates",
+      "context": "in vitro kinase assay with purified proteins",
+      "evidence_quote": "Interestingly, ATM phosphorylated Ser4/Ser8, but not Thr21, and ATM showed minimal activity toward Ser33 (Figure 2C)",
+      "location": "RESULTS - Defining PIKK roles in RPA32 phosphorylation in vitro and in vivo after replication stress"
+    },
+    {
+      "source": "RPA",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "cells with resected DSBs or stalled replication forks, review statement",
+      "evidence_quote": "RPA bound to ssDNA, either at resected DSBs or stalled replication forks, recruits ATRIP-ATR leading to ATR activation and phosphorylation of downstream checkpoint proteins (18)",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "ATR",
+      "target": "TOPBP1",
+      "effect": "requires",
+      "context": "human UM-SCC-38 cells in response to replication stress",
+      "evidence_quote": "Full ATR activation depends on its interaction with TopBP1 (52)",
+      "location": "RESULTS - RPA32 Ser4/Ser8 phosphorylation regulates replication checkpoint signaling via MRE11 and TopBP1 phosphorylation"
+    },
+    {
+      "source": "ATR",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "cells in response to replication stress",
+      "evidence_quote": "Replication stress activates ATR, which phosphorylates/activates Chk1, and this is a key step in transmitting DNA damage signals to downstream replication checkpoint effector proteins (52,55)",
+      "location": "RESULTS - Replication-induced Chk1 phosphorylation is defective in DNA-PKcs and RPA32 Ser4/Ser8 mutants"
+    },
+    {
+      "source": "RPA32",
+      "target": "NBS1",
+      "effect": "requires",
+      "context": "cells treated with etoposide, ATR-dependent response, cited from other work",
+      "evidence_quote": "NBS1 also has an important role in etoposide-induced, ATR-dependent RPA32 hyperphosphorylation (50)",
+      "location": "RESULTS - RPA32 Ser4/Ser8 phosphorylation regulates replication checkpoint signaling via MRE11 and TopBP1 phosphorylation"
+    },
+    {
+      "source": "RPA32",
+      "target": "MRE11",
+      "effect": "activates",
+      "context": "human UM-SCC-38 cells treated with etoposide",
+      "evidence_quote": "We found that etoposide-induced MRE11 phosphorylation was significantly reduced in UM-SCC-38 cells expressing S4A/S8A mutant RPA32 compared with WT, an effect comparable with that observed in cells expressing kinase-dead ATR (Figure 3B and C)",
+      "location": "RESULTS - RPA32 Ser4/Ser8 phosphorylation regulates replication checkpoint signaling via MRE11 and TopBP1 phosphorylation"
+    },
+    {
+      "source": "RPA32",
+      "target": "TOPBP1",
+      "effect": "activates",
+      "context": "human UM-SCC-38 cells treated with etoposide",
+      "evidence_quote": "Similar to MRE11, etoposide-induced TopBP1 phosphorylation was reduced in UM-SCC-38 cells to ∼50% of WT levels in the S4A/S8A mutant (Figure 3B and C)",
+      "location": "RESULTS - RPA32 Ser4/Ser8 phosphorylation regulates replication checkpoint signaling via MRE11 and TopBP1 phosphorylation"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 12768,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 4667,
+    "output_tokens_details": {
+      "reasoning_tokens": 3496
+    },
+    "total_tokens": 17435
+  },
+  "from_cache": false
+}

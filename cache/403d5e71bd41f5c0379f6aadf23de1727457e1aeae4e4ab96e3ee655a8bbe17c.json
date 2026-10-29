@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "4385dbe4fd5edfe57afce1cf13f845572bd66281e7a0d5ad1a2b8d98cc3d939f",
+      "chars": 26055,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"review statement of DNA-damage checkpoint signalling\", \"effect\": \"activates\", \"evidence_quote\": \"Ataxia\\u2013telangiectasia mutated phosphorylates Chk2 at threonine 68, and ATR phosphorylates Chk1 at serines 317 and 345.\", \"location\": \"MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS\", \"source\": \"ATM\", \"target\": \"Chk2\"}, {\"context\": \"review statement of DNA-damage checkpoint signalling\", \"effect\": \"activates\", \"evidence_quote\": \"Ataxia\\u2013telangiectasia mutated phosphorylates Chk2 at threonine 68, and ATR phosphorylates Chk1 at serines 317 and 345.\", \"location\": \"MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS\", \"source\": \"ATR\", \"target\": \"Chk1\"}, {\"context\": \"in one model of mediator function flanking sites of DNA damage\", \"effect\": \"activates\", \"evidence_quote\": \"In one model, ATM phosphorylates histone H2AX, flanking the sites of DNA damage.\", \"location\": \"MOLECULAR COMPONENTS OF THE DNA DAMAGE CHECKPOINTS\", \"source\": \"ATM\", \"target\": \"H2AX\"}, {\"context\": \"review statement once DNA damage is identified\", \"effect\": \"inhibits\", \"evidence_quote\": \"Checkpoint kinase-2 and Chk1 inactivate CDC25 phosphatases, culminating in cell cycle arrest.\", \"location\": \"CAPTION: Cell cycle checkpoint pathways.\", \"source\": \"Chk1\", \"target\": \"CDC25\"}, {\"context\": \"G1 checkpoint after DNA damage, review statement\", \"effect\": \"activates\", \"evidence_quote\": \"p53 activates transcription of the CDK inhibitor p21, which in turn inhibits cyclin E(A)/CDK2 (Harper et al, 1993) and preserves the association of Rb with E2F.\", \"location\": \"G1 checkpoint\", \"source\": \"p53\", \"target\": \"p21\"}, {\"context\": \"strategy to abrogate G2 checkpoint in conjunction with DNA damage, review statement\", \"effect\": \"activates\", \"evidence_quote\": \"Activating this phosphatase results in dephosphorylation and activation of cyclin B/CDK1, causing cell cycle progression to M phase.\", \"location\": \"Manipulation of CDC25 and WEE1\", \"source\": \"CDC25C\", \"target\": \"CDK1\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 5995,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2677,
+    "output_tokens_details": {
+      "reasoning_tokens": 2138
+    },
+    "total_tokens": 8672
+  }
+}

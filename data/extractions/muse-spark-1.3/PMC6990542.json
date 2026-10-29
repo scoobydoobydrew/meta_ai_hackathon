@@ -1,0 +1,220 @@
+{
+  "pmcid": "PMC6990542",
+  "title": "ATM, ATR and DNA-PKcs kinases-the lessons from the mouse models: inhibition ≠ deletion",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 24,
+    "grounded": 24,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "KU",
+      "target": "DNA-PKcs",
+      "effect": "activates",
+      "context": "review statement, at DNA lesion by DNA binding co-factor complexes",
+      "evidence_quote": "DNA bounded KU also recruits DNA-PKcs, which in turn recruits and activates Artemis endonuclease for end-processing [47].",
+      "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "DNA-PKcs",
+      "target": "Artemis",
+      "effect": "activates",
+      "context": "review statement, at DNA lesion during cNHEJ end-processing",
+      "evidence_quote": "DNA bounded KU also recruits DNA-PKcs, which in turn recruits and activates Artemis endonuclease for end-processing [47].",
+      "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "Artemis",
+      "target": "DNA-PKcs",
+      "effect": "requires",
+      "context": "G1 arrested cells, review statement cited from other work",
+      "evidence_quote": "Activation of Artemis requires DNA-PKcs protein and the kinase activity from either DNA-PKcs or ATM in G1 arrested cells [20].",
+      "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "Artemis",
+      "target": "ATM",
+      "effect": "requires",
+      "context": "G1 arrested cells, review statement cited from other work",
+      "evidence_quote": "Activation of Artemis requires DNA-PKcs protein and the kinase activity from either DNA-PKcs or ATM in G1 arrested cells [20].",
+      "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "DNA-PKcs",
+      "target": "KU86",
+      "effect": "requires",
+      "context": "review statement, vertebrates, conserved sequences in KU86, NBS1 and ATRIP",
+      "evidence_quote": "The very C-terminus of KU86 has conserved sequences that also exist in NBS1 (for ATM) and ATRIP (for ATR) and are required for DNA-PKcs recruitment and activation [29].",
+      "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "DNA-PKcs",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "ATM-deficient or inhibited cells, residual IR-induced phosphorylation",
+      "evidence_quote": "also contribute to the residual IR induced phosphorylation of ATM substrates (e.g., H2AX, SMC1 and KAP1) in ATM-deficient or inhibited cells [20, 30, 31]",
+      "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "DNA-PKcs",
+      "target": "SMC1",
+      "effect": "activates",
+      "context": "ATM-deficient or inhibited cells, residual IR-induced phosphorylation",
+      "evidence_quote": "also contribute to the residual IR induced phosphorylation of ATM substrates (e.g., H2AX, SMC1 and KAP1) in ATM-deficient or inhibited cells [20, 30, 31]",
+      "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "DNA-PKcs",
+      "target": "KAP1",
+      "effect": "activates",
+      "context": "ATM-deficient or inhibited cells, residual IR-induced phosphorylation",
+      "evidence_quote": "also contribute to the residual IR induced phosphorylation of ATM substrates (e.g., H2AX, SMC1 and KAP1) in ATM-deficient or inhibited cells [20, 30, 31]",
+      "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "ROS",
+      "target": "ATM",
+      "effect": "activates",
+      "context": "in vitro with purified proteins, ROS treatment",
+      "evidence_quote": "purified ATM can be activated by reactive oxygen species (ROS) in a process that requires disulfate bond formation between C2991 residues of two ATM monomers [118].",
+      "location": "## Ataxia-telangiectasia mutated (ATM)"
+    },
+    {
+      "source": "ATM",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "DSB-induced DDR, review statement",
+      "evidence_quote": "ATM plays a critical role in DNA repair in part by phosphorylating the C-terminal tail of the histone variant H2AX on Serine 139",
+      "location": "## Ataxia-telangiectasia mutated (ATM)"
+    },
+    {
+      "source": "H2AX",
+      "target": "MDC1",
+      "effect": "activates",
+      "context": "DSB-induced DDR, H2AX Serine 139 hub",
+      "evidence_quote": "which serves as a hub to recruit MDC1 and eventually initiate the ubiquitination cascades [101].",
+      "location": "## Ataxia-telangiectasia mutated (ATM)"
+    },
+    {
+      "source": "ATM",
+      "target": "CHK2",
+      "effect": "activates",
+      "context": "cell cycle checkpoints at G2/M transition, review statement",
+      "evidence_quote": "In addition, ATM also orchestrates cell cycle checkpoints by phosphorylating CHK2 kinase [102] at the G2/M transition and p53 Serine 15 (Serine 18 in mouse) at the G1/S transition [103, 104].",
+      "location": "## Ataxia-telangiectasia mutated (ATM)"
+    },
+    {
+      "source": "ATM",
+      "target": "p53",
+      "effect": "activates",
+      "context": "cell cycle checkpoints at G1/S transition, human Serine 15 (mouse Serine 18)",
+      "evidence_quote": "In addition, ATM also orchestrates cell cycle checkpoints by phosphorylating CHK2 kinase [102] at the G2/M transition and p53 Serine 15 (Serine 18 in mouse) at the G1/S transition [103, 104].",
+      "location": "## Ataxia-telangiectasia mutated (ATM)"
+    },
+    {
+      "source": "ATR",
+      "target": "ATRIP",
+      "effect": "requires",
+      "context": "review statement on ATR protein stability",
+      "evidence_quote": "ATRIP is essential for ATR protein stability.",
+      "location": "## Ataxia-telangiectasia and Rad3 related (ATR)"
+    },
+    {
+      "source": "ATRIP",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "on ssDNA coated by RPA, review statement",
+      "evidence_quote": "ATRIP directly interacts with RPA on ssDNA to recruit and activate ATR [7].",
+      "location": "## Ataxia-telangiectasia and Rad3 related (ATR)"
+    },
+    {
+      "source": "TOPBP1",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "review statement on allosteric activation via ATR-activating domain",
+      "evidence_quote": "Specifically, TOPBP1 and ETAA1 contain an ATR-activating domain (AAD) and serve as the allosteric activators of ATR [134].",
+      "location": "## Ataxia-telangiectasia and Rad3 related (ATR)"
+    },
+    {
+      "source": "ETAA1",
+      "target": "ATR",
+      "effect": "activates",
+      "context": "review statement on allosteric activation via ATR-activating domain",
+      "evidence_quote": "Specifically, TOPBP1 and ETAA1 contain an ATR-activating domain (AAD) and serve as the allosteric activators of ATR [134].",
+      "location": "## Ataxia-telangiectasia and Rad3 related (ATR)"
+    },
+    {
+      "source": "ATR",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "upon replication stress, review statement",
+      "evidence_quote": "Activated ATR phosphorylates and activates its downstream kinase CHK1 [137, 138].",
+      "location": "## Ataxia-telangiectasia and Rad3 related (ATR)"
+    },
+    {
+      "source": "ATM",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "in the absence of ATR kinase activity, review statement cited from other work",
+      "evidence_quote": "CHK1 is a relatively specific substrate of ATR upon replication stress, but can also be phosphorylated by ATM or DNA-PKcs in the absence of ATR kinase activity [21, 139].",
+      "location": "## Ataxia-telangiectasia and Rad3 related (ATR)"
+    },
+    {
+      "source": "DNA-PKcs",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "in the absence of ATR kinase activity, review statement cited from other work",
+      "evidence_quote": "CHK1 is a relatively specific substrate of ATR upon replication stress, but can also be phosphorylated by ATM or DNA-PKcs in the absence of ATR kinase activity [21, 139].",
+      "location": "## Ataxia-telangiectasia and Rad3 related (ATR)"
+    },
+    {
+      "source": "CHK1",
+      "target": "CDC25",
+      "effect": "inhibits",
+      "context": "G2/M cell cycle checkpoint regulation, review statement",
+      "evidence_quote": "The ATR-CHK1 axis activates the G2/M cell cycle checkpoint through phosphorylation and inactivation of CDC25 phosphatases",
+      "location": "## Ataxia-telangiectasia and Rad3 related (ATR)"
+    },
+    {
+      "source": "ATM",
+      "target": "DNA-PKcs",
+      "effect": "activates",
+      "context": "following IR, review statement cited from other work",
+      "evidence_quote": "Following IR or UV, T2609 is phosphorylated by ATM and ATR, respectively [71, 72].",
+      "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "ATR",
+      "target": "DNA-PKcs",
+      "effect": "activates",
+      "context": "following UV, review statement cited from other work",
+      "evidence_quote": "Following IR or UV, T2609 is phosphorylated by ATM and ATR, respectively [71, 72].",
+      "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    },
+    {
+      "source": "U3",
+      "target": "DNA-PKcs",
+      "effect": "activates",
+      "context": "in vitro with structured RNA stem-loop",
+      "evidence_quote": "In vitro, this U3 stem-loop can activate DNA-PKcs and trigger T2609 phosphorylation.",
+      "location": "## DNA-dependent protein kinase catalytic subunit (DNA-PKcs)"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 10247,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 6150,
+    "output_tokens_details": {
+      "reasoning_tokens": 3922
+    },
+    "total_tokens": 16397
+  },
+  "from_cache": false
+}

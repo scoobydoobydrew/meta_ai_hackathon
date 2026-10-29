@@ -1,0 +1,292 @@
+{
+  "pmcid": "PMC4331756",
+  "title": "Cellular senescence and aging: the role of B-MYB",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 33,
+    "grounded": 33,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "p53",
+      "target": "p21CIP1/WAF1/SDI1",
+      "effect": "activates",
+      "context": "review statement citing Lowe & Sherr, 2003",
+      "evidence_quote": "Upon activation, p53 upregulates the cyclin-dependent kinase inhibitor, p21CIP1/WAF1/SDI1, that inhibits the Cyclin A-, Cyclin E-, and Cyclin D-dependent kinase complexes (Lowe & Sherr, 2003).",
+      "location": "Introduction"
+    },
+    {
+      "source": "p21CIP1/WAF1/SDI1",
+      "target": "Cyclin A",
+      "effect": "inhibits",
+      "context": "review statement citing Lowe & Sherr, 2003",
+      "evidence_quote": "Upon activation, p53 upregulates the cyclin-dependent kinase inhibitor, p21CIP1/WAF1/SDI1, that inhibits the Cyclin A-, Cyclin E-, and Cyclin D-dependent kinase complexes (Lowe & Sherr, 2003).",
+      "location": "Introduction"
+    },
+    {
+      "source": "p21CIP1/WAF1/SDI1",
+      "target": "Cyclin E",
+      "effect": "inhibits",
+      "context": "review statement citing Lowe & Sherr, 2003",
+      "evidence_quote": "Upon activation, p53 upregulates the cyclin-dependent kinase inhibitor, p21CIP1/WAF1/SDI1, that inhibits the Cyclin A-, Cyclin E-, and Cyclin D-dependent kinase complexes (Lowe & Sherr, 2003).",
+      "location": "Introduction"
+    },
+    {
+      "source": "p21CIP1/WAF1/SDI1",
+      "target": "Cyclin D",
+      "effect": "inhibits",
+      "context": "review statement citing Lowe & Sherr, 2003",
+      "evidence_quote": "Upon activation, p53 upregulates the cyclin-dependent kinase inhibitor, p21CIP1/WAF1/SDI1, that inhibits the Cyclin A-, Cyclin E-, and Cyclin D-dependent kinase complexes (Lowe & Sherr, 2003).",
+      "location": "Introduction"
+    },
+    {
+      "source": "CyclinD-CDK4/6",
+      "target": "pRB",
+      "effect": "inhibits",
+      "context": "review statement citing Lowe & Sherr, 2003",
+      "evidence_quote": "CyclinD-CDK4/6, CyclinE-CDK2, and CyclinA-CDK2 normally phosphorylate and inactivate pRB, and this is prevented by p21CIP1/WAF1/SDI1 (Lowe & Sherr, 2003).",
+      "location": "Introduction"
+    },
+    {
+      "source": "CyclinE-CDK2",
+      "target": "pRB",
+      "effect": "inhibits",
+      "context": "review statement citing Lowe & Sherr, 2003",
+      "evidence_quote": "CyclinD-CDK4/6, CyclinE-CDK2, and CyclinA-CDK2 normally phosphorylate and inactivate pRB, and this is prevented by p21CIP1/WAF1/SDI1 (Lowe & Sherr, 2003).",
+      "location": "Introduction"
+    },
+    {
+      "source": "CyclinA-CDK2",
+      "target": "pRB",
+      "effect": "inhibits",
+      "context": "review statement citing Lowe & Sherr, 2003",
+      "evidence_quote": "CyclinD-CDK4/6, CyclinE-CDK2, and CyclinA-CDK2 normally phosphorylate and inactivate pRB, and this is prevented by p21CIP1/WAF1/SDI1 (Lowe & Sherr, 2003).",
+      "location": "Introduction"
+    },
+    {
+      "source": "pRB",
+      "target": "E2F",
+      "effect": "inhibits",
+      "context": "review statement citing Ben-Porath & Weinberg, 2005; Di Micco et al., 2008",
+      "evidence_quote": "Dephosphorylated pRB represses the G1/S transition by sequestering E2F transcription factors, thereby inhibiting E2F-dependent gene expression (Ben-Porath & Weinberg, 2005; Di Micco et al., 2008).",
+      "location": "Introduction"
+    },
+    {
+      "source": "p16INK4A",
+      "target": "CyclinD-CDK4/6",
+      "effect": "inhibits",
+      "context": "review statement citing Rufini et al., 2013",
+      "evidence_quote": "The pRB pathway may also be activated independently of p53 via upregulation of p16INK4A, which inhibits CyclinD–CDK4/6 complexes from specifically phosphorylating and inactivating pRB (Rufini et al., 2013).",
+      "location": "Introduction"
+    },
+    {
+      "source": "CyclinA-CDK2",
+      "target": "B-MYB",
+      "effect": "activates",
+      "context": "review statement citing Lefebvre et al., 2010; Down et al., 2012, at onset of S-phase",
+      "evidence_quote": "Transcription of B-MYB occurs mainly at the onset of S-phase and is functionally activated by the CyclinA–CDK2 complex (Lefebvre et al., 2010; Down et al., 2012).",
+      "location": "B-MYB"
+    },
+    {
+      "source": "FOXM1",
+      "target": "Cyclin B",
+      "effect": "activates",
+      "context": "in G2, review statement citing Lefebvre et al., 2010; Martinez et al., 2011; Down et al., 2012; Sadasivam et al., 2012",
+      "evidence_quote": "enabling FOXM1 to activate expression of a range of genes such as Cyclin B, survivin, cdc25b phosphatase, and Aurora B kinase",
+      "location": "The DREAM complex and cell cycle progression"
+    },
+    {
+      "source": "FOXM1",
+      "target": "survivin",
+      "effect": "activates",
+      "context": "in G2, review statement citing Lefebvre et al., 2010; Martinez et al., 2011; Down et al., 2012; Sadasivam et al., 2012",
+      "evidence_quote": "enabling FOXM1 to activate expression of a range of genes such as Cyclin B, survivin, cdc25b phosphatase, and Aurora B kinase",
+      "location": "The DREAM complex and cell cycle progression"
+    },
+    {
+      "source": "FOXM1",
+      "target": "cdc25b",
+      "effect": "activates",
+      "context": "in G2, review statement citing Lefebvre et al., 2010; Martinez et al., 2011; Down et al., 2012; Sadasivam et al., 2012",
+      "evidence_quote": "enabling FOXM1 to activate expression of a range of genes such as Cyclin B, survivin, cdc25b phosphatase, and Aurora B kinase",
+      "location": "The DREAM complex and cell cycle progression"
+    },
+    {
+      "source": "FOXM1",
+      "target": "Aurora B",
+      "effect": "activates",
+      "context": "in G2, review statement citing Lefebvre et al., 2010; Martinez et al., 2011; Down et al., 2012; Sadasivam et al., 2012",
+      "evidence_quote": "enabling FOXM1 to activate expression of a range of genes such as Cyclin B, survivin, cdc25b phosphatase, and Aurora B kinase",
+      "location": "The DREAM complex and cell cycle progression"
+    },
+    {
+      "source": "CyclinD-CDK4/6",
+      "target": "FOXM1",
+      "effect": "activates",
+      "context": "review statement citing Anders et al., 2011",
+      "evidence_quote": "FOXM1 is a critical target of the CyclinD-CDK4/6 kinases; this phosphorylation leads to its stabilization and activation, thereby maintaining its expression and suppressing the levels of reactive oxygen species (Anders et al., 2011).",
+      "location": "The DREAM complex and cell cycle progression"
+    },
+    {
+      "source": "B-MYB",
+      "target": "FOXM1",
+      "effect": "activates",
+      "context": "in mouse fibroblasts, review statement citing Down et al., 2012",
+      "evidence_quote": "as depletion of B-MYB reduces FOXM1 expression and several other G2/M-specific genes in mouse fibroblasts (Down et al., 2012).",
+      "location": "The DREAM complex and cell cycle progression"
+    },
+    {
+      "source": "FOXM1",
+      "target": "B-MYB",
+      "effect": "activates",
+      "context": "review statement citing Down et al., 2012",
+      "evidence_quote": "Interestingly, B-MYB is also a target gene of FOXM1 and involved in complex cross-regulation with FOXM1 (Down et al., 2012).",
+      "location": "The DREAM complex and cell cycle progression"
+    },
+    {
+      "source": "B-MYB",
+      "target": "p16INK4A",
+      "effect": "inhibits",
+      "context": "in all dividing cells, review statement citing Huang et al., 2011",
+      "evidence_quote": "Moreover, B-MYB is expressed in all dividing cells and acts to suppress the cyclin-dependent kinase inhibitor p16INK4A (Huang et al., 2011).",
+      "location": "The DREAM complex and cell cycle progression"
+    },
+    {
+      "source": "pRB",
+      "target": "B-MYB",
+      "effect": "inhibits",
+      "context": "during quiescence as well as senescence, review statement citing Martinez et al., 2011",
+      "evidence_quote": "PRB has been reported to repress B-MYB expression during quiescence as well as senescence",
+      "location": "Senescence pathways"
+    },
+    {
+      "source": "miR-29",
+      "target": "B-MYB",
+      "effect": "inhibits",
+      "context": "during senescence, review statement citing Martinez et al., 2011",
+      "evidence_quote": "due to the activation of the miR-29 and miR-30 families of microRNAs that strongly repress B-MYB expression (Martinez et al., 2011).",
+      "location": "Senescence pathways"
+    },
+    {
+      "source": "miR-30",
+      "target": "B-MYB",
+      "effect": "inhibits",
+      "context": "during senescence, review statement citing Martinez et al., 2011",
+      "evidence_quote": "due to the activation of the miR-29 and miR-30 families of microRNAs that strongly repress B-MYB expression (Martinez et al., 2011).",
+      "location": "Senescence pathways"
+    },
+    {
+      "source": "B-MYB",
+      "target": "DNA topoisomerase",
+      "effect": "activates",
+      "context": "review statement citing Martinez & DiMaio, 2011",
+      "evidence_quote": "it also increases transcription of genes important for S- and M-phase such as DNA topoisomerase by binding to MYB binding sites (MBSs) in their gene promoters (Martinez & DiMaio, 2011).",
+      "location": "The DREAM complex and cell cycle progression"
+    },
+    {
+      "source": "B-MYB",
+      "target": "BCL2",
+      "effect": "activates",
+      "context": "in CTLL-2 cells, review statement citing Grassilli et al., 1999; Sala, 2005",
+      "evidence_quote": "This is in part due to an increased transcription of pro-survival genes, such as BCL2 and inhibition of apoptotic genes (Grassilli et al., 1999; Sala, 2005),",
+      "location": "Cell death"
+    },
+    {
+      "source": "insulin",
+      "target": "IR",
+      "effect": "activates",
+      "context": "during energy metabolism following food consumption, review statement",
+      "evidence_quote": "insulin activates the receptor tyrosine kinase, insulin receptor (IR), which then binds to the PTB domain of insulin receptor substrate 1 (IRS1), causing the recruitment of PI3K to the cell surface.",
+      "location": "Nutrient and metabolic signaling"
+    },
+    {
+      "source": "PI3K",
+      "target": "PI(3,4,5)P3",
+      "effect": "activates",
+      "context": "review statement citing Korkolopoulou et al., 2012",
+      "evidence_quote": "Here, PI3K (I) catalyses the addition of a phosphate on the 3′ position of PI(4,5)P2 using ATP to generate PI(3,4,5)P3,",
+      "location": "Nutrient and metabolic signaling"
+    },
+    {
+      "source": "PI(3,4,5)P3",
+      "target": "AKT",
+      "effect": "activates",
+      "context": "review statement citing Korkolopoulou et al., 2012",
+      "evidence_quote": "which in turn recruits the serine/threonine kinase AKT (PKB) to the cell membrane (Korkolopoulou et al., 2012).",
+      "location": "Nutrient and metabolic signaling"
+    },
+    {
+      "source": "PDK1",
+      "target": "AKT",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "enabling PDK1 to partially activate AKT; mTORC2, then works in conjunction with PDK1 to fully activate AKT.",
+      "location": "Nutrient and metabolic signaling"
+    },
+    {
+      "source": "mTORC2",
+      "target": "AKT",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "mTORC2, then works in conjunction with PDK1 to fully activate AKT.",
+      "location": "Nutrient and metabolic signaling"
+    },
+    {
+      "source": "AKT",
+      "target": "GSK3β",
+      "effect": "inhibits",
+      "context": "review statement citing Morgensztern & McLeod, 2005",
+      "evidence_quote": "This results in the phosphorylation and inactivation of glycogen synthase kinase 3β (GSK3β),",
+      "location": "Nutrient and metabolic signaling"
+    },
+    {
+      "source": "BIN2",
+      "target": "B-MYB",
+      "effect": "activates",
+      "context": "in Arabidopsis, review statement citing Ye et al., 2012",
+      "evidence_quote": "It has been found that B-MYB is a substrate for the GSK3-like kinase, BIN2, and phosphorylation by BIN2 stabilizes B-MYB (Ye et al., 2012).",
+      "location": "Nutrient and metabolic signaling"
+    },
+    {
+      "source": "mTOR",
+      "target": "GSK3β",
+      "effect": "inhibits",
+      "context": "hypothesis proposed by authors",
+      "evidence_quote": "As mTOR can inhibit GSK3β, either through mTORC2 acting in conjunction with AKT or by mTORC1 acting further upstream,",
+      "location": "Nutrient and metabolic signaling"
+    },
+    {
+      "source": "mTOR",
+      "target": "pRB",
+      "effect": "activates",
+      "context": "review statement citing Mita et al., 2003",
+      "evidence_quote": "Other studies suggest that mTOR may activate pRB by regulating upstream CDK activity through p27KIP1 and Cyclin D1 (Mita et al., 2003)",
+      "location": "Nutrient and metabolic signaling"
+    },
+    {
+      "source": "Rapamycin",
+      "target": "mTOR",
+      "effect": "inhibits",
+      "context": "review statement",
+      "evidence_quote": "Rapamycin, an inhibitor of mTOR and therefore the mTOR pathway,",
+      "location": "Nutrient and metabolic signaling"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 7311,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 7755,
+    "output_tokens_details": {
+      "reasoning_tokens": 4335
+    },
+    "total_tokens": 15066
+  },
+  "from_cache": false
+}

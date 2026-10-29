@@ -1,0 +1,196 @@
+{
+  "pmcid": "PMC3950324",
+  "title": "ROS-dependent activation of JNK converts p53 into an efficient inhibitor of oncogenes leading to robust apoptosis",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 21,
+    "grounded": 21,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "ROS",
+      "target": "JNK",
+      "effect": "activates",
+      "context": "review statement in abstract, cancer cells upon pharmacological p53 activation and TrxR inhibition",
+      "evidence_quote": "ROS promote the activation of c-Jun N-terminal kinase (JNK) and DNA damage response, which establishes a positive feedback loop with p53.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "RITA",
+      "target": "TrxR1",
+      "effect": "inhibits",
+      "context": "in vitro assay using purified TrxR1",
+      "evidence_quote": "Dose-dependent inhibition of the ability of TrxR1 to reduce 5,5′-dithiobis (2-nitrobenzoic acid) (DTNB) and thioredoxin (Trx), but not its NADPH oxidase activity by RITA, as measured in in vitro assay using purified TrxR1.",
+      "location": "CAPTION: Induction of ROS leads to DDR and p53-dependent apoptosis. (a)"
+    },
+    {
+      "source": "Aura",
+      "target": "TrxR",
+      "effect": "inhibits",
+      "context": "review statement citing other work",
+      "evidence_quote": "blocking TrxR by auranofin (Aura), a well-known inhibitor of TrxR26 and inducer of ROS",
+      "location": "Generation of ROS leads to DDR and confers synthetic lethality upon p53 reactivation"
+    },
+    {
+      "source": "CDDP",
+      "target": "TrxR",
+      "effect": "inhibits",
+      "context": "review statement citing other work, pharmacological activation of p53",
+      "evidence_quote": "cisplatin (CDDP), which has been shown to activate p53 and inhibit the TrxR enzyme activity.",
+      "location": "Generation of ROS leads to DDR and confers synthetic lethality upon p53 reactivation"
+    },
+    {
+      "source": "CDDP",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement citing other work, pharmacological activation of p53",
+      "evidence_quote": "cisplatin (CDDP), which has been shown to activate p53 and inhibit the TrxR enzyme activity.",
+      "location": "Generation of ROS leads to DDR and confers synthetic lethality upon p53 reactivation"
+    },
+    {
+      "source": "p53",
+      "target": "ROS",
+      "effect": "activates",
+      "context": "model of synthetic lethality upon activation of p53 and inhibition of TrxR",
+      "evidence_quote": "In turn, active p53 induces pro-oxidant genes, such as PUMA and PIGs, increasing ROS and further feeding activating signals to JNK and thus, itself.",
+      "location": "Discussion"
+    },
+    {
+      "source": "p53",
+      "target": "PUMA",
+      "effect": "activates",
+      "context": "model of synthetic lethality upon activation of p53 and inhibition of TrxR",
+      "evidence_quote": "In turn, active p53 induces pro-oxidant genes, such as PUMA and PIGs, increasing ROS and further feeding activating signals to JNK and thus, itself.",
+      "location": "Discussion"
+    },
+    {
+      "source": "JNK",
+      "target": "p53",
+      "effect": "activates",
+      "context": "MCF7, HCT116 and U2OS cells upon 1 uM RITA, immunoblotting",
+      "evidence_quote": "In addition, JNK mediated p53 phosphorylation at Ser33 (Figures 4d, e and g and Supplementary Figure S5D).",
+      "location": "JNK activated by ROS contributes to the induction of DDR and converts p53 into an efficient inhibitor of oncogenes"
+    },
+    {
+      "source": "JNK",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "MCF7 and HCT116 cells upon RITA, JNK inhibitor and siRNA experiments",
+      "evidence_quote": "JNK inhibitor SP600125, as well as JNK depletion by siRNA, markedly reduced γH2AX (Figures 4d and f and Supplementary Figure S5B), implying that JNK is the critical kinase mediating DDR.",
+      "location": "JNK activated by ROS contributes to the induction of DDR and converts p53 into an efficient inhibitor of oncogenes"
+    },
+    {
+      "source": "p53",
+      "target": "Mcl1",
+      "effect": "inhibits",
+      "context": "cancer cells upon pharmacological activation of p53, JNK-dependent",
+      "evidence_quote": "We identified several survival oncogenes inhibited by p53 in JNK-dependent manner, including Mcl1, PI3K, eIF4E, as well as p53 inhibitors Wip1 and MdmX.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "p53",
+      "target": "PI3K",
+      "effect": "inhibits",
+      "context": "cancer cells upon pharmacological activation of p53, JNK-dependent",
+      "evidence_quote": "We identified several survival oncogenes inhibited by p53 in JNK-dependent manner, including Mcl1, PI3K, eIF4E, as well as p53 inhibitors Wip1 and MdmX.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "p53",
+      "target": "eIF4E",
+      "effect": "inhibits",
+      "context": "cancer cells upon pharmacological activation of p53, JNK-dependent",
+      "evidence_quote": "We identified several survival oncogenes inhibited by p53 in JNK-dependent manner, including Mcl1, PI3K, eIF4E, as well as p53 inhibitors Wip1 and MdmX.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "p53",
+      "target": "Wip1",
+      "effect": "inhibits",
+      "context": "cancer cells upon pharmacological activation of p53, JNK-dependent",
+      "evidence_quote": "We identified several survival oncogenes inhibited by p53 in JNK-dependent manner, including Mcl1, PI3K, eIF4E, as well as p53 inhibitors Wip1 and MdmX.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "p53",
+      "target": "MdmX",
+      "effect": "inhibits",
+      "context": "cancer cells upon pharmacological activation of p53, JNK-dependent",
+      "evidence_quote": "We identified several survival oncogenes inhibited by p53 in JNK-dependent manner, including Mcl1, PI3K, eIF4E, as well as p53 inhibitors Wip1 and MdmX.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "Wip1",
+      "target": "p53",
+      "effect": "inhibits",
+      "context": "review statement citing other work",
+      "evidence_quote": "p53 activation is opposed by Wip1, an oncogene that removes inactivating phosphorylation marks from Mdm2 and activating phosphorylation marks from p53, p14/p19ARF and checkpoint kinases,32 and dephosphorylates γH2AX,33, 34 thereby attenuating DDR.",
+      "location": "Inhibition of Wip1 by p53 promotes the induction of γH2AX"
+    },
+    {
+      "source": "Wip1",
+      "target": "Mdm2",
+      "effect": "activates",
+      "context": "review statement citing other work",
+      "evidence_quote": "p53 activation is opposed by Wip1, an oncogene that removes inactivating phosphorylation marks from Mdm2 and activating phosphorylation marks from p53, p14/p19ARF and checkpoint kinases,32 and dephosphorylates γH2AX,33, 34 thereby attenuating DDR.",
+      "location": "Inhibition of Wip1 by p53 promotes the induction of γH2AX"
+    },
+    {
+      "source": "Wip1",
+      "target": "H2AX",
+      "effect": "inhibits",
+      "context": "review statement citing other work",
+      "evidence_quote": "p53 activation is opposed by Wip1, an oncogene that removes inactivating phosphorylation marks from Mdm2 and activating phosphorylation marks from p53, p14/p19ARF and checkpoint kinases,32 and dephosphorylates γH2AX,33, 34 thereby attenuating DDR.",
+      "location": "Inhibition of Wip1 by p53 promotes the induction of γH2AX"
+    },
+    {
+      "source": "p19ARF",
+      "target": "MDM2",
+      "effect": "inhibits",
+      "context": "review statement of in vivo mouse model of advanced lesions",
+      "evidence_quote": "This is due to the amplified stress-activated MAPK signaling in advanced lesions, which engages the MDM2 inhibitor p19ARF (p14ARF in humans), in turn activating p53.",
+      "location": "Discussion"
+    },
+    {
+      "source": "p53",
+      "target": "JNK",
+      "effect": "requires",
+      "context": "review statement citing in vivo study, upon oncogene activation",
+      "evidence_quote": "Notably, another in vivo study has shown that JNK is required for p53 induction upon oncogene activation.",
+      "location": "Discussion"
+    },
+    {
+      "source": "TrxR",
+      "target": "ROS",
+      "effect": "inhibits",
+      "context": "model of synthetic lethality upon activation of p53 and inhibition of TrxR",
+      "evidence_quote": "Inhibition of TrxR lead to the accumulation of ROS and activation of JNK, facilitating p53 function upon its release from Mdm2.",
+      "location": "CAPTION: Depletion of Wip1 confers a sustained transcriptional activation of p53 target genes, but does not facilitate transrepression. (f)"
+    },
+    {
+      "source": "pifithrin-α",
+      "target": "p53",
+      "effect": "inhibits",
+      "context": "HCT116 cells treated with 1 uM RITA, p53 inhibitor experiment",
+      "evidence_quote": "The p53 dependence of γH2AX induction was further supported by the ablation of γH2AX by the p53 inhibitor pifithrin-α (PFTα)18 and upon p53 depletion with siRNA (Figure 2c, middle panel and Supplementary Figure S1B, respectively).",
+      "location": "ATM-independent induction of p53-dependent DDR upon 1 μM RITA"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 10600,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 8455,
+    "output_tokens_details": {
+      "reasoning_tokens": 6239
+    },
+    "total_tokens": 19055
+  },
+  "from_cache": false
+}

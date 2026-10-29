@@ -1,0 +1,172 @@
+{
+  "pmcid": "PMC4772976",
+  "title": "NAT10 regulates p53 activation through acetylating p53 at K120 and ubiquitinating Mdm2",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 18,
+    "grounded": 18,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "NAT10",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement, human cells",
+      "evidence_quote": "NAT10 acetylates p53 at K120 and stabilizes p53 by counteracting Mdm2 action.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "NAT10",
+      "target": "Mdm2",
+      "effect": "inhibits",
+      "context": "review statement, human cells",
+      "evidence_quote": "In addition, NAT10 promotes Mdm2 degradation with its intrinsic E3 ligase activity.",
+      "location": "ABSTRACT"
+    },
+    {
+      "source": "Mdm2",
+      "target": "p53",
+      "effect": "inhibits",
+      "context": "review statement",
+      "evidence_quote": "Mdm2 is a ubiquitin ligase which functions as an essential inhibitor of p53 6, 7, 8.",
+      "location": "Introduction"
+    },
+    {
+      "source": "ARF",
+      "target": "Mdm2",
+      "effect": "inhibits",
+      "context": "review statement, in response to oncogenic stress",
+      "evidence_quote": "Nucleolar protein ARF binds to and promotes degradation of Mdm2, leading to p53 stabilization and activation in response to oncogenic stress 16, 17.",
+      "location": "Introduction"
+    },
+    {
+      "source": "CBP/p300",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "CBP/p300 enhances p53‐dependent transcription by directly acetylating the lysine residues in the C‐terminus of p53 23.",
+      "location": "Introduction"
+    },
+    {
+      "source": "HDAC1",
+      "target": "p53",
+      "effect": "inhibits",
+      "context": "review statement, human cells",
+      "evidence_quote": "Acetylation of p53 is reversible with deacetylases such as HDAC1 and SIRT1, suggesting that the transition between acetylation and deacetylation is crucial for p53 activity 24, 25.",
+      "location": "Introduction"
+    },
+    {
+      "source": "SIRT1",
+      "target": "p53",
+      "effect": "inhibits",
+      "context": "review statement, human cells",
+      "evidence_quote": "Acetylation of p53 is reversible with deacetylases such as HDAC1 and SIRT1, suggesting that the transition between acetylation and deacetylation is crucial for p53 activity 24, 25.",
+      "location": "Introduction"
+    },
+    {
+      "source": "Tip60",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement, human cells",
+      "evidence_quote": "Ensuing studies demonstrated that p53 acetylation at lysine 120 (K120) within the DNA binding domain is required for p53‐mediated apoptosis and K120 is acetylated by MYST family acetyltransferases including Tip60, hMOF, and MOZ 28, 29, 30.",
+      "location": "Introduction"
+    },
+    {
+      "source": "hMOF",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement, human cells",
+      "evidence_quote": "Ensuing studies demonstrated that p53 acetylation at lysine 120 (K120) within the DNA binding domain is required for p53‐mediated apoptosis and K120 is acetylated by MYST family acetyltransferases including Tip60, hMOF, and MOZ 28, 29, 30.",
+      "location": "Introduction"
+    },
+    {
+      "source": "MOZ",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement, human cells",
+      "evidence_quote": "Ensuing studies demonstrated that p53 acetylation at lysine 120 (K120) within the DNA binding domain is required for p53‐mediated apoptosis and K120 is acetylated by MYST family acetyltransferases including Tip60, hMOF, and MOZ 28, 29, 30.",
+      "location": "Introduction"
+    },
+    {
+      "source": "p53",
+      "target": "NAT10",
+      "effect": "activates",
+      "context": "U2OS human cells under stress conditions when p53 was depleted",
+      "evidence_quote": "NAT10 protein levels failed to change under stress conditions in U2OS cells when p53 was depleted (Fig EV4D).",
+      "location": "NAT10 regulates stress‐induced p53 activation"
+    },
+    {
+      "source": "p53",
+      "target": "NAT10",
+      "effect": "requires",
+      "context": "human cells after DNA damage",
+      "evidence_quote": "Taken together, these results indicated that NAT10 is required for p53 activation after DNA damage.",
+      "location": "NAT10 regulates stress‐induced p53 activation"
+    },
+    {
+      "source": "PCAF",
+      "target": "Mdm2",
+      "effect": "inhibits",
+      "context": "review statement, upon DNA damage",
+      "evidence_quote": "However, depletion of PCAF had little effect on p53‐dependent apoptosis induced by UV irradiation though PCAF is required for destabilization of Mdm2 upon DNA damage.",
+      "location": "Discussion"
+    },
+    {
+      "source": "SCF(β-TrCP)",
+      "target": "Mdm2",
+      "effect": "inhibits",
+      "context": "review statement, after Mdm2 is phosphorylated, DNA damage-induced",
+      "evidence_quote": "SCF(β‐TrCP) promotes Mdm2 degradation after Mdm2 is phosphorylated by casein kinase I, indicating that SCF(β‐TrCP) might be the E3 ligase responsible for DNA damage‐induced Mdm2 degradation 53.",
+      "location": "Discussion"
+    },
+    {
+      "source": "casein kinase I",
+      "target": "Mdm2",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "SCF(β‐TrCP) promotes Mdm2 degradation after Mdm2 is phosphorylated by casein kinase I, indicating that SCF(β‐TrCP) might be the E3 ligase responsible for DNA damage‐induced Mdm2 degradation 53.",
+      "location": "Discussion"
+    },
+    {
+      "source": "NEDD4-1",
+      "target": "Mdm2",
+      "effect": "activates",
+      "context": "review statement, cytosolic",
+      "evidence_quote": "Interestingly, a recently identified cytosolic E3 ligase for Mdm2, NEDD4‐1, mediates Mdm2 ubiquitination and promotes stabilization of Mdm2 54.",
+      "location": "Discussion"
+    },
+    {
+      "source": "p53",
+      "target": "p21",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "p21 gene, the primarily identified as downstream gene of p53, encodes an inhibitor of cyclin‐dependent kinases and mediates the ability of p53 to inhibit cell proliferation 58.",
+      "location": "Discussion"
+    },
+    {
+      "source": "p21",
+      "target": "CDK",
+      "effect": "inhibits",
+      "context": "review statement",
+      "evidence_quote": "p21 gene, the primarily identified as downstream gene of p53, encodes an inhibitor of cyclin‐dependent kinases and mediates the ability of p53 to inhibit cell proliferation 58.",
+      "location": "Discussion"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 16240,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 6381,
+    "output_tokens_details": {
+      "reasoning_tokens": 4786
+    },
+    "total_tokens": 22621
+  },
+  "from_cache": false
+}

@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "87f790048d68819386ac9a674c97289a417deb96ec07e183fea126cc76508e52",
+      "chars": 38271,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"review statement citing prior work\", \"effect\": \"activates\", \"evidence_quote\": \"Generally, ATM activates Chk2 by phosphorylation it on Thr-68 [48], [49], while ATR activates Chk1 [50].\", \"location\": \"Discussion\", \"source\": \"ATM\", \"target\": \"Chk2\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"activates\", \"evidence_quote\": \"Generally, ATM activates Chk2 by phosphorylation it on Thr-68 [48], [49], while ATR activates Chk1 [50].\", \"location\": \"Discussion\", \"source\": \"ATR\", \"target\": \"Chk1\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"activates\", \"evidence_quote\": \"However, Chk1 could be activated by both ATR and ATM on Ser-345 [51].\", \"location\": \"Discussion\", \"source\": \"ATM\", \"target\": \"Chk1\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"inhibits\", \"evidence_quote\": \"Cdc25 can be phosphorylated by Chk1/Chk2 on Ser-323 (Cdc25B) and Ser-216 (Cdc25C) and functionally inactivated by binding to 14-3-3 proteins [26]\\u2013[28].\", \"location\": \"Introduction\", \"source\": \"Chk1\", \"target\": \"Cdc25C\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"inhibits\", \"evidence_quote\": \"Cdc25 can be phosphorylated by Chk1/Chk2 on Ser-323 (Cdc25B) and Ser-216 (Cdc25C) and functionally inactivated by binding to 14-3-3 proteins [26]\\u2013[28].\", \"location\": \"Introduction\", \"source\": \"Chk2\", \"target\": \"Cdc25C\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"inhibits\", \"evidence_quote\": \"Cdc25 can be phosphorylated by Chk1/Chk2 on Ser-323 (Cdc25B) and Ser-216 (Cdc25C) and functionally inactivated by binding to 14-3-3 proteins [26]\\u2013[28].\", \"location\": \"Introduction\", \"source\": \"Chk1\", \"target\": \"Cdc25B\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"inhibits\", \"evidence_quote\": \"Cdc25 can be phosphorylated by Chk1/Chk2 on Ser-323 (Cdc25B) and Ser-216 (Cdc25C) and functionally inactivated by binding to 14-3-3 proteins [26]\\u2013[28].\", \"location\": \"Introduction\", \"source\": \"Chk2\", \"target\": \"Cdc25B\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"inhibits\", \"evidence_quote\": \"Cdc25 can be phosphorylated by Chk1/Chk2 on Ser-323 (Cdc25B) and Ser-216 (Cdc25C) and functionally inactivated by binding to 14-3-3 proteins [26]\\u2013[28].\", \"location\": \"Introduction\", \"source\": \"14-3-3\", \"target\": \"Cdc25\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"activates\", \"evidence_quote\": \"CDKs was activated by dephosphorylation on Thr-14 and Tyr-15 through Cdc25, which complete phases transition [23]\\u2013[25].\", \"location\": \"Introduction\", \"source\": \"Cdc25\", \"target\": \"CDKs\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"activates\", \"evidence_quote\": \"In response to DNA damage, enhanced phosphorylation of p53 on Ser-15 by ATM has been reported [37].\", \"location\": \"Cuc B activated p53 and enhanced the binding of phosphorylation Cdc25C on Ser-216 and 14-3-3-\\u03c3\", \"source\": \"ATM\", \"target\": \"p53\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"activates\", \"evidence_quote\": \"p53 could also be activated by Chk1/Chk2 at Ser-20.\", \"location\": \"Cuc B activated p53 and enhanced the binding of phosphorylation Cdc25C on Ser-216 and 14-3-3-\\u03c3\", \"source\": \"Chk1\", \"target\": \"p53\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"activates\", \"evidence_quote\": \"p53 could also be activated by Chk1/Chk2 at Ser-20.\", \"location\": \"Cuc B activated p53 and enhanced the binding of phosphorylation Cdc25C on Ser-216 and 14-3-3-\\u03c3\", \"source\": \"Chk2\", \"target\": \"p53\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"activates\", \"evidence_quote\": \"14-3-3-\\u03c3 is a p53-regulated downstream inhibitor of G2/M progression [38].\", \"location\": \"Cuc B activated p53 and enhanced the binding of phosphorylation Cdc25C on Ser-216 and 14-3-3-\\u03c3\", \"source\": \"p53\", \"target\": \"14-3-3-\\u03c3\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"activates\", \"evidence_quote\": \"Cdc25C is essential for promoting mitosis though dephosphorylating Tyr-15 on Cdk1 [53].\", \"location\": \"Discussion\", \"source\": \"Cdc25C\", \"target\": \"Cdk1\"}, {\"context\": \"review statement citing prior work\", \"effect\": \"inhibits\", \"evidence_quote\": \"The binding of phosphorylated Cdc25C with 14-3-3-\\u03c3 in the cytoplasm prevents Cdc25C from dephosphorylating the cycling-dependent kinase Cdk1, resulting in cells arrest in G2/M phase [28], [35], [54].\", \"location\": \"Discussion\", \"source\": \"14-3-3-\\u03c3\", \"target\": \"Cdc25C\"}, {\"context\": \"review statement\", \"effect\": \"activates\", \"evidence_quote\": \"Activation of STAT3 signaling could up-regulate Cyclin B1, c-Myc, Bcl-x and regulating cell growth and survival.\", \"location\": \"Discussion\", \"source\": \"STAT3\", \"target\": \"Cyclin B1\"}, {\"context\": \"review statement\", \"effect\": \"activates\", \"evidence_quote\": \"Activation of STAT3 signaling could up-regulate Cyclin B1, c-Myc, Bcl-x and regulating cell growth and survival.\", \"location\": \"Discussion\", \"source\": \"STAT3\", \"target\": \"c-Myc\"}, {\"context\": \"review statement\", \"effect\": \"activates\", \"evidence_quote\": \"Activation of STAT3 signaling could up-regulate Cyclin B1, c-Myc, Bcl-x and regulating cell growth and survival.\", \"location\": \"Discussion\", \"source\": \"STAT3\", \"target\": \"Bcl-x\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 9244,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 6195,
+    "output_tokens_details": {
+      "reasoning_tokens": 4610
+    },
+    "total_tokens": 15439
+  }
+}

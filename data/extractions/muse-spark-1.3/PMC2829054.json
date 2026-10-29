@@ -1,0 +1,132 @@
+{
+  "pmcid": "PMC2829054",
+  "title": "Cdk2 is required for p53-independent G2/M checkpoint control",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 13,
+    "grounded": 13,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "Cdk2",
+      "target": "Cdc25A",
+      "effect": "inhibits",
+      "context": "cultured human colorectal cancer cells, siRNA depletion",
+      "evidence_quote": "Depletion of Cdk2 with siRNA resulted in increased Cdc25A protein levels in human colorectal cancer cells (Figure 1A).",
+      "location": "Results - Stabilization of Cdc25A in Cdk2-deficient cells"
+    },
+    {
+      "source": "Cdk2",
+      "target": "Cdc6",
+      "effect": "activates",
+      "context": "review statement citing other work",
+      "evidence_quote": "Inherently unstable, Cdc6 can be stabilized as a direct result of phosphorylation by Cdk2 [45].",
+      "location": "Results - Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6"
+    },
+    {
+      "source": "Cdc25A",
+      "target": "Cdk1",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "The Cdc25A phosphatase promotes mitotic entry by removing the inhibitory Y15 phosphate moiety on Cdk1 (Cdk1Y15-P) [33].",
+      "location": "Results - Deregulation of Cdc25A is a cause of G2/M checkpoint failure"
+    },
+    {
+      "source": "Chk1",
+      "target": "Cdc25A",
+      "effect": "inhibits",
+      "context": "review statement about IR response",
+      "evidence_quote": "Cdc25A is also targeted for IR-dependent degradation by Chk1 [21], which is activated after phosphorylation by ATR on residues S317 and S345 [35],[36].",
+      "location": "Results - Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6"
+    },
+    {
+      "source": "ATR",
+      "target": "Chk1",
+      "effect": "activates",
+      "context": "review statement about IR response",
+      "evidence_quote": "Cdc25A is also targeted for IR-dependent degradation by Chk1 [21], which is activated after phosphorylation by ATR on residues S317 and S345 [35],[36].",
+      "location": "Results - Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6"
+    },
+    {
+      "source": "ATM",
+      "target": "Chk2",
+      "effect": "activates",
+      "context": "review statement about IR response",
+      "evidence_quote": "ATM phosphorylates the checkpoint kinase Chk2 [34], which then triggers Cdc25A degradation [12].",
+      "location": "Results - Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6"
+    },
+    {
+      "source": "Chk2",
+      "target": "Cdc25A",
+      "effect": "inhibits",
+      "context": "review statement about IR response",
+      "evidence_quote": "ATM phosphorylates the checkpoint kinase Chk2 [34], which then triggers Cdc25A degradation [12].",
+      "location": "Results - Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6"
+    },
+    {
+      "source": "Cdk2",
+      "target": "ATRIP",
+      "effect": "activates",
+      "context": "review statement citing other work",
+      "evidence_quote": "ATRIP is phosphorylated on residue S224 by Cdk2 [14] and this phosphorylation event has been shown to contribute to G2/M checkpoint arrest.",
+      "location": "Results - Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6"
+    },
+    {
+      "source": "p53",
+      "target": "p21",
+      "effect": "activates",
+      "context": "HCT116 human cells after ionizing radiation",
+      "evidence_quote": "Stabilization of p53 and the induction of its downstream target p21 after IR were not affected by CDK2 disruption (Figure S1C).",
+      "location": "Results - Stabilization of Cdc25A in Cdk2-deficient cells"
+    },
+    {
+      "source": "Cdc6",
+      "target": "Chk1",
+      "effect": "activates",
+      "context": "review statement citing other work in human cells",
+      "evidence_quote": "In human cells, depletion of Cdc6 causes cells with actively replicating DNA to aberrantly enter mitosis [42], while overexpression of Cdc6 causes Chk1 phosphorylation and G2/M arrest [40].",
+      "location": "Results - Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6"
+    },
+    {
+      "source": "p21",
+      "target": "Cdk1",
+      "effect": "inhibits",
+      "context": "model proposed in this paper",
+      "evidence_quote": "The activity of Cdk1 is independently inhibited upon activation of the p53-p21 pathway, which is defective in many cancer cells.",
+      "location": "CAPTION: The proposed role of Cdk2 in the p53-independent regulation of Cdk1."
+    },
+    {
+      "source": "Cdc6",
+      "target": "Cdc25A",
+      "effect": "inhibits",
+      "context": "U2OS and HCT116 human cells before and after ionizing radiation, Cdc6 knockdown",
+      "evidence_quote": "Knockdown of Cdc6 also led to increased levels of the Chk1 target Cdc25A, before and after IR treatment (Figure S3F and S3G).",
+      "location": "Results - Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6"
+    },
+    {
+      "source": "ATR",
+      "target": "Cdk2",
+      "effect": "requires",
+      "context": "isogenic human cells after ionizing radiation",
+      "evidence_quote": "These observations suggest that Cdk2 is required for efficient ATR- but not ATM-mediated checkpoint signaling.",
+      "location": "Results - Cdk2 facilitates ATR-Chk1-Cdc25A pathway activation in part by stabilizing Cdc6"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 9755,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 5110,
+    "output_tokens_details": {
+      "reasoning_tokens": 3832
+    },
+    "total_tokens": 14865
+  },
+  "from_cache": false
+}

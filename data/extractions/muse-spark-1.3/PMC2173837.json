@@ -1,0 +1,92 @@
+{
+  "pmcid": "PMC2173837",
+  "title": "Apoptosis-inducing factor is involved in the regulation of caspase-independent neuronal cell death",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 8,
+    "grounded": 8,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "p53",
+      "target": "Apaf1",
+      "effect": "activates",
+      "context": "cultured mouse neurons, review of previous work cited by this paper",
+      "evidence_quote": "Indeed we have recently demonstrated that p53-induced neuronal cell death involves the transcriptional upregulation of Apaf1 (Fortin et al., 2001).",
+      "location": "P53 can induce neuronal cell death via Apaf1-dependent and -independent pathways"
+    },
+    {
+      "source": "Apaf1",
+      "target": "caspase-9",
+      "effect": "activates",
+      "context": "review statement about cytosolic complex",
+      "evidence_quote": "Upon release into the cytosol, cytochrome-c forms a complex with dATP and Apaf1, which then recruits and activates caspase-9 and initiates the caspase cascade.",
+      "location": "Discussion"
+    },
+    {
+      "source": "cytochrome-c",
+      "target": "Bax",
+      "effect": "requires",
+      "context": "postmitotic neurons, previous work cited by this paper",
+      "evidence_quote": "We have previously demonstrated that Bax is required for p53-induced cytochrome-c release (Keramaris et al., 2000) and caspase activation in postmitotic neurons (Cregan et al., 1999).",
+      "location": "Discussion"
+    },
+    {
+      "source": "caspase",
+      "target": "Bax",
+      "effect": "requires",
+      "context": "postmitotic neurons, previous work cited by this paper",
+      "evidence_quote": "We have previously demonstrated that Bax is required for p53-induced cytochrome-c release (Keramaris et al., 2000) and caspase activation in postmitotic neurons (Cregan et al., 1999).",
+      "location": "Discussion"
+    },
+    {
+      "source": "AIF",
+      "target": "p53",
+      "effect": "requires",
+      "context": "mouse cortical neurons treated with camptothecin, 24 h",
+      "evidence_quote": "This indicated that camptothecin triggered the release of AIF from mitochondria by a p53-dependent, but Apaf1-independent, mechanism.",
+      "location": "P53 triggers mitochondrial release of AIF"
+    },
+    {
+      "source": "Bax",
+      "target": "AIF",
+      "effect": "activates",
+      "context": "wild-type and Bax-deficient mouse neurons treated with camptothecin",
+      "evidence_quote": "Bax mediates mitochondrial depolarization and the release of AIF during camptothecin-induced neuronal cell death.",
+      "location": "CAPTION: Bax mediates mitochondrial depolarization and the release of AIF during camptothecin-induced neuronal cell death."
+    },
+    {
+      "source": "Bcl-2",
+      "target": "AIF",
+      "effect": "inhibits",
+      "context": "mouse cortical neurons treated with camptothecin",
+      "evidence_quote": "Bcl-2 inhibits camptothecin-induced AIF release and caspase-independent cell death.",
+      "location": "CAPTION: Bcl-2 inhibits camptothecin-induced AIF release and caspase-independent cell death."
+    },
+    {
+      "source": "caspase",
+      "target": "AIF",
+      "effect": "inhibits",
+      "context": "Ad-p53-infected Apaf1+/+ neurons, hypothesized mechanism",
+      "evidence_quote": "It is unclear why AIF fails to translocate to the nucleus in Apaf1+/+ neurons; however, it is possible that the early activation of caspases in wild-type cells results in the inactivation of the process responsible for AIF nuclear translocation.",
+      "location": "P53 triggers mitochondrial release of AIF"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 11036,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 6534,
+    "output_tokens_details": {
+      "reasoning_tokens": 5742
+    },
+    "total_tokens": 17570
+  },
+  "from_cache": false
+}

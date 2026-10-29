@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "f13adf645af56ced077ccb0b1e42a3efb010fd34a6663a1f653e0853712d21e9",
+      "chars": 45992,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"review statement cited from other work, general mammalian DNA damage response\", \"effect\": \"inhibits\", \"evidence_quote\": \"Upon to DDR, Chk1 is activated and inhibits the activation of the downstream target of Cdc25C, resulted in the downregulation of cyclinB1/Cdc2 kinase [57].\", \"location\": \"Discussion\", \"source\": \"Chk1\", \"target\": \"Cdc25C\"}, {\"context\": \"review statement of general G2/M regulation\", \"effect\": \"requires\", \"evidence_quote\": \"Cdc2 is inactive as a monomer and must bind with cyclin B1 during the G2/M transition.\", \"location\": \"Discussion\", \"source\": \"Cdc2\", \"target\": \"cyclin B1\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 9661,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2070,
+    "output_tokens_details": {
+      "reasoning_tokens": 1895
+    },
+    "total_tokens": 11731
+  }
+}

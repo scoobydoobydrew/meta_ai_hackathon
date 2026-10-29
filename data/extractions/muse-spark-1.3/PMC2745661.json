@@ -1,0 +1,156 @@
+{
+  "pmcid": "PMC2745661",
+  "title": "Human papillomaviruses activate the ATM DNA damage pathway for viral genome amplification upon differentiation",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 16,
+    "grounded": 16,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "ATM",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "ATM directly activates p53 by phosphorylation at serine 15, as well as by phosphorylating Mdm2, the ubiquitin ligase that regulates p53 stability [18],[19],[20].",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "MDM2",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "ATM directly activates p53 by phosphorylation at serine 15, as well as by phosphorylating Mdm2, the ubiquitin ligase that regulates p53 stability [18],[19],[20].",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "CHK2",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "ATM phosphorylates CHK2 leading to arrest in S- and G2-phases by inhibiting the action of Cdc25 phosphatases [21],[22].",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "NBS1",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "Another branch of S-phase checkpoint control involves ATM targeting of NBS1, a member of the MRN double strand break repair complex [23]; BRCA1, the breast cancer susceptibility protein [24]; and SMC1, a cohesin binding protein [25],[26].",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "BRCA1",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "Another branch of S-phase checkpoint control involves ATM targeting of NBS1, a member of the MRN double strand break repair complex [23]; BRCA1, the breast cancer susceptibility protein [24]; and SMC1, a cohesin binding protein [25],[26].",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "SMC1",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "Another branch of S-phase checkpoint control involves ATM targeting of NBS1, a member of the MRN double strand break repair complex [23]; BRCA1, the breast cancer susceptibility protein [24]; and SMC1, a cohesin binding protein [25],[26].",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATM",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "An additional downstream activity of ATM, as well as ATR, that is important for S-phase checkpoint control is phosphorylation of the tail of a histone variant H2AX",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATR",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "review statement",
+      "evidence_quote": "An additional downstream activity of ATM, as well as ATR, that is important for S-phase checkpoint control is phosphorylation of the tail of a histone variant H2AX",
+      "location": "Introduction"
+    },
+    {
+      "source": "ATR",
+      "target": "BRCA1",
+      "effect": "activates",
+      "context": "review statement citing other work",
+      "evidence_quote": "Phosphorylation of BRCA1 in normal HFKs may be due to either low level activation of ATM, or through the action of ATR, which can also phosphorylate BRCA1 [24].",
+      "location": "Results"
+    },
+    {
+      "source": "ATR",
+      "target": "CHK2",
+      "effect": "activates",
+      "context": "review statement citing other work in HPV-31 positive human keratinocytes",
+      "evidence_quote": "We next wanted to confirm that ATM activity was responsible for CHK2 phosphorylation in HPV positive cells, as CHK2 can also be phosphorylated and activated by the ATR kinase [22],[34].",
+      "location": "Results"
+    },
+    {
+      "source": "CHK2",
+      "target": "CDC25A",
+      "effect": "inhibits",
+      "context": "review statement citing other work",
+      "evidence_quote": "Upon activation, CHK2 phosphorylates the Cdc25a and Cdc25c phosphatases to initiate cell cycle arrest in G1/S or G2/M through their degradation or cytoplasmic sequestration, respectively [52].",
+      "location": "Discussion"
+    },
+    {
+      "source": "CHK2",
+      "target": "CDC25C",
+      "effect": "inhibits",
+      "context": "review statement citing other work",
+      "evidence_quote": "Upon activation, CHK2 phosphorylates the Cdc25a and Cdc25c phosphatases to initiate cell cycle arrest in G1/S or G2/M through their degradation or cytoplasmic sequestration, respectively [52].",
+      "location": "Discussion"
+    },
+    {
+      "source": "CDK1",
+      "target": "CDC25C",
+      "effect": "requires",
+      "context": "review statement citing other work",
+      "evidence_quote": "Cdc25c is necessary for the activation of Cdc2/Cdk1, as well as entry into mitosis, and its inactivation plays a central role in inducing G2/M arrest [53].",
+      "location": "Discussion"
+    },
+    {
+      "source": "CHK2",
+      "target": "E2F1",
+      "effect": "activates",
+      "context": "review statement citing other work on DNA damage response",
+      "evidence_quote": "In response to DNA damage, CHK2 phosphorylates E2F1, resulting in its stabilization, transcriptional activation, and induction of p53-dependent or -independent apoptosis [16],[43].",
+      "location": "Discussion"
+    },
+    {
+      "source": "E7",
+      "target": "CHK2",
+      "effect": "activates",
+      "context": "keratinocytes stably expressing HPV-31 E7, undifferentiated and differentiated",
+      "evidence_quote": "Our studies indicate that keratinocytes stably expressing HPV-31 E7 from the pLXSN retroviral vector exhibit phosphorylation of CHK2 on Thr68 in undifferentiated and differentiated keratinocytes, with little activation observed in cells expressing the pLXSN vector alone (Figure 7A).",
+      "location": "Results"
+    },
+    {
+      "source": "CHK2",
+      "target": "CASP7",
+      "effect": "activates",
+      "context": "HPV-31 positive CIN612 cells differentiating in high calcium",
+      "evidence_quote": "As shown in Figure 6, inhibition of CHK2 significantly impaired caspase-7 cleavage as compared to cells treated with DMSO alone, without affecting total levels of caspase-7.",
+      "location": "Results"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 11743,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 5775,
+    "output_tokens_details": {
+      "reasoning_tokens": 4360
+    },
+    "total_tokens": 17518
+  },
+  "from_cache": false
+}

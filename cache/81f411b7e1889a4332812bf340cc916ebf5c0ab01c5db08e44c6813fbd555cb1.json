@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "0970cc1931cb2ca4b866ef2c6c588785e3f99755a9cadf9a72f17fecbd490382",
+      "chars": 51093,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"review statement, to unknown effect\", \"effect\": \"activates\", \"evidence_quote\": \"HAUSP specifically deubiquitinates both p53 and MDM2, to unknown effect.\", \"location\": \"ABSTRACT\", \"source\": \"HAUSP\", \"target\": \"p53\"}, {\"context\": \"review statement, to unknown effect\", \"effect\": \"activates\", \"evidence_quote\": \"HAUSP specifically deubiquitinates both p53 and MDM2, to unknown effect.\", \"location\": \"ABSTRACT\", \"source\": \"HAUSP\", \"target\": \"MDM2\"}, {\"context\": \"in normal cells\", \"effect\": \"inhibits\", \"evidence_quote\": \"In normal cells, p53 is maintained at a low level mainly through MDM2-mediated ubiquitylation and subsequent degradation [7\\u20139].\", \"location\": \"Introduction\", \"source\": \"MDM2\", \"target\": \"p53\"}, {\"context\": \"review statement citing other work\", \"effect\": \"inhibits\", \"evidence_quote\": \"The C-terminal RING-finger motif of MDM2 not only promotes p53 ubiquitylation [10,15], but also targets MDM2 itself for auto-ubiquitylation and subsequent degradation [10,15].\", \"location\": \"Introduction\", \"source\": \"MDM2\", \"target\": \"MDM2\"}, {\"context\": \"review statement citing other work on transcriptional regulation\", \"effect\": \"activates\", \"evidence_quote\": \"The MDM2 gene is a transcriptional target of p53 [17\\u201319], so activation of the MDM2 gene by p53 would lead to repression of p53 activity.\", \"location\": \"Introduction\", \"source\": \"p53\", \"target\": \"MDM2\"}, {\"context\": \"in vivo\", \"effect\": \"activates\", \"evidence_quote\": \"Expression of HAUSP was shown to stabilize p53 in vivo and to promote p53-dependent apoptosis and cell-growth arrest [24].\", \"location\": \"Introduction\", \"source\": \"HAUSP\", \"target\": \"p53\"}, {\"context\": \"both in vivo and in vitro, cited from other work\", \"effect\": \"activates\", \"evidence_quote\": \"HAUSP can deubiquitylate MDM2, both in vivo and in vitro, and is required for the stability of MDM2 in normal cells [26\\u201328].\", \"location\": \"Introduction\", \"source\": \"HAUSP\", \"target\": \"MDM2\"}, {\"context\": \"in normal cells, cited from other work\", \"effect\": \"requires\", \"evidence_quote\": \"HAUSP can deubiquitylate MDM2, both in vivo and in vitro, and is required for the stability of MDM2 in normal cells [26\\u201328].\", \"location\": \"Introduction\", \"source\": \"MDM2\", \"target\": \"HAUSP\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 11838,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2102,
+    "output_tokens_details": {
+      "reasoning_tokens": 1475
+    },
+    "total_tokens": 13940
+  }
+}

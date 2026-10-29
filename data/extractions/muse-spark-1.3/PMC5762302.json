@@ -1,0 +1,100 @@
+{
+  "pmcid": "PMC5762302",
+  "title": "Prexasertib, a cell cycle checkpoint kinases 1 and 2 inhibitor, increases &lt;i&gt;in vitro&lt;/i&gt; toxicity of PARP inhibition by preventing Rad51 foci formation in &lt;i&gt;BRCA&lt;/i&gt; wild type high-grade serous ovarian cancer",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 9,
+    "grounded": 9,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "ATR",
+      "target": "CHK1",
+      "effect": "activates",
+      "context": "review statement citing prior work, in response to DNA replication stress or DNA damage",
+      "evidence_quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "ATR",
+      "target": "CHK2",
+      "effect": "activates",
+      "context": "review statement citing prior work, in response to DNA replication stress or DNA damage",
+      "evidence_quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "CHK1",
+      "target": "CDC25C",
+      "effect": "inhibits",
+      "context": "review statement citing prior work, leading to arrest at the G2/M checkpoint",
+      "evidence_quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "CHK1",
+      "target": "CDC25A",
+      "effect": "inhibits",
+      "context": "review statement citing prior work, leading to arrest at the G2/M checkpoint",
+      "evidence_quote": "They are activated by ATR in response to DNA replication stress or DNA damage, after which Chk1 phosphorylates and inhibits its substrates, the phosphatases CDC25C (S216) and CDC25A (S123), leading to arrest at the G2/M checkpoint [15-17].",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "CHK1",
+      "target": "BRCA2",
+      "effect": "activates",
+      "context": "review statement citing prior work, in HR DNA repair in response to DSBs",
+      "evidence_quote": "by facilitating the BRCA2-Rad51 interaction through phosphorylation of the BRCA2 C-terminal domain and Rad51 at T309",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "CHK1",
+      "target": "RAD51",
+      "effect": "activates",
+      "context": "review statement citing prior work, in HR DNA repair in response to DSBs",
+      "evidence_quote": "by facilitating the BRCA2-Rad51 interaction through phosphorylation of the BRCA2 C-terminal domain and Rad51 at T309",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "prexasertib",
+      "target": "CHK1",
+      "effect": "inhibits",
+      "context": "drug description, selective ATP competitive small molecule inhibitor",
+      "evidence_quote": "Prexasertib mesylate monohydrate (hereafter referred to as prexasertib; LY2606368) is a selective ATP competitive small molecule inhibitor of Chk1 and Chk2 [24].",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "prexasertib",
+      "target": "CHK2",
+      "effect": "inhibits",
+      "context": "drug description, selective ATP competitive small molecule inhibitor",
+      "evidence_quote": "Prexasertib mesylate monohydrate (hereafter referred to as prexasertib; LY2606368) is a selective ATP competitive small molecule inhibitor of Chk1 and Chk2 [24].",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "olaparib",
+      "target": "PAR",
+      "effect": "inhibits",
+      "context": "HGSOC cell lines, monotherapy and in combination treatment",
+      "evidence_quote": "Olaparib significantly reduced PAR incorporation in all cell lines both in monotherapy and in combination, and prexasertib neither stimulated nor inhibited PAR incorporation (Figure 2A).",
+      "location": "Prexasertib does not affect PAR incorporation and olaparib does not alter Chk1 activity"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 8113,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 4035,
+    "output_tokens_details": {
+      "reasoning_tokens": 3101
+    },
+    "total_tokens": 12148
+  },
+  "from_cache": false
+}

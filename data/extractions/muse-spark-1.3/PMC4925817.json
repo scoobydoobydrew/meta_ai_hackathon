@@ -1,0 +1,260 @@
+{
+  "pmcid": "PMC4925817",
+  "title": "Apoptosis as anticancer mechanism: function and dysfunction of its modulators and targeted therapeutic strategies",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 29,
+    "grounded": 29,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "caspase-8",
+      "target": "Bid",
+      "effect": "activates",
+      "context": "review statement of extrinsic pathway crosstalk to intrinsic pathway",
+      "evidence_quote": "In this situation, capase-8 targets the BH3-only protein Bid (BH3-interacting-domain death agonist) for cleavage and generate the activated fragment t-Bid",
+      "location": "Extrinsic apoptotic pathway"
+    },
+    {
+      "source": "t-Bid",
+      "target": "Bax",
+      "effect": "activates",
+      "context": "review statement of extrinsic pathway crosstalk to intrinsic pathway",
+      "evidence_quote": "t-Bid then directly activates pro-apoptotic multi-domain proteins to induce mitochondrial outer membrane permeability (MOMP), so this co-engages the intrinsic pathway [3] (Figure 1) (see below).",
+      "location": "Extrinsic apoptotic pathway"
+    },
+    {
+      "source": "Bax",
+      "target": "Bcl-2",
+      "effect": "inhibits",
+      "context": "review statement, in response to stress conditions such as irradiation or chemotherapeutic agents",
+      "evidence_quote": "Subsequent activation of pro-apoptotic BH3-only members of the Bcl-2 family (Bax, Bak) neutralizes the antiapoptotic proteins Bcl-2, Bcl-xL, and Mcl-1, leading to disruption of mitochondrial membrane outer membrane permeability (MOMP)",
+      "location": "Intrinsic apoptotic pathway"
+    },
+    {
+      "source": "Bak",
+      "target": "Bcl-xL",
+      "effect": "inhibits",
+      "context": "review statement, in response to stress conditions such as irradiation or chemotherapeutic agents",
+      "evidence_quote": "Subsequent activation of pro-apoptotic BH3-only members of the Bcl-2 family (Bax, Bak) neutralizes the antiapoptotic proteins Bcl-2, Bcl-xL, and Mcl-1, leading to disruption of mitochondrial membrane outer membrane permeability (MOMP)",
+      "location": "Intrinsic apoptotic pathway"
+    },
+    {
+      "source": "cytochrome-c",
+      "target": "Apaf-1",
+      "effect": "activates",
+      "context": "review statement of mitochondrial apoptotic signaling in the cytosol",
+      "evidence_quote": "Cytochrome-c binds to the cytosolic Apaf-1 (apoptosis protease activating factor-1) and triggers the formation of a complex named apoptosome, which recruits initiator pro-caspase-9 to its caspase recruitment domain (CARD), allowing auto-activation and then proteolysis.",
+      "location": "Intrinsic apoptotic pathway"
+    },
+    {
+      "source": "Bcl-2",
+      "target": "Bax",
+      "effect": "inhibits",
+      "context": "review statement of Bcl-2 family regulation of mitochondrial permeability",
+      "evidence_quote": "Anti-apoptotic multidomain members of the Bcl-2 protein family not only counteract the pore-forming activity of Bax and Bak by engaging in direct inhibitory interactions, but also prevent the generation of pro-apoptotic cytosolic Ca2+ waves",
+      "location": "The B-cell lymphoma 2 (Bcl-2) family proteins"
+    },
+    {
+      "source": "XIAP",
+      "target": "caspase-9",
+      "effect": "inhibits",
+      "context": "review statement of human IAP function",
+      "evidence_quote": "XIAP anti-apoptotic activity involves inhibition of active executor capsases as well as prevention of initiator caspase-9 activation [45].",
+      "location": "The inhibitors of apoptosis proteins (IAPs)"
+    },
+    {
+      "source": "IAPs",
+      "target": "caspases",
+      "effect": "inhibits",
+      "context": "review statement of human IAP function",
+      "evidence_quote": "Their characteristic BIR (baculovirus IAP repeat) domain mediates the interaction with various proteins and gives them the ability to bind and inactivate caspases [43].",
+      "location": "The inhibitors of apoptosis proteins (IAPs)"
+    },
+    {
+      "source": "Smac/DIABLO",
+      "target": "IAPs",
+      "effect": "inhibits",
+      "context": "review statement, mitochondrial proteins released into cytosol during apoptosis",
+      "evidence_quote": "These endogenous IAPs antagonists are able to bind to the BIR domain of IAPs reducing their ability to interact with caspase-3 or -9 thereby restoring their activity [44].",
+      "location": "The inhibitors of apoptosis proteins (IAPs)"
+    },
+    {
+      "source": "Omi/HtrA2",
+      "target": "IAPs",
+      "effect": "inhibits",
+      "context": "review statement, mitochondrial proteins released into cytosol during apoptosis",
+      "evidence_quote": "The activities of IAPs, however, may be suppressed by mitochondrial proteins, such as Omi/HtrA2 and Smac/DIABLO, released into the cytosol during apoptosis (Figure 4).",
+      "location": "The inhibitors of apoptosis proteins (IAPs)"
+    },
+    {
+      "source": "c-Flip",
+      "target": "caspase-8",
+      "effect": "inhibits",
+      "context": "review statement of resistance in human tumors via DISC",
+      "evidence_quote": "Another resistance mechanism reported in a variety of human tumors is the overexpression of anti-apoptotic protein c-Flip, recruited at the DISC level, that prevents the pro-caspase-8 auto-activation thereby rendering cell resistant to death receptor-mediated apoptosis [53-55].",
+      "location": "Alterations of the apoptotic pathways"
+    },
+    {
+      "source": "CaspPro",
+      "target": "caspase-8",
+      "effect": "activates",
+      "context": "review statement, in the presence of TRAIL in leukemic and prostate cells",
+      "evidence_quote": "Experimental validation performed in multiple cell lines, such as leukemic and prostate cells, revealed that CaspPro small molecule promotes caspase-8 activation, caspase-3 activation and PARP cleavage, in the presence of TRAIL, leading to cell death [79].",
+      "location": "Pharmacological targeting of the apoptotic pathways"
+    },
+    {
+      "source": "CaspPro",
+      "target": "caspase-3",
+      "effect": "activates",
+      "context": "review statement, in the presence of TRAIL in leukemic and prostate cells",
+      "evidence_quote": "Experimental validation performed in multiple cell lines, such as leukemic and prostate cells, revealed that CaspPro small molecule promotes caspase-8 activation, caspase-3 activation and PARP cleavage, in the presence of TRAIL, leading to cell death [79].",
+      "location": "Pharmacological targeting of the apoptotic pathways"
+    },
+    {
+      "source": "BH3 mimetics",
+      "target": "BAX",
+      "effect": "activates",
+      "context": "review statement of BH3 mimetic action on pro-survival proteins",
+      "evidence_quote": "BH3 mimetics bind to the hydrophobic groove of antiapoptotic proteins mimicking the action of BH3-only proteins in binding to pro-survival proteins, leading to the release of BH3-only proteins from complexes and activation of BAX and BAK.",
+      "location": "Pharmacological targeting of the apoptotic pathways"
+    },
+    {
+      "source": "p53",
+      "target": "BAX",
+      "effect": "activates",
+      "context": "review statement, BH3 mimetic inhibition of BCL-xL",
+      "evidence_quote": "as enhanced p53 can substitute for PUMA to promote BAX activation in response to BH3 mimetics [102].",
+      "location": "Pharmacological targeting of the apoptotic pathways"
+    },
+    {
+      "source": "Smac mimetics",
+      "target": "XIAP",
+      "effect": "inhibits",
+      "context": "review statement of preclinical studies of Smac mimetics",
+      "evidence_quote": "They promote activation of caspases by neutralizing XIAP-mediated caspase inhibition [106].",
+      "location": "Pharmacological targeting of the apoptotic pathways"
+    },
+    {
+      "source": "p53",
+      "target": "Fas",
+      "effect": "activates",
+      "context": "review statement, in response to multiple chemotherapeutic drugs",
+      "evidence_quote": "In response to multiple chemotherapeutic drugs two pro-apoptotic members of the TNFR superfamily, Fas/Apo1 and Killer/DR5, are regulated in a p53-dependent manner [116,117].",
+      "location": "Oncosuppressor p53 and apoptosis"
+    },
+    {
+      "source": "p53",
+      "target": "DR5",
+      "effect": "activates",
+      "context": "review statement, in response to multiple chemotherapeutic drugs",
+      "evidence_quote": "In response to multiple chemotherapeutic drugs two pro-apoptotic members of the TNFR superfamily, Fas/Apo1 and Killer/DR5, are regulated in a p53-dependent manner [116,117].",
+      "location": "Oncosuppressor p53 and apoptosis"
+    },
+    {
+      "source": "p53",
+      "target": "Noxa",
+      "effect": "activates",
+      "context": "review statement of p53 Bcl-2 family targets",
+      "evidence_quote": "Indeed, a key subset of the Bcl-2 family genes are p53 targets, including Bax, Noxa, PUMA and Bid [120-122] (Figure 6).",
+      "location": "Oncosuppressor p53 and apoptosis"
+    },
+    {
+      "source": "p53",
+      "target": "PUMA",
+      "effect": "activates",
+      "context": "review statement of p53 Bcl-2 family targets",
+      "evidence_quote": "Indeed, a key subset of the Bcl-2 family genes are p53 targets, including Bax, Noxa, PUMA and Bid [120-122] (Figure 6).",
+      "location": "Oncosuppressor p53 and apoptosis"
+    },
+    {
+      "source": "p53",
+      "target": "Bid",
+      "effect": "activates",
+      "context": "review statement of p53 Bcl-2 family targets",
+      "evidence_quote": "Indeed, a key subset of the Bcl-2 family genes are p53 targets, including Bax, Noxa, PUMA and Bid [120-122] (Figure 6).",
+      "location": "Oncosuppressor p53 and apoptosis"
+    },
+    {
+      "source": "p53",
+      "target": "Bcl-xL",
+      "effect": "inhibits",
+      "context": "review statement, transcription-independent mitochondrial p53 action",
+      "evidence_quote": "mechanistically, p53 interacts with anti-apoptotic Bcl-xL as well as pro-apoptotic Bcl-2 family proteins resulting in releasing of the pro-apoptotic effectors Bax/Bak that elicit cytochrome-c release and procaspase-3 activation [129].",
+      "location": "Oncosuppressor p53 and apoptosis"
+    },
+    {
+      "source": "MDM2",
+      "target": "p53",
+      "effect": "inhibits",
+      "context": "review statement of basal p53 regulation",
+      "evidence_quote": "The p53 oncosuppressor protein is normally kept at low level because subject to negative regulation by MDM2-dependent proteasome degradation [132]; in response to genotoxic stress, however, p53 undergoes post-translational modifications that allow the protein to escape MDM2 control, accumulate, and become active [133].",
+      "location": "Waking up the guardian: p53 as a druggable target"
+    },
+    {
+      "source": "HIPK2",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement, e.g. in response to UV irradiation and chemotherapy",
+      "evidence_quote": "In particular, p53-Ser46 phosphorylation by kinase HIPK2 is able to neutralize MDM2-mediated p53 inhibition rescuing p53 transcriptional activity of pro-apoptotic factors such as p53AIP1, PIG3, Bax, Noxa, Puma and Killer/DR5 [138-142].",
+      "location": "Waking up the guardian: p53 as a druggable target"
+    },
+    {
+      "source": "MDM2",
+      "target": "HIPK2",
+      "effect": "inhibits",
+      "context": "review statement, in response to low genotoxic damage",
+      "evidence_quote": "MDM2 can also trigger, in response to low genotoxic damage, the downregulation of p53 apoptotic activator HIPK2 [148].",
+      "location": "Waking up the guardian: p53 as a druggable target"
+    },
+    {
+      "source": "let-7",
+      "target": "Bcl-xL",
+      "effect": "inhibits",
+      "context": "review statement in human hepatocellular carcinomas, in cooperation with anti-cancer drug targeting Mcl-1",
+      "evidence_quote": "Let-7 miRNAs have been shown to negatively regulate Bcl-xL expression in human hepatocellular carcinomas and induce apoptosis in cooperation with anti-cancer drug targeting Mcl-1 [171].",
+      "location": "MicroRNA and apoptosis"
+    },
+    {
+      "source": "miR-204",
+      "target": "Bcl-2",
+      "effect": "inhibits",
+      "context": "review statement, with consequent increase in responsiveness to 5-fluorouracil and oxaliplatin",
+      "evidence_quote": "Bcl-2 mRNA may be targeted by miR-204 with consequent increase in cells responsiveness to both 5-fluorouracil and oxaliplatin treatments and therefore to apoptotic cell death [172].",
+      "location": "MicroRNA and apoptosis"
+    },
+    {
+      "source": "miR-608",
+      "target": "Bcl-xL",
+      "effect": "inhibits",
+      "context": "review statement in chordoma malignancy and lung cancer",
+      "evidence_quote": "MiR-608 has been reported to target Bcl-xL in chordoma malignancy and lung cancer [173].",
+      "location": "MicroRNA and apoptosis"
+    },
+    {
+      "source": "miR-34a",
+      "target": "TNF-α",
+      "effect": "inhibits",
+      "context": "review statement",
+      "evidence_quote": "while MiR-34a, miR-181c and miR-187 were shown to directly target TNF-α mRNA [168-170].",
+      "location": "MicroRNA and apoptosis"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 9522,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 6255,
+    "output_tokens_details": {
+      "reasoning_tokens": 3235
+    },
+    "total_tokens": 15777
+  },
+  "from_cache": false
+}

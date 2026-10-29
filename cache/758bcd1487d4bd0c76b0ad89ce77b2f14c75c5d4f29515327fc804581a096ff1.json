@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "e502c0d5b1e50b5ec9387ca4087584f5aec6a28fc75a24c2c8575685954dec49",
+      "chars": 23831,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"review statement citing prior DDR work\", \"effect\": \"activates\", \"evidence_quote\": \"Activated ATR and ATM phosphorylate Chk1 or Chk2 respectively.\", \"location\": \"Introduction\", \"source\": \"ATR\", \"target\": \"CHK1\"}, {\"context\": \"review statement citing prior DDR work\", \"effect\": \"activates\", \"evidence_quote\": \"Activated ATR and ATM phosphorylate Chk1 or Chk2 respectively.\", \"location\": \"Introduction\", \"source\": \"ATM\", \"target\": \"CHK2\"}, {\"context\": \"review statement citing prior work on BER\", \"effect\": \"activates\", \"evidence_quote\": \"ATM and DNA-PKcs are known to be involved in the phosphorylation of XRCC1 to promote BER [30], [31].\", \"location\": \"Discussion\", \"source\": \"ATM\", \"target\": \"XRCC1\"}, {\"context\": \"review statement citing prior work on BER\", \"effect\": \"activates\", \"evidence_quote\": \"ATM and DNA-PKcs are known to be involved in the phosphorylation of XRCC1 to promote BER [30], [31].\", \"location\": \"Discussion\", \"source\": \"DNA-PKcs\", \"target\": \"XRCC1\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 5412,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 377
+    },
+    "output_tokens": 1525,
+    "output_tokens_details": {
+      "reasoning_tokens": 1251
+    },
+    "total_tokens": 6937
+  }
+}

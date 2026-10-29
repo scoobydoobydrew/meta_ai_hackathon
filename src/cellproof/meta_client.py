@@ -21,6 +21,21 @@ DEFAULT_MODEL = "muse-spark-1.3"
 CACHE_DIR = Path(__file__).resolve().parents[2] / "cache"
 
 
+# USD per 1M tokens, Standard mode: (cached input, input, output). https://dev.meta.ai/docs/pricing-rate-limits, read
+# 2026-10-29. Reasoning tokens are billed as output. Whether cached_tokens is a subset of input_tokens is assumed (as in
+# the OpenAI usage format), not stated; a first, uncached call is unaffected.
+PRICES = {"muse-spark-1.3": (0.15, 1.25, 4.25), "muse-wonder-1.0": (0.20, 4.00, 20.00)}
+
+
+def cost_usd(usage: dict[str, Any] | None, model: str) -> float:
+    if not usage or model not in PRICES:
+        return 0.0
+    cached_rate, input_rate, output_rate = PRICES[model]
+    cached = (usage.get("input_tokens_details") or {}).get("cached_tokens") or 0
+    fresh = usage.get("input_tokens", 0) - cached
+    return (cached * cached_rate + fresh * input_rate + usage.get("output_tokens", 0) * output_rate) / 1e6
+
+
 class CacheMiss(RuntimeError):
     """Offline mode is on and the request is not in the cache."""
 

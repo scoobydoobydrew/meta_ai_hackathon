@@ -1,0 +1,164 @@
+{
+  "pmcid": "PMC3049316",
+  "title": "An ATM/Chk2-mediated DNA damage-responsive signaling pathway suppresses Epstein-Barr virus transformation of primary human B cells",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 17,
+    "grounded": 17,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "ATM",
+      "target": "H2AX",
+      "effect": "activates",
+      "context": "cultured primary human B cells early after EBV infection, immunofluorescence finding",
+      "evidence_quote": "EBV infection induced additional hallmarks of the DDR including auto-phosphorylation of the H2AX kinase ATM (pATM Ser1981), and punctate localization of the damage adaptor 53BP1 (Fig. 1B and 1C).",
+      "location": "Epstein-Barr virus infection of primary B cells activates a cellular DNA damage response"
+    },
+    {
+      "source": "ATM",
+      "target": "Chk2",
+      "effect": "activates",
+      "context": "EBV-infected primary human B cells sorted by population doubling, ATM-specific phosphorylation finding",
+      "evidence_quote": "We also observed a transient activation and attenuation of the ATM-specific phosphorylation of Chk2 on Thr68 (Fig. 2E) as well as accumulation of 53BP1 into DDR foci (Fig. 2F).",
+      "location": "The EBV-induced DNA damage response is associated with a transient period of hyper-proliferation"
+    },
+    {
+      "source": "EBNA2",
+      "target": "LMP1",
+      "effect": "activates",
+      "context": "review statement citing prior work on EBV latency gene expression",
+      "evidence_quote": "EBNA2 also induces expression of the remaining EBNA proteins (Zimber-Strobl et al., 1993) and subsequently the viral latent membrane proteins, LMP1 and LMP2A/2B (Wang et al., 1990).",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "EBNA2",
+      "target": "LMP2A",
+      "effect": "activates",
+      "context": "review statement citing prior work on EBV latency gene expression",
+      "evidence_quote": "EBNA2 also induces expression of the remaining EBNA proteins (Zimber-Strobl et al., 1993) and subsequently the viral latent membrane proteins, LMP1 and LMP2A/2B (Wang et al., 1990).",
+      "location": "INTRODUCTION"
+    },
+    {
+      "source": "EBNA2",
+      "target": "CD23",
+      "effect": "activates",
+      "context": "review statement citing prior work on EBNA2 targets",
+      "evidence_quote": "To more rigorously assess this, we analyzed EBNA2 targets including CD23 (Wang et al., 1991) and c-Myc (Kaiser et al., 1999).",
+      "location": "EBV latent gene expression changes and consequences in early infected cell divisions"
+    },
+    {
+      "source": "EBNA2",
+      "target": "c-Myc",
+      "effect": "activates",
+      "context": "review statement citing prior work, proposed model for early EBV infection",
+      "evidence_quote": "To more rigorously assess this, we analyzed EBNA2 targets including CD23 (Wang et al., 1991) and c-Myc (Kaiser et al., 1999).",
+      "location": "EBV latent gene expression changes and consequences in early infected cell divisions"
+    },
+    {
+      "source": "EBNA2",
+      "target": "cyclin D2",
+      "effect": "activates",
+      "context": "proposed model for early EBV-infected primary B cell hyper-proliferation, citing prior work and Fig. 6",
+      "evidence_quote": "EBNA2 and EBNA-LP mediated up-regulation of S phase promoting oncoproteins including c-Myc, cyclin D2, and E2F1",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "EBNA2",
+      "target": "E2F1",
+      "effect": "activates",
+      "context": "proposed model for early EBV-infected primary B cell hyper-proliferation, citing prior work and Fig. 6",
+      "evidence_quote": "EBNA2 and EBNA-LP mediated up-regulation of S phase promoting oncoproteins including c-Myc, cyclin D2, and E2F1",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "EBNA-LP",
+      "target": "c-Myc",
+      "effect": "activates",
+      "context": "proposed model for early EBV-infected primary B cell hyper-proliferation, citing prior work and Fig. 6",
+      "evidence_quote": "EBNA2 and EBNA-LP mediated up-regulation of S phase promoting oncoproteins including c-Myc, cyclin D2, and E2F1",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "EBNA-LP",
+      "target": "cyclin D2",
+      "effect": "activates",
+      "context": "proposed model for early EBV-infected primary B cell hyper-proliferation, citing prior work and Fig. 6",
+      "evidence_quote": "EBNA2 and EBNA-LP mediated up-regulation of S phase promoting oncoproteins including c-Myc, cyclin D2, and E2F1",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "EBNA-LP",
+      "target": "E2F1",
+      "effect": "activates",
+      "context": "proposed model for early EBV-infected primary B cell hyper-proliferation, citing prior work and Fig. 6",
+      "evidence_quote": "EBNA2 and EBNA-LP mediated up-regulation of S phase promoting oncoproteins including c-Myc, cyclin D2, and E2F1",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "EBNA3C",
+      "target": "EBNA2",
+      "effect": "inhibits",
+      "context": "model for attenuation during LCL outgrowth",
+      "evidence_quote": "the activity of the EBNA3 proteins, in particular EBNA3C, down-regulate EBNA2 function",
+      "location": "CAPTION: EBNA3C attenuates the EBV-induced DNA damage response"
+    },
+    {
+      "source": "LMP1",
+      "target": "ATM",
+      "effect": "inhibits",
+      "context": "cited from prior work in BL cell lines",
+      "evidence_quote": "LMP1 attenuated ATM protein levels and decreased DNA repair.",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "EBNA1",
+      "target": "NOX2",
+      "effect": "activates",
+      "context": "cited from prior work in BL cell lines",
+      "evidence_quote": "EBNA1 increased reactive oxygen species (ROS) through transcriptional up-regulation of NOX2",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "EBNA3C",
+      "target": "BubR1",
+      "effect": "inhibits",
+      "context": "cited from prior work in BL cell lines",
+      "evidence_quote": "EBNA3C perturbed mitotic spindle checkpoints through BubR1 down-regulation",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "EBNA3A",
+      "target": "p16",
+      "effect": "inhibits",
+      "context": "LCLs, cited from prior work",
+      "evidence_quote": "Thus, while both EBNA3A and EBNA3C likely mitigate growth arrest in LCLs through p16 suppression (Hertle et al., 2009; Skalska et al., 2010), during early outgrowth EBNA3C is also required to modulate the DNA damage response.",
+      "location": "DISCUSSION"
+    },
+    {
+      "source": "EBNA3C",
+      "target": "p16",
+      "effect": "inhibits",
+      "context": "LCLs, cited from prior work",
+      "evidence_quote": "Thus, while both EBNA3A and EBNA3C likely mitigate growth arrest in LCLs through p16 suppression (Hertle et al., 2009; Skalska et al., 2010), during early outgrowth EBNA3C is also required to modulate the DNA damage response.",
+      "location": "DISCUSSION"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 11086,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 5305,
+    "output_tokens_details": {
+      "reasoning_tokens": 3606
+    },
+    "total_tokens": 16391
+  },
+  "from_cache": false
+}

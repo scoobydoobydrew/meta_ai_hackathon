@@ -1,0 +1,124 @@
+{
+  "pmcid": "PMC3819289",
+  "title": "Branched-chain amino acids enhance premature senescence through mammalian target of rapamycin complex I-mediated upregulation of p21 protein",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 12,
+    "grounded": 12,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "mTORC1",
+      "target": "p70 S6 kinase",
+      "effect": "activates",
+      "context": "review statement about mTOR signalling",
+      "evidence_quote": "mTORC1, which is sensitive to rapamycin, phosphorylates and activates p70 S6 kinase, and the kinase in turn phosphorylates ribosomal S6 protein, leading to increased protein synthesis.",
+      "location": "Introduction"
+    },
+    {
+      "source": "p70 S6 kinase",
+      "target": "ribosomal S6 protein",
+      "effect": "activates",
+      "context": "review statement about mTOR signalling",
+      "evidence_quote": "mTORC1, which is sensitive to rapamycin, phosphorylates and activates p70 S6 kinase, and the kinase in turn phosphorylates ribosomal S6 protein, leading to increased protein synthesis.",
+      "location": "Introduction"
+    },
+    {
+      "source": "mTORC1",
+      "target": "4E-BP1",
+      "effect": "activates",
+      "context": "review statement about mTOR signalling",
+      "evidence_quote": "Activated mTORC1 also phosphorylates eIF4E-binding protein 1 (4E-BP1) and promotes the formation of the protein synthesis initiation complex.",
+      "location": "Introduction"
+    },
+    {
+      "source": "leucine",
+      "target": "mTOR",
+      "effect": "activates",
+      "context": "review statement citing other work in hepatic carcinoma cell lines",
+      "evidence_quote": "It has been shown that amino acids regulate protein synthesis through mTOR [10], and that leucine activates mTOR in the hepatic carcinoma cell lines [11].",
+      "location": "Introduction"
+    },
+    {
+      "source": "insulin",
+      "target": "mTORC2",
+      "effect": "activates",
+      "context": "review statement about insulin signalling",
+      "evidence_quote": "Insulin activates mTORC2 leading to the activation of protein kinase B (PKB)/AKT.",
+      "location": "Introduction"
+    },
+    {
+      "source": "mTORC2",
+      "target": "AKT",
+      "effect": "activates",
+      "context": "review statement about insulin signalling",
+      "evidence_quote": "Insulin activates mTORC2 leading to the activation of protein kinase B (PKB)/AKT.",
+      "location": "Introduction"
+    },
+    {
+      "source": "AKT",
+      "target": "mTORC1",
+      "effect": "activates",
+      "context": "review statement about insulin signalling",
+      "evidence_quote": "Activated PKB/AKT mediates the metabolic actions of insulin such as potentiating glucose transport and promoting mTORC1 signalling to drive protein synthesis and cell growth.",
+      "location": "Introduction"
+    },
+    {
+      "source": "CHK1",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement about DNA damage response",
+      "evidence_quote": "DNA damage response is initiated with the formation of foci consisting of γ-H2AX, 53BP1, NBS1, and MDC1, and leads to activation of ATM/ATR and Chk1/Chk2, which in turn phosphorylate and stabilize p53 [18].",
+      "location": "Introduction"
+    },
+    {
+      "source": "CHK2",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement about DNA damage response",
+      "evidence_quote": "DNA damage response is initiated with the formation of foci consisting of γ-H2AX, 53BP1, NBS1, and MDC1, and leads to activation of ATM/ATR and Chk1/Chk2, which in turn phosphorylate and stabilize p53 [18].",
+      "location": "Introduction"
+    },
+    {
+      "source": "p53",
+      "target": "p21",
+      "effect": "activates",
+      "context": "review statement about senescent cells",
+      "evidence_quote": "The expression of p21 (CIP1/WAF1), one of the p53 targets, is upregulated in senescent cells [19], and overexpression of p21 could induce a senescence-like growth arrest in some cells [20].",
+      "location": "Introduction"
+    },
+    {
+      "source": "BCAAs",
+      "target": "mTORC1",
+      "effect": "activates",
+      "context": "U2OS cells cultured in BCAA_3 vs BCAA_0, without DNA damage-inducing drugs",
+      "evidence_quote": "As the phosphorylation of S6K at Thr389 was elevated in cells cultured in BCAA_3 medium and effectively suppressed by rapamycin, the activities of mTORC1 were apparently higher in BCAA_3 than those in BCAA_0.",
+      "location": "BCAAs enhance the execution of premature senescence induced by DNA damage-inducing drugs"
+    },
+    {
+      "source": "mTORC1",
+      "target": "p21",
+      "effect": "activates",
+      "context": "HepG2 cells cultured in BCAA_3 vs BCAA_0, with or without etoposide",
+      "evidence_quote": "p21 protein level was strongly upregulated by DNA damage only in the presence of BCAAs, and the elevation of p21 protein was suppressed by rapamycin.",
+      "location": "BCAAs upregulate p21 protein level mediated through the mTORC1 pathway"
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 8014,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 5740,
+    "output_tokens_details": {
+      "reasoning_tokens": 4621
+    },
+    "total_tokens": 13754
+  },
+  "from_cache": false
+}

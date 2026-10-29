@@ -1,0 +1,85 @@
+{
+  "request": {
+    "model": "muse-spark-1.3",
+    "input": {
+      "sha256": "0dd810c38c9826f99a6b7c69080974e1edc9df67632b71cbf0b048454d3d2e9d",
+      "chars": 56210,
+      "stored": false
+    },
+    "params": {
+      "text": {
+        "format": {
+          "type": "json_schema",
+          "name": "mechanism_claims",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "effect": {
+                      "type": "string",
+                      "enum": [
+                        "activates",
+                        "inhibits",
+                        "requires"
+                      ]
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "evidence_quote": {
+                      "type": "string"
+                    },
+                    "location": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "effect",
+                    "context",
+                    "evidence_quote",
+                    "location"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "claims"
+            ],
+            "additionalProperties": false
+          },
+          "strict": true
+        }
+      },
+      "reasoning": {
+        "effort": "low"
+      }
+    }
+  },
+  "text": "{\"claims\": [{\"context\": \"review statement, cardiac cells\", \"effect\": \"activates\", \"evidence_quote\": \"Monoamine oxidase\\u2010A (MAO\\u2010A) is a mitochondrial FAD\\u2010dependent enzyme that catalyses the oxidative deamination of serotonin and catecholamines and generates hydrogen peroxide (H2O2) as a by\\u2010product of the enzymatic reaction.\", \"location\": \"INTRODUCTION\", \"source\": \"MAO-A\", \"target\": \"H2O2\"}, {\"context\": \"cardiomyoblasts and primary cardiomyocytes, chronic MAO-A activation\", \"effect\": \"activates\", \"evidence_quote\": \"Moreover, we observe that ROS produced by MAO\\u2010A lead to the accumulation of p53 in the cytosol where it inhibits parkin, an important regulator of mitophagy, resulting in mitochondrial dysfunction.\", \"location\": \"ABSTRACT\", \"source\": \"ROS\", \"target\": \"p53\"}, {\"context\": \"cardiomyoblasts and primary cardiomyocytes, chronic MAO-A activation\", \"effect\": \"inhibits\", \"evidence_quote\": \"Moreover, we observe that ROS produced by MAO\\u2010A lead to the accumulation of p53 in the cytosol where it inhibits parkin, an important regulator of mitophagy, resulting in mitochondrial dysfunction.\", \"location\": \"ABSTRACT\", \"source\": \"p53\", \"target\": \"parkin\"}, {\"context\": \"H9C2 cardiomyoblasts and cardiomyocytes, MAO-A activation\", \"effect\": \"activates\", \"evidence_quote\": \"Additionally, we show that the mTOR kinase contributes to mitophagy dysfunction by enhancing p53 cytoplasmic accumulation.\", \"location\": \"ABSTRACT\", \"source\": \"mTOR\", \"target\": \"p53\"}, {\"context\": \"H9C2 cells stimulated with Tyr for 72 hr\", \"effect\": \"activates\", \"evidence_quote\": \"In addition, we observed an increase in p53 phosphorylation (p\\u2010p53) at Ser15, an increase in total p53 and its downstream target p21, and a decrease in Rb phosphorylation (pRb) (Figure 2b).\", \"location\": \"MAO\\u2010A stimulation promotes cyclin\\u2010dependent kinase inhibitor (CDKi) activation and SIPS in H9C2 and primary cardiomyocytes\", \"source\": \"p53\", \"target\": \"p21\"}, {\"context\": \"review statement citing other work on clearance of damaged mitochondria\", \"effect\": \"activates\", \"evidence_quote\": \"Next, pink1 allows the recruitment of the E3 ubiquitin ligase parkin to the mitochondria, promoting ubiquitination and targeting to autophagic vesicles.\", \"location\": \"MAO\\u2010A\\u2010induced cellular senescence is associated with mitochondrial dysfunction and inhibition of parkin\\u2010mediated mitophagy\", \"source\": \"PINK1\", \"target\": \"parkin\"}, {\"context\": \"review statement citing other work (Shin et al., 2011; Siddiqui et al., 2015)\", \"effect\": \"inhibits\", \"evidence_quote\": \"In addition to its role in mitophagy, parkin has also been demonstrated to act as an inhibitor of the transcriptional repressor PARIS, in turn impacting mitochondrial biogenesis and turnover via regulation of PGC1\\u03b1 and TFEB (Shin et al., 2011; Siddiqui et al., 2015).\", \"location\": \"DISCUSSION\", \"source\": \"parkin\", \"target\": \"PARIS\"}, {\"context\": \"review statement citing Nacarelli et al., 2015\", \"effect\": \"inhibits\", \"evidence_quote\": \"The mTORC1 complex is well known to inhibit global autophagy through phosphorylation of the initiation complex ULK1 (Nacarelli et al., 2015).\", \"location\": \"DISCUSSION\", \"source\": \"mTOR\", \"target\": \"ULK1\"}, {\"context\": \"H9C2 cells stimulated with Tyr for 72 hr\", \"effect\": \"activates\", \"evidence_quote\": \"In cells stimulated with Tyr, mTOR was persistently activated, as shown by the phosphorylation level of its major target p70S6K, which was prevented by treatment with the mTOR inhibitor rapamycin (Figure 5f) or by siRNA\\u2010mediated silencing of MAO\\u2010A (Figure 5g).\", \"location\": \"Crosstalk between p53 and mTOR pathways regulate mitochondrial dysfunction\\u2010associated senescence induced by MAO\\u2010A\", \"source\": \"mTOR\", \"target\": \"p70S6K\"}, {\"context\": \"H9C2 cells stimulated with Tyr for 72 hr, MAO-A-dependent activation\", \"effect\": \"activates\", \"evidence_quote\": \"In cells stimulated with Tyr, mTOR was persistently activated, as shown by the phosphorylation level of its major target p70S6K, which was prevented by treatment with the mTOR inhibitor rapamycin (Figure 5f) or by siRNA\\u2010mediated silencing of MAO\\u2010A (Figure 5g).\", \"location\": \"Crosstalk between p53 and mTOR pathways regulate mitochondrial dysfunction\\u2010associated senescence induced by MAO\\u2010A\", \"source\": \"MAO-A\", \"target\": \"mTOR\"}]}",
+  "model": "muse-spark-1.3",
+  "usage": {
+    "input_tokens": 13351,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 5293,
+    "output_tokens_details": {
+      "reasoning_tokens": 4136
+    },
+    "total_tokens": 18644
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "pmcid": "PMC2919254",
+  "title": "The choice between p53-induced senescence and quiescence is determined in part by the mTOR pathway",
+  "model": "muse-spark-1.3",
+  "counts": {
+    "proposed": 10,
+    "grounded": 10,
+    "ungrounded": 0,
+    "outcome_level": 0
+  },
+  "grounded": [
+    {
+      "source": "nutlin-3a",
+      "target": "p53",
+      "effect": "activates",
+      "context": "review statement, cultured cell lines",
+      "evidence_quote": "Using nutlin-3a (a small molecule that activates p53 without causing DNA damage), we have previously identified cell lines in which nutlin-3a caused quiescence.",
+      "location": "Abstract"
+    },
+    {
+      "source": "TSC2",
+      "target": "mTOR",
+      "effect": "inhibits",
+      "context": "nutlin-arrested cells",
+      "evidence_quote": "Here we showed that shRNA-mediated knockdown of TSC2, a negative regulator of mTOR, partially converted quiescence into senescence in these nutlin-arrested cells.",
+      "location": "Abstract"
+    },
+    {
+      "source": "p53",
+      "target": "mTOR",
+      "effect": "inhibits",
+      "context": "review statement citing previous reports",
+      "evidence_quote": "In agreement with previous reports [18-20], we found that p53 inhibited the mTOR pathway [17].",
+      "location": "Introduction"
+    },
+    {
+      "source": "nutlin-3a",
+      "target": "MDM2",
+      "effect": "inhibits",
+      "context": "review statement citing other work",
+      "evidence_quote": "Nutlin-3a, a small molecular therapeutic, inhibits Mdm2/p53 interaction and induces p53 at physiological levels without causing DNA damage [9-11].",
+      "location": "Introduction"
+    },
+    {
+      "source": "p53",
+      "target": "TSC2",
+      "effect": "requires",
+      "context": "HT-p21-9 cells lacking TSC2, statement citing other work",
+      "evidence_quote": "Next, we investigated whether nutlin-3a can cause senescence in cells lacking tuberous sclerosis 2 (TSC2) (Figure 1A), given that regulation of mTOR by p53 requires TSC2 [18].",
+      "location": "Results"
+    },
+    {
+      "source": "nutlin-3a",
+      "target": "p21",
+      "effect": "activates",
+      "context": "MEL-10 and Mel-9 melanoma-derived cell lines",
+      "evidence_quote": "In MEL-10 and Mel-9, two melanoma-derived cell lines, nutlin-3a induced p53 and p21 (Figure 3A) and caused senescent morphology (Figure 3B) and cells did not resume proliferation, when nutlin-3a was removed (Supplemental Figure 2).",
+      "location": "Results"
+    },
+    {
+      "source": "rapamycin",
+      "target": "S6",
+      "effect": "inhibits",
+      "context": "Mel-10 cells treated with nutlin with or without rapamycin for 1 day",
+      "evidence_quote": "Rapamycin did not affect p53 and p21 induction caused by nutlin-3a but abrogated S6 phosphorylation (Figure 4A), associated with conversion from senescent morphology to quiescent morphology (Figure 4B).",
+      "location": "Results"
+    },
+    {
+      "source": "rapamycin",
+      "target": "mTOR",
+      "effect": "inhibits",
+      "context": "mouse embryonic fibroblasts",
+      "evidence_quote": "Rapamycin inhibited the mTOR pathway and converted senescent morphology to quiescent morphology (Figure 5).",
+      "location": "Results"
+    },
+    {
+      "source": "Ras",
+      "target": "mTOR",
+      "effect": "activates",
+      "context": "review statement of model",
+      "evidence_quote": "These important observations are in agreement with our model that senescence requires two factors: cell cycle arrest caused by p53 and simultaneous activation of the growth-promoting mTOR pathway (Note: Ras is an activator of the mTOR pathway).",
+      "location": "Discussion"
+    },
+    {
+      "source": "shTSC2",
+      "target": "mTOR",
+      "effect": "activates",
+      "context": "quiescence-prone cells transduced with shTSC2",
+      "evidence_quote": "Transduction of cells with shTSC2 activates mTOR thus converting quiescence into senescence.",
+      "location": "CAPTION: p53 causes senescence by failing to suppress senescence. (A) Quiescence-prone cells. Upper panel. P53 causes cell cycle arrest and inhibits the mTOR pathway, thus ensuring quiescence. Lower panel. Transduction of cells with shTSC2 activates mTOR thus converting quiescence into senescence. (B) Senescence-prone cells. Upper panel. P53 causes cell cycle arrest without inhibiting the mTOR pathway, thus ensuring senescence. Lower panel. Rapamycin inhibits mTOR thus converting senescence into quiescence."
+    }
+  ],
+  "ungrounded": [],
+  "outcome_level": [],
+  "usage": {
+    "input_tokens": 4540,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 4933,
+    "output_tokens_details": {
+      "reasoning_tokens": 3935
+    },
+    "total_tokens": 9473
+  },
+  "from_cache": false
+}
