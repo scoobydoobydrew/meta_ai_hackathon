@@ -325,12 +325,171 @@ footer pre { margin: 0; font-family: var(--mono); font-size: 13px; background: v
   .fates { grid-template-columns: 1fr 1fr; }
   .brand small { display: none; }
   nav a { padding: 6px 8px; }
-  nav a:nth-child(n+3) { display: none; }
-  .topbar .wrap { gap: 10px; }
+  nav a:nth-child(n+2) { display: none; }
+  .topbar .wrap { gap: 8px; }
+  nav { margin-left: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .flow .pulse { animation: none; opacity: 0; }
   .reveal > * { animation: none; }
   .edge, .head, .node circle.body, .fatenode rect { transition: none; }
+  .b-stagebox.scan::after, #bNet .edge.wireflash, #bNet .head.wireflash { animation: none; }
+}
+
+/* ---------------------------------------------------------------- the test bench: five steps, one stage, one panel.
+   The stage is the real network of the model, drawn closed (a chip with signals running through it) or open (every gene named).
+   Lamps, lights and counts all come from the exact solver's tables; nothing here is an illustration. */
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+.iconbtn span { font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: .02em; }
+.topbar .btn.small { white-space: nowrap; }
+.bench-sec { padding-block: clamp(36px, 4.5vw, 56px) clamp(44px, 6vw, 80px); }
+.bench-sec .sec-head { margin-bottom: clamp(16px, 2.4vw, 26px); }
+.bench-sec .h2 { font-size: clamp(30px, 3.8vw, 46px); }
+.how { margin-top: 8px; }
+.how summary { cursor: pointer; font-size: 14px; color: var(--accent); width: max-content; }
+.how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 12px; }
+.how-grid > div { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 12px 14px; display: grid; gap: 4px; align-content: start; }
+.how-grid b { font-family: var(--display); font-weight: 400; font-size: 22px; }
+.how-grid span { font-size: 14px; color: var(--fg-2); }
+
+.bench { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(340px, 1fr); gap: clamp(16px, 2.4vw, 28px); align-items: start; }
+.b-left { display: grid; gap: 12px; min-width: 0; }
+.b-side { display: grid; gap: 14px; min-width: 0; }
+@media (min-width: 1021px) and (min-height: 760px) { .b-left { position: sticky; top: 76px; } }
+.b-stagebox { position: relative; border: 1px solid var(--line); border-radius: 22px; background: radial-gradient(110% 80% at 50% 0%, var(--raised), var(--surface) 70%); box-shadow: var(--shadow); overflow: hidden; }
+.b-stagebox svg { display: block; width: 100%; height: auto; touch-action: manipulation; }
+.b-ctl { position: absolute; top: 12px; z-index: 3; }
+.b-ctl-l { left: 12px; } .b-ctl-r { right: 12px; }
+.pillbtn { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(6px); cursor: pointer; color: var(--fg); }
+.pillbtn:hover { background: var(--raised); }
+.pillbtn .bolt { width: 9px; height: 9px; border-radius: 50%; background: var(--fg-3); transition: background .25s, box-shadow .25s; }
+.pillbtn[aria-pressed="true"] { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); }
+.pillbtn[aria-pressed="true"] .bolt { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), 0 0 12px 2px var(--glow); }
+.b-stop { position: absolute; right: 12px; top: 12px; z-index: 4; }
+.bench.playing .b-ctl-r { display: none; }
+.b-caption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 56px 24px 20px; background: linear-gradient(to top, color-mix(in srgb, var(--bg) 94%, transparent) 32%, transparent); font-family: var(--display); font-size: clamp(21px, 3vw, 38px); line-height: 1.08; text-align: center; text-wrap: balance; opacity: 0; transition: opacity .4s; pointer-events: none; }
+.b-caption.show { opacity: 1; }
+.b-stagebox.scan::after { content: ""; position: absolute; inset: 0 auto 0 -30%; width: 30%; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 26%, transparent), transparent); animation: scan 1.3s linear infinite; pointer-events: none; }
+@keyframes scan { to { transform: translateX(450%); } }
+
+/* the network on the stage: closed it is a chip with signals running through it, open every gene is named and can be clicked */
+#bNet .chipframe { fill: none; stroke: var(--line); stroke-width: 2; transition: opacity .4s; }
+#bNet .chiplabel { font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; fill: var(--fg-3); transition: opacity .4s; }
+.b-stagebox[data-open="1"] #bNet .chipframe, .b-stagebox[data-open="1"] #bNet .chiplabel { opacity: 0; }
+#bNet .fatenode, #bNet .fatelink { display: none; }
+#bNet .halo, #bNet .halo-label { transition: opacity .4s; }
+.b-stagebox[data-open="0"] #bNet .halo, .b-stagebox[data-open="0"] #bNet .halo-label { opacity: 0; }
+#bNet .node text { transition: opacity .3s; }
+.b-stagebox[data-open="0"] #bNet .node text { opacity: 0; }
+.b-stagebox[data-open="0"] #bNet .node.clamp text, .b-stagebox[data-open="0"] #bNet .node.new text, .b-stagebox[data-open="0"] #bNet .node.spot text { opacity: 1; }
+#bNet .node circle.body { transform-box: fill-box; transform-origin: center; transition: transform .35s, fill .25s, stroke .25s; }
+.b-stagebox[data-open="0"] #bNet .node circle.body { transform: scale(.62); }
+.b-stagebox[data-open="0"] #bNet .node { pointer-events: none; }
+.b-stagebox[data-open="0"] .tip { display: none; }
+#bNet .node.on circle.body { filter: drop-shadow(0 0 7px var(--lit)); }
+#bNet .node.fdim { opacity: .13; }
+#bNet .edge.fdim, #bNet .head.fdim { opacity: .05 !important; }
+#bNet.focusing .halo, #bNet.focusing .halo-label { opacity: .22; }
+@keyframes wireflash { 0% { stroke-width: 10; stroke: var(--accent); opacity: 1; } 100% { stroke-width: 1.7; } }
+@keyframes headflash { 0% { stroke: var(--accent); fill: var(--accent); opacity: 1; } }
+#bNet .edge.wireflash { animation: wireflash 1.5s ease-out; }
+#bNet .head.wireflash { animation: headflash 1.5s ease-out; }
+.pulse { fill: var(--fg); filter: drop-shadow(0 0 5px var(--fg)); pointer-events: none; }
+
+/* lamps: one per fate; lit means the exact checker found a stable state with that fate */
+.b-lamps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.lamp5 { position: relative; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); padding: 11px 4px 9px; display: grid; justify-items: center; gap: 4px; text-align: center; cursor: default; transition: background .25s, border-color .25s; color: var(--fg-3); }
+.lamp5 .led { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--line); background: var(--raised); transition: background .3s, box-shadow .3s, border-color .3s; }
+.lamp5 b { font-weight: 500; font-size: 14px; line-height: 1.15; overflow-wrap: anywhere; }
+.lamp5 small { font-size: 11px; line-height: 1.2; color: var(--fg-3); overflow-wrap: anywhere; }
+.lamp5.on { cursor: pointer; color: var(--fg); border-color: color-mix(in srgb, var(--c) 55%, var(--line)); background: color-mix(in srgb, var(--c) 9%, var(--surface)); }
+.lamp5.on .led { background: var(--c); border-color: var(--c); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 22%, transparent), 0 0 22px 4px color-mix(in srgb, var(--c) 55%, transparent); }
+.lamp5.sel { outline: 2px solid var(--c); outline-offset: 1px; }
+.lamp5.bad { border-color: var(--bad); }
+.lamp5.bad .led { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--bad), 0 0 22px 4px color-mix(in srgb, var(--c) 55%, transparent); }
+.lamp5.bad small, .lamp5.miss small { color: var(--bad); font-weight: 600; }
+.lamp5.miss { border-color: var(--bad); border-style: dashed; }
+.lamp5.miss .led { border: 2px dashed var(--bad); background: transparent; }
+
+/* the side: steps, the panel of the current step, the rack of ten known experiments */
+.b-rail { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.b-rail button { width: 100%; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 8px 2px 7px; display: grid; justify-items: center; gap: 4px; cursor: pointer; font-size: 12px; color: var(--fg-2); }
+.b-rail button b { font-family: var(--mono); font-weight: 500; font-size: 12px; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line); }
+.b-rail button[aria-current="step"] { border-color: var(--fg); color: var(--fg); background: var(--raised); }
+.b-rail button[aria-current="step"] b { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.b-rail button.done b { background: var(--good-soft); color: var(--good); border-color: transparent; }
+.b-rail button:disabled { opacity: .4; cursor: default; }
+.b-panel { border: 1px solid var(--line); border-radius: 20px; background: var(--surface); padding: clamp(16px, 2.4vw, 22px); display: grid; gap: 14px; min-height: 260px; align-content: start; min-width: 0; }
+.b-panel h3 { font-family: var(--display); font-weight: 400; font-size: clamp(26px, 3vw, 34px); line-height: 1.05; }
+.b-hint { color: var(--fg-2); font-size: 15px; }
+.b-status { font-size: 14px; color: var(--fg-2); min-height: 2.7em; }
+.b-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.b-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.b-card { border: 1px solid var(--line); background: var(--bg-2); border-radius: 14px; padding: 13px 15px; display: grid; gap: 8px; font-size: 14px; min-width: 0; }
+.b-card q { display: block; font-family: var(--display); font-size: 20px; line-height: 1.25; quotes: none; color: var(--fg); }
+.b-card q.say { font-family: var(--sans); font-style: italic; font-size: 15px; line-height: 1.45; color: var(--fg-2); }
+.b-card small { color: var(--fg-3); font-size: 12px; }
+.b-card details { font-size: 13.5px; color: var(--fg-2); display: grid; gap: 6px; }
+.b-card summary { cursor: pointer; color: var(--accent); width: max-content; }
+.b-wire { display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 14px; }
+.b-wire i { width: 22px; height: 0; border-top: 2px dashed var(--new); flex: none; }
+.b-count { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.b-count > div { border: 1px solid var(--line); border-radius: 14px; background: var(--bg-2); padding: 10px 12px; display: grid; gap: 2px; }
+.b-count b { font-family: var(--display); font-weight: 400; font-size: clamp(28px, 3.4vw, 40px); line-height: 1; font-variant-numeric: tabular-nums; }
+.b-count small { font-size: 12px; color: var(--fg-2); line-height: 1.25; }
+.b-why summary { cursor: pointer; font-size: 13.5px; color: var(--accent); width: max-content; }
+.b-why .steps { margin-top: 8px; }
+.gate { width: 100%; max-width: 440px; height: auto; }
+.gate .gt { font-family: var(--mono); font-size: 14px; fill: var(--fg-2); }
+.gate .gt.b { font-weight: 600; fill: var(--fg); }
+.gate .gw { stroke: var(--fg-3); stroke-width: 2; }
+.gate .gw.out { stroke: var(--accent); stroke-width: 3; }
+.gate .gb { fill: var(--raised); stroke: var(--fg-3); stroke-width: 1.5; }
+.b-rack { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.led10 { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 6px 3px 7px; text-align: center; display: grid; gap: 1px; font-size: 11px; line-height: 1.2; color: var(--fg-3); cursor: default; overflow-wrap: anywhere; }
+.led10 b { font-family: var(--mono); font-weight: 500; font-size: 12px; color: var(--fg-2); }
+.led10 .m { font-size: 15px; height: 20px; line-height: 20px; }
+.led10.pass { background: var(--good-soft); color: var(--good); border-color: transparent; cursor: pointer; }
+.led10.pass b { color: var(--good); }
+.led10.fail { background: var(--bad-soft); color: var(--bad); border-color: var(--bad); cursor: pointer; font-weight: 500; }
+.led10.fail b { color: var(--bad); }
+.led10.sel { outline: 2px solid var(--fg); outline-offset: 1px; }
+.chip.badchip { border-color: var(--bad); color: var(--bad); }
+.score { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.score > div { border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; display: grid; gap: 3px; background: var(--bg-2); align-content: start; }
+.score b { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 3.6vw, 42px); line-height: 1; font-variant-numeric: tabular-nums; }
+.score small { font-size: 12px; color: var(--fg-2); line-height: 1.25; }
+.ix { display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 50%; background: var(--raised); border: 1px solid var(--line); font-family: var(--mono); font-size: 10px; color: var(--fg); margin-right: 2px; }
+.claims10 { display: grid; gap: 4px; }
+.cl { display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, 32px); gap: 6px; align-items: center; padding: 6px 8px; border-radius: 10px; background: var(--bg-2); font-size: 13px; text-align: left; border: 0; cursor: pointer; width: 100%; color: var(--fg); }
+.cl:hover { background: var(--raised); }
+.cl.sel { outline: 2px solid var(--fg); outline-offset: 1px; }
+.cl.head { background: transparent; cursor: default; font-size: 11px; color: var(--fg-3); line-height: 1.15; text-align: center; padding-block: 0; }
+.cl.head span:first-child { text-align: left; }
+.vd { display: inline-grid; place-items: center; width: 32px; height: 24px; border-radius: 7px; font-size: 13px; font-weight: 600; }
+.vd.correct { background: var(--good-soft); color: var(--good); }
+.vd.wrong { background: var(--bad-soft); color: var(--bad); }
+.vd.not_expressible { border: 1px dashed var(--line); color: var(--fg-3); }
+.bench.playing .b-side button, .bench.playing .b-ctl button, .bench.playing .b-lamps button { pointer-events: none; }
+
+@media (max-width: 1020px) {
+  .bench { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  /* on a narrow screen the lamps stay under the top bar while the panel scrolls, so a click below still shows its result above */
+  .b-left { display: contents; }
+  .b-lamps { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 56px); z-index: 6; padding-block: 6px; background: color-mix(in srgb, var(--bg-2) 94%, transparent); backdrop-filter: blur(8px); }
+}
+@media (max-width: 560px) {
+  .b-lamps { gap: 5px; }
+  .lamp5 { padding: 9px 2px 7px; border-radius: 12px; }
+  .lamp5 .led { width: 20px; height: 20px; }
+  .lamp5 b { font-size: 10.5px; letter-spacing: -.02em; }
+  .lamp5 small { font-size: 9px; }
+  .b-rail button .lbl { display: none; }
+  .b-rail button[aria-current="step"] .lbl { display: block; }
+  .b-rail button[aria-current="step"] { grid-column: span 2; }
+  .b-rail { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .b-caption { padding: 40px 14px 14px; }
+  .pillbtn { padding: 6px 10px; font-size: 12px; }
 }

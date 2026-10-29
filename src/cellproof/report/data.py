@@ -23,7 +23,7 @@ from cellproof.network.bnet import load_bnet
 from cellproof.network.logic import influence_edges
 from cellproof.network.phenotypes import classify, g2_arrest
 from cellproof.report.layout import FATES, GROUPS, HALOS, HEIGHT, NEW_NODES, NODE_ORDER, NODES, WIDTH
-from cellproof.verify.checker import check, load_cases
+from cellproof.verify.checker import check, check_case, load_cases
 
 ROOT = Path(__file__).resolve().parents[3]
 FATE_CODES = {"proliferation": 0, "arrest": 1, "senescence": 2, "autophagy": 3, "apoptosis": 4, None: 5}
@@ -88,12 +88,12 @@ def lab_table(rules: dict[str, str], damage: int, pairs: bool) -> dict[str, list
     return table
 
 
-def cached_lab(name: str, rules: dict[str, str]) -> dict:
+def cached_lab(name: str, rules: dict[str, str], pairs: bool = True) -> dict:
     digest = hashlib.sha256(json.dumps(rules, sort_keys=True).encode()).hexdigest()[:16]
-    path = ROOT / "results" / ".cache" / f"lab_{name}_{digest}.json"
+    path = ROOT / "results" / ".cache" / f"lab_{name}{'' if pairs else '_singles'}_{digest}.json"
     if path.exists():
         return json.loads(path.read_text(encoding="utf-8"))
-    table = {"d1": lab_table(rules, 1, pairs=True), "d0": lab_table(rules, 0, pairs=False)}
+    table = {"d1": lab_table(rules, 1, pairs=pairs), "d0": lab_table(rules, 0, pairs=False)}
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(table, separators=(",", ":")), encoding="utf-8")
     return table
@@ -207,6 +207,48 @@ def interventions(networks: dict[str, dict[str, str]]) -> dict:
     return out
 
 
+def story_block(published: dict[str, str], base_edges: set) -> dict | None:
+    """The three networks of the test-bench story (published; one unchecked edit; the repaired edit) and the ten verification cases run
+    on each by the exact solver. Built from the real decision log of CHK1 inhibits CDC25C, not from a toy."""
+    records = _read(ROOT / "results" / "augment_repaired_min2.json") or []
+    chk1 = next((r for r in records if r["edge"] == "CHK1|inhibits|Cdc25"), None)
+    if chk1 is None or "final_rule" not in chk1:
+        return None
+    anchor = {"ATR": "DNA_damage", "CHK1": "ATR"}  # the two anchors that existed when this edit was judged
+    versions = {
+        "A": published,
+        "B": {**published, **anchor, "Cdc25": chk1["template_rule"]},
+        "C": {**published, **anchor, "Cdc25": chk1["final_rule"]},
+    }
+    cases = []
+    for case in load_cases():
+        setting = {**case.stimulus, **case.perturbation}
+        row = {"id": case.id, "origin": case.origin, "setting": setting, "expected": sorted(case.phenotypes), "match": case.match}
+        for key, rules in versions.items():
+            points = fixed_points(perturb(rules, setting))
+            flat: list[int] = []
+            for state, code in sorted((_encode(fp), FATE_CODES[classify(fp)] * 2 + int(g2_arrest(fp))) for fp in points):
+                flat += [state, code]
+            row[key] = {"ok": not check_case(rules, case), "states": flat}
+        cases.append(row)
+    attempts = [a for a in chk1["attempts"] if a["source"] == "llm_answer"]
+    said = attempts[0]["explanation"].split(" Rule is ")[0] if attempts else ""  # the model's reasoning up to where it restates the rule
+    said = said if len(said) <= 330 else said[:330].rsplit(" ", 1)[0] + "…"
+    vacuous = next((r for r in records if r["edge"] == "ATR|activates|ATM_pH2AX"), None)
+    first_vacuous = next((a for a in (vacuous or {}).get("attempts", []) if a["source"] == "llm" and "vacuous" in a["reasons"]), None)
+    return {
+        "versions": {k: network_block(k, r, base_edges) for k, r in versions.items()},
+        "lab": {k: cached_lab(f"story_{k}", r, pairs=False) for k, r in versions.items()},
+        "cases": cases,
+        "patch": {
+            "edge": chk1["edge"], "papers": chk1["papers"], "old": chk1["old_rule"], "template": chk1["template_rule"], "final": chk1["final_rule"],
+            "quotes": [{"pmcid": s["pmcid"], "quote": s["quote"][:300], "context": s["context"][:90]} for s in chk1["support"][:3]],
+            "explanation": said,
+        },
+        "vacuous": ({"edge": vacuous["edge"], "rule": first_vacuous["rule"], "old": vacuous["old_rule"]} if first_vacuous else None),
+    }
+
+
 def grounding_examples() -> list[dict]:
     """How a few real names from the papers are resolved, computed by the same grounder the pipeline uses (offline)."""
     import os
@@ -257,6 +299,7 @@ def collect() -> dict:
             "check_seconds": check_seconds(rules["augmented"]), "built": __import__("datetime").date.today().isoformat(),
         },
         "grounding_examples": grounding_examples(),
+        "story": story_block(rules["published"], base_edges),
         "layout": {
             "width": WIDTH, "height": HEIGHT, "groups": GROUPS, "halos": HALOS, "new_nodes": NEW_NODES,
             "nodes": {n: {"group": g, "x": x, "y": y, "name": annotations["nodes"].get(n, "")} for n, (g, x, y) in NODES.items()},

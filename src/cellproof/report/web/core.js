@@ -14,6 +14,7 @@ const svg = (tag, attrs = {}, parent) => {
 };
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const L = D.layout;
+const NET = (k) => D.networks[k] || (D.story && D.story.versions[k]); /* one of the three lab networks, or a version A, B, C of the bench story */
 const ORDER = L.order;
 const POW2 = ORDER.map((_, i) => 2 ** i);
 const FATES = ["proliferation", "arrest", "senescence", "autophagy", "apoptosis"];
@@ -108,9 +109,9 @@ const newEdgeRecords = (node) => ((D.docket.repaired_min2 || []).filter((r) => r
 })();
 
 /* ---------------------------------------------------------------- the network drawing */
-function makeNet(svgEl, tip, handlers = {}) {
+function makeNet(svgEl, tip, handlers = {}, initial = "augmented") {
   const stage = svgEl.parentElement;
-  let netKey = "augmented", edgeEls = [], nodeEls = {}, fateEls = {};
+  let netKey = initial, edgeEls = [], nodeEls = {}, fateEls = {};
   const root = svg("g", {}, svgEl);
   const halos = svg("g", {}, root), links = svg("g", {}, root), edgesG = svg("g", {}, root), nodesG = svg("g", {}, root), fatesG = svg("g", {}, root);
   for (const [g, x, y, w, h] of L.halos) {
@@ -132,7 +133,7 @@ function makeNet(svgEl, tip, handlers = {}) {
   }
   function build(key) {
     netKey = key; edgesG.replaceChildren(); nodesG.replaceChildren(); edgeEls = []; nodeEls = {};
-    const net = D.networks[key], have = new Set(net.nodes), seen = new Set();
+    const net = NET(key), have = new Set(net.nodes), seen = new Set();
     for (const [s, t, sign, isNew] of net.edges) {
       const a = L.nodes[s], b = L.nodes[t]; if (!a || !b) continue;
       const rev = seen.has(t + ">" + s); seen.add(s + ">" + t);
@@ -168,7 +169,7 @@ function makeNet(svgEl, tip, handlers = {}) {
   function move(ev) { place(ev); }
   function hide() { tip.classList.remove("show"); }
   function showNode(n, ev) {
-    const info = L.nodes[n], isNew = L.new_nodes.includes(n), rule = D.networks[netKey].rules[n];
+    const info = L.nodes[n], isNew = L.new_nodes.includes(n), rule = NET(netKey).rules[n];
     let extra = "";
     if (isNew) { const recs = newEdgeRecords(n); extra = recs.length ? `<br>Added by the agent from: ${recs.map((r) => esc(r.id.replaceAll("|", " ")) + ` (${r.papers} papers)`).join("; ")}` : "<br>Added by the agent."; }
     tip.innerHTML = `<b>${esc(pretty(n))}</b>${info.name ? " · " + esc(info.name) : isNew ? " · not in the published model" : ""}<span class="mono">${esc(n)} = ${esc(rule)}</span>${extra}`;
@@ -194,8 +195,36 @@ function makeNet(svgEl, tip, handlers = {}) {
     for (const [k, g] of Object.entries(fateEls)) { g.classList.toggle("present", state.fatesPresent.has(k)); g.classList.toggle("sel", state.fatesSel === k); }
   }
   function flash(n) { const g = nodeEls[n]; if (!g) return; g.classList.remove("flash"); void g.getBoundingClientRect(); g.classList.add("flash"); }
+  /* spotlight: nodes in `set` stay bright, the rest and every wire not between two of them recede; null clears it */
+  function focus(set) {
+    for (const [n, g] of Object.entries(nodeEls)) { g.classList.toggle("fdim", !!set && !set.has(n)); g.classList.toggle("spot", !!set && set.has(n)); }
+    for (const e of edgeEls) { const dim = !!set && !(set.has(e.s) && set.has(e.t)); e.path.classList.toggle("fdim", dim); e.head.classList.toggle("fdim", dim); }
+    svgEl.classList.toggle("focusing", !!set);
+  }
+  function wireFlash(s, t) {
+    const e = edgeEls.find((x) => x.s === s && x.t === t); if (!e) return;
+    for (const el of [e.path, e.head]) { el.classList.remove("wireflash"); void el.getBoundingClientRect(); el.classList.add("wireflash"); }
+  }
   build(netKey);
-  return { build, paint, flash, has: (n) => !!nodeEls[n] };
+  return { build, paint, flash, focus, wireFlash, edges: () => edgeEls, has: (n) => !!nodeEls[n] };
+}
+
+/* ---------------------------------------------------------------- how a rule changed: the new rule with its additions and deletions marked */
+const toks = (s) => (s || "").match(/[A-Za-z_][A-Za-z0-9_]*|[()!&|01]/g) || [];
+function ruleHTML(oldRule, newRule) {
+  const A = toks(oldRule), B = toks(newRule), n = A.length, m = B.length, dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) dp[i][j] = A[i] === B[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+  const out = []; let i = 0, j = 0;
+  while (i < n || j < m) { if (i < n && j < m && A[i] === B[j]) { out.push([B[j], ""]); i++; j++; } else if (j < m && (i === n || dp[i][j + 1] >= dp[i + 1][j])) { out.push([B[j], "add"]); j++; } else { out.push([A[i], "del"]); i++; } }
+  let s = "", prev = "", run = "", runKind = null;
+  const flush = () => { if (run) s += runKind ? `<span class="${runKind}">${run}</span>` : run; run = ""; };
+  for (const [t, k] of out) {
+    const sp = !s && !run || prev === "(" || prev === "!" || t === ")" ? "" : " ";
+    if (k !== runKind) { flush(); s += sp; runKind = k; run = esc(t); } else run += sp + esc(t);
+    prev = t;
+  }
+  flush();
+  return s;
 }
 
 /* ---------------------------------------------------------------- rules in the browser: evaluation and forced consequences */
@@ -217,7 +246,7 @@ function parseRule(expr) {
 function compile(net) {
   if (compiled[net]) return compiled[net];
   const out = {};
-  for (const [n, expr] of Object.entries(D.networks[net].rules)) out[n] = { names: Array.from(new Set(expr.match(/[A-Za-z_][A-Za-z0-9_]*/g) || [])), fn: parseRule(expr) };
+  for (const [n, expr] of Object.entries(NET(net).rules)) out[n] = { names: Array.from(new Set(expr.match(/[A-Za-z_][A-Za-z0-9_]*/g) || [])), fn: parseRule(expr) };
   return (compiled[net] = out);
 }
 function forcedSteps(net, setting) {
@@ -234,7 +263,7 @@ function forcedSteps(net, setting) {
         const v = { ...forced }; free.forEach((f, i) => (v[f] = (m >> i) & 1));
         const r = rules[n].fn(v); if (seen === null) seen = r; else if (seen !== r) ok = false;
       }
-      if (ok && seen !== null) { forced[n] = seen; steps.push({ node: n, value: seen, rule: D.networks[net].rules[n], reads: rules[n].names.filter((r) => r in forced && r !== n).map((r) => [r, forced[r]]) }); changed = true; }
+      if (ok && seen !== null) { forced[n] = seen; steps.push({ node: n, value: seen, rule: NET(net).rules[n], reads: rules[n].names.filter((r) => r in forced && r !== n).map((r) => [r, forced[r]]) }); changed = true; }
     }
   }
   return steps;

@@ -2,8 +2,10 @@
   <div class="wrap">
     <a class="brand" href="#top">CellProof <small>hackathon build</small></a>
     <nav aria-label="Sections">
-      <a href="#model">The cell</a><a href="#agent">The agent</a><a href="#cases">Case files</a><a href="#evidence">Evidence</a><a href="#limits">Limits</a>
+      <a href="#bench" data-i18n="nav.bench">Bench</a><a href="#model">The cell</a><a href="#agent">The agent</a><a href="#cases">Case files</a><a href="#evidence">Evidence</a><a href="#limits">Limits</a>
     </nav>
+    <button class="btn small" id="playTop" type="button" data-i18n="play.short">▶ Play</button>
+    <button class="iconbtn" id="lang" type="button" aria-label="English / Ελληνικά" title="English / Ελληνικά"><span id="langTxt">ΕΛ</span></button>
     <button class="iconbtn" id="theme" type="button" aria-label="Switch between light and dark theme" title="Switch theme">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 13.2A8.5 8.5 0 1 1 10.8 3a6.8 6.8 0 0 0 10.2 10.2z"/></svg>
     </button>
@@ -16,16 +18,56 @@
     <div class="hero-grid">
       <div>
         <div class="eyebrow">Meta Global AI Developer Hackathon · Indie track · Push the Frontier</div>
-        <h1>A cell hit by radiation has to <em>decide.</em></h1>
-        <p class="lede">A published model of that decision has 30 genes. The literature knows more. Muse Spark reads the papers and proposes new rules. An exact solver decides which ones the model can take.</p>
+        <h1 data-i18n-html="hero.h1">A cell hit by radiation has to <em>decide.</em></h1>
+        <p class="lede" data-i18n="hero.lede">A published model of that decision has 30 genes and misses what the papers know. An AI reads the papers and proposes new wires. An exact checker decides which ones the circuit can take.</p>
         <div class="cta">
-          <a class="btn primary" href="#model">Try the cell</a>
-          <a class="btn" href="#cases">Watch a rule get judged</a>
+          <button class="btn primary" id="playHero" type="button" data-i18n="hero.play">▶ Play the story</button>
+          <a class="btn" href="#bench" data-i18n="hero.try">Try it yourself</a>
         </div>
       </div>
       <div class="hero-col"><div class="hero-art" aria-hidden="true"><canvas id="heroCanvas"></canvas></div><div class="hero-tag" id="heroTag"></div></div>
     </div>
-    <div class="stats" id="stats"></div>
+  </div>
+</section>
+
+<section id="bench" class="band bench-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-i18n="bench.eyebrow">The test bench</div>
+      <h2 class="h2" data-i18n="bench.h2">Five steps. One circuit. The checker decides.</h2>
+      <details class="how"><summary data-i18n="how.sum">What am I looking at?</summary><div class="how-grid" id="bHow"></div></details>
+    </div>
+    <div class="bench" id="benchGrid">
+      <div class="b-left">
+        <div class="b-stagebox" id="bBox" data-open="0">
+          <svg id="bNet" viewBox="0 8 1000 692" role="img" aria-label="The gene circuit of a cell. Lamps below show which fates it can reach."></svg>
+          <div class="tip" id="bTip"></div>
+          <div class="b-ctl b-ctl-l"><button class="pillbtn" id="bDamage" type="button" aria-pressed="true"><i class="bolt"></i><span data-i18n="ctl.damage">DNA damage</span></button></div>
+          <div class="b-ctl b-ctl-r"><button class="pillbtn" id="bOpen" type="button" aria-pressed="false"><span id="bOpenTxt" data-i18n="ctl.open">Open the circuit</span></button></div>
+          <button class="pillbtn b-stop" id="bStop" type="button" data-i18n="play.stop" hidden>■ Stop</button>
+          <div class="b-caption" id="bCaption" aria-hidden="true"></div>
+        </div>
+        <div class="b-lamps" id="bLamps" role="group" aria-label="Fates"></div>
+        <p class="sr-only" id="bStatus" aria-live="polite"></p>
+      </div>
+      <div class="b-side">
+        <ol class="b-rail" id="bRail"></ol>
+        <div class="b-panel" id="bPanel"></div>
+        <div class="b-rack" id="bRack" hidden></div>
+        <div id="bDetail"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="notebook">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Lab notebook</div>
+      <h2 class="h2">Every number behind the bench.</h2>
+      <p class="lede">The bench above is the story. Everything below is the evidence: the interactive cell with all of its genes, how the agent works, every rule it judged, the audit and the limits. All of it is read from the files the pipeline wrote.</p>
+    </div>
+    <div class="stats" id="stats" style="margin-top:0"></div>
     <div class="why">
       <blockquote class="quote" style="margin:0">Radiotherapy is commonly used to treat a variety of solid tumors.<cite>Bridges et al. 2011, Clin Cancer Res · PMC3167033</cite></blockquote>
       <blockquote class="quote" style="margin:0">Tumor cells with wild-type p53 and cells of normal tissue origin were not similarly radiosensitized.<cite>Bridges et al. 2011 · same study, a drug tested across cell lines</cite></blockquote>

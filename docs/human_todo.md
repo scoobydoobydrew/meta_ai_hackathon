@@ -16,4 +16,5 @@ a biology exam: the question is always "does this sentence say what the row clai
 3. **Before the repository is made public:** run a secret scan (the `.env` file is git-ignored and must stay untracked), read
    `THIRD_PARTY.md`, and check that no full paper text is committed (they live in `data/raw`, which is ignored).
 4. **The video:** its first line must say what pre-existed and what was built this week (the brief, rule 9). Record it from
-   `make verify` output, which replays cached model outputs and needs no network.
+   `make verify` output, which replays cached model outputs and needs no network. Set the page to English (the **EN**
+   button) before recording; `docs/video_script.md` has the beat sheet around the page's *Play* button.

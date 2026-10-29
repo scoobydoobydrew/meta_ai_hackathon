@@ -37,7 +37,10 @@ All numbers are produced by `make verify` and written to [`results/RESULTS.md`](
 [`docs/limitations.md`](docs/limitations.md).
 
 **The interactive report is [`results/report.html`](results/report.html)** (open it in a browser; `python -m cellproof.cli report`
-rebuilds it). The headline numbers, each also in `results/RESULTS.md`:
+rebuilds it). At the top is a test bench in five clickable steps (the circuit, a patch from the literature, ten known
+experiments, the AI's repair, a check against held-out outcomes), also available as a 50-second automatic walk-through, in
+English and Greek; below it is the lab notebook with every number and case file. Every lamp on the bench is the exact
+solver's answer. The headline numbers, each also in `results/RESULTS.md`:
 
 | | |
 |---|---|

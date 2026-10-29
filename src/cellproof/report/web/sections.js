@@ -122,22 +122,6 @@ const failCount = (arm) => Object.keys(D.verification.matrix[arm] || {}).length;
     $("#rows").replaceChildren(...list.map((r) => { const [pl, cls] = pillOf(r); const b = h(`<button class="row" type="button" aria-current="${r.id === st.sel}"><div class="t"><span>${esc(label(r.id))}</span><span class="dots" title="${r.papers} papers">${"●".repeat(Math.min(8, r.papers))}</span></div><div><span class="pill ${cls}">${esc(pl)}</span></div></button>`); b.addEventListener("click", () => { st.sel = r.id; st.animate = true; draw(); $("#casefile").scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" }); }); return b; }));
     file();
   }
-  const toks = (s) => (s || "").match(/[A-Za-z_][A-Za-z0-9_]*|[()!&|01]/g) || [];
-  function ruleHTML(oldRule, newRule) {
-    const A = toks(oldRule), B = toks(newRule), n = A.length, m = B.length, dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
-    for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) dp[i][j] = A[i] === B[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
-    const out = []; let i = 0, j = 0;
-    while (i < n || j < m) { if (i < n && j < m && A[i] === B[j]) { out.push([B[j], ""]); i++; j++; } else if (j < m && (i === n || dp[i][j + 1] >= dp[i + 1][j])) { out.push([B[j], "add"]); j++; } else { out.push([A[i], "del"]); i++; } }
-    let s = "", prev = "", run = "", runKind = null;
-    const flush = () => { if (run) s += runKind ? `<span class="${runKind}">${run}</span>` : run; run = ""; };
-    for (const [t, k] of out) {
-      const sp = !s && !run || prev === "(" || prev === "!" || t === ")" ? "" : " ";
-      if (k !== runKind) { flush(); s += sp; runKind = k; run = esc(t); } else run += sp + esc(t);
-      prev = t;
-    }
-    flush();
-    return s;
-  }
   const plain = (r) => esc(r || "");
   const problemText = { unexpected: "an extra fate appears", missing: "an expected fate disappears", unclassified: "a stable state matches no fate", oscillation: "the network oscillates", g2_arrest: "G2 arrest changes" };
   function failureHTML(f, tmplRule) {

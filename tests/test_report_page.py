@@ -1,8 +1,14 @@
+import re
+import shutil
+import subprocess
 from pathlib import Path
 
+import pytest
+
 from cellproof.network.bnet import load_bnet
-from cellproof.report.build import _json, parts, render, render_fragment
-from cellproof.report.data import FAILURE, FATE_CODES, _structured, lab_table
+from cellproof.network.logic import influence_edges
+from cellproof.report.build import WEB, _json, parts, render, render_fragment
+from cellproof.report.data import FAILURE, FATE_CODES, _structured, lab_table, story_block
 from cellproof.report.layout import NODE_ORDER, NODES
 
 BASE = load_bnet(Path(__file__).resolve().parents[1] / "data" / "base" / "gupta2023.bnet")
@@ -42,3 +48,43 @@ def test_solver_messages_are_parsed_into_structured_counterexamples():
     parsed = _structured(message)
     assert parsed["case"] == "V04" and parsed["found"] == ["apoptosis", "senescence"] and parsed["witness"]["CHK1"] == 1
     assert _structured("the rule of AKT loses influences")["text"].startswith("the rule")
+
+
+def test_the_bench_story_is_built_from_the_solver_and_its_three_acts_are_true_of_the_data():
+    story = story_block(BASE, set(influence_edges(BASE)))
+    assert story is not None and set(story["versions"]) == {"A", "B", "C"} and set(story["lab"]) == {"A", "B", "C"}
+    assert all(c["A"]["ok"] for c in story["cases"])  # the published model reproduces what its own paper reports
+    assert not all(c["B"]["ok"] for c in story["cases"])  # the edit applied unchecked breaks a known behaviour
+    assert all(c["C"]["ok"] for c in story["cases"])  # the repaired edit keeps all ten
+    patch = story["patch"]
+    assert patch["edge"] == "CHK1|inhibits|Cdc25" and patch["template"] != patch["final"] and patch["quotes"] and patch["explanation"]
+    assert "Rule is" not in patch["explanation"]  # the model's reasoning, not its restatement of the rule
+
+
+def test_the_page_carries_the_bench_and_its_script_parses(tmp_path):
+    head, body, script = parts({"x": 1})
+    assert 'id="bench"' in body and 'id="bLamps"' in body and "CPBench" in script
+    node = shutil.which("node")
+    if node is None:
+        pytest.skip("node is not installed")
+    page = tmp_path / "page.js"
+    page.write_text(script.split("<script>", 1)[1].rsplit("</script>", 1)[0], encoding="utf-8")
+    result = subprocess.run([node, "--check", str(page)], capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
+
+
+def test_both_languages_have_the_same_texts_and_every_label_in_the_markup_has_one():
+    js = (WEB / "bench.js").read_text(encoding="utf-8")
+    text = js.split("  const TEXT = {\n", 1)[1].split("\n  let lang", 1)[0]
+    english, greek = text.split("\n    el: {\n")
+
+    def quoted(block: str) -> set[str]:
+        return set(re.findall(r'"([a-z0-9]+(?:\.[A-Za-z0-9]+)+)":', block))
+
+    bare = ("rail", "dmg", "nodmg", "known", "says", "atleast", "match", "nomatch", "notexp", "expected")
+    assert quoted(english) == quoted(greek) and quoted(english)
+    for key in bare:
+        assert re.search(rf"\b{key}: ", english) and re.search(rf"\b{key}: ", greek), key
+    markup = (WEB / "body.html").read_text(encoding="utf-8")
+    for key in set(re.findall(r'data-i18n(?:-html)?="([^"]+)"', markup)):
+        assert key in quoted(english), key
