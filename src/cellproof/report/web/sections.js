@@ -101,7 +101,7 @@ const failCount = (arm) => Object.keys(D.verification.matrix[arm] || {}).length;
 /* ---------------------------------------------------------------- case files */
 (function cases() {
   const arms = Object.keys(D.docket); if (!arms.length) { $("#casefile").innerHTML = "<p class='muted'>No decision logs yet. Run <code>cellproof augment</code>.</p>"; return; }
-  const st = { arm: arms.includes("repaired_min2") ? "repaired_min2" : arms[0], filter: "no", sel: null };
+  const st = { arm: arms.includes("repaired_min2") ? "repaired_min2" : arms[0], filter: "no", sel: null, animate: false };
   const armLabel = { repaired_min2: "≥2 papers per edge", repaired_min1: "every edge with a paper" };
   const kindOf = (r) => r.status === "accepted" ? (r.repaired ? "repaired" : r.effect === "introduces" ? "gene" : "ok") : r.status === "rejected" ? "no" : "skip";
   const pillOf = (r) => ({ repaired: ["Repaired", "accent"], gene: ["New gene", "good"], ok: ["Accepted", "good"], no: ["Rejected", "bad"] }[kindOf(r)] || ({ skipped_present: ["Already in the model", ""], skipped_implied: ["Implied by a longer route", ""], skipped_conflict: ["Contradicts the published model", "bad"], skipped_not_available: ["Waiting for a gene", ""], skipped_input: ["Input is not regulated", ""] }[r.status] || [r.status, ""]));
@@ -119,7 +119,7 @@ const failCount = (arm) => Object.keys(D.verification.matrix[arm] || {}).length;
     tabs();
     const list = visible();
     if (!list.find((r) => r.id === st.sel)) st.sel = (list.find((r) => r.id === "CHK1|inhibits|Cdc25") || list.find((r) => r.repaired) || list[0] || {}).id || null;
-    $("#rows").replaceChildren(...list.map((r) => { const [pl, cls] = pillOf(r); const b = h(`<button class="row" type="button" aria-current="${r.id === st.sel}"><div class="t"><span>${esc(label(r.id))}</span><span class="dots" title="${r.papers} papers">${"●".repeat(Math.min(8, r.papers))}</span></div><div><span class="pill ${cls}">${esc(pl)}</span></div></button>`); b.addEventListener("click", () => { st.sel = r.id; draw(); $("#casefile").scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" }); }); return b; }));
+    $("#rows").replaceChildren(...list.map((r) => { const [pl, cls] = pillOf(r); const b = h(`<button class="row" type="button" aria-current="${r.id === st.sel}"><div class="t"><span>${esc(label(r.id))}</span><span class="dots" title="${r.papers} papers">${"●".repeat(Math.min(8, r.papers))}</span></div><div><span class="pill ${cls}">${esc(pl)}</span></div></button>`); b.addEventListener("click", () => { st.sel = r.id; st.animate = true; draw(); $("#casefile").scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" }); }); return b; }));
     file();
   }
   const toks = (s) => (s || "").match(/[A-Za-z_][A-Za-z0-9_]*|[()!&|01]/g) || [];
@@ -175,7 +175,8 @@ const failCount = (arm) => Object.keys(D.verification.matrix[arm] || {}).length;
     } else {
       blocks.push(`<div><div class="stepno">2 · why nothing was edited</div><div class="final" style="background:var(--raised)">${esc(pl)}${r.detail ? ". " + esc(r.detail) : ""}</div></div>`);
     }
-    box.innerHTML = html + `<div class="reveal" id="blocks">${blocks.join("")}</div>`;
+    box.innerHTML = html + `<div class="${st.animate ? "reveal" : ""}" id="blocks">${blocks.join("")}</div>`;  /* the first view is complete at rest; only a click on a row plays the reveal */
+    st.animate = false;
     $("#replay").addEventListener("click", () => { const b = $("#blocks"); b.classList.remove("reveal"); void b.offsetWidth; b.classList.add("reveal"); });
   }
   draw();
