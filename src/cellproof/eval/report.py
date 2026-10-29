@@ -34,7 +34,7 @@ def markdown(doc: dict, scored: dict[str, list[dict]]) -> str:
         cells = []
         for name in names:
             match = next(r for r in scored[name] if (r["item"], r["claim"]) == (row["item"], row["claim"]))
-            cells.append(SYMBOL[match["verdict"]])
+            cells.append(SYMBOL[match["verdict"]] + (" *" if match.get("no_stable_state") else ""))
         baseline = SYMBOL[next(r for r in scored[names[0]] if (r["item"], r["claim"]) == (row["item"], row["claim"]))["baseline"]]
         lines.append(
             f"| {row['item']}.{row['claim'] + 1} | {claim['readout']} | {claim['polarity']} | {row['mode']} | "
@@ -48,4 +48,6 @@ def markdown(doc: dict, scored: dict[str, list[dict]]) -> str:
         lines.append(f"| {name} | {t[CORRECT]} | {t[WRONG]} | {t[NOT_EXPRESSIBLE]} | {len(scoreable)} |")
     b = totals(first, "baseline")
     lines.append(f"| no-information baseline | {b[CORRECT]} | {b[WRONG]} | {b[NOT_EXPRESSIBLE]} | {len(scoreable)} |")
+    lines += ["", "\\* The perturbed network has no stable state in this setting (it keeps oscillating). Under the frozen rule nothing is "
+              "present, so the verdict says nothing about the cells. Marked after the first scoring run; no verdict was changed."]
     return "\n".join(lines) + "\n"

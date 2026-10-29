@@ -187,6 +187,16 @@ Amendment log (any change to the item file, with the reason; updating the hash f
 - A result that is bad for the thesis is reported as it is. The set, the rules and the arms are not changed after the first run
   except by a logged amendment with the human's approval.
 
+## Reporting addendum, 2026-10-29, after the first scoring run
+
+Reading the first results showed that 4 of the 8 verdicts the published model can give come from settings in which the
+perturbed network has no fixed point (p53 knocked out, or WEE1 inhibited in a p53-null background: the network oscillates).
+Under the frozen rule a network without fixed points shows no readout, so "senescence absent" is scored correct and
+"apoptosis present" wrong by construction. No verdict was changed. `score_doc` now also records `no_stable_state` per claim,
+`m1_heldout.md` marks those verdicts with `*`, and the report page says so. The frozen rule counts only fixed points; a
+fairer rule would also read cyclic attractors, but changing it after seeing results would break the ordering this
+protocol exists to keep, so that is listed as a limitation instead.
+
 ## Not found or not done
 
 AKT/PTEN (only survival-level sources surfaced), Wip1 with irradiation (only combinations with other drugs surfaced),

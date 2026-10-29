@@ -176,6 +176,7 @@ def heldout() -> dict | None:
             "statement": claim["statement"], "quote": claim["quote"], "cite": source["cite"], "pmcid": source["pmcid"],
             "verdicts": {n: next(r for r in scored[n] if (r["item"], r["claim"]) == (row["item"], row["claim"]))["verdict"] for n in names},
             "baseline": row["baseline"],
+            "no_stable_state": {n: bool(next(r for r in scored[n] if (r["item"], r["claim"]) == (row["item"], row["claim"]))["no_stable_state"]) for n in names},
         })
     totals = {n: {v: sum(1 for c in claims if c["verdicts"][n] == v) for v in ("correct", "wrong", "not_expressible")} for n in names}
     categories = dict(summarize(doc, base_nodes))

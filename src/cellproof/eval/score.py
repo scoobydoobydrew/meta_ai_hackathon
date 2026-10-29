@@ -79,9 +79,21 @@ def baseline_verdict(claim: dict, item: dict, rules: dict[str, str], stimulus_ma
     return CORRECT
 
 
+def no_stable_state(claim: dict, item: dict, rules: dict[str, str], stimulus_mapping: dict) -> bool:
+    """True when the perturbed network has no fixed point at all in some background: it keeps oscillating. Under the frozen
+    rule nothing is then present, so a verdict such as "senescence absent: correct" says nothing about the cells. This only
+    annotates a verdict (added after the first scoring run, 2026-10-29); it never changes one."""
+    stimulus = stimulus_mapping[item["stimulus"]]
+    for background in claim.get("backgrounds", [{}]):
+        setting = {**stimulus, **background, **item["perturbation"]["nodes"]}
+        if set(setting) <= set(rules) and not fixed_points(perturb(rules, setting)):
+            return True
+    return False
+
+
 def score_doc(doc: dict, rules: dict[str, str], *, allow_draft: bool = False) -> list[dict]:
-    """One row per claim: item, claim index, category, mode, verdict (None when the claim is not scoreable at all)
-    and the baseline verdict."""
+    """One row per claim: item, claim index, category, mode, verdict (None when the claim is not scoreable at all),
+    the baseline verdict, and whether the perturbed network has no stable state."""
     if doc["status"].startswith("DRAFT") and not allow_draft:
         raise ValueError("refusing to score a DRAFT held-out set: freeze it first (docs/heldout_protocol.md)")
     names = set(rules)
@@ -99,6 +111,7 @@ def score_doc(doc: dict, rules: dict[str, str], *, allow_draft: bool = False) ->
                     "mode": scoring_mode(claim),
                     "verdict": verdict(claim, item, rules, doc["stimulus_mapping"]) if scored else None,
                     "baseline": baseline_verdict(claim, item, rules, doc["stimulus_mapping"]) if scored else None,
+                    "no_stable_state": no_stable_state(claim, item, rules, doc["stimulus_mapping"]) if scored else None,
                 }
             )
     return rows

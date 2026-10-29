@@ -2,14 +2,14 @@ Held-out set status: FROZEN v1 (2026-10-29). Every claim carries a verbatim quot
 
 | claim | readout | polarity | how scored | base | naive_min2 | verified_min2 | repaired_min2 | naive_min1 | verified_min1 | repaired_min1 | no-information baseline |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| H01.1 | senescence | absent | absolute | correct | correct | correct | correct | correct | correct | correct | WRONG |
+| H01.1 | senescence | absent | absolute | correct * | correct * | correct * | correct * | correct | correct * | correct * | WRONG |
 | H02.1 | arrest | present | absolute | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG |
 | H02.2 | apoptosis | absent | absolute | correct | correct | correct | correct | correct | correct | correct | correct |
-| H03.1 | apoptosis | present | absolute | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG | correct |
-| H04.1 | g2_arrest | present | absolute | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG | correct |
-| H06.1 | g2_arrest | decreased | contrast | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG |
+| H03.1 | apoptosis | present | absolute | WRONG * | WRONG * | WRONG * | WRONG * | WRONG | WRONG * | WRONG * | correct |
+| H04.1 | g2_arrest | present | absolute | WRONG * | WRONG * | WRONG * | WRONG * | WRONG | WRONG * | WRONG * | correct |
+| H06.1 | g2_arrest | decreased | contrast | WRONG * | WRONG * | WRONG * | WRONG * | WRONG | WRONG * | WRONG * | WRONG |
 | H06.2 | g2_arrest | unchanged | contrast | correct | correct | correct | correct | correct | correct | correct | correct |
-| H09.2 | g2_arrest | decreased | contrast | n/e | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG |
+| H09.2 | g2_arrest | decreased | contrast | n/e | WRONG * | WRONG * | WRONG * | WRONG | WRONG * | WRONG * | WRONG |
 | H10.1 | apoptosis | absent | absolute | n/e | correct | correct | correct | correct | correct | correct | correct |
 | H15.1 | apoptosis | decreased | contrast | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG | WRONG |
 
@@ -23,3 +23,5 @@ Held-out set status: FROZEN v1 (2026-10-29). Every claim carries a verbatim quot
 | verified_min1 | 4 | 6 | 0 | 10 |
 | repaired_min1 | 4 | 6 | 0 | 10 |
 | no-information baseline | 5 | 5 | 0 | 10 |
+
+\* The perturbed network has no stable state in this setting (it keeps oscillating). Under the frozen rule nothing is present, so the verdict says nothing about the cells. Marked after the first scoring run; no verdict was changed.

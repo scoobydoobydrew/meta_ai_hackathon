@@ -23,6 +23,17 @@ def claim(readout, polarity, **extra):
     return {"readout": readout, "polarity": polarity, "vs": "x", "statement": "x", **extra}
 
 
+def test_a_setting_with_no_stable_state_is_flagged_without_changing_the_verdict():
+    from cellproof.eval.score import no_stable_state
+
+    # With DNA damage and p53 knocked out the published network has no fixed point: it oscillates.
+    absent = claim("senescence", "absent")
+    assert no_stable_state(absent, item({"p53": 0}), RULES, STIMULI)
+    assert verdict(absent, item({"p53": 0}), RULES, STIMULI) == CORRECT  # "correct" only because nothing is present: why the flag exists
+    assert not no_stable_state(claim("apoptosis", "present"), item({"TUG1": 0}), RULES, STIMULI)
+    assert no_stable_state(claim("g2_arrest", "decreased", backgrounds=[{"p53": 0}]), item({"Wee1": 0}), RULES, STIMULI)
+
+
 def test_a_draft_set_is_refused():
     draft = {**load(ROOT / "data" / "heldout" / "gupta2023_heldout.json"), "status": "DRAFT, not frozen"}
     with pytest.raises(ValueError, match="DRAFT"):

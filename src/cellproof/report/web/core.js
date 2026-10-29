@@ -287,7 +287,11 @@ function forcedSteps(net, setting) {
       const count = pts ? pts.filter((p) => p.fate === f).length : 0; b.innerHTML = `<b>${FATE_LABEL[f]}</b><small>${present.has(f) ? `${count} stable state${count > 1 ? "s" : ""}` : "not reachable"}</small>`;
       if (present.has(f)) b.addEventListener("click", () => { if (st.fate === f) st.variant = (st.variant + 1) % count; else { st.fate = f; st.variant = 0; } render(); }); return b; });
     $("#fateCards").replaceChildren(...cards);
-    if (!pts) { $("#fateLine").textContent = "This combination was not precomputed. Switch DNA damage on or remove a gene."; net.paint({ values: null, fatesPresent: new Set(), fatesSel: null, clamped: Object.fromEntries(st.perts) }); return; }
+    if (!pts || !pts.length) {
+      $("#fateLine").textContent = pts ? "The solver found no stable state: with this change the network never settles." : "This combination was not precomputed. Switch DNA damage on or remove a gene.";
+      net.paint({ values: null, fatesPresent: new Set(), fatesSel: null, clamped: Object.fromEntries(st.perts) });
+      $("#steps").replaceChildren(); $("#whyNote").textContent = ""; return;
+    }
     const total = pts.length, none = pts.filter((p) => !p.fate).length, g2 = pts.some((p) => p.g2);
     $("#fateLine").innerHTML = `The solver found <b>${total}</b> stable state${total === 1 ? "" : "s"}${none ? `, ${none} of them matching no fate` : ""}. ${st.damage ? (g2 ? "G2 arrest (CDC2/CycB off) is present." : "G2 arrest is absent.") : ""}${present.size === 1 && st.damage ? ` <b>${FATE_LABEL[[...present][0]]} is the only fate.</b>` : ""}`;
     const shown = pts.filter((p) => p.fate === st.fate)[st.variant] || pts[0];

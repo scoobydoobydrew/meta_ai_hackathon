@@ -6,7 +6,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H02",
@@ -14,7 +15,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   },
   {
    "item": "H02",
@@ -22,7 +24,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H03",
@@ -30,7 +33,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": true
   },
   {
    "item": "H04",
@@ -38,7 +42,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": true
   },
   {
    "item": "H05",
@@ -46,7 +51,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H05",
@@ -54,7 +60,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H06",
@@ -62,7 +69,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H06",
@@ -70,7 +78,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H07",
@@ -78,7 +87,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H07",
@@ -86,7 +96,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -94,7 +105,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -102,7 +114,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -110,7 +123,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -118,7 +132,8 @@
    "category": "scoreable_with_new_nodes",
    "mode": "contrast",
    "verdict": "not_expressible",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   },
   {
    "item": "H10",
@@ -126,7 +141,8 @@
    "category": "scoreable_with_new_nodes",
    "mode": "absolute",
    "verdict": "not_expressible",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H11",
@@ -134,7 +150,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H11",
@@ -142,7 +159,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -150,7 +168,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -158,7 +177,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -166,7 +186,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -174,7 +195,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H15",
@@ -182,7 +204,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   }
  ],
  "naive_min2": [
@@ -192,7 +215,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H02",
@@ -200,7 +224,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   },
   {
    "item": "H02",
@@ -208,7 +233,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H03",
@@ -216,7 +242,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H04",
@@ -224,7 +251,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": true
   },
   {
    "item": "H05",
@@ -232,7 +260,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H05",
@@ -240,7 +269,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H06",
@@ -248,7 +278,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H06",
@@ -256,7 +287,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H07",
@@ -264,7 +296,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H07",
@@ -272,7 +305,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -280,7 +314,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -288,7 +323,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -296,7 +332,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -304,7 +341,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H10",
@@ -312,7 +350,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H11",
@@ -320,7 +359,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H11",
@@ -328,7 +368,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -336,7 +377,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -344,7 +386,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -352,7 +395,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -360,7 +404,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H15",
@@ -368,7 +413,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   }
  ],
  "verified_min2": [
@@ -378,7 +424,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H02",
@@ -386,7 +433,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   },
   {
    "item": "H02",
@@ -394,7 +442,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H03",
@@ -402,7 +451,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": true
   },
   {
    "item": "H04",
@@ -410,7 +460,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": true
   },
   {
    "item": "H05",
@@ -418,7 +469,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H05",
@@ -426,7 +478,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H06",
@@ -434,7 +487,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H06",
@@ -442,7 +496,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H07",
@@ -450,7 +505,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H07",
@@ -458,7 +514,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -466,7 +523,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -474,7 +532,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -482,7 +541,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -490,7 +550,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H10",
@@ -498,7 +559,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H11",
@@ -506,7 +568,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H11",
@@ -514,7 +577,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -522,7 +586,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -530,7 +595,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -538,7 +604,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -546,7 +613,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H15",
@@ -554,7 +622,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   }
  ],
  "repaired_min2": [
@@ -564,7 +633,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H02",
@@ -572,7 +642,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   },
   {
    "item": "H02",
@@ -580,7 +651,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H03",
@@ -588,7 +660,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": true
   },
   {
    "item": "H04",
@@ -596,7 +669,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": true
   },
   {
    "item": "H05",
@@ -604,7 +678,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H05",
@@ -612,7 +687,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H06",
@@ -620,7 +696,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H06",
@@ -628,7 +705,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H07",
@@ -636,7 +714,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H07",
@@ -644,7 +723,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -652,7 +732,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -660,7 +741,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -668,7 +750,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -676,7 +759,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H10",
@@ -684,7 +768,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H11",
@@ -692,7 +777,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H11",
@@ -700,7 +786,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -708,7 +795,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -716,7 +804,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -724,7 +813,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -732,7 +822,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H15",
@@ -740,7 +831,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   }
  ],
  "naive_min1": [
@@ -750,7 +842,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H02",
@@ -758,7 +851,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   },
   {
    "item": "H02",
@@ -766,7 +860,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H03",
@@ -774,7 +869,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H04",
@@ -782,7 +878,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   },
   {
    "item": "H05",
@@ -790,7 +887,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H05",
@@ -798,7 +896,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H06",
@@ -806,7 +905,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   },
   {
    "item": "H06",
@@ -814,7 +914,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H07",
@@ -822,7 +923,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H07",
@@ -830,7 +932,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -838,7 +941,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -846,7 +950,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -854,7 +959,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -862,7 +968,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   },
   {
    "item": "H10",
@@ -870,7 +977,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H11",
@@ -878,7 +986,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H11",
@@ -886,7 +995,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -894,7 +1004,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -902,7 +1013,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -910,7 +1022,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -918,7 +1031,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H15",
@@ -926,7 +1040,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   }
  ],
  "verified_min1": [
@@ -936,7 +1051,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H02",
@@ -944,7 +1060,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   },
   {
    "item": "H02",
@@ -952,7 +1069,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H03",
@@ -960,7 +1078,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": true
   },
   {
    "item": "H04",
@@ -968,7 +1087,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": true
   },
   {
    "item": "H05",
@@ -976,7 +1096,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H05",
@@ -984,7 +1105,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H06",
@@ -992,7 +1114,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H06",
@@ -1000,7 +1123,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H07",
@@ -1008,7 +1132,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H07",
@@ -1016,7 +1141,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -1024,7 +1150,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -1032,7 +1159,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -1040,7 +1168,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -1048,7 +1177,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H10",
@@ -1056,7 +1186,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H11",
@@ -1064,7 +1195,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H11",
@@ -1072,7 +1204,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -1080,7 +1213,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -1088,7 +1222,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -1096,7 +1231,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -1104,7 +1240,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H15",
@@ -1112,7 +1249,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   }
  ],
  "repaired_min1": [
@@ -1122,7 +1260,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H02",
@@ -1130,7 +1269,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   },
   {
    "item": "H02",
@@ -1138,7 +1278,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H03",
@@ -1146,7 +1287,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": true
   },
   {
    "item": "H04",
@@ -1154,7 +1296,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "wrong",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": true
   },
   {
    "item": "H05",
@@ -1162,7 +1305,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H05",
@@ -1170,7 +1314,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H06",
@@ -1178,7 +1323,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H06",
@@ -1186,7 +1332,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H07",
@@ -1194,7 +1341,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H07",
@@ -1202,7 +1350,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -1210,7 +1359,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H08",
@@ -1218,7 +1368,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -1226,7 +1377,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H09",
@@ -1234,7 +1386,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": true
   },
   {
    "item": "H10",
@@ -1242,7 +1395,8 @@
    "category": "scoreable",
    "mode": "absolute",
    "verdict": "correct",
-   "baseline": "correct"
+   "baseline": "correct",
+   "no_stable_state": false
   },
   {
    "item": "H11",
@@ -1250,7 +1404,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H11",
@@ -1258,7 +1413,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -1266,7 +1422,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H12",
@@ -1274,7 +1431,8 @@
    "category": "survival_level",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -1282,7 +1440,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H13",
@@ -1290,7 +1449,8 @@
    "category": "direction_only",
    "mode": "contrast",
    "verdict": null,
-   "baseline": null
+   "baseline": null,
+   "no_stable_state": null
   },
   {
    "item": "H15",
@@ -1298,7 +1458,8 @@
    "category": "scoreable",
    "mode": "contrast",
    "verdict": "wrong",
-   "baseline": "wrong"
+   "baseline": "wrong",
+   "no_stable_state": false
   }
  ]
 }

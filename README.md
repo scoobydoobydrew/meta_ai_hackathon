@@ -53,10 +53,14 @@ rebuilds it). The headline numbers, each also in `results/RESULTS.md`:
 | Extraction accuracy (M4) | TBD: needs 50 claims labelled by a person |
 
 **What the audit says.** The augmented networks do not predict the held-out outcomes better than the published model: none of
-its 8 verdicts changed, and a rule that ignores the perturbation scores higher than any network. The published model disagrees
-with 5 of the 8 outcomes it can address (perturbations of p53, MDM2, WEE1 and MYC). So the useful result is the audit
-itself, an automatic comparison of a published model with the literature, and the solver loop that keeps added mechanisms
-from breaking what the model already gets right. Ten scoreable claims cannot show an improvement either way.
+its 8 verdicts changed, and a rule that ignores the perturbation scores higher than any network. In 4 of the 8 claims the
+published model can address (p53 knocked out, and WEE1 inhibited in a p53-null line) it has no stable state at all: the
+network oscillates, nothing is "present" under the frozen scoring rule, and those verdicts, marked `*` in
+`results/m1_heldout.md`, are artifacts and not predictions. On the other 4 it gets 2 right, the same as ignoring the
+perturbation. The annotation was added after the first scoring run and changes no verdict. So the useful result is the audit
+itself, an automatic comparison of a published model with the literature that also shows where the model gives no answer,
+and the solver loop that keeps added mechanisms from breaking what the model already gets right. Ten scoreable claims
+cannot show an improvement either way.
 
 ## Reproduce
 
