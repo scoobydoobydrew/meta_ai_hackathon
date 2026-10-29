@@ -10,7 +10,7 @@ import pytest
 
 from cellproof.analysis.attractors import attractor_sizes, fixed_points, perturb, phenotypes
 from cellproof.network.bnet import load_bnet
-from cellproof.network.phenotypes import classify
+from cellproof.network.phenotypes import PHENOTYPES, READOUTS, classify, g2_arrest
 
 BNET = Path(__file__).resolve().parents[1] / "data" / "base" / "gupta2023.bnet"
 ALL_FOUR = {"arrest", "senescence", "autophagy", "apoptosis"}
@@ -42,6 +42,29 @@ def test_wild_type_fixed_points_map_one_to_one_onto_the_papers_phenotypes(rules)
 )
 def test_classify(state, expected):
     assert classify(state) == expected
+
+
+@pytest.mark.parametrize(
+    "state, expected",
+    [
+        ({"DNA_damage": 1, "Cdc2_CycB": 0}, True),
+        ({"DNA_damage": 1, "Cdc2_CycB": 1}, False),
+        ({"DNA_damage": 0, "Cdc2_CycB": 0}, False),  # no damage, no checkpoint
+        ({"DNA_damage": 0, "Cdc2_CycB": 1}, False),
+    ],
+)
+def test_g2_arrest_readout(state, expected):
+    assert g2_arrest(state) is expected
+
+
+def test_wild_type_g2_arrest_follows_the_input_only(rules):
+    # So in the wild type g2_arrest cannot separate the four fates; only perturbations can switch it off.
+    assert [g2_arrest(fp) for fp in fixed_points(perturb(rules, {"DNA_damage": 0}))] == [False]
+    assert all(g2_arrest(fp) for fp in fixed_points(perturb(rules, {"DNA_damage": 1})))
+
+
+def test_readouts_are_the_five_phenotypes_plus_g2_arrest():
+    assert READOUTS[-1] == "g2_arrest" and READOUTS[:-1] == tuple(PHENOTYPES)
 
 
 @pytest.mark.parametrize(

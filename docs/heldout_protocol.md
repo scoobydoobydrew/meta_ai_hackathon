@@ -13,7 +13,10 @@ cases in `tests/test_phenotypes.py`).
 ## Outcome vocabulary, fixed before any run
 
 The network's five phenotypes (`src/cellproof/network/phenotypes.py`): proliferation, arrest, senescence, autophagy,
-apoptosis. A perturbation sets nodes to 0 and the stimulus sets `DNA_damage` (IR = 1, none = 0).
+apoptosis, plus one more readout, `g2_arrest`, added on 2026-10-29 with the human's approval and before any item was run:
+a fixed point shows it when `DNA_damage` is 1 and `Cdc2_CycB` is 0. It is judged apart from `classify`, so a fixed
+point can be "arrest" and also show `g2_arrest`. A perturbation sets nodes to 0 and the stimulus sets `DNA_damage`
+(IR = 1, none = 0).
 
 Each claim in an item has a readout and a polarity (`present`, `absent`, `increased`, `decreased`, `unchanged`) and is
 put into exactly one category by `cellproof.eval.heldout.claim_category`, from the item text alone:
@@ -22,30 +25,35 @@ put into exactly one category by `cellproof.eval.heldout.claim_category`, from t
 |---|---|---|
 | `scoreable` | present/absent claim on one of the five phenotypes, perturbed node is in the base network | yes |
 | `scoreable_with_new_nodes` | same, but the perturbed node (ATR, CHK1, DNA-PK) is not in the base network | base: not expressible; augmented: yes if it adds the node |
-| `needs_readout` | G2 checkpoint claims: the network has no such readout | no, unless the human adds one (decision D1) |
+| `needs_readout` | a readout the network does not define; none in the current draft since `g2_arrest` was added | no |
 | `survival_level` | clonogenic survival / radiosensitisation: the network has no survival output | no, in either network |
-| `direction_only` | "increased" or "decreased" on a phenotype: an attractor set has no frequencies | no |
+| `direction_only` | "increased", "decreased" or "unchanged" on a phenotype or `g2_arrest`: an attractor set has no frequencies | no, unless the human adopts D6 |
 
-## What is in the draft (produced by `summarize`, 2026-10-29)
+## What is in the draft (produced by `summarize`, 2026-10-29, after adding `g2_arrest`)
 
 14 items, 25 claims, from 7 papers. Perturbed node is in the base network for 8 of 14 items.
 
 | Category | Claims |
 |---|---|
-| scoreable | 4 |
+| scoreable | 5 |
 | scoreable_with_new_nodes | 1 |
-| needs_readout | 8 |
+| needs_readout | 0 |
 | survival_level | 11 |
-| direction_only | 1 |
+| direction_only | 8 |
 
-**Only 5 of 25 claims can be scored today, 4 of them on the base network.** Most of the radiosensitisation literature
+**Only 6 of 25 claims can be scored, 5 of them on the base network.** Most of the radiosensitisation literature
 reports survival, which a phenotype network cannot express. That is a result about the approach, and the README must say so.
 It is also far too few claims to show an improvement statistically; any M1 number from this set must be reported as counts.
+
+**Correction.** An earlier version of this protocol, and a message to the human, said that adding `g2_arrest` would make
+8 more claims scoreable (13 of 25). That was wrong. Seven of the 8 G2 claims say "reduced", "unchanged" or "increased",
+so they fall under `direction_only`, and adding the readout made exactly one claim scoreable (H04).
 
 ## Scoring rule, fixed now
 
 For a `scoreable` claim, compute the fixed points of the perturbed network, classify each with `classify`, and take
-the set of phenotypes. `present` is correct if the phenotype is in the set, `absent` if it is not. Fixed points that match no
+the set of phenotypes, adding `g2_arrest` if any fixed point shows it. `present` is correct if the readout is in the set,
+`absent` if it is not. Fixed points that match no
 definition, and networks with non-fixed-point attractors, are reported as `unclassified` and count for no phenotype.
 Report per claim: correct, wrong, or not expressible. Never merge the three.
 
@@ -75,10 +83,19 @@ These are recorded per item in `perturbation.approximation`.
 
 ## Decisions for the human before the freeze
 
-- **D1. A `g2_arrest` readout?** It would make 8 more claims scoreable (13 of 25). A candidate that rests on the Gupta
-  paper's own text, which describes Cdc2-CycB and Wee1 as G2/M arrest mechanisms: `g2_arrest` = `Cdc2_CycB` OFF with
-  `DNA_damage` ON. It would be fixed before any run and applied identically to every network. The cost: one more
-  hand-chosen readout, after the PUMA choice already made.
+- **D1. Decided by the human on 2026-10-29: add `g2_arrest`.** It rests on the Gupta paper's own text, which describes
+  Cdc2-CycB and Wee1 as G2/M arrest mechanisms: `g2_arrest` = `Cdc2_CycB` OFF with `DNA_damage` ON. Fixed before any run,
+  applied identically to every network. It is one more hand-chosen readout, after the PUMA choice. For the record: in the
+  four damaged wild-type fixed points printed earlier, `Cdc2_CycB` is OFF in all of them, so in the wild type `g2_arrest`
+  does not separate the four fates; only perturbations can switch it off.
+- **D6. Score direction claims by contrast?** Eight claims say a readout was reduced, unchanged or increased relative to
+  the same cells without the perturbation (the claim's `vs`). An attractor set has no frequencies, but two sets can be
+  compared: "decreased" if the readout is present without the perturbation and absent with it, "increased" for the reverse,
+  "unchanged" if its status is the same. Only complete abolitions, complete appearances and explicit "no change" fit.
+  By hand count, not by script, 4 of the 8 qualify (H06 both claims, the second claim of H09, the second claim of H13).
+  The others are partial reductions (24%, 36%, "significantly reversed") or increases from a nonzero baseline (H14),
+  which a presence/absence model cannot represent. Adopting it would give 10 scoreable claims of 25. The cost: a second
+  scoring convention chosen after seeing the claims. Recommended if adopted: strictly as above, fixed before any run.
 - **D2.** Accept the approximations above.
 - **D3. More items.** Phenotype-level knockout data (apoptosis present or absent after irradiation in null cells) would
   be scoreable, unlike survival data. This search was not done.

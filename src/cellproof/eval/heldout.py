@@ -9,7 +9,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from cellproof.network.phenotypes import PHENOTYPES
+from cellproof.network.phenotypes import READOUTS
 
 POLARITIES = ("present", "absent", "increased", "decreased", "unchanged")
 SURVIVAL = "clonogenic_survival"
@@ -27,7 +27,7 @@ def claim_category(claim: dict, in_base: bool) -> str:
     """One of: survival_level, needs_readout, direction_only, scoreable, scoreable_with_new_nodes."""
     if claim["readout"] == SURVIVAL:
         return "survival_level"
-    if claim["readout"] not in PHENOTYPES:
+    if claim["readout"] not in READOUTS:
         return "needs_readout"
     if claim["polarity"] in ("increased", "decreased", "unchanged"):
         return "direction_only"

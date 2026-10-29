@@ -20,6 +20,16 @@ from __future__ import annotations
 
 PHENOTYPES = ("proliferation", "arrest", "senescence", "autophagy", "apoptosis")
 
+# A sixth readout, not one of the paper's phenotypes. Fixed on 2026-10-29 with the human's approval, before any
+# held-out item was run on any network. The Gupta et al. text describes Cdc2-CycB (with Wee1) as the G2/M arrest
+# mechanism, so G2 arrest is read as Cdc2_CycB being OFF while DNA damage is present. It is judged per fixed point and
+# is independent of classify(): a fixed point can be, say, "arrest" and also show g2_arrest.
+READOUTS = PHENOTYPES + ("g2_arrest",)
+
+
+def g2_arrest(state: dict[str, int]) -> bool:
+    return bool(state["DNA_damage"]) and not state["Cdc2_CycB"]
+
 
 def classify(state: dict[str, int]) -> str | None:
     on = {node for node, value in state.items() if value}

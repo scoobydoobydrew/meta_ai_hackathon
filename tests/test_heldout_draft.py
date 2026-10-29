@@ -45,7 +45,9 @@ def test_perturbation_nodes_marked_by_membership_in_the_base_network(doc):
     "claim, in_base, expected",
     [
         ({"readout": "clonogenic_survival", "polarity": "decreased"}, True, "survival_level"),
-        ({"readout": "g2_arrest", "polarity": "present"}, True, "needs_readout"),
+        ({"readout": "g2_arrest", "polarity": "present"}, True, "scoreable"),
+        ({"readout": "g2_arrest", "polarity": "decreased"}, True, "direction_only"),
+        ({"readout": "mitotic_catastrophe", "polarity": "present"}, True, "needs_readout"),
         ({"readout": "apoptosis", "polarity": "increased"}, True, "direction_only"),
         ({"readout": "apoptosis", "polarity": "present"}, True, "scoreable"),
         ({"readout": "apoptosis", "polarity": "absent"}, False, "scoreable_with_new_nodes"),
