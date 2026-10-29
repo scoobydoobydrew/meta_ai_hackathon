@@ -21,7 +21,9 @@ text={"format": {
 }}
 ```
 
-- Where the JSON appears in the reply (`output_text`?) is not documented on the pages read. UNVERIFIED until the first live call.
+- Where the JSON appears in the reply is not documented on the pages read. **Verified live on 2026-10-29**
+  (one call, `strict: true`, `reasoning.effort: minimal`): the JSON string is in `output_text`
+  and `json.loads` parses it.
 - Schema limits: no recursive schemas (HTTP 400), nesting depth at most 10, at most 5,000 properties.
   With `strict: true`: root must be a plain object, no `allOf`/`oneOf`, every object needs
   `additionalProperties: false`, and `required` must list every property.
@@ -41,10 +43,20 @@ Source: https://dev.meta.ai/docs/reasoning
 - To keep reasoning across stateless turns: `include=["reasoning.encrypted_content"]` and replay the
   reasoning item, or chain turns with `previous_response_id`.
 
+- Observed once (trivial prompt, `effort: minimal`): 85 output tokens, of which 67 were reasoning tokens.
+  Even the lowest effort spends most output tokens on reasoning, so extraction cost must be measured, not assumed.
+
 ## Usage fields
 
 `input_tokens`, `input_tokens_details.cached_tokens`, `output_tokens`,
 `output_tokens_details.reasoning_tokens`, `total_tokens`.
+The live response also carried `input_tokens_details.cache_write_tokens` (not in the schema page).
+
+## Live checks done (2026-10-29)
+
+- `cellproof smoke` returned `ok` from `muse-spark-1.3`; the second identical call came from the local cache.
+- Structured output through `text.format` and `reasoning.effort` are accepted by the endpoint (see above).
+- Not yet tested: `muse-wonder-1.0`, PDF input, rate limits, error codes.
 
 ## PDF and files
 
