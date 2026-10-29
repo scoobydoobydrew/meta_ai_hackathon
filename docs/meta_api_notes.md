@@ -72,6 +72,26 @@ Source: https://dev.meta.ai/docs/file-handling
 Consequence for the design: send Europe PMC full text as `input_text`, which is cheaper and has no page cap.
 Use PDF input only for the optional figure-to-edges stage.
 
+## Rate limits and pricing
+
+Source: https://dev.meta.ai/docs/pricing-rate-limits (read 2026-10-29, through a page-summarising fetch tool)
+
+- Limits are per team, not per key: `muse-spark-1.3` and `muse-wonder-1.0` both 3,000 RPM and 4,000,000 TPM. The
+  `-contributor` variants are lower (150 RPM). Nothing stated about how limits scale.
+- Per 1M tokens, Standard: `muse-spark-1.3` cached input $0.15, input $1.25, output $4.25;
+  `muse-wonder-1.0` cached input $0.20, input $4.00, output $20.00. Wonder costs about 3x Spark on input and 5x on output.
+- Batch and flex pricing: not stated. Web search grounding is $2.50 per 1,000 queries on top (not used).
+
+## Errors
+
+Source: https://dev.meta.ai/docs/error-handling (same reading)
+
+- Retry with exponential backoff and jitter (start 0.5 to 1 s, 3 to 5 attempts): 429 (honour `Retry-After`), 500, 503.
+- Do not retry: 400, 401, 402 (billing), 403, 404, 413.
+- 504 means a non-streaming request exceeded the server time limit; the docs say not to retry it unchanged but to use
+  `background: true`, streaming, or less work. The OpenAI SDK retries 5xx on its own, so a 504 may be retried by the SDK
+  once or twice before it reaches us; the extractor must treat a 504 as "split the paper", not "try again".
+
 ## Not read yet
 
-Agent patterns, pricing and rate limits, error handling, image understanding, tool calling.
+Agent patterns, image understanding, tool calling.

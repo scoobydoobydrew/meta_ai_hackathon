@@ -39,7 +39,8 @@ def make_client() -> OpenAI:
     if not key:
         raise RuntimeError("MODEL_API_KEY is not set (copy .env.example to .env)")
     # The OpenAI SDK does not read MODEL_API_KEY by itself, so pass it explicitly.
-    return OpenAI(base_url=BASE_URL, api_key=key)
+    # The SDK retries 429 and 5xx with backoff and honours Retry-After (the docs advise 3 to 5 attempts).
+    return OpenAI(base_url=BASE_URL, api_key=key, max_retries=4)
 
 
 def cache_key(model: str, prompt: Any, params: dict[str, Any]) -> str:
@@ -47,6 +48,18 @@ def cache_key(model: str, prompt: Any, params: dict[str, Any]) -> str:
         {"model": model, "input": prompt, "params": params}, sort_keys=True, default=str
     )
     return hashlib.sha256(blob.encode("utf-8")).hexdigest()
+
+
+MAX_RECORDED_INPUT_CHARS = 20_000
+
+
+def _recorded_input(prompt: Any) -> Any:
+    """Small prompts are stored verbatim; a long one (a paper's full text) is stored as its hash and length, so the
+    committed cache does not republish third-party text. The cache key still covers the whole prompt."""
+    blob = json.dumps(prompt, sort_keys=True, default=str)
+    if len(blob) <= MAX_RECORDED_INPUT_CHARS:
+        return prompt
+    return {"sha256": hashlib.sha256(blob.encode("utf-8")).hexdigest(), "chars": len(blob), "stored": False}
 
 
 def complete(
@@ -75,7 +88,7 @@ def complete(
     usage = getattr(r, "usage", None)
     usage = usage.model_dump(mode="json") if usage is not None else None
     rec = {
-        "request": {"model": model, "input": prompt, "params": params},
+        "request": {"model": model, "input": _recorded_input(prompt), "params": params},
         "text": r.output_text,
         "model": model,
         "usage": usage,

@@ -1,0 +1,385 @@
+{
+  "retrieved": "2026-10-29",
+  "source": "Europe PMC REST API, open access subset",
+  "per_query": 6,
+  "queries": {
+    "g2_checkpoint": "(TITLE:\"G2/M\" OR TITLE:\"G2 checkpoint\" OR TITLE:\"cell cycle checkpoint\") AND (ABSTRACT:CHK1 OR ABSTRACT:WEE1 OR ABSTRACT:ATR) AND OPEN_ACCESS:y NOT (radiosensiti* OR radiosensitiz* OR clonogenic) NOT (TITLE:Retracted OR TITLE:Correction OR TITLE:Erratum OR TITLE:Retraction)",
+    "atm_atr_signalling": "TITLE:(ATM OR ATR) AND ABSTRACT:\"DNA damage response\" AND OPEN_ACCESS:y NOT (radiosensiti* OR radiosensitiz* OR clonogenic) NOT (TITLE:Retracted OR TITLE:Correction OR TITLE:Erratum OR TITLE:Retraction)",
+    "p53_mdm2_wip1": "TITLE:(p53 AND (MDM2 OR WIP1 OR p21)) AND OPEN_ACCESS:y NOT (radiosensiti* OR radiosensitiz* OR clonogenic) NOT (TITLE:Retracted OR TITLE:Correction OR TITLE:Erratum OR TITLE:Retraction)",
+    "dna_pk": "TITLE:(\"DNA-PK\" OR \"DNA-PKcs\") AND ABSTRACT:\"DNA damage\" AND OPEN_ACCESS:y NOT (radiosensiti* OR radiosensitiz* OR clonogenic) NOT (TITLE:Retracted OR TITLE:Correction OR TITLE:Erratum OR TITLE:Retraction)",
+    "senescence_mtor": "TITLE:senescence AND ABSTRACT:(p53 AND mTOR) AND ABSTRACT:\"DNA damage\" AND OPEN_ACCESS:y NOT (radiosensiti* OR radiosensitiz* OR clonogenic) NOT (TITLE:Retracted OR TITLE:Correction OR TITLE:Erratum OR TITLE:Retraction)",
+    "apoptosis_autophagy": "TITLE:(apoptosis OR autophagy) AND ABSTRACT:(p53 AND \"DNA damage\") AND OPEN_ACCESS:y NOT (radiosensiti* OR radiosensitiz* OR clonogenic) NOT (TITLE:Retracted OR TITLE:Correction OR TITLE:Erratum OR TITLE:Retraction)"
+  },
+  "excluded_heldout_sources": [
+    "PMC2906734",
+    "PMC3167033",
+    "PMC3687028",
+    "PMC3789084",
+    "PMC3997448",
+    "PMC5342109",
+    "PMC6116113"
+  ],
+  "failed": [],
+  "papers": [
+    {
+      "pmcid": "PMC2243162",
+      "doi": "10.1038/sj.bjc.6604208",
+      "title": "G2 checkpoint abrogation and checkpoint kinase-1 targeting in the treatment of cancer",
+      "year": "2008",
+      "journal": null,
+      "license": "cc by",
+      "query": "g2_checkpoint",
+      "chars": 23808
+    },
+    {
+      "pmcid": "PMC3631220",
+      "doi": "10.1371/journal.pone.0062087",
+      "title": "Toxic effect of silica nanoparticles on endothelial cells through DNA damage response via Chk1-dependent G2/M checkpoint",
+      "year": "2013",
+      "journal": null,
+      "license": "cc by",
+      "query": "g2_checkpoint",
+      "chars": 43461
+    },
+    {
+      "pmcid": "PMC1904188",
+      "doi": "10.1186/1743-422x-4-57",
+      "title": "HIV-1 Vpr activates the G2 checkpoint through manipulation of the ubiquitin proteasome system",
+      "year": "2007",
+      "journal": null,
+      "license": "cc by",
+      "query": "g2_checkpoint",
+      "chars": 24319
+    },
+    {
+      "pmcid": "PMC2829054",
+      "doi": "10.1371/journal.pgen.1000863",
+      "title": "Cdk2 is required for p53-independent G2/M checkpoint control",
+      "year": "2010",
+      "journal": null,
+      "license": "cc by",
+      "query": "g2_checkpoint",
+      "chars": 37770
+    },
+    {
+      "pmcid": "PMC5762302",
+      "doi": "10.18632/oncotarget.22195",
+      "title": "Prexasertib, a cell cycle checkpoint kinases 1 and 2 inhibitor, increases &lt;i&gt;in vitro&lt;/i&gt; toxicity of PARP inhibition by preventing Rad51 foci formation in &lt;i&gt;BRCA&lt;/i&gt; wild type high-grade serous ovarian cancer",
+      "year": "2017",
+      "journal": null,
+      "license": "cc by",
+      "query": "g2_checkpoint",
+      "chars": 31088
+    },
+    {
+      "pmcid": "PMC3913755",
+      "doi": "10.1371/journal.pone.0088140",
+      "title": "Cucurbitacin B induced ATM-mediated DNA damage causes G2/M cell cycle arrest in a ROS-dependent manner",
+      "year": "2014",
+      "journal": null,
+      "license": "cc by",
+      "query": "g2_checkpoint",
+      "chars": 35361
+    },
+    {
+      "pmcid": "PMC2745661",
+      "doi": "10.1371/journal.ppat.1000605",
+      "title": "Human papillomaviruses activate the ATM DNA damage pathway for viral genome amplification upon differentiation",
+      "year": "2009",
+      "journal": null,
+      "license": "cc by",
+      "query": "atm_atr_signalling",
+      "chars": 51466
+    },
+    {
+      "pmcid": "PMC509302",
+      "doi": "10.1371/journal.pbio.0020240",
+      "title": "The telomeric protein TRF2 binds the ATM kinase and can inhibit the ATM-dependent DNA damage response",
+      "year": "2004",
+      "journal": null,
+      "license": "cc by",
+      "query": "atm_atr_signalling",
+      "chars": 31184
+    },
+    {
+      "pmcid": "PMC3510507",
+      "doi": "10.1093/nar/gks849",
+      "title": "Distinct roles for DNA-PK, ATM and ATR in RPA phosphorylation and checkpoint activation in response to replication stress",
+      "year": "2012",
+      "journal": null,
+      "license": "cc by",
+      "query": "atm_atr_signalling",
+      "chars": 50955
+    },
+    {
+      "pmcid": "PMC3049316",
+      "doi": "10.1016/j.chom.2010.11.004",
+      "title": "An ATM/Chk2-mediated DNA damage-responsive signaling pathway suppresses Epstein-Barr virus transformation of primary human B cells",
+      "year": "2010",
+      "journal": null,
+      "license": "cc by",
+      "query": "atm_atr_signalling",
+      "chars": 45166
+    },
+    {
+      "pmcid": "PMC6990542",
+      "doi": "10.1186/s13578-020-0376-x",
+      "title": "ATM, ATR and DNA-PKcs kinases-the lessons from the mouse models: inhibition ≠ deletion",
+      "year": "2020",
+      "journal": null,
+      "license": "cc by",
+      "query": "atm_atr_signalling",
+      "chars": 43502
+    },
+    {
+      "pmcid": "PMC3236337",
+      "doi": "10.1186/bcr2919",
+      "title": "Rare variants in the ATM gene and risk of breast cancer",
+      "year": "2011",
+      "journal": null,
+      "license": "cc by",
+      "query": "atm_atr_signalling",
+      "chars": 32476
+    },
+    {
+      "pmcid": "PMC9090780",
+      "doi": "10.1038/s41418-022-00988-z",
+      "title": "Cell cycle regulation: p53-p21-RB signaling",
+      "year": "2022",
+      "journal": null,
+      "license": "cc by",
+      "query": "p53_mdm2_wip1",
+      "chars": 51826
+    },
+    {
+      "pmcid": "PMC4705690",
+      "doi": "10.1093/nar/gkv927",
+      "title": "The p53-p21-DREAM-CDE/CHR pathway regulates G2/M cell cycle genes",
+      "year": "2016",
+      "journal": null,
+      "license": "cc by",
+      "query": "p53_mdm2_wip1",
+      "chars": 29410
+    },
+    {
+      "pmcid": "PMC2063734",
+      "doi": "10.1083/jcb.200508130",
+      "title": "Osteoblast differentiation and skeletal development are regulated by Mdm2-p53 signaling",
+      "year": "2006",
+      "journal": null,
+      "license": "cc by-nc-sa",
+      "query": "p53_mdm2_wip1",
+      "chars": 57114
+    },
+    {
+      "pmcid": "PMC1334386",
+      "doi": "10.1371/journal.pbio.0040027",
+      "title": "Structural basis of competitive recognition of p53 and MDM2 by HAUSP/USP7: implications for the regulation of the p53-MDM2 pathway",
+      "year": "2006",
+      "journal": null,
+      "license": "cc by",
+      "query": "p53_mdm2_wip1",
+      "chars": 47667
+    },
+    {
+      "pmcid": "PMC5595683",
+      "doi": "10.1111/acel.12643",
+      "title": "Serpine 1 induces alveolar type II cell senescence through activating p53-p21-Rb pathway in fibrotic lung disease",
+      "year": "2017",
+      "journal": null,
+      "license": "cc by",
+      "query": "p53_mdm2_wip1",
+      "chars": 38812
+    },
+    {
+      "pmcid": "PMC4772976",
+      "doi": "10.15252/embr.201540505",
+      "title": "NAT10 regulates p53 activation through acetylating p53 at K120 and ubiquitinating Mdm2",
+      "year": "2016",
+      "journal": null,
+      "license": "cc by-nc",
+      "query": "p53_mdm2_wip1",
+      "chars": 64563
+    },
+    {
+      "pmcid": "PMC3461360",
+      "doi": "10.1038/cddis.2012.120",
+      "title": "AIF-mediated caspase-independent necroptosis requires ATM and DNA-PK-induced histone H2AX Ser139 phosphorylation",
+      "year": "2012",
+      "journal": null,
+      "license": "cc by-nc-nd",
+      "query": "dna_pk",
+      "chars": 44415
+    },
+    {
+      "pmcid": "PMC6144794",
+      "doi": "10.1093/nar/gky641",
+      "title": "Combined deficiency of Senataxin and DNA-PKcs causes DNA damage accumulation and neurodegeneration in spinal muscular atrophy",
+      "year": "2018",
+      "journal": null,
+      "license": "cc by-nc",
+      "query": "dna_pk",
+      "chars": 88195
+    },
+    {
+      "pmcid": "PMC3120867",
+      "doi": "10.1371/journal.pone.0021424",
+      "title": "DNA-PK-dependent RPA2 hyperphosphorylation facilitates DNA repair and suppresses sister chromatid exchange",
+      "year": "2011",
+      "journal": null,
+      "license": "cc0",
+      "query": "dna_pk",
+      "chars": 34938
+    },
+    {
+      "pmcid": "PMC6547644",
+      "doi": "10.1038/s41598-019-44771-6",
+      "title": "Radiation-dose-dependent functional synergisms between ATM, ATR and DNA-PKcs in checkpoint control and resection in G<sub>2</sub>-phase",
+      "year": "2019",
+      "journal": null,
+      "license": "cc by",
+      "query": "dna_pk",
+      "chars": 66587
+    },
+    {
+      "pmcid": "PMC4499152",
+      "doi": "10.1093/nar/gkv539",
+      "title": "DNA-PKcs phosphorylates hnRNP-A1 to facilitate the RPA-to-POT1 switch and telomere capping after replication",
+      "year": "2015",
+      "journal": null,
+      "license": "cc by-nc",
+      "query": "dna_pk",
+      "chars": 48415
+    },
+    {
+      "pmcid": "PMC4633921",
+      "doi": "10.1016/j.bbacli.2014.08.001",
+      "title": "ATM, ATR and DNA-PKcs expressions correlate to adverse clinical outcomes in epithelial ovarian cancers",
+      "year": "2014",
+      "journal": null,
+      "license": "cc by",
+      "query": "dna_pk",
+      "chars": 21368
+    },
+    {
+      "pmcid": "PMC2919254",
+      "doi": "10.18632/aging.100160",
+      "title": "The choice between p53-induced senescence and quiescence is determined in part by the mTOR pathway",
+      "year": "2010",
+      "journal": null,
+      "license": "cc by",
+      "query": "senescence_mtor",
+      "chars": 16044
+    },
+    {
+      "pmcid": "PMC6755978",
+      "doi": "10.1038/s41388-018-0521-8",
+      "title": "mTOR kinase leads to PTEN-loss-induced cellular senescence by phosphorylating p53",
+      "year": "2019",
+      "journal": null,
+      "license": "cc by",
+      "query": "senescence_mtor",
+      "chars": 34070
+    },
+    {
+      "pmcid": "PMC3759859",
+      "doi": "10.3390/ijms140815260",
+      "title": "The role of AKT/mTOR pathway in stress response to UV-irradiation: implication in skin carcinogenesis by regulation of apoptosis, autophagy and senescence",
+      "year": "2013",
+      "journal": null,
+      "license": "cc by",
+      "query": "senescence_mtor",
+      "chars": 44374
+    },
+    {
+      "pmcid": "PMC6156293",
+      "doi": "10.1111/acel.12811",
+      "title": "Monoamine oxidase-A is a novel driver of stress-induced premature senescence through inhibition of parkin-mediated mitophagy",
+      "year": "2018",
+      "journal": null,
+      "license": "cc by",
+      "query": "senescence_mtor",
+      "chars": 51031
+    },
+    {
+      "pmcid": "PMC4331756",
+      "doi": "10.1111/acel.12242",
+      "title": "Cellular senescence and aging: the role of B-MYB",
+      "year": "2014",
+      "journal": null,
+      "license": "cc by",
+      "query": "senescence_mtor",
+      "chars": 28646
+    },
+    {
+      "pmcid": "PMC3819289",
+      "doi": "10.1371/journal.pone.0080411",
+      "title": "Branched-chain amino acids enhance premature senescence through mammalian target of rapamycin complex I-mediated upregulation of p21 protein",
+      "year": "2013",
+      "journal": null,
+      "license": "cc by",
+      "query": "senescence_mtor",
+      "chars": 32272
+    },
+    {
+      "pmcid": "PMC4925817",
+      "doi": "10.18632/aging.100934",
+      "title": "Apoptosis as anticancer mechanism: function and dysfunction of its modulators and targeted therapeutic strategies",
+      "year": "2016",
+      "journal": null,
+      "license": "cc by",
+      "query": "apoptosis_autophagy",
+      "chars": 42608
+    },
+    {
+      "pmcid": "PMC2192776",
+      "doi": "10.1084/jem.184.3.1155",
+      "title": "Mitochondrial permeability transition is a central coordinating event of apoptosis",
+      "year": "1996",
+      "journal": null,
+      "license": "cc by-nc-sa",
+      "query": "apoptosis_autophagy",
+      "chars": 2024
+    },
+    {
+      "pmcid": "PMC2173837",
+      "doi": "10.1083/jcb.200202130",
+      "title": "Apoptosis-inducing factor is involved in the regulation of caspase-independent neuronal cell death",
+      "year": "2002",
+      "journal": null,
+      "license": "cc by-nc-sa",
+      "query": "apoptosis_autophagy",
+      "chars": 45804
+    },
+    {
+      "pmcid": "PMC3950324",
+      "doi": "10.1038/cdd.2013.186",
+      "title": "ROS-dependent activation of JNK converts p53 into an efficient inhibitor of oncogenes leading to robust apoptosis",
+      "year": "2014",
+      "journal": null,
+      "license": "cc by-nc-sa",
+      "query": "apoptosis_autophagy",
+      "chars": 40906
+    },
+    {
+      "pmcid": "PMC8143243",
+      "doi": "10.1080/15548627.2020.1752548",
+      "title": "Autophagy in the physiological endometrium and cancer",
+      "year": "2021",
+      "journal": null,
+      "license": "cc by-nc-nd",
+      "query": "apoptosis_autophagy",
+      "chars": 68837
+    },
+    {
+      "pmcid": "PMC4506520",
+      "doi": "10.1038/ncomms8668",
+      "title": "Aneuploidy generates proteotoxic stress and DNA damage concurrently with p53-mediated post-mitotic apoptosis in SAC-impaired cells",
+      "year": "2015",
+      "journal": null,
+      "license": "cc by",
+      "query": "apoptosis_autophagy",
+      "chars": 53740
+    }
+  ]
+}

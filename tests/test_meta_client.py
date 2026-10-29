@@ -45,6 +45,20 @@ def test_params_reach_the_api_unchanged(tmp_path):
     assert client.responses.calls[0] == {"model": "muse-spark-1.3", "input": "hi", "temperature": 0}
 
 
+def test_a_long_prompt_is_not_stored_in_the_cache_file_but_is_still_keyed(tmp_path):
+    import json
+
+    client = FakeClient()
+    long_prompt = "paper text " * 5000
+    complete(long_prompt, client=client, cache_dir=tmp_path)
+    (file,) = tmp_path.glob("*.json")
+    request = json.loads(file.read_text(encoding="utf-8"))["request"]
+    assert request["input"]["stored"] is False and request["input"]["chars"] > 20_000
+    assert long_prompt not in file.read_text(encoding="utf-8")
+    assert complete(long_prompt, client=client, cache_dir=tmp_path).from_cache
+    assert len(client.responses.calls) == 1
+
+
 def test_offline_miss_raises_without_calling_the_api(tmp_path, monkeypatch):
     monkeypatch.setenv("CELLPROOF_OFFLINE", "1")
     client = FakeClient()

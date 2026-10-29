@@ -82,6 +82,13 @@ before the freeze. Its tests use synthetic items built from cases in the Gupta p
 
 - **Corpus exclusion.** These papers must not be in the extraction corpus: PMC2906734, PMC3789084, PMC3167033,
   PMC5342109, PMC6116113, PMC3997448, PMC3687028. Extraction prompts ask for mechanisms only.
+- **Corpus is not clean of similar experiments.** The queries (in `corpus/europepmc.py`) exclude papers that use the words
+  radiosensitisation or clonogenic, and the list was fixed by topic and citation count before any text was read. Some
+  corpus papers still report G2 checkpoint results under irradiation with ATM, ATR or DNA-PK inhibition, in other cell
+  lines than the held-out ones (for example PMC6547644). They are not the held-out sources, and the extractor is asked
+  for mechanisms (A activates / inhibits B) only. Whether such mechanisms legitimately explain a held-out result is exactly
+  what the experiment tests, but the overlap in topic is a fact the reader should know. A first attempt with
+  Europe PMC's default order was discarded unused after the titles showed unrelated tissues; it was never extracted.
 - **Selection bias, in the direction that favours the thesis.** I searched by base-network node, so sources were not picked
   by outcome. But I had read the base rules, and I know from them that apoptosis needs `p53_K`, which needs `p53`.
   H03 (apoptosis in p53-null cells) was therefore chosen partly because the base network should get it wrong. H01 should

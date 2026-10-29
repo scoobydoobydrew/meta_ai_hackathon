@@ -29,4 +29,10 @@ Licenses below were read from each package's installed metadata on 2026-10-29.
   doi 10.3390/cells12071085. Article license CC BY 4.0; the supplement's license is not stated separately.
   Rules taken from Supplementary Table S2 into `data/base/gupta2023.bnet` with attribution in its header.
   Node count counted from the file: 30 (1 input + 29 rules). Supplement obtained via the Europe PMC REST API.
-- Open-access paper corpus (Europe PMC): TBD.
+- Open-access paper corpus (Europe PMC REST API, open-access subset): the papers, their Creative Commons licences
+  (CC BY, CC BY-NC, CC BY-NC-SA, CC BY-NC-ND, CC0, per paper) and the queries that selected them are listed in
+  `data/corpus/manifest.json`. The full texts are downloaded by `cellproof corpus` into `data/raw/corpus` (git-ignored)
+  and are not redistributed; the committed LLM cache stores long prompts as a hash, not as text. Texts are sent to the
+  Meta Model API (Standard, not contributor) only for mechanism extraction.
+- Held-out source papers (`data/heldout`, seven papers, listed with their licences in the item file): only short
+  factual claims with a locator are kept; no text is copied.
