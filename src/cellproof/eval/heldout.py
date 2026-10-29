@@ -12,6 +12,10 @@ from pathlib import Path
 from cellproof.network.phenotypes import READOUTS
 
 POLARITIES = ("present", "absent", "increased", "decreased", "unchanged")
+DIRECTIONS = ("increased", "decreased", "unchanged")
+# Annotated by hand on each direction claim, from its statement: how big the change was. Only a complete appearance or
+# abolition ("complete") and an explicit "no change" ("none") can be told apart by a presence/absence model (D6).
+MAGNITUDES = ("complete", "partial", "none")
 SURVIVAL = "clonogenic_survival"
 
 
@@ -29,9 +33,14 @@ def claim_category(claim: dict, in_base: bool) -> str:
         return "survival_level"
     if claim["readout"] not in READOUTS:
         return "needs_readout"
-    if claim["polarity"] in ("increased", "decreased", "unchanged"):
+    if claim["polarity"] in DIRECTIONS and claim.get("magnitude") not in ("complete", "none"):
         return "direction_only"
     return "scoreable" if in_base else "scoreable_with_new_nodes"
+
+
+def scoring_mode(claim: dict) -> str:
+    """"absolute" (readout present or absent in the perturbed network) or "contrast" (compared with no perturbation)."""
+    return "contrast" if claim["polarity"] in DIRECTIONS else "absolute"
 
 
 def summarize(doc: dict, base_nodes: set[str]) -> Counter:

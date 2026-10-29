@@ -71,8 +71,8 @@
       "stimulus": "IR",
       "perturbation": {"nodes": {"Wee1": 0}, "approximation": "kinase inhibition modelled as node loss"},
       "claims": [
-        {"readout": "g2_arrest", "polarity": "decreased", "vs": "IR alone", "in": "p53-null H1299", "statement": "The radiation-induced G2 block was abrogated."},
-        {"readout": "g2_arrest", "polarity": "unchanged", "vs": "IR alone", "in": "p53 wild-type A549", "statement": "No abrogation."}
+        {"readout": "g2_arrest", "polarity": "decreased", "magnitude": "complete", "backgrounds": [{"p53": 0}], "vs": "IR alone", "in": "p53-null H1299", "statement": "The radiation-induced G2 block was abrogated."},
+        {"readout": "g2_arrest", "polarity": "unchanged", "magnitude": "none", "backgrounds": [{}], "vs": "IR alone", "in": "p53 wild-type A549", "statement": "No abrogation."}
       ]
     },
     {
@@ -104,8 +104,8 @@
       "stimulus": "IR",
       "perturbation": {"nodes": {"ATR": 0}, "approximation": "kinase inhibition modelled as node loss"},
       "claims": [
-        {"readout": "g2_arrest", "polarity": "decreased", "vs": "IR alone", "in": "HCT116 p53+/+ (by 24%) and p53-/- (by 36%)", "statement": "IR-induced G2 arrest reduced, more in p53-/-."},
-        {"readout": "g2_arrest", "polarity": "decreased", "vs": "IR alone", "in": "U2OS p53 wild type and dominant-negative", "statement": "IR-induced G2 arrest completely abrogated in both."}
+        {"readout": "g2_arrest", "polarity": "decreased", "magnitude": "partial", "vs": "IR alone", "in": "HCT116 p53+/+ (by 24%) and p53-/- (by 36%)", "statement": "IR-induced G2 arrest reduced, more in p53-/-."},
+        {"readout": "g2_arrest", "polarity": "decreased", "magnitude": "complete", "backgrounds": [{}, {"p53": 0}], "vs": "IR alone", "in": "U2OS p53 wild type and dominant-negative", "statement": "IR-induced G2 arrest completely abrogated in both."}
       ]
     },
     {
@@ -147,8 +147,8 @@
       "stimulus": "IR",
       "perturbation": {"nodes": {"CHK1": 0}, "approximation": "kinase inhibition modelled as node loss"},
       "claims": [
-        {"readout": "g2_arrest", "polarity": "decreased", "vs": "IR alone", "in": "H1299 at 8 h", "statement": "G2 block significantly reversed."},
-        {"readout": "g2_arrest", "polarity": "unchanged", "vs": "IR alone", "in": "A549 at 4 h", "statement": "No reversal at that time point."}
+        {"readout": "g2_arrest", "polarity": "decreased", "magnitude": "partial", "vs": "IR alone", "in": "H1299 at 8 h", "statement": "G2 block significantly reversed."},
+        {"readout": "g2_arrest", "polarity": "unchanged", "magnitude": "none", "backgrounds": [{}], "vs": "IR alone", "in": "A549 at 4 h", "statement": "No reversal at that time point."}
       ]
     },
     {
@@ -158,8 +158,8 @@
       "stimulus": "IR",
       "perturbation": {"nodes": {"DNA_PK": 0}, "approximation": "kinase inhibition modelled as node loss; node id DNA_PK is a placeholder"},
       "claims": [
-        {"readout": "g2_arrest", "polarity": "increased", "vs": "IR alone", "statement": "68.4% versus 34.1% of cells in G2/M."},
-        {"readout": "apoptosis", "polarity": "increased", "vs": "IR alone", "statement": "8.54% versus 5.29% early apoptosis."},
+        {"readout": "g2_arrest", "polarity": "increased", "magnitude": "partial", "vs": "IR alone", "statement": "68.4% versus 34.1% of cells in G2/M."},
+        {"readout": "apoptosis", "polarity": "increased", "magnitude": "partial", "vs": "IR alone", "statement": "8.54% versus 5.29% early apoptosis."},
         {"readout": "clonogenic_survival", "polarity": "decreased", "vs": "IR alone", "statement": "Dose enhancement factor 1.28 at 0.1 survival."}
       ]
     }

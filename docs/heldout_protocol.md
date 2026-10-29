@@ -27,37 +27,56 @@ put into exactly one category by `cellproof.eval.heldout.claim_category`, from t
 | `scoreable_with_new_nodes` | same, but the perturbed node (ATR, CHK1, DNA-PK) is not in the base network | base: not expressible; augmented: yes if it adds the node |
 | `needs_readout` | a readout the network does not define; none in the current draft since `g2_arrest` was added | no |
 | `survival_level` | clonogenic survival / radiosensitisation: the network has no survival output | no, in either network |
-| `direction_only` | "increased", "decreased" or "unchanged" on a phenotype or `g2_arrest`: an attractor set has no frequencies | no, unless the human adopts D6 |
+| `direction_only` | "increased", "decreased" or "unchanged" with a partial change (or none annotated): an attractor set has no frequencies | no |
 
-## What is in the draft (produced by `summarize`, 2026-10-29, after adding `g2_arrest`)
+A direction claim is scoreable (by contrast, see the scoring rule) only if its hand-annotated `magnitude` is `complete`
+(the readout fully disappears or fully appears) or `none` (the paper says explicitly that nothing changed).
+`partial` stays `direction_only`.
+
+## What is in the draft (produced by `summarize`, 2026-10-29, after adding `g2_arrest` and adopting D6)
 
 14 items, 25 claims, from 7 papers. Perturbed node is in the base network for 8 of 14 items.
 
 | Category | Claims |
 |---|---|
-| scoreable | 5 |
-| scoreable_with_new_nodes | 1 |
+| scoreable | 7 |
+| scoreable_with_new_nodes | 3 |
 | needs_readout | 0 |
 | survival_level | 11 |
-| direction_only | 8 |
+| direction_only (partial changes) | 4 |
 
-**Only 6 of 25 claims can be scored, 5 of them on the base network.** Most of the radiosensitisation literature
+**10 of 25 claims can be scored, 7 of them on the base network.** Most of the radiosensitisation literature
 reports survival, which a phenotype network cannot express. That is a result about the approach, and the README must say so.
 It is also far too few claims to show an improvement statistically; any M1 number from this set must be reported as counts.
 
 **Correction.** An earlier version of this protocol, and a message to the human, said that adding `g2_arrest` would make
 8 more claims scoreable (13 of 25). That was wrong. Seven of the 8 G2 claims say "reduced", "unchanged" or "increased",
-so they fall under `direction_only`, and adding the readout made exactly one claim scoreable (H04).
+so they fell under `direction_only`, and adding the readout made exactly one claim scoreable (H04). The step from 6 to 10
+comes from D6 below, which was a separate decision.
 
-## Scoring rule, fixed now
+## Scoring rule, fixed now (implemented in `src/cellproof/eval/score.py`)
 
-For a `scoreable` claim, compute the fixed points of the perturbed network, classify each with `classify`, and take
-the set of phenotypes, adding `g2_arrest` if any fixed point shows it. `present` is correct if the readout is in the set,
-`absent` if it is not. Fixed points that match no
-definition, and networks with non-fixed-point attractors, are reported as `unclassified` and count for no phenotype.
+For each claim take the *setting* = stimulus + the claim's `backgrounds` (node settings for the cell line's own
+genotype, such as p53 = 0 for a p53-null line; default one empty background) + the item's perturbation. The outcome of a
+setting is the set of phenotypes of its fixed points (`classify`), plus `g2_arrest` if any fixed point shows it.
+Fixed points that match no definition, and networks with non-fixed-point attractors, are flagged `unclassified` /
+`complex_attractor` and count for no phenotype.
+
+- **absolute** (`present`, `absent`): correct if the readout is in (not in) the outcome of the perturbed setting.
+- **contrast** (`complete` or `none` direction claims): the reference is the same setting without the perturbation.
+  `decreased` is correct if the readout is in the reference and not in the perturbed outcome, `increased` for the reverse,
+  `unchanged` if its status is the same in both.
+- A claim with several backgrounds is correct only if it is correct in every one.
+- A claim whose perturbed or background nodes are not in the network is **not expressible**, not wrong.
+
 Report per claim: correct, wrong, or not expressible. Never merge the three.
 
-Baselines to report next to every score: the wild-type damaged network's phenotype set applied to every claim, and a coin flip.
+Baselines to report next to every score (`baseline_verdict`): the no-information baseline that pretends the perturbation
+does nothing (the unperturbed network answers every absolute claim; every contrast claim is answered "unchanged"), and a
+coin flip.
+
+**Guard.** `score_doc` refuses to score a set whose status starts with `DRAFT`, so no number can come from this file
+before the freeze. Its tests use synthetic items built from cases in the Gupta paper.
 
 ## Leakage and selection, disclosed
 
@@ -88,19 +107,37 @@ These are recorded per item in `perturbation.approximation`.
   applied identically to every network. It is one more hand-chosen readout, after the PUMA choice. For the record: in the
   four damaged wild-type fixed points printed earlier, `Cdc2_CycB` is OFF in all of them, so in the wild type `g2_arrest`
   does not separate the four fates; only perturbations can switch it off.
-- **D6. Score direction claims by contrast?** Eight claims say a readout was reduced, unchanged or increased relative to
-  the same cells without the perturbation (the claim's `vs`). An attractor set has no frequencies, but two sets can be
-  compared: "decreased" if the readout is present without the perturbation and absent with it, "increased" for the reverse,
-  "unchanged" if its status is the same. Only complete abolitions, complete appearances and explicit "no change" fit.
-  By hand count, not by script, 4 of the 8 qualify (H06 both claims, the second claim of H09, the second claim of H13).
-  The others are partial reductions (24%, 36%, "significantly reversed") or increases from a nonzero baseline (H14),
-  which a presence/absence model cannot represent. Adopting it would give 10 scoreable claims of 25. The cost: a second
-  scoring convention chosen after seeing the claims. Recommended if adopted: strictly as above, fixed before any run.
-- **D2.** Accept the approximations above.
+- **D6. Decided on 2026-10-29: score direction claims by contrast, strictly.** The human delegated the choice ("do what
+  you think best"); it was taken by the assistant and is recorded as such. Eight claims say a readout was reduced,
+  unchanged or increased relative to the same cells without the perturbation (the claim's `vs`). Only complete
+  abolitions, complete appearances and explicit "no change" are scored (4 of the 8: H06 both claims, the second claim of
+  H09, the second claim of H13). The other four are partial reductions (24%, 36%, "significantly reversed") or increases
+  from a nonzero baseline (H14), which a presence/absence model cannot represent; they stay `direction_only`.
+  The `magnitude` of each was annotated by hand from the claim's own statement, once, and is part of the item file.
+  Cost, stated plainly: a second scoring convention chosen after seeing the claims. Its effect on the count is 6 to 10
+  of 25; results are always reported per claim, and the absolute-only subset (6 claims) can be reported separately.
+- **D6b. Backgrounds.** The two H06 claims share one perturbation (Wee1 loss) but one line is p53-null and the other
+  wild type, so scoring them under one setting would make them contradict each other. Claims therefore carry a
+  `backgrounds` annotation (p53 = 0 for H1299, empty for A549, both for U2OS wild type and dominant-negative). Dominant-
+  negative p53 is modelled as p53 = 0, and A549 "wild type" ignores its other lesions. Added together with D6.
+- **D2. Accepted by the assistant on 2026-10-29 (delegated).** The approximations above stand.
 - **D3. More items.** Phenotype-level knockout data (apoptosis present or absent after irradiation in null cells) would
-  be scoreable, unlike survival data. This search was not done.
-- **D4.** Check every locator and claim against the papers.
-- **D5.** Freeze with a tagged commit and a SHA-256 of the file; changing it afterwards needs the human's approval.
+  be scoreable, unlike survival data. This search was not done. Open.
+- **D4. Still the human's, and not delegable.** Check every locator and claim against the papers. An assistant reading
+  its own summaries cannot stand in for this. Until it is done, every number computed from this set is provisional.
+- **D5. Pre-extraction snapshot, taken 2026-10-29** (see below). This is a snapshot that proves ordering, not the final
+  freeze: the final freeze follows D4. Changes after the snapshot are listed in the amendment log.
+
+## Snapshot before extraction, and amendment log
+
+The corpus download and the Muse Spark extraction start only after this snapshot. The extraction prompts ask for
+mechanisms only and the seven source papers are excluded from the corpus, so the held-out outcomes cannot reach the
+extractor. The SHA-256 of `data/heldout/gupta2023_heldout_draft.json` is recorded in `data/heldout/draft.sha256`, a test
+fails when the file stops matching it, and the commit is tagged `heldout-pre-extraction`.
+
+Amendment log (any later change to the item file, with the reason; updating the hash file is the sign of an amendment):
+
+- none yet.
 
 ## Not found or not done
 

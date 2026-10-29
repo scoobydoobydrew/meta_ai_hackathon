@@ -1,8 +1,9 @@
+import hashlib
 from pathlib import Path
 
 import pytest
 
-from cellproof.eval.heldout import POLARITIES, claim_category, load, nodes_in_base, summarize
+from cellproof.eval.heldout import DIRECTIONS, MAGNITUDES, POLARITIES, claim_category, load, nodes_in_base, summarize
 from cellproof.network.bnet import load_bnet
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,6 +18,14 @@ def doc():
 
 def test_draft_is_labelled_as_a_draft(doc):
     assert doc["status"].startswith("DRAFT")
+
+
+def test_item_file_matches_the_recorded_snapshot_hash():
+    # Editing the items is allowed, but only as a logged amendment: update draft.sha256 and the log in
+    # docs/heldout_protocol.md in the same commit.
+    recorded = (ROOT / "data" / "heldout" / "draft.sha256").read_text(encoding="ascii").split()[0]
+    actual = hashlib.sha256(DRAFT.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+    assert actual == recorded, "held-out items changed after the snapshot: log the amendment and update draft.sha256"
 
 
 def test_ids_are_unique_and_sources_exist(doc):
@@ -47,6 +56,9 @@ def test_perturbation_nodes_marked_by_membership_in_the_base_network(doc):
         ({"readout": "clonogenic_survival", "polarity": "decreased"}, True, "survival_level"),
         ({"readout": "g2_arrest", "polarity": "present"}, True, "scoreable"),
         ({"readout": "g2_arrest", "polarity": "decreased"}, True, "direction_only"),
+        ({"readout": "g2_arrest", "polarity": "decreased", "magnitude": "partial"}, True, "direction_only"),
+        ({"readout": "g2_arrest", "polarity": "decreased", "magnitude": "complete"}, True, "scoreable"),
+        ({"readout": "g2_arrest", "polarity": "unchanged", "magnitude": "none"}, False, "scoreable_with_new_nodes"),
         ({"readout": "mitotic_catastrophe", "polarity": "present"}, True, "needs_readout"),
         ({"readout": "apoptosis", "polarity": "increased"}, True, "direction_only"),
         ({"readout": "apoptosis", "polarity": "present"}, True, "scoreable"),
@@ -60,3 +72,29 @@ def test_claim_category_rules(claim, in_base, expected):
 def test_every_claim_gets_exactly_one_category(doc):
     counts = summarize(doc, BASE_NODES)
     assert sum(counts.values()) == sum(len(item["claims"]) for item in doc["items"])
+
+
+def test_direction_claims_on_phenotypes_carry_a_consistent_magnitude(doc):
+    for item in doc["items"]:
+        for claim in item["claims"]:
+            if claim["readout"] == "clonogenic_survival" or claim["polarity"] not in DIRECTIONS:
+                continue
+            assert claim.get("magnitude") in MAGNITUDES, item["id"]
+            assert (claim["polarity"] == "unchanged") == (claim["magnitude"] == "none"), item["id"]
+
+
+def test_backgrounds_are_nodes_of_the_base_network(doc):
+    for item in doc["items"]:
+        for claim in item["claims"]:
+            for background in claim.get("backgrounds", []):
+                assert set(background) <= BASE_NODES, item["id"]
+
+
+def test_counts_with_strict_contrast_scoring(doc):
+    # Decision D6, adopted 2026-10-29: only complete changes and explicit "no change" are scored by contrast.
+    assert dict(summarize(doc, BASE_NODES)) == {
+        "scoreable": 7,
+        "scoreable_with_new_nodes": 3,
+        "direction_only": 4,
+        "survival_level": 11,
+    }
