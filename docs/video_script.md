@@ -13,20 +13,27 @@ button switches it.
 solvers. Built this week: an agent where Muse Spark reads the papers and proposes rules, and an exact solver decides which
 ones the model can take."
 
-**0:15 to 1:15. The bench (press *Play the 50-second story*; talk over the captions, do not read them out).**
-The page walks through five steps by itself. What each caption stands for:
-1. *Circuit.* "A cell hit by radiation has to decide. Four fates are possible; the lamps are the solver's exact answer, not a
-   simulation. Cut one wire, TUG1, and only death is left, which is what the paper reports."
-2. *Patch.* "The model has no ATR or CHK1, but the papers know them. Muse Spark read 36 papers and quotes what they say.
+**0:15 to 1:20. The bench (press *Play the 64-second story*; talk over the captions, do not read them out).**
+The page walks through by itself, from the dish down to the DNA and then through five steps. What each caption stands for:
+1. *Dish.* "A cell hit by radiation has to decide. The dish is irradiated and each cell pauses, ages, recycles itself or dies;
+   which fates are possible is the solver's exact answer, not a simulation. Cut one gene, TUG1, and every cell dies, which
+   is what the paper reports."
+2. *DNA, then circuit.* "Inside each cell, damaged DNA is the signal. In the model it switches on one sensor gene, and the
+   signal runs through a circuit of genes."
+3. *Patch.* "The model has no ATR or CHK1, but the papers know them. Muse Spark read 36 papers and quotes what they say.
    Plug in the new wire: CHK1 switches off CDC25C."
-3. *Tests.* "An exact checker replays ten known experiments. Three break: the cell now also ages, which no paper reports."
-4. *Repair.* "The AI gets the counterexample and rewrites the rule: CHK1 only acts together with CDK1/CycB. Ten of ten pass.
-   The checker decided, not the AI."
-5. *Audit.* "Reality check on ten outcomes from papers the AI never read: no better than the published model. We say so.
-   Where the circuit never settles, marked with a star, its answers are not predictions." (the page clicks the p53 row: all
-   lamps go dark)
+4. *Tests.* "An exact checker replays ten known experiments. Three break: on the right, the cells now also age, which no paper
+   reports. The paper's dish is on the left."
+5. *Repair.* "The AI gets the counterexample and rewrites the rule: CHK1 only acts together with CDK1/CycB. Ten of ten pass,
+   and the two dishes now agree. The checker decided, not the AI."
+6. *Audit.* "Reality check on ten outcomes from papers the AI never read: no better than the published model. We say so.
+   Where the circuit never settles, marked with a star, its answers are not predictions." (the page clicks the p53 row: the
+   cells flicker between fates and never settle)
 
-**1:15 to 2:00. Why you can trust it (scroll to the notebook; click *Open the circuit* first if you want the full network).**
+If there is time, say one line about the sixth step, the hunt: "The solver knows all eleven ways to leave only death; two of
+them are what the paper reports. Click genes and find them." Show one discovery (TUG1 out), then stop.
+
+**1:20 to 2:00. Why you can trust it (scroll to the notebook; click *Open the circuit* first if you want the full network).**
 - "The cell": click *TUG1 knocked out*, then *p53 knocked out* ("no stable state: the network oscillates").
 - "Case files": the CHK1 case is preselected. Show the papers, the template, the solver's counterexample, then the
   repair attempts. Click *ATR activates ATM/γH2AX*: "Here its first answer passed the cases but changed nothing, so the solver

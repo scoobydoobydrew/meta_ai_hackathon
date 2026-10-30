@@ -25,7 +25,7 @@
           <a class="btn" href="#bench" data-i18n="hero.try">Try it yourself</a>
         </div>
       </div>
-      <div class="hero-col"><div class="hero-art" aria-hidden="true"><canvas id="heroCanvas"></canvas></div><div class="hero-tag" id="heroTag"></div></div>
+      <div class="hero-col"><div class="hero-art" aria-hidden="true"><canvas id="heroCanvas"></canvas><canvas class="scene" id="heroDish"></canvas></div><div class="hero-tag" id="heroTag"></div></div>
     </div>
   </div>
 </section>
@@ -39,15 +39,34 @@
     </div>
     <div class="bench" id="benchGrid">
       <div class="b-left">
-        <div class="b-stagebox" id="bBox" data-open="0">
-          <svg id="bNet" viewBox="0 8 1000 692" role="img" aria-label="The gene circuit of a cell. Lamps below show which fates it can reach."></svg>
-          <div class="tip" id="bTip"></div>
-          <div class="b-ctl b-ctl-l"><button class="pillbtn" id="bDamage" type="button" aria-pressed="true"><i class="bolt"></i><span data-i18n="ctl.damage">DNA damage</span></button></div>
-          <div class="b-ctl b-ctl-r"><button class="pillbtn" id="bOpen" type="button" aria-pressed="false"><span id="bOpenTxt" data-i18n="ctl.open">Open the circuit</span></button></div>
-          <button class="pillbtn b-stop" id="bStop" type="button" data-i18n="play.stop" hidden>■ Stop</button>
-          <div class="b-caption" id="bCaption" aria-hidden="true"></div>
+        <div class="b-bar">
+          <div class="b-scale" id="bScale" role="group" aria-label="Zoom level">
+            <button type="button" data-scale="dish" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="10.5" r="1.7"/><circle cx="14.6" cy="9" r="1.2"/><circle cx="13.2" cy="14.6" r="1.9"/></svg><span data-i18n="scale.dish">Dish</span></button>
+            <button type="button" data-scale="circuit" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.1"/><circle cx="18" cy="6" r="2.1"/><circle cx="12" cy="18" r="2.1"/><path d="M8 7.3l8-1M7.2 9l4 7.2M16.9 8l-3.8 8.2"/></svg><span data-i18n="scale.circuit">Circuit</span></button>
+            <button type="button" data-scale="dna" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3c0 5 10 5 10 9s-10 4-10 9"/><path d="M17 3c0 5-10 5-10 9s10 4 10 9"/><path d="M9 6.6h6M9 17.4h6"/></svg><span data-i18n="scale.dna">DNA</span></button>
+          </div>
+          <button class="pillbtn" id="bDamage" type="button" aria-pressed="false"><i class="bolt"></i><span data-i18n="ctl.damage">DNA damage</span></button>
+        </div>
+        <div class="b-stagebox" id="bBox" data-scale="dish" data-open="0" data-layout="single">
+          <div class="b-view" id="bView">
+            <svg id="bNet" viewBox="0 8 1000 692" role="img" aria-label="The gene circuit of a cell. Lamps below show which fates it can reach."></svg>
+            <canvas class="scene" id="bDish" role="img" aria-label="A culture dish of cells reacting to radiation."></canvas>
+            <canvas class="scene" id="bDna" role="img" aria-label="A strand of DNA damaged by radiation."></canvas>
+            <div class="tip" id="bTip"></div>
+            <div class="b-burst" id="bBurst" aria-hidden="true"></div>
+            <button class="pillbtn b-stop" id="bStop" type="button" data-i18n="play.stop" hidden>■ Stop</button>
+            <div class="b-caption" id="bCaption" aria-hidden="true"></div>
+          </div>
+          <div class="b-dock" id="bDock">
+            <div class="vials" id="bVials" role="group" aria-label="Treatments"></div>
+            <button class="irr" id="bIrr" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.6"/><path d="M12 2.5v4.2M12 17.3v4.2M2.5 12h4.2M17.3 12h4.2M5.3 5.3l3 3M15.7 15.7l3 3M18.7 5.3l-3 3M8.3 15.7l-3 3"/></svg><span id="bIrrTxt"></span></button>
+            <button class="pillbtn" id="bFollow" type="button" data-i18n="dna.go" hidden>Follow the signal →</button>
+            <button class="pillbtn" id="bOpen" type="button" aria-pressed="false" hidden><span id="bOpenTxt"></span></button>
+            <p class="b-dock-hint" id="bDockHint"></p>
+          </div>
         </div>
         <div class="b-lamps" id="bLamps" role="group" aria-label="Fates"></div>
+        <p class="b-note" id="bNote"></p>
         <p class="sr-only" id="bStatus" aria-live="polite"></p>
       </div>
       <div class="b-side">

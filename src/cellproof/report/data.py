@@ -14,7 +14,7 @@ from itertools import combinations
 from pathlib import Path
 
 from cellproof.analysis.attractors import fixed_points, perturb
-from cellproof.analysis.interventions import minimal_sets
+from cellproof.analysis.interventions import READOUT_NODES, minimal_sets
 from cellproof.eval.heldout import load as load_heldout
 from cellproof.eval.heldout import summarize
 from cellproof.extract.stats import load_records, summarize as summarize_extractions
@@ -201,9 +201,10 @@ def api_usage() -> dict:
 
 
 def interventions(networks: dict[str, dict[str, str]]) -> dict:
-    out = {}
+    out: dict = {}
     for key in ("published", "augmented"):
         out[key] = [[[n, v] for n, v in s] for s in minimal_sets(networks[key], 2)]
+    out["readout"] = sorted(READOUT_NODES)  # genes that define the outcome: forcing one of them is not an intervention
     return out
 
 

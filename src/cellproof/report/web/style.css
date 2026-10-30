@@ -354,21 +354,50 @@ footer pre { margin: 0; font-family: var(--mono); font-size: 13px; background: v
 .how-grid b { font-family: var(--display); font-weight: 400; font-size: 22px; }
 .how-grid span { font-size: 14px; color: var(--fg-2); }
 
-.bench { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(340px, 1fr); gap: clamp(16px, 2.4vw, 28px); align-items: start; }
-.b-left { display: grid; gap: 12px; min-width: 0; }
+.bench { display: grid; grid-template-columns: max-content minmax(340px, 1fr); gap: clamp(16px, 2.4vw, 28px); align-items: start; }
+/* the stage is as large as the window allows, so that the dish, its tools and the lamps are all on screen together */
+.b-left { display: grid; gap: 12px; min-width: 0; width: clamp(440px, calc((100vh - 330px) * 1.445), 780px); }
 .b-side { display: grid; gap: 14px; min-width: 0; }
-@media (min-width: 1021px) and (min-height: 760px) { .b-left { position: sticky; top: 76px; } }
+@media (min-width: 1021px) and (min-height: 680px) { .b-left { position: sticky; top: 76px; } }
 .b-stagebox { position: relative; border: 1px solid var(--line); border-radius: 22px; background: radial-gradient(110% 80% at 50% 0%, var(--raised), var(--surface) 70%); box-shadow: var(--shadow); overflow: hidden; }
-.b-stagebox svg { display: block; width: 100%; height: auto; touch-action: manipulation; }
-.b-ctl { position: absolute; top: 12px; z-index: 3; }
-.b-ctl-l { left: 12px; } .b-ctl-r { right: 12px; }
+.b-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+.b-scale { display: inline-flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+.b-scale button { display: inline-flex; align-items: center; gap: 7px; border: 0; background: transparent; color: var(--fg-2); font-size: 13px; font-weight: 500; padding: 6px 13px 6px 10px; border-radius: 999px; cursor: pointer; }
+.b-scale button svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.b-scale button:hover { background: var(--raised); }
+.b-scale button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.b-view { position: relative; }
+.b-view #bNet { display: block; width: 100%; height: auto; touch-action: manipulation; }
+canvas.scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+/* three levels of magnification: the one in view is sharp, one already zoomed past grows and blurs away, one not reached yet waits small */
+.b-view canvas.scene, .b-view #bNet { opacity: 0; pointer-events: none; transform: scale(.84); filter: blur(6px); transition: opacity .55s ease, transform .55s ease, filter .55s ease; }
+.b-stagebox[data-scale="dish"] #bDish, .b-stagebox[data-scale="circuit"] #bNet, .b-stagebox[data-scale="dna"] #bDna { opacity: 1; pointer-events: auto; transform: none; filter: none; }
+.b-stagebox[data-scale="circuit"] #bDish, .b-stagebox[data-scale="dna"] #bDish, .b-stagebox[data-scale="dna"] #bNet { transform: scale(1.22); }
+.b-dock { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px; padding: 10px 14px; min-height: 92px; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 70%, transparent); }
+.vials { display: flex; gap: 10px; align-items: flex-end; }
+.vial { display: grid; justify-items: center; gap: 5px; background: none; border: 0; padding: 0; cursor: pointer; color: var(--fg-2); font-size: 11.5px; line-height: 1.15; max-width: 76px; text-align: center; transition: transform .2s, color .2s; }
+.vial:hover { transform: translateY(-4px); color: var(--fg); }
+.vial .tube { position: relative; width: 26px; height: 50px; border: 2px solid color-mix(in srgb, var(--fg) 38%, transparent); border-top: 0; border-radius: 0 0 14px 14px; background: linear-gradient(90deg, rgba(255, 255, 255, .14), transparent 45%, rgba(255, 255, 255, .05)); overflow: hidden; transition: border-color .2s, box-shadow .2s; }
+.vial .tube::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: color-mix(in srgb, var(--fg) 45%, transparent); }
+.vial .liq { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; background: var(--accent); opacity: .8; }
+.vial.ctl .liq { background: var(--fg-3); opacity: .45; }
+.vial[aria-pressed="true"] { color: var(--fg); }
+.vial[aria-pressed="true"] .tube { border-color: var(--accent); box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 60%, transparent); }
+.irr { display: inline-flex; align-items: center; gap: 9px; border: 0; border-radius: 999px; padding: 12px 20px; font-weight: 600; font-size: 15px; cursor: pointer; color: var(--bg); background: var(--fg); position: relative; }
+.irr svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; flex: none; }
+.irr:hover { background: color-mix(in srgb, var(--fg) 84%, var(--bg)); }
+.irr.nudge::after { content: ""; position: absolute; inset: -5px; border-radius: 999px; border: 2px solid var(--accent); animation: nudge 1.6s ease-out infinite; pointer-events: none; }
+@keyframes nudge { from { transform: scale(.94); opacity: .9; } to { transform: scale(1.16); opacity: 0; } }
+.b-dock-hint { flex: 1 1 100%; text-align: center; font-size: 12.5px; color: var(--fg-3); margin: 0; }
+.b-note { font-size: 12px; color: var(--fg-3); line-height: 1.4; margin: 0; }
 .pillbtn { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(6px); cursor: pointer; color: var(--fg); }
 .pillbtn:hover { background: var(--raised); }
+.hero-art #heroCanvas { opacity: .42; }
+.hero-art #heroDish { cursor: pointer; }
 .pillbtn .bolt { width: 9px; height: 9px; border-radius: 50%; background: var(--fg-3); transition: background .25s, box-shadow .25s; }
 .pillbtn[aria-pressed="true"] { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); }
 .pillbtn[aria-pressed="true"] .bolt { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), 0 0 12px 2px var(--glow); }
 .b-stop { position: absolute; right: 12px; top: 12px; z-index: 4; }
-.bench.playing .b-ctl-r { display: none; }
 .b-caption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 56px 24px 20px; background: linear-gradient(to top, color-mix(in srgb, var(--bg) 94%, transparent) 32%, transparent); font-family: var(--display); font-size: clamp(21px, 3vw, 38px); line-height: 1.08; text-align: center; text-wrap: balance; opacity: 0; transition: opacity .4s; pointer-events: none; }
 .b-caption.show { opacity: 1; }
 .b-stagebox.scan::after { content: ""; position: absolute; inset: 0 auto 0 -30%; width: 30%; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 26%, transparent), transparent); animation: scan 1.3s linear infinite; pointer-events: none; }
@@ -387,7 +416,7 @@ footer pre { margin: 0; font-family: var(--mono); font-size: 13px; background: v
 #bNet .node circle.body { transform-box: fill-box; transform-origin: center; transition: transform .35s, fill .25s, stroke .25s; }
 .b-stagebox[data-open="0"] #bNet .node circle.body { transform: scale(.62); }
 .b-stagebox[data-open="0"] #bNet .node { pointer-events: none; }
-.b-stagebox[data-open="0"] .tip { display: none; }
+.b-stagebox[data-scale="circuit"][data-open="0"] .tip { display: none; }
 #bNet .node.on circle.body { filter: drop-shadow(0 0 7px var(--lit)); }
 #bNet .node.fdim { opacity: .13; }
 #bNet .edge.fdim, #bNet .head.fdim { opacity: .05 !important; }
@@ -414,7 +443,30 @@ footer pre { margin: 0; font-family: var(--mono); font-size: 13px; background: v
 .lamp5.miss .led { border: 2px dashed var(--bad); background: transparent; }
 
 /* the side: steps, the panel of the current step, the rack of ten known experiments */
-.b-rail { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.b-rail { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+.b-rail button.bonus { border-style: dashed; }
+.b-rail button.bonus b { border-color: var(--accent); color: var(--accent); }
+.b-rail button.bonus[aria-current="step"] b { color: var(--bg); }
+.b-burst { position: absolute; left: 50%; top: 46%; width: 44px; height: 44px; margin: -22px; border-radius: 50%; border: 3px solid var(--accent); pointer-events: none; opacity: 0; z-index: 3; }
+.b-burst.go { animation: burst .9s ease-out; }
+@keyframes burst { from { transform: scale(.3); opacity: .95; } to { transform: scale(13); opacity: 0; } }
+.b-card.tease { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; border-style: dashed; }
+.hunt-meter { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; }
+.hunt-meter b { font-family: var(--display); font-weight: 400; font-size: 46px; line-height: 1; font-variant-numeric: tabular-nums; }
+.hunt-meter b span { font-size: 26px; color: var(--fg-3); }
+.hunt-meter .bar { height: 10px; border-radius: 999px; background: var(--raised); overflow: hidden; }
+.hunt-meter .bar i { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width .5s ease; }
+.hunt-msg { min-height: 2.7em; }
+.hunt-msg.new { color: var(--good); font-weight: 600; }
+.hunt-msg.again, .hunt-msg.bigger, .hunt-msg.trivial, .hunt-msg.odd { color: var(--fg); }
+.hunt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+.hchip { display: grid; gap: 1px; padding: 7px 10px; border-radius: 10px; border: 1px dashed var(--line); background: transparent; font-size: 13px; color: var(--fg-3); min-width: 0; }
+.hchip b { font-weight: 500; overflow-wrap: anywhere; }
+.hchip small { font-size: 11px; }
+.hchip.got { border-style: solid; border-color: color-mix(in srgb, var(--good) 50%, var(--line)); background: var(--good-soft); color: var(--fg); }
+.hchip.got small { color: var(--good); }
+.hchip.fresh { animation: pop .7s ease-out; }
+@keyframes pop { 0% { transform: scale(.7); opacity: 0; } 55% { transform: scale(1.08); opacity: 1; } 100% { transform: none; } }
 .b-rail button { width: 100%; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 8px 2px 7px; display: grid; justify-items: center; gap: 4px; cursor: pointer; font-size: 12px; color: var(--fg-2); }
 .b-rail button b { font-family: var(--mono); font-weight: 500; font-size: 12px; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line); }
 .b-rail button[aria-current="step"] { border-color: var(--fg); color: var(--fg); background: var(--raised); }
@@ -472,10 +524,12 @@ footer pre { margin: 0; font-family: var(--mono); font-size: 13px; background: v
 .vd.correct { background: var(--good-soft); color: var(--good); }
 .vd.wrong { background: var(--bad-soft); color: var(--bad); }
 .vd.not_expressible { border: 1px dashed var(--line); color: var(--fg-3); }
-.bench.playing .b-side button, .bench.playing .b-ctl button, .bench.playing .b-lamps button { pointer-events: none; }
+.bench.playing .b-side button, .bench.playing .b-bar button, .bench.playing .b-dock button, .bench.playing .b-lamps button { pointer-events: none; }
+.bench.playing .irr.nudge::after { display: none; }
 
 @media (max-width: 1020px) {
   .bench { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .b-left { width: auto; }
   /* on a narrow screen the lamps stay under the top bar while the panel scrolls, so a click below still shows its result above */
   .b-left { display: contents; }
   .b-lamps { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 56px); z-index: 6; padding-block: 6px; background: color-mix(in srgb, var(--bg-2) 94%, transparent); backdrop-filter: blur(8px); }
@@ -489,7 +543,14 @@ footer pre { margin: 0; font-family: var(--mono); font-size: 13px; background: v
   .b-rail button .lbl { display: none; }
   .b-rail button[aria-current="step"] .lbl { display: block; }
   .b-rail button[aria-current="step"] { grid-column: span 2; }
-  .b-rail { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .b-rail { grid-template-columns: repeat(7, minmax(0, 1fr)); }
   .b-caption { padding: 40px 14px 14px; }
   .pillbtn { padding: 6px 10px; font-size: 12px; }
+  .b-scale button:not([aria-pressed="true"]) span { display: none; }
+  .b-scale button { padding: 6px 10px; }
+  .b-dock { padding: 8px 8px; min-height: 0; gap: 8px 10px; }
+  .vials { gap: 7px; }
+  .vial { font-size: 10px; max-width: 58px; }
+  .vial .tube { width: 22px; height: 40px; }
+  .irr { padding: 10px 16px; font-size: 14px; }
 }
