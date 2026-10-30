@@ -26,21 +26,20 @@ nothing checks it, a quarter of its guesses were wrong, and its edits to the mod
 experiments. Read the exact counts off the scoreboard, they are computed when the page is built.
 
 **0:15 to 1:20. The bench (press *Play the 60-second story*; talk over the captions, do not read them out).**
-The page walks through by itself, from the dish to the cell and then through five steps. What each caption stands for:
-1. *Dish.* "A cell hit by radiation has to decide. The dish is irradiated and each cell pauses, ages, recycles itself or dies;
-   which fates are possible is the solver's exact answer, not a simulation. Cut one gene, TUG1, and every cell dies, which
-   is what the paper reports."
-2. *Cell.* "Inside every cell, a circuit of genes decides: golden arrows switch genes on, teal bars switch them off." (the
-   poster view)
-3. *Patch.* "The model has no ATR or CHK1, but the papers know them. Muse Spark read 36 papers and quotes what they say.
-   Plug in the new wire: CHK1 switches off CDC25C."
-4. *Tests.* "An exact checker replays ten known experiments. Three break: on the right, the cells now also age, which no paper
-   reports. The paper's dish is on the left."
-5. *Repair.* "The AI gets the counterexample and rewrites the rule: CHK1 only acts together with CDK1/CycB. Ten of ten pass,
-   and the two dishes now agree. The checker decided, not the AI."
-6. *Audit.* "Reality check on ten outcomes from papers the AI never read: no better than the published model. We say so.
-   Where the circuit never settles, marked with a star, its answers are not predictions." (the page clicks the p53 row: the
-   cells flicker between fates and never settle)
+The page walks through by itself, in plain words, one idea at a time (the captions are on the stage; each says what the
+picture shows, nothing needs a glossary):
+1. "Radiation damages the DNA of a cell." (the dish)
+2. "Then every cell picks one fate: it pauses, ages, recycles itself or dies." (the dish is irradiated; which fates are possible
+   is the solver's exact answer, not a simulation)
+3. "Switch off one gene, TUG1, and every cell dies. Finding genes like this is the goal." (the paper reports this one)
+4. "Inside the cell, genes switch each other on and off. This is our model of it." (the poster view)
+5. "But the model is missing links that the papers know. An AI reads 36 papers and finds them. One new link: CHK1 switches off
+   CDC25C."
+6. "Is the AI right? An exact checker, the solver, replays 10 experiments with known results. Three of them now come out wrong:
+   the AI's link was not safe."
+7. "The AI sees which ones, and rewrites the link. Now all ten come out right. The checker decided, not the AI."
+8. "Honest limit: on 10 outcomes from papers the AI never read, the model is no better than before." Then: "The AI proposes.
+   The solver decides."
 
 If there is time, say one line about the sixth step, the hunt: "The solver knows all eleven ways to leave only death; two of
 them are what the paper reports. Click genes and find them." Show one discovery (TUG1 out), then stop.
