@@ -25,9 +25,16 @@
     total: SPACE.total || 0, found: SPACE.found || 0, secs: Math.max(1, Math.round(SPACE.seconds || 0)), sizes: ["1", "2", "3", "4", "5"].map((k) => (SPACE.sizes || {})[k] || 0),
     proj: SPACE.projected_seconds || {}, keep: SPACE.keep || [], marks: AIX ? AIX.marks : [], ai: AIX ? AIX.summary : null, unchecked: failCount("naive"), checked: failCount("verified").concat(failCount("repaired")),
   };
-  /* the chain reaction of one shortlisted pair: the genes forced one after another (analysis.explain), how many loop back on each other, and the count of on/off combinations */
-  const DOM = (D.interventions || {}).domino || null, DOMX = DOM || { genes: 0, combos: 0, chain: [], loops: 0 };
-  const PAIR = DOM ? DOM.set : INTERV.find((s) => s.length === 2 && s.some(([, v]) => v === 0)) || INTERV.find((s) => s.length === 2) || INTERV[0] || [];
+  /* new rules keep coming and each can change which combinations work: the same search on the model with the rules read from the papers
+     applied unchecked and on the checked one, and how many of the published list each keeps (report/data.py), with the number of known
+     experiments each model breaks (the verification matrix) */
+  const DR0 = (D.interventions || {}).drift || null, RUNS = (D.summary || {}).runs || {}, NCASES = ((D.verification || {}).cases || []).length;
+  const broke = (key) => (MATRIX[key] ? Object.keys(MATRIX[key]).length : null);
+  const DRIFT = DR0 && RUNS.naive_min2 && NCASES && broke("naive_min2") !== null && broke("repaired_min2") !== null
+    ? { ...DR0, rules: RUNS.naive_min2.accepted, papers: (D.meta || {}).corpus_papers || 0, cases: NCASES, broken: broke("naive_min2"), repaired: broke("repaired_min2") } : null;
+  const DR = DRIFT || { published: 0, rules: 0, papers: 0, cases: 0, broken: 0, repaired: 0, unchecked: { sets: 0, kept: 0, new: 0 }, checked: { sets: 0, kept: 0, new: 0 } };
+  /* the pair shown in the goal beat: the first shortlisted pair with one gene switched off and one forced on */
+  const PAIR = INTERV.find((s) => s.length === 2 && s.some(([, v]) => v === 0)) || INTERV.find((s) => s.length === 2) || INTERV[0] || [];
   const UNCH = HERO.unchecked.length ? [Math.min(...HERO.unchecked), Math.max(...HERO.unchecked)] : null, CHK = HERO.checked.length ? Math.max(...HERO.checked) : 0;
   /* the shortlisted sets that the base paper itself reports (TUG1 knocked out, miR-221 forced on) and that the search rediscovers */
   const PAPER_SETS = [[["TUG1", 0]], [["miR221", 1]]].filter((s) => ((D.interventions || {}).published || []).some((q) => JSON.stringify(q) === JSON.stringify(s))).length;
@@ -37,16 +44,18 @@
   const TEXT = {
     en: {
       "nav.bench": "Bench", "play.short": "▶ Play", "play.stop": "■ Stop",
-      "hero.sr": () => `CellProof: radiation breaks DNA and a damaged cell does not always die. The goal is a combination of genes to switch off, or on, that leaves only death. One switch sets off a chain reaction: a paper gives one link at a time, the cell is ${DOMX.genes} genes pushing each other (${num(DOMX.combos)} on/off combinations), ${DOMX.chain.length} genes fall one by one for this pair and ${DOMX.loops} more loop back on each other, which only the solver settles. There are ${num(HERO.total)} combinations of one or two genes, ${num(HERO.sizes[4])} of up to five, and controlling a Boolean network is NP-hard in general (Akutsu et al. 2007). ${HERO.ai ? `Asked directly, an AI named ${HERO.ai.distinct} sets, ${HERO.ai.works} were right and it found ${HERO.ai.minimal_hits} of the ${HERO.ai.minimal} candidates. ` : ""}${UNCH ? `Its unchecked edits to the model break ${range(...UNCH)} of 10 known experiments. ` : ""}An exact solver finds all of them here but cannot read the papers. Together: ${HERO.found} candidates for the lab and ${CHK} of 10 known experiments broken. Hypotheses for experiments, not treatments.`,
+      "hero.sr": () => `CellProof: radiation breaks DNA and a damaged cell does not always die. The goal is a combination of genes to switch off, or on, that leaves only death. ${DRIFT ? `New rules keep coming and each can change which genes to flip: ${DR.rules} new rules from ${DR.papers} papers, added without checking, replaced all ${DR.published} combinations that worked with ${DR.unchecked.sets} others, while with each rule checked first the same ${DR.checked.sets} stayed. ` : ""}There are ${num(HERO.total)} combinations of one or two genes, ${num(HERO.sizes[4])} of up to five, and controlling a Boolean network is NP-hard in general (Akutsu et al. 2007). ${HERO.ai ? `Asked directly, an AI named ${HERO.ai.distinct} sets, ${HERO.ai.works} were right and it found ${HERO.ai.minimal_hits} of the ${HERO.ai.minimal} candidates. ` : ""}${UNCH ? `Its unchecked edits to the model break ${range(...UNCH)} of 10 known experiments. ` : ""}An exact solver finds all of them here but cannot read the papers. Together: ${HERO.found} candidates for the lab and ${CHK} of 10 known experiments broken. Hypotheses for experiments, not treatments.`,
       "hero.sa": () => `<b>AI alone:</b> ${joined([HERO.ai && `${HERO.ai.works} of ${HERO.ai.distinct} guesses right, ${HERO.ai.minimal_hits} of the ${HERO.ai.minimal} candidates found`, UNCH && `its edits break ${range(...UNCH)} of 10 known experiments`])}`,
       "hero.sb": () => `<b>Solver alone:</b> finds all ${HERO.found} and checks them, but cannot read the papers${HERO.proj["5"] ? `; ≈ ${dur(HERO.proj["5"])} for 5 changes (projected)` : ""}`,
       "hero.sc": () => `<b>Together:</b> ${HERO.found} candidates for the lab (${PAPER_SETS} in the base paper, the rest computed), ${CHK} of 10 known experiments broken`,
       "hero.b1": "Radiation <em>breaks</em> DNA.", "hero.b2": "Not every damaged cell <em>dies.</em>", "hero.n2": "In the published model. Illustration, not percentages.",
       "hero.b3": "Flip the right genes, and every cell <em>dies.</em>", "hero.s3": "The goal: a combination of genes to switch off, or on, that leaves only death.",
       "hero.n3": "Two genes here, an example from the model. Illustration.",
-      "hero.bd": "One switch. A <em>chain reaction.</em>",
-      "hero.sd": () => `A paper gives one link at a time. The cell is all of them at once: ${DOMX.genes} genes pushing each other, ${num(DOMX.combos)} on/off combinations.`,
-      "hero.dl": () => `${DOMX.chain.length} genes fall one by one, each step checkable by hand. ${DOMX.loops} more loop back on each other: only the solver settles them. This pair is not in the base paper.`,
+      "hero.bd": "New rules change <em>which genes to flip.</em>",
+      "hero.sd": () => `A rule is a link between two genes, and papers keep adding them. Here, ${DR.rules} new rules from ${DR.papers} papers, unchecked, replaced all ${DR.published} combinations that worked.`,
+      "hero.dl": () => `Check each rule first, and the same ${DR.checked.sets} stay.`,
+      "hero.dr1": "The published model", "hero.dr2": (n) => `+ ${n} new rules from ${DR.papers} papers, unchecked`, "hero.dr3": "The same papers, each rule checked first",
+      "hero.drn": "combinations that work", "hero.drb": (n) => `${n} of ${DR.cases} known experiments broken`,
       "hero.b4": "Which combination? The search <em>explodes.</em>", "hero.n4": "combinations, each one a lab experiment", "hero.np": "<b>NP-hard</b> in general · Akutsu et al. 2007",
       "hero.stage": (k, t, proj) => `up to ${k} genes at once · solver ${proj ? "≈ " : ""}${t}${proj ? " (projected)" : ""}`,
       "hero.b5": "The AI proposes. The solver <em>decides.</em>", "hero.n5": "candidates left",
@@ -108,16 +117,18 @@
     },
     el: {
       "nav.bench": "Εργαστήριο", "play.short": "▶ Παίξε", "play.stop": "■ Στοπ",
-      "hero.sr": () => `CellProof: η ακτινοβολία σπάει το DNA και ένα κύτταρο με βλάβη δεν πεθαίνει πάντα. Ο στόχος είναι ένας συνδυασμός γονιδίων να σβήσουν, ή να ανάψουν, ώστε να μείνει μόνο ο θάνατος. Ένας διακόπτης ξεκινά αλυσιδωτή αντίδραση: ένα paper δίνει μία σύνδεση τη φορά, το κύτταρο είναι ${DOMX.genes} γονίδια που σπρώχνουν το ένα το άλλο (${num(DOMX.combos)} συνδυασμοί ανοιχτό/κλειστό), γι' αυτό το ζεύγος πέφτουν ${DOMX.chain.length} γονίδια ένα-ένα και ${DOMX.loops} ακόμη κάνουν κύκλους μεταξύ τους, κάτι που το λύνει μόνο ο solver. Υπάρχουν ${num(HERO.total)} συνδυασμοί ενός ή δύο γονιδίων, ${num(HERO.sizes[4])} με έως πέντε, και ο έλεγχος ενός δικτύου Boole είναι γενικά NP-hard (Akutsu et al. 2007). ${HERO.ai ? `Όταν ρωτήθηκε απευθείας, ένα AI ονόμασε ${HERO.ai.distinct} σύνολα, τα ${HERO.ai.works} ήταν σωστά και βρήκε ${HERO.ai.minimal_hits} από τις ${HERO.ai.minimal} υποψήφιες. ` : ""}${UNCH ? `Οι ανέλεγκτες αλλαγές του στο μοντέλο χαλάνε ${range(...UNCH)} από 10 γνωστά πειράματα. ` : ""}Ένας ακριβής solver τις βρίσκει όλες εδώ αλλά δεν μπορεί να διαβάσει τα papers. Μαζί: ${HERO.found} υποψήφιες για το εργαστήριο και ${CHK} από 10 γνωστά πειράματα χαλασμένα. Υποθέσεις για πειράματα, όχι θεραπείες.`,
+      "hero.sr": () => `CellProof: η ακτινοβολία σπάει το DNA και ένα κύτταρο με βλάβη δεν πεθαίνει πάντα. Ο στόχος είναι ένας συνδυασμός γονιδίων να σβήσουν, ή να ανάψουν, ώστε να μείνει μόνο ο θάνατος. ${DRIFT ? `Νέοι κανόνες βγαίνουν συνέχεια και ο καθένας μπορεί να αλλάξει ποια γονίδια θα γυρίσεις: ${DR.rules} νέοι κανόνες από ${DR.papers} papers, χωρίς έλεγχο, αντικατέστησαν όλους τους ${DR.published} συνδυασμούς που δούλευαν με ${DR.unchecked.sets} άλλους, ενώ όταν κάθε κανόνας ελέγχθηκε πρώτα έμειναν οι ίδιοι ${DR.checked.sets}. ` : ""}Υπάρχουν ${num(HERO.total)} συνδυασμοί ενός ή δύο γονιδίων, ${num(HERO.sizes[4])} με έως πέντε, και ο έλεγχος ενός δικτύου Boole είναι γενικά NP-hard (Akutsu et al. 2007). ${HERO.ai ? `Όταν ρωτήθηκε απευθείας, ένα AI ονόμασε ${HERO.ai.distinct} σύνολα, τα ${HERO.ai.works} ήταν σωστά και βρήκε ${HERO.ai.minimal_hits} από τις ${HERO.ai.minimal} υποψήφιες. ` : ""}${UNCH ? `Οι ανέλεγκτες αλλαγές του στο μοντέλο χαλάνε ${range(...UNCH)} από 10 γνωστά πειράματα. ` : ""}Ένας ακριβής solver τις βρίσκει όλες εδώ αλλά δεν μπορεί να διαβάσει τα papers. Μαζί: ${HERO.found} υποψήφιες για το εργαστήριο και ${CHK} από 10 γνωστά πειράματα χαλασμένα. Υποθέσεις για πειράματα, όχι θεραπείες.`,
       "hero.sa": () => `<b>Μόνο AI:</b> ${joined([HERO.ai && `${HERO.ai.works} από ${HERO.ai.distinct} εικασίες σωστές, βρήκε ${HERO.ai.minimal_hits} από τις ${HERO.ai.minimal} υποψήφιες`, UNCH && `οι αλλαγές του χαλάνε ${range(...UNCH)} από 10 γνωστά πειράματα`])}`,
       "hero.sb": () => `<b>Μόνο solver:</b> βρίσκει και τις ${HERO.found} και τις ελέγχει, αλλά δεν διαβάζει τα papers${HERO.proj["5"] ? `· ≈ ${dur(HERO.proj["5"])} για 5 αλλαγές (εκτίμηση)` : ""}`,
       "hero.sc": () => `<b>Μαζί:</b> ${HERO.found} υποψήφιες για το εργαστήριο (${PAPER_SETS} στο βασικό paper, οι άλλες υπολογισμένες), ${CHK} από 10 γνωστά πειράματα χαλασμένα`,
       "hero.b1": "Η ακτινοβολία <em>σπάει</em> το DNA.", "hero.b2": "Δεν πεθαίνει <em>κάθε</em> κύτταρο με βλάβη.", "hero.n2": "Στο δημοσιευμένο μοντέλο. Εικονογράφηση, όχι ποσοστά.",
       "hero.b3": "Γύρνα τους σωστούς διακόπτες και κάθε κύτταρο <em>πεθαίνει.</em>", "hero.s3": "Ο στόχος: ένας συνδυασμός γονιδίων να σβήσουν, ή να ανάψουν, ώστε να μείνει μόνο ο θάνατος.",
       "hero.n3": "Εδώ δύο γονίδια, ένα παράδειγμα από το μοντέλο. Εικονογράφηση.",
-      "hero.bd": "Ένας διακόπτης. <em>Αλυσιδωτή αντίδραση.</em>",
-      "hero.sd": () => `Ένα paper δίνει μία σύνδεση τη φορά. Το κύτταρο είναι όλες μαζί: ${DOMX.genes} γονίδια που σπρώχνουν το ένα το άλλο, ${num(DOMX.combos)} συνδυασμοί ανοιχτό/κλειστό.`,
-      "hero.dl": () => `${DOMX.chain.length} γονίδια πέφτουν ένα-ένα, κάθε βήμα ελέγξιμο με το χέρι. ${DOMX.loops} ακόμη κάνουν κύκλους μεταξύ τους: μόνο ο solver τα λύνει. Αυτό το ζεύγος δεν είναι στο βασικό paper.`,
+      "hero.bd": "Νέοι κανόνες, <em>άλλοι διακόπτες να γυρίσεις.</em>",
+      "hero.sd": () => `Ένας κανόνας είναι μια σύνδεση ανάμεσα σε δύο γονίδια, και τα papers προσθέτουν συνέχεια νέους. Εδώ, ${DR.rules} νέοι κανόνες από ${DR.papers} papers, χωρίς έλεγχο, αντικατέστησαν όλους τους ${DR.published} συνδυασμούς που δούλευαν.`,
+      "hero.dl": () => `Έλεγξε κάθε κανόνα πρώτα και μένουν οι ίδιοι ${DR.checked.sets}.`,
+      "hero.dr1": "Το δημοσιευμένο μοντέλο", "hero.dr2": (n) => `+ ${n} νέοι κανόνες από ${DR.papers} papers, χωρίς έλεγχο`, "hero.dr3": "Τα ίδια papers, κάθε κανόνας ελέγχεται πρώτα",
+      "hero.drn": "συνδυασμοί που δουλεύουν", "hero.drb": (n) => `${n} από ${DR.cases} γνωστά πειράματα χαλασμένα`,
       "hero.b4": "Ποιος συνδυασμός; Η αναζήτηση <em>εκρήγνυται.</em>", "hero.n4": "συνδυασμοί, ο καθένας ένα πείραμα στο εργαστήριο", "hero.np": "<b>NP-hard</b> γενικά · Akutsu et al. 2007",
       "hero.stage": (k, t, proj) => `έως ${k} γονίδια μαζί · solver ${proj ? "≈ " : ""}${t}${proj ? " (εκτίμηση)" : ""}`,
       "hero.b5": "Το AI προτείνει. Ο solver <em>αποφασίζει.</em>", "hero.n5": "υποψήφιες έμειναν",
@@ -594,17 +605,23 @@
      it moves only while it is on screen, and the little bars under the words jump to any beat */
   (function heroStory() {
     const hero = $("#top"), cvH = $("#heroMol"), cvS = $("#heroStory"); if (!hero || !cvH || !cvS) return;
-    const FULL = HERO.total && HERO.found && HERO.sizes.every(Boolean) && DOM && DOM.chain.length, lite = innerWidth < 700, BEATS = FULL ? 6 : 3, DUR = [3400, 4200, 4800, 6000, 6200, 6800].slice(0, BEATS), dots = $$("#hDots button");
+    const FULL = HERO.total && HERO.found && HERO.sizes.every(Boolean) && DRIFT, lite = innerWidth < 700, BEATS = FULL ? 6 : 3, DUR = [3400, 4200, 4800, 6400, 6200, 6800].slice(0, BEATS), dots = $$("#hDots button");
     let beat = 0, timer = 0, hitT = 0, seen = true, shown = -1, shownStage = 0;
     dots.forEach((d, i) => { d.hidden = i >= BEATS; });
     const paint = (n) => { shown = n; const el = $(`.beat[data-b="${beat + 1}"] [data-count]`, hero); if (el && n >= 0) el.textContent = num(n); };
     const paintHeroStage = (k) => { const el = $("[data-stage-text]", hero); if (el) el.textContent = k >= 2 ? T("hero.stage", k, dur(k === 2 ? HERO.secs : HERO.proj[String(k)] || 0), k > 2) : ""; };
     const stageTo = (k) => { shownStage = k; hero.dataset.stage = String(k); paintHeroStage(k); };
-    const chips = PAIR.map(([n, v]) => ({ name: pretty(n), off: v === 0 })), domino = DOM && DOM.chain.length ? { set: DOM.set, chain: DOM.chain, label: pretty } : null;
+    const chips = PAIR.map(([n, v]) => ({ name: pretty(n), off: v === 0 }));
+    /* the fourth beat: three rows of dots (published list; after the rules were added unchecked; after each was checked first), the words from TEXT */
+    const drift = DRIFT ? {
+      published: DR.published, rules: DR.rules,
+      rows: [{ kept: DR.published, added: 0 }, { kept: DR.unchecked.kept, added: DR.unchecked.new, broken: DR.broken }, { kept: DR.checked.kept, added: DR.checked.new, broken: DR.repaired }],
+      labels: () => ({ r1: T("hero.dr1"), r2: (n) => T("hero.dr2", n), r3: T("hero.dr3"), head: T("hero.drn"), broken: (n) => T("hero.drb", n) }),
+    } : null;
     /* the first two rows are warnings (each does part of the job); the first becomes a cross only if the model was mostly wrong */
     const aiRow = $(".b-score li:nth-child(1)", hero);
     if (aiRow && HERO.ai && HERO.ai.distinct && HERO.ai.works / HERO.ai.distinct < 0.5) { aiRow.className = "no"; $("i", aiRow).textContent = "✕"; }
-    const helix = makeHelix(cvH, { lite }), story = makeStory(cvS, { lite, total: HERO.total, keep: HERO.keep, sizes: HERO.sizes, marks: HERO.marks, chips, domino, fmt: num, onCount: paint, onStage: stageTo });
+    const helix = makeHelix(cvH, { lite }), story = makeStory(cvS, { lite, total: HERO.total, keep: HERO.keep, sizes: HERO.sizes, marks: HERO.marks, chips, drift, fmt: num, onCount: paint, onStage: stageTo });
     function show(n) {
       beat = n; hero.dataset.beat = String(n + 1); shownStage = 0; hero.dataset.stage = "0"; paintHeroStage(0);
       dots.forEach((d, i) => { d.dataset.state = i < n ? "done" : i === n ? "on" : "todo"; d.setAttribute("aria-current", i === n ? "step" : "false"); d.style.setProperty("--dur", DUR[n] + "ms"); });

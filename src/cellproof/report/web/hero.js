@@ -152,8 +152,9 @@ function makeHelix(cv, opt = {}) {
 /* ---------------------------------------------------------------- the story: a dish of cells, the goal, every change the solver tried, the verdict */
 function makeStory(cv, opt = {}) {
   /* Beats, counted from 0: 0 is the DNA alone (this canvas stays empty); 1 a dish swept by radiation, each cell taking one of four fates;
-     2 the goal: gene switches flip and every cell of a fresh dish dies; 3 the chain reaction: the genes that those two switches force,
-     one after another, fall like dominoes onto a cell; 4 a field with one dot per change of one or two genes that the solver tried,
+     2 the goal: gene switches flip and every cell of a fresh dish dies; 3 new rules keep coming and each can change which combinations
+     work (three rows of dots: the published model's list, the list after rules from the papers were added unchecked, and after each was
+     checked first); 4 a field with one dot per change of one or two genes that the solver tried,
      which then zooms out as the number of genes changed at once grows; 5 back to the field: the AI's guesses, judged, and the
      solver's scan, which dims all but the few that leave only death. The dots are one per set, in a fixed random order, so the
      positions mean nothing; the counts, the guesses' verdicts and which dots stay lit are the solver's. show(n) sets the beat,
@@ -175,7 +176,7 @@ function makeStory(cv, opt = {}) {
   const pattern = ctx.createPattern(tile, "repeat");
 
   let W = 0, H = 0, dpr = 1, area = { cx: 0, cy: 0, w: 0, h: 0 }, dish = { cx: 0, cy: 0, R: 0 }, grid = null;
-  let ready = false, running = false, last = 0, beat = -1, prev = -1, dishA = 0, gridA = 0, sweepT = 0, chipT = 0, gridT = 0, zoomT = 0, backT = 0, backFrom = 1, aiT = 0, scanT = 0, count = -2, stage = 0, domA = 0, domT = 0, domCell = null;
+  let ready = false, running = false, last = 0, beat = -1, prev = -1, dishA = 0, gridA = 0, sweepT = 0, chipT = 0, gridT = 0, zoomT = 0, backT = 0, backFrom = 1, aiT = 0, scanT = 0, count = -2, stage = 0, driftA = 0, driftT = 0;
   let cells = [], blebs = [], debris = [];
 
   /* ---- the dish: cells are kept in units of the dish radius, so a resize moves nothing */
@@ -358,51 +359,79 @@ function makeStory(cv, opt = {}) {
     if (beat === 4) { const k = n >= SIZES[4] * 0.9999 ? 5 : n >= SIZES[3] * 0.9999 ? 4 : n >= SIZES[2] * 0.9999 ? 3 : 2; if (k !== stage) { stage = k; if (opt.onStage) opt.onStage(k); } }
   }
 
-  /* ---- the chain reaction: the genes that the two switches force, one after another, fall like dominoes onto a cell. The order is the order
-     in which the solver's checkable steps force them; a tile is not a claim that it acts directly on the next. */
-  const DOM = opt.domino || null;
-  let tiles = [];
-  (function buildTiles() {
-    if (!DOM) return;
-    const full = [...DOM.set.map(([name, v]) => ({ name: DOM.label(name), v, set: true })), ...DOM.chain.map(([name, v]) => ({ name: DOM.label(name), v }))];
-    const max = lite ? 8 : 11, tail = 3;
-    if (full.length > max) { const head = max - 1 - tail; tiles = [...full.slice(0, head), { name: `+${full.length - head - tail}`, gap: true }, ...full.slice(-tail)]; } else tiles = full;
-  })();
-  const newDomCell = () => ({ x: 0, y: 0, r: 1, s: 1, a: 1, tint: FATES.base.slice(), act: null, die: 0, hit: 0, spin: 0.7, ph: 1.3, bled: false, gone: false });
-  function drawDomino(T, a, dt) {
-    const n = tiles.length; if (!n) return;
-    ctx.font = `600 ${lite ? 10 : 12.5}px ${sans}`;
-    const first = tiles[0].set ? `${tiles[0].name} ${tiles[0].v ? "ON" : "✕"}` : tiles[0].name, lead = Math.min(90, ctx.measureText(first).width * 0.72);  /* room for the tilted first name */
-    const th = Math.max(54, Math.min(area.h * 0.36, 150)), cr = th * 0.5, left = area.cx - area.w / 2 + lead, span = area.w - lead - th * 1.25, sp = span / n, tw = Math.max(15, Math.min(sp * 0.62, 38));
-    const base = area.cy + th * 0.5, FALL = 520, STEP = Math.min(300, 3000 / n), t0 = domT + 800, easeIn = (f) => f * f * (1.6 - 0.6 * f);
-    ctx.save(); ctx.globalAlpha = a;
-    const fl = ctx.createLinearGradient(left, 0, left + area.w, 0); fl.addColorStop(0, "rgba(255,255,255,0)"); fl.addColorStop(0.12, "rgba(255,255,255,.35)"); fl.addColorStop(0.9, "rgba(255,255,255,.35)"); fl.addColorStop(1, "rgba(255,255,255,0)");
-    ctx.fillStyle = fl; ctx.fillRect(left, base, area.w, 2);
-    /* the cell the last tile falls on */
-    const lastX = left + (n - 1) * sp + tw, cx = lastX + th * 0.72, cy = base - cr, hitT = t0 + (n - 1) * STEP + FALL * 0.85, c = domCell || (domCell = newDomCell());
-    if (!c.act && T >= hitT) { c.act = "apoptosis"; c.die = T; c.hit = T; }
-    const k = 1 - Math.exp(-dt * 6), target = FATES[c.act || "base"]; c.tint = c.tint.map((v, i) => v + (target[i] - v) * k); c.spin += dt * 0.5; c.s += ((c.act ? 1.12 : 1) - c.s) * (1 - Math.exp(-dt * 4));
-    if (c.die && T - c.die > 1500) c.a = Math.max(0.35, c.a - dt * 1.2);
-    const keep = dish; dish = { cx, cy, R: cr }; drawCell(c, T, a); dish = keep;
-    for (let i = n - 1; i >= 0; i--) {  /* right to left: a tile that has fallen rests on top of the next */
-      const q = tiles[i], x = left + i * sp, f = Math.max(0, Math.min(1, (T - t0 - i * STEP) / FALL)), ang = (Math.PI / 2) * 0.86 * easeIn(f);
-      const on = q.set ? q.v : f > 0.5 ? q.v : -1, hot = f > 0 && f < 1 ? Math.sin(Math.PI * f) : 0;
-      const col = q.gap ? [210, 204, 240] : on === 1 ? [255, 206, 160] : on === 0 ? (q.set ? FATES.apoptosis : [150, 170, 235]) : [226, 218, 252];
-      ctx.save(); ctx.translate(x + tw, base); ctx.rotate(ang);
-      const g = ctx.createLinearGradient(-tw, -th, 0, 0); g.addColorStop(0, rgba(mixc(col, WHITE, 0.55), 0.96)); g.addColorStop(1, rgba(mixc(col, INK, 0.12), 0.96));
-      ctx.beginPath(); ctx.roundRect ? ctx.roundRect(-tw, -th, tw, th, 5) : ctx.rect(-tw, -th, tw, th); ctx.fillStyle = g; ctx.fill();
-      ctx.lineWidth = 1.6; ctx.strokeStyle = q.gap ? "rgba(255,255,255,.6)" : "rgba(255,255,255,.75)"; if (q.gap) ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
-      if (hot > 0) { ctx.strokeStyle = `rgba(255,214,170,${0.9 * hot})`; ctx.lineWidth = 3; ctx.stroke(); }
+  /* ---- the drift: new rules keep coming, and each can change which combinations work. Three rows, one dot per combination that the exhaustive
+     search found: the published model's; the same model after the rules read from the papers were added without checking (the old
+     combinations go out, others appear); and after each rule was checked first (the old ones are back, ringed green). The counts of
+     combinations and of broken experiments are the solver's; the cards that fall are an illustration of papers bringing rules. */
+  const DR = opt.drift || null, HALO_RED = soft(RED), T2 = 1100, T3 = 3700, FALL = 480, GAP = 120;
+  const outOrder = (() => { const q = rng(7), o = Array.from({ length: DR ? DR.published : 0 }, (_, i) => i); for (let i = o.length - 1; i > 0; i--) { const j = Math.floor(q() * (i + 1)); [o[i], o[j]] = [o[j], o[i]]; } return o; })();
+  function drawDrift(T, a) {
+    if (!DR) return;
+    const L = DR.labels(), t = T - driftT, left = area.cx - area.w / 2, right = area.cx + area.w / 2, n0 = DR.published, extra = Math.max(DR.rows[1].added, DR.rows[2].added);
+    const fs = lite ? 11 : 13, sm = lite ? 10 : 11.5, big = lite ? 24 : 34;
+    ctx.save(); ctx.font = `700 ${big}px ${sans}`;
+    const numW = ctx.measureText("00").width + 10, strip = right - left - numW - 6, p = strip / (n0 + extra + 0.7), r = Math.min(p * 0.36, lite ? 9 : 13);
+    const rowH = fs + 8 + 2 * r + 6 + sm + 4, pitch = Math.min((area.h - rowH) / 2, rowH * 2.3), top = area.cy - (2 * pitch + rowH) / 2;
+    const slotX = (k) => left + r + 1 + (k < n0 ? k : k + 0.7) * p, yL = (i) => top + i * pitch + fs, yD = (i) => yL(i) + 8 + r;
+    const pad = lite ? 12 : 18;  /* a dark panel behind the rows, so that the small words stay readable over the DNA */
+    ctx.globalAlpha = a * clamp01(t / 300); ctx.beginPath(); ctx.roundRect ? ctx.roundRect(left - pad, top - pad, right - left + 2 * pad, 2 * pitch + rowH + 2 * pad, 14) : ctx.rect(left - pad, top - pad, right - left + 2 * pad, 2 * pitch + rowH + 2 * pad);
+    ctx.fillStyle = "rgba(14,12,34,.55)"; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = "rgba(255,255,255,.14)"; ctx.stroke();
+    const dot = (x, y, kind, k, al, ring) => {  /* k: 0..1 how far it has appeared; ring: 0..1 the green ring of a checked one */
+      if (al <= 0.01) return;
+      const rr = r * (0.4 + 0.6 * k);
+      if (kind === "ghost") { ctx.globalAlpha = a * al * 0.6; ctx.setLineDash([3, 3]); ctx.lineWidth = 1.3; ctx.strokeStyle = "rgba(255,255,255,.55)"; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.stroke(); ctx.setLineDash([]); return; }
+      const hot = kind === "new" ? RED : PEACH;
+      ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = a * al * 0.55; ctx.drawImage(kind === "new" ? HALO_RED : HALO, x - rr * 2.4, y - rr * 2.4, rr * 4.8, rr * 4.8); ctx.restore();
+      ctx.globalAlpha = a * al; ctx.fillStyle = rgba(mixc(hot, WHITE, kind === "new" ? 0.3 : 0.55), 1); ctx.beginPath(); ctx.arc(x, y, rr, 0, TAU); ctx.fill();
+      if (ring > 0) { ctx.globalAlpha = a * al * ring; ctx.lineWidth = Math.max(1.4, r * 0.16); ctx.strokeStyle = rgba(GREEN, 1); ctx.beginPath(); ctx.arc(x, y, r * (1.3 + 0.25 * (1 - ring)), 0, TAU); ctx.stroke(); }
+    };
+    let landed = 0; for (let j = 0; j < DR.rules; j++) if (t >= T2 + 150 + j * GAP + FALL) landed++;
+    const START = [0, T2, T3];
+    for (let i = 0; i < 3; i++) {
+      const row = DR.rows[i], ra = clamp01((t - START[i]) / 300); if (ra <= 0) continue;
+      let lit = 0; const y = yD(i);
+      for (let k = 0; k < n0 + row.added; k++) {
+        const x = slotX(k);
+        if (i === 0) { const ap = clamp01((t - 100 - k * 40) / 240); if (ap > 0) { dot(x, y, "lit", smooth(ap), ap, 0); if (ap > 0.5) lit++; } continue; }
+        if (k >= n0) {  /* a combination that was not in the published list */
+          const at = i === 1 ? T2 + 1850 + (k - n0) * 150 : T3 + 100 + k * 40, ap = clamp01((t - at) / 260);
+          if (ap > 0) { dot(x, y, "new", smooth(ap) * (1 + 0.25 * Math.sin(ap * Math.PI)), ap, 0); if (ap > 0.5) lit++; }
+          continue;
+        }
+        const kept = k < row.kept;
+        if (i === 1) {  /* the old combinations go out one after another, in no particular order, as the cards land */
+          const ap = clamp01((t - T2 - 100) / 250), out = T2 + 500 + (outOrder[k] / Math.max(1, n0)) * 1400;
+          if (kept || t < out) { const fl = !kept && t > out - 260 ? 0.55 + 0.45 * Math.cos((t - out) * 0.05) : 1; dot(x, y, "lit", 1, ap * fl, 0); if (ap > 0.5) lit++; } else dot(x, y, "ghost", 1, ap, 0);
+        } else {
+          const at = T3 + 100 + k * 40, ap = clamp01((t - at) / 240);
+          if (kept) { dot(x, y, "lit", smooth(ap), ap, clamp01((t - at - 160) / 300)); if (ap > 0.5) lit++; } else dot(x, y, "ghost", 1, clamp01((t - T3 - 100) / 300), 0);
+        }
+      }
+      if (i === 1 && row.added > 0 && t > T2 + 1700) { ctx.globalAlpha = a * clamp01((t - T2 - 1700) / 250) * 0.8; ctx.font = `700 ${fs + 3}px ${sans}`; ctx.fillStyle = "rgba(255,255,255,.85)"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("+", left + r + 1 + (n0 - 0.5 + 0.35) * p, y); }
+      ctx.textBaseline = "alphabetic"; ctx.textAlign = "left";
+      /* the label above, the count at the right, and what the solver says about the known experiments under the row */
+      ctx.globalAlpha = a * ra; ctx.font = `600 ${fs}px ${sans}`; ctx.fillStyle = "rgba(255,255,255,.92)"; ctx.fillText(i === 1 ? L.r2(landed) : i === 0 ? L.r1 : L.r3, left, yL(i));
+      if (i === 0) { ctx.font = `500 ${sm}px ${sans}`; ctx.fillStyle = "rgba(228,224,255,.78)"; ctx.textAlign = "right"; ctx.fillText(L.head, right, yL(0)); ctx.textAlign = "left"; }
+      ctx.font = `700 ${big}px ${sans}`; ctx.textAlign = "right"; ctx.fillStyle = rgba(i === 1 && lit ? mixc(RED, WHITE, 0.25) : mixc(PEACH, WHITE, 0.5), 1); ctx.fillText(String(lit), right, y + big * 0.34); ctx.textAlign = "left";
+      if (i > 0) {
+        const at = i === 1 ? T2 + 1850 + Math.max(0, row.added - 1) * 150 + 450 : T3 + 100 + (n0 + row.added) * 40 + 300, ba = clamp01((t - at) / 350);
+        if (ba > 0) { ctx.globalAlpha = a * ba; ctx.font = `600 ${sm}px ${sans}`; ctx.fillStyle = rgba(row.broken ? RED : GREEN, 1); ctx.fillText(`${row.broken ? "✕" : "✓"} ${L.broken(row.broken)}`, left, y + r + sm + 6); }
+      }
+    }
+    /* the cards: each paper brings a rule, a link between two genes, and falls into the second row */
+    const cw = lite ? 15 : 22, ch = cw * 1.3, y0 = yD(0) + r + 8, y1 = yL(1) - fs;
+    for (let j = 0; j < DR.rules; j++) {
+      const f = (t - (T2 + 150 + j * GAP)) / FALL; if (f <= 0 || f >= 1.3) continue;
+      const e = f * f * (1.5 - 0.5 * f), x = left + 22 + ((j + 1) * 0.6180339887 % 1) * (strip - 36), y = y0 + (y1 - y0) * clamp01(e), rot = Math.sin(j * 1.7) * 0.35 + clamp01(f) * 0.5, al = clamp01(f / 0.15) * (1 - clamp01((f - 1) / 0.3));
+      ctx.save(); ctx.globalAlpha = a * al; ctx.translate(x, y); ctx.rotate(rot);
+      ctx.beginPath(); ctx.roundRect ? ctx.roundRect(-cw / 2, -ch / 2, cw, ch, 3) : ctx.rect(-cw / 2, -ch / 2, cw, ch); ctx.fillStyle = "rgba(250,247,255,.95)"; ctx.fill();
+      ctx.strokeStyle = "rgba(255,255,255,.85)"; ctx.lineWidth = 1; ctx.stroke();
+      const lx = cw * 0.2, ly = -ch * 0.12;  /* the rule on the card: two genes and the link between them */
+      ctx.strokeStyle = rgba(PEACH, 1); ctx.lineWidth = Math.max(1.2, cw * 0.07); ctx.beginPath(); ctx.moveTo(-lx, ly); ctx.lineTo(lx, ly); ctx.stroke();
+      ctx.fillStyle = rgba(mixc(PEACH, INK, 0.2), 1); for (const sx of [-lx, lx]) { ctx.beginPath(); ctx.arc(sx, ly, Math.max(1.6, cw * 0.1), 0, TAU); ctx.fill(); }
+      ctx.fillStyle = "rgba(120,112,170,.55)"; for (let q = 0; q < 2; q++) ctx.fillRect(-cw * 0.34, ch * (0.12 + q * 0.16), cw * (q ? 0.42 : 0.68), Math.max(1.2, ch * 0.05));
       ctx.restore();
     }
-    /* the names sit under the floor, tilted, so that they stay readable once the tiles have fallen over one another; a name lights up when its tile is hit */
-    ctx.font = `600 ${lite ? 10 : 12.5}px ${sans}`; ctx.textBaseline = "middle";
-    tiles.forEach((q, i) => {
-      const f = Math.max(0, Math.min(1, (T - t0 - i * STEP) / FALL)), lit = q.set || f > 0.4, on = q.set ? q.v : q.v;
-      ctx.save(); ctx.translate(left + i * sp + tw / 2, base + 9); ctx.rotate(-Math.PI / 4); ctx.textAlign = "right";
-      ctx.fillStyle = q.gap ? "rgba(236,232,255,.75)" : lit ? (on === 1 ? "rgba(255,214,170,1)" : q.set ? "rgba(255,150,205,1)" : "rgba(176,196,255,1)") : "rgba(236,232,255,.55)";
-      ctx.fillText(q.set ? `${q.name} ${q.v ? "ON" : "✕"}` : q.name, 0, 0); ctx.restore();
-    });
     ctx.restore();
   }
 
@@ -415,9 +444,9 @@ function makeStory(cv, opt = {}) {
   }
   function draw(T, dt) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    const k = 1 - Math.exp(-dt * 5); dishA += (((beat === 1 || beat === 2) ? 1 : 0) - dishA) * k; gridA += ((beat >= 4 ? 1 : 0) - gridA) * k; domA += ((beat === 3 ? 1 : 0) - domA) * k;
+    const k = 1 - Math.exp(-dt * 5); dishA += (((beat === 1 || beat === 2) ? 1 : 0) - dishA) * k; gridA += ((beat >= 4 ? 1 : 0) - gridA) * k; driftA += ((beat === 3 ? 1 : 0) - driftA) * k;
     if (dishA > 0.01) { updateCells(dt, T); drawDish(T, dishA); }
-    if (domA > 0.01) drawDomino(T, domA, dt);
+    if (driftA > 0.01) drawDrift(T, driftA);
     if (gridA > 0.01) drawGrid(T, gridA);
   }
   /* the beat's own start: a new dish (and its sweep), the switches, the dots appearing, the zoom, the guesses, the scan. `instant` shows the end of the beat at once. */
@@ -427,14 +456,14 @@ function makeStory(cv, opt = {}) {
       makeCells(n === 2); sweepT = instant ? 0 : T + (n === 2 ? 2300 : 700); chipT = n === 2 ? (instant ? T - 5000 : T + 250) : 0;
       if (instant) { for (const c of cells) { c.hit = 1; c.act = c.fate; c.s = c.fate === "senescence" ? 1.3 : 1; c.tint = FATES[c.fate].slice(); if (c.fate === "apoptosis") { c.gone = true; crumbs(c); } } cells = cells.filter((c) => !c.gone); }
     } else { sweepT = 0; chipT = 0; }
-    if (n === 3) { domT = instant ? T - 30000 : T + 300; domCell = newDomCell(); if (instant) { domCell.act = "apoptosis"; domCell.die = T - 5000; domCell.tint = FATES.apoptosis.slice(); domCell.a = 0.35; domCell.s = 1.12; } } else domT = 0;
+    driftT = n === 3 ? (instant ? T - 60000 : T + 250) : 0;
     if (n >= 4) {
       if (n === 4 || prev < 4) gridT = instant || n === 5 ? T - 6000 : T;
       zoomT = n === 4 ? (instant ? T - 20000 : T + 1700) : 0;
       backFrom = n === 5 && prev === 4 ? Math.sqrt(TOTAL / (SIZES[4] || TOTAL)) : 1; backT = n === 5 && !instant && prev === 4 ? T : 0;
       aiT = n === 5 ? (instant ? T - 20000 : T + 1100) : 0; scanT = n === 5 ? (instant ? T - 1e5 : T + 3500) : 0;
     } else { gridT = 0; zoomT = 0; backT = 0; aiT = 0; scanT = 0; }
-    if (instant) { dishA = n === 1 || n === 2 ? 1 : 0; domA = n === 3 ? 1 : 0; gridA = n >= 4 ? 1 : 0; if (ready) draw(T, 0); }
+    if (instant) { dishA = n === 1 || n === 2 ? 1 : 0; driftA = n === 3 ? 1 : 0; gridA = n >= 4 ? 1 : 0; if (ready) draw(T, 0); }
   }
   const frame = (now) => { if (!running) return; const dt = Math.max(0, Math.min(0.05, (now - last) / 1000)); last = now; draw(now, dt); requestAnimationFrame(frame); };
   new ResizeObserver(() => { if (fit() && !running) draw(performance.now(), 0); }).observe(cv);

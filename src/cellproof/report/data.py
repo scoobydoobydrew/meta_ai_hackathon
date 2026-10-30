@@ -15,7 +15,6 @@ from itertools import combinations
 from pathlib import Path
 
 from cellproof.analysis.attractors import fixed_points, perturb
-from cellproof.analysis.explain import forced_steps
 from cellproof.analysis.interventions import READOUT_NODES, minimal_sets, search_space
 from cellproof.analysis.llm_search import candidate_sets
 from cellproof.eval.heldout import load as load_heldout
@@ -222,33 +221,26 @@ def interventions(networks: dict[str, dict[str, str]]) -> dict:
         "sizes": sizes, "projected_seconds": {k: round(seconds["augmented"] * n / total) for k, n in sizes.items()},
         "keep": sorted(order[frozenset(map(tuple, s))] for s in out["augmented"]),
     }
-    out["domino"] = domino(rules, out["augmented"])
+    out["drift"] = drift(out, networks)
     return out
 
 
 EFFORTS = ["minimal", "low", "medium", "high", "xhigh", "max"]
 
 
-def domino(rules: dict[str, str], sets: list[list[list]]) -> dict | None:
-    """The header's chain reaction: for one shortlisted set, the genes whose state is forced, one after another, by the set (and the
-    damage) through rules a reader can check by hand (analysis.explain.forced_steps), keeping only those that depend, directly or
-    through earlier ones, on the set itself and not on the damage alone. A pair with one gene switched off and one forced on, and the
-    longest such chain, is shown. The rest of the genes loop back on each other and only the solver settles them."""
-    best = None
-    for literals in sets:
-        if len(literals) != 2 or not any(v == 0 for _, v in literals):
-            continue
-        setting = {n: v for n, v in literals}
-        steps, _ = forced_steps(rules, {"DNA_damage": 1, **setting})
-        cause, chain = set(setting), []
-        for s in steps:
-            if any(n in cause for n, _ in s.because):
-                cause.add(s.node)
-                chain.append([s.node, s.value])
-        if best is None or len(chain) > len(best["chain"]):
-            genes = len(rules) - 1  # the damage signal is an input, held on
-            best = {"set": [list(x) for x in literals], "chain": chain, "forced": len(steps), "genes": genes, "loops": genes - len(literals) - len(steps), "combos": 2**genes}
-    return best
+def drift(found: dict[str, list[list[list]]], networks: dict[str, dict[str, str]]) -> dict | None:
+    """The header's fourth beat: a new rule can change which sets of changes work. The same exhaustive search is run on the model with
+    the rules read from the papers applied unchecked, and compared set by set with the published model's list; the checked model's
+    list (already searched for the header's field) is compared the same way. Only the counts are kept: how many sets each model
+    leaves, how many of the published sets are still there, how many are new."""
+    if "unchecked" not in networks:
+        return None
+    sets = {"published": found["published"], "unchecked": [[[n, v] for n, v in s] for s in minimal_sets(networks["unchecked"], 2)], "checked": found["augmented"]}
+    keys = {name: {frozenset(map(tuple, s)) for s in lists} for name, lists in sets.items()}
+    out: dict = {"published": len(keys["published"])}
+    for name in ("unchecked", "checked"):
+        out[name] = {"sets": len(keys[name]), "kept": len(keys["published"] & keys[name]), "new": len(keys[name] - keys["published"])}
+    return out
 
 
 def llm_search_block(rules: dict[str, str]) -> dict | None:

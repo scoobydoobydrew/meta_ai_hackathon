@@ -5,15 +5,17 @@ from pathlib import Path
 
 import pytest
 
-from cellproof.analysis.explain import forced_steps
-from cellproof.analysis.interventions import minimal_sets, search_space
+from cellproof.analysis.interventions import search_space
 from cellproof.network.bnet import load_bnet
 from cellproof.network.logic import influence_edges
 from cellproof.report.build import WEB, _json, parts, render, render_fragment
-from cellproof.report.data import FAILURE, FATE_CODES, _structured, domino, interventions, lab_table, llm_search_block, story_block
+from cellproof.report.data import FAILURE, FATE_CODES, _structured, interventions, lab_table, llm_search_block, story_block
+from cellproof.report.data import drift as report_drift
 from cellproof.report.layout import NODE_ORDER, NODES
 
-BASE = load_bnet(Path(__file__).resolve().parents[1] / "data" / "base" / "gupta2023.bnet")
+DATA = Path(__file__).resolve().parents[1] / "data"
+MODELS = DATA / "models"
+BASE = load_bnet(DATA / "base" / "gupta2023.bnet")
 
 
 def test_embedded_data_cannot_close_the_script_tag():
@@ -76,11 +78,30 @@ def test_the_page_carries_the_bench_and_its_script_parses(tmp_path):
     assert result.returncode == 0, result.stderr
 
 
-def test_the_headers_story_numbers_are_the_solvers_own():
-    out = interventions({"published": BASE, "augmented": BASE})
+@pytest.fixture(scope="module")
+def searched():
+    """The exhaustive search on the three models of the page (published; rules applied unchecked; rules checked and repaired), run once."""
+    rules = {"published": BASE, "unchecked": load_bnet(MODELS / "naive_min2.bnet"), "augmented": load_bnet(MODELS / "repaired_min2.bnet")}
+    return rules, interventions(rules)
+
+
+def test_the_headers_story_numbers_are_the_solvers_own(searched):
+    rules, out = searched
     space = out["space"]
-    assert space["total"] == search_space(BASE, 2) and space["found"] == len(out["augmented"]) and space["seconds"] >= 0
+    assert space["total"] == search_space(rules["augmented"], 2) and space["found"] == len(out["augmented"]) and space["seconds"] >= 0
     assert 0 < space["found"] < space["total"]
+
+
+def test_new_rules_applied_unchecked_replace_the_list_and_checked_ones_keep_it(searched):
+    """The header's fourth beat says that unchecked rules replaced all of the published combinations and that, checked first, the same ones
+    stayed; the words are in bench.js, so the data must say exactly that."""
+    _, out = searched
+    drift = out["drift"]
+    published = drift["published"]
+    assert published == len(out["published"]) > 0
+    assert drift["unchecked"]["kept"] == 0 and drift["unchecked"]["new"] > 0 and drift["unchecked"]["sets"] == drift["unchecked"]["new"]
+    assert drift["checked"] == {"sets": published, "kept": published, "new": 0}
+    assert report_drift({"published": [], "augmented": []}, {"published": BASE, "augmented": BASE}) is None  # nothing to compare without an unchecked model
 
 
 def test_the_ai_alone_marks_of_the_header_agree_with_the_solvers_summary():
@@ -93,19 +114,6 @@ def test_the_ai_alone_marks_of_the_header_agree_with_the_solvers_summary():
     assert all(0 <= m["i"] < search_space(rules, 2) for m in arm["marks"]) and len({m["i"] for m in arm["marks"]}) == s["distinct"] == len(arm["marks"])
     assert sum(m["w"] for m in arm["marks"]) == s["works"] and sum(m["m"] for m in arm["marks"]) == s["minimal_hits"] <= s["works"]
     assert s["answered"] + s["out_of_budget"] == s["requests"]
-
-
-def test_the_chain_reaction_is_forced_steps_that_depend_on_the_two_switches():
-    rules = load_bnet(Path(__file__).resolve().parents[1] / "data" / "models" / "repaired_min2.bnet")
-    d = domino(rules, [[[n, v] for n, v in s] for s in minimal_sets(rules, 2)])
-    assert d and len(d["set"]) == 2 and any(v == 0 for _, v in d["set"]) and d["chain"]
-    steps, _ = forced_steps(rules, {"DNA_damage": 1, **{n: v for n, v in d["set"]}})
-    forced, cause = {s.node: s for s in steps}, {n for n, _ in d["set"]}
-    for node, value in d["chain"]:  # each gene is forced by a rule that reads something the switches (or an earlier gene) changed
-        assert forced[node].value == value and any(n in cause for n, _ in forced[node].because)
-        cause.add(node)
-    assert d["forced"] == len(steps) and d["genes"] == len(rules) - 1 and d["combos"] == 2 ** d["genes"]
-    assert 0 <= d["loops"] == d["genes"] - 2 - len(steps)
 
 
 def test_the_header_tells_its_story_in_six_beats_and_names_its_sources():
