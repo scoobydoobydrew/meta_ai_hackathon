@@ -20,7 +20,10 @@ combination of one or two genes, which zooms out as sets of up to five genes are
 the AI's guesses judged by the solver, then the solver's scan leaving a few glowing dots ("The AI proposes. The solver decides.").
 Reload the page so that it starts on the first beat, let it play under the one line above (do not read the captions out), then
 press *Play*. The little bars under the words jump to a beat. Say it plainly if asked: the solver alone does solve this small
-model in seconds; what it cannot do is read the papers, and the count of candidates explodes as the model or the sets grow.
+model in seconds; what it cannot do is read the papers, and the count of candidates explodes as the model or the sets grow. And
+the AI alone is not useless: asked directly for the genes, it was right for most of its guesses and found some of the 11, but
+nothing checks it, a quarter of its guesses were wrong, and its edits to the model, unchecked, break 7 or 8 of the 10 known
+experiments. Read the exact counts off the scoreboard, they are computed when the page is built.
 
 **0:15 to 1:20. The bench (press *Play the 60-second story*; talk over the captions, do not read them out).**
 The page walks through by itself, from the dish to the cell and then through five steps. What each caption stands for:

@@ -195,7 +195,8 @@ def verify() -> None:
         typer.echo(f"== the search, AI alone, replayed from cache: {recorded_path.name}")
         recorded = json.loads(recorded_path.read_text(encoding="utf-8"))
         search_baseline(calls=recorded["calls"], model=recorded["model"], effort=recorded["effort"], network=Path(f"data/models/{recorded['network']}.bnet"),
-                        out=recorded_path, timeout=60.0, retries=4, budget=recorded["summary"]["max_output_tokens"])
+                        out=recorded_path, timeout=60.0, retries=4, budget=recorded["summary"]["max_output_tokens"],
+                        stalled=",".join(str(s) for s in recorded.get("stalled_seeds", [])))
     from cellproof.report.build import write as write_report
     from cellproof.results_md import render
 
@@ -249,6 +250,7 @@ def search_baseline(
     timeout: float = typer.Option(60.0, help="Seconds to wait for one attempt. A normal answer takes 10 to 30 s; some requests stall, so a late one is abandoned and asked again."),
     retries: int = typer.Option(4, help="Further attempts after a stall."),
     budget: int = typer.Option(12000, help="max_output_tokens: reasoning and answer share it; a request that runs out counts as unanswered."),
+    stalled: str = typer.Option("", help="Seeds asked but never answered (stalled API), comma separated, recorded in the results and not counted."),
 ) -> None:
     """The AI-alone arm of the intervention search: the model names sets of one or two changes, the exact solver judges every one.
     Spends a few cents the first time (the answers are cached; `verify` replays them for free). Writes results/llm_search.json."""
@@ -262,6 +264,7 @@ def search_baseline(
     client = None if os.environ.get("CELLPROOF_OFFLINE") == "1" else make_client().with_options(timeout=timeout, max_retries=retries)
     attempts = ask(rules, calls, model=model, effort=effort, budget=budget, client=client)
     result = evaluate(rules, attempts, model, effort, network.stem, budget)
+    result["stalled_seeds"] = [int(s) for s in stalled.split(",") if s.strip()]  # asked, never answered, not counted: a record, not a measurement
     out = out or Path(f"results/llm_search_{effort}.json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")

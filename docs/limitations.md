@@ -50,6 +50,18 @@ This is a research prototype that ranks hypotheses for lab testing. It makes no 
   seeds at 50, all at 100 and more), while networks shaped like the published one scaled to 400 nodes in about 12 s.
 - Of the 11 shortlisted sets, three are knock-outs (PTEN, RB, TUG1); the other eight force a gene on, and all four pairs include
   one forced-on gene. The header therefore says "switch off, or on", not "switch off".
+- The AI alone was measured on the search itself, and it did **not** fail at it (`python -m cellproof.cli search-baseline`; results in
+  `results/llm_search_minimal.json` and `results/RESULTS.md`). Muse Spark, without tools, reasoning effort minimal, was asked three
+  times (the rules shown in a different order each time) for ten sets of one or two changes that leave only apoptosis. Of the 17
+  distinct sets it named, 13 (76%) leave only apoptosis, where a set picked at random from the 1,058 candidates does so 21% of the
+  time; the first guess of every request was right; and 4 of the 11 shortlisted sets were among them. So the header does not say
+  that the AI fails. It says what was measured: the AI is often right here and nothing checks it (4 of the 17 guesses were wrong),
+  it found fewer than half of the candidates, and its edits to the model, applied without the solver, break 7 or 8 of the 10 known
+  experiments (M2). Limits of this measurement: three requests, one model, one effort (counts, not a statistic). Low, medium and
+  high effort were tried first and one request at each did not return within 7 to 15 minutes, and the API also stalled some requests
+  at minimal effort; two further requests (seeds 3 and 4) were stopped after repeated stalls and are not counted, so the model's
+  best shot is not measured. A request that runs out of its 12,000-token budget would be reported and not counted as wrong (none
+  did). The cost of requests that never returned is not in the cost table, which is therefore a lower bound.
 
 **The solver and the loop**
 - The solver catches contradictions with the ten verification cases (and the G2 regression), not every error. Those cases

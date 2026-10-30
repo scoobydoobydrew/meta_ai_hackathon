@@ -242,7 +242,7 @@ def llm_search_block(rules: dict[str, str]) -> dict | None:
                 if p["valid"] and key not in seen:
                     seen.add(key)
                     marks.append({"i": order[key], "w": int(p["works"]), "m": int(p["minimal"])})
-        arms[doc["effort"]] = {"model": doc["model"], "effort": doc["effort"], "calls": doc["calls"], "summary": doc["summary"], "marks": marks}
+        arms[doc["effort"]] = {"model": doc["model"], "effort": doc["effort"], "calls": doc["calls"], "summary": doc["summary"], "marks": marks, "stalled": len(doc.get("stalled_seeds", []))}
     if not arms:
         return None
     answered = [e for e, a in arms.items() if a["summary"]["distinct"] > 0] or list(arms)  # an arm in which nothing was answered quotes nothing

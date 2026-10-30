@@ -86,13 +86,30 @@ Nodes in `repaired_min2` but not in `base`: ATR, CHK1, CHK2, DNA_PK.
 Sets found in `repaired_min2` and not in `base`: 0; of these, 0 involve a new node.
 
 
+## The search with the AI alone, reasoning effort minimal
+
+muse-spark-1.3 (reasoning effort minimal) was asked, without any tool, for ten sets of one or two changes (a gene knocked out or forced on) after which an irradiated cell has apoptosis as its only fate, on the network `repaired_min2` that the exhaustive search runs on. The exact solver judged every answer; nothing the model says is trusted. This is the AI-alone arm of the search; the solver-alone arm is the exhaustive search above.
+
+| | |
+|---|---|
+| requests to the model | 3, with the rules shown in a different order each time; 3 answered within 12,000 output tokens, 0 did not |
+| further requests that never returned (the API stalled), not counted | 2 |
+| answers (sets named) | 30, of which 0 malformed and 13 repeats |
+| distinct valid sets named | 17 |
+| of those, leave only apoptosis (judged by the solver) | 13 (76%) |
+| of those, among the minimal sets the exhaustive search finds | 4 of 11 |
+| first guess of each request leaves only apoptosis | 3 of 3 |
+| for comparison: a set picked at random from all candidates leaves only apoptosis | 21% (226 of 1058) |
+| for comparison: a random candidate is one of the minimal sets | 1% (11 of 1058) |
+| cost (USD, price table) | 0.07 |
+
 ## Extraction accuracy (M4)
 
 TBD: 0 of 50 sampled claims have been labelled by a human.
 
 ## Scaling of the exact checker (M6)
 
-Fixed points (mpbn) and asynchronous attractors (AEON) of one network, 120 s limit per network, measured on the machine that wrote `results/scaling.json`. `random` networks are hard on purpose; `cascade` adds downstream chains to the base network.
+Fixed points (mpbn) and asynchronous attractors (AEON) of one network, 30 s limit per network, measured on the machine that wrote `results/scaling.json`. `random` networks are hard on purpose; `cascade` adds downstream chains to the base network.
 
 | family | nodes | seed | status | seconds | fixed points | attractors |
 |---|---|---|---|---|---|---|

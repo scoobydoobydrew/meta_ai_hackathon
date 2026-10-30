@@ -360,8 +360,8 @@ function makeStory(cv, opt = {}) {
   function fit() {
     const r = cv.getBoundingClientRect(); if (!r.width || !r.height) return false;
     dpr = Math.min(2, devicePixelRatio || 1); W = r.width; H = r.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-    const wide = W >= 760, h = wide ? Math.min(H * 0.72, 600) : H * 0.74;
-    area = wide ? { cx: W * 0.69, cy: H * 0.52, w: Math.min(W * 0.46, h * 1.25), h } : { cx: W * 0.5, cy: H * 0.5, w: W * 0.92, h };
+    const wide = W >= 760, h = wide ? Math.min(H * 0.72, 600) : H * 0.66;
+    area = wide ? { cx: W * 0.69, cy: H * 0.52, w: Math.min(W * 0.46, h * 1.25), h } : { cx: W * 0.5, cy: H * 0.59, w: W * 0.92, h };
     const R = (Math.min(area.w, area.h) / 2) * 0.9; dish = { cx: area.cx, cy: area.cy + R * 0.12, R }; buildGrid(); ready = true; return true;
   }
   function draw(T, dt) {

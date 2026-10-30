@@ -33,9 +33,9 @@
   const TEXT = {
     en: {
       "nav.bench": "Bench", "play.short": "▶ Play", "play.stop": "■ Stop",
-      "hero.sr": () => `CellProof: radiation breaks DNA and a damaged cell does not always die. The goal is a combination of genes to switch off, or on, that leaves only death. There are ${num(HERO.total)} combinations of one or two genes, ${num(HERO.sizes[4])} of up to five, and controlling a Boolean network is NP-hard in general (Akutsu et al. 2007). ${HERO.ai ? `Asked directly, an AI named ${HERO.ai.distinct} sets and ${HERO.ai.works} were right. ` : ""}${UNCH ? `Its unchecked edits to the model break ${range(...UNCH)} of 10 known experiments. ` : ""}An exact solver cannot read the papers. Together: ${HERO.found} candidates for the lab and ${CHK} of 10 known experiments broken. Hypotheses for experiments, not treatments.`,
-      "hero.sa": () => `<b>AI alone:</b> ${joined([HERO.ai && `${HERO.ai.works} of ${HERO.ai.distinct} guesses right`, UNCH && `its edits break ${range(...UNCH)} of 10 known experiments`])}`,
-      "hero.sb": () => `<b>Solver alone:</b> exact, but blind to the papers${HERO.proj["5"] ? `; ≈ ${dur(HERO.proj["5"])} for 5 changes (projected)` : ""}`,
+      "hero.sr": () => `CellProof: radiation breaks DNA and a damaged cell does not always die. The goal is a combination of genes to switch off, or on, that leaves only death. There are ${num(HERO.total)} combinations of one or two genes, ${num(HERO.sizes[4])} of up to five, and controlling a Boolean network is NP-hard in general (Akutsu et al. 2007). ${HERO.ai ? `Asked directly, an AI named ${HERO.ai.distinct} sets, ${HERO.ai.works} were right and it found ${HERO.ai.minimal_hits} of the ${HERO.ai.minimal} candidates. ` : ""}${UNCH ? `Its unchecked edits to the model break ${range(...UNCH)} of 10 known experiments. ` : ""}An exact solver finds all of them here but cannot read the papers. Together: ${HERO.found} candidates for the lab and ${CHK} of 10 known experiments broken. Hypotheses for experiments, not treatments.`,
+      "hero.sa": () => `<b>AI alone:</b> ${joined([HERO.ai && `${HERO.ai.works} of ${HERO.ai.distinct} guesses right, ${HERO.ai.minimal_hits} of the ${HERO.ai.minimal} candidates found`, UNCH && `its edits break ${range(...UNCH)} of 10 known experiments`])}`,
+      "hero.sb": () => `<b>Solver alone:</b> finds all ${HERO.found} and checks them, but cannot read the papers${HERO.proj["5"] ? `; ≈ ${dur(HERO.proj["5"])} for 5 changes (projected)` : ""}`,
       "hero.sc": () => `<b>Together:</b> ${HERO.found} candidates for the lab, ${CHK} of 10 known experiments broken`,
       "hero.b1": "Radiation <em>breaks</em> DNA.", "hero.b2": "Not every damaged cell <em>dies.</em>", "hero.n2": "In the published model. Illustration, not percentages.",
       "hero.b3": "Flip the right genes, and every cell <em>dies.</em>", "hero.s3": "The goal: a combination of genes to switch off, or on, that leaves only death.",
@@ -100,9 +100,9 @@
     },
     el: {
       "nav.bench": "Εργαστήριο", "play.short": "▶ Παίξε", "play.stop": "■ Στοπ",
-      "hero.sr": () => `CellProof: η ακτινοβολία σπάει το DNA και ένα κύτταρο με βλάβη δεν πεθαίνει πάντα. Ο στόχος είναι ένας συνδυασμός γονιδίων να σβήσουν, ή να ανάψουν, ώστε να μείνει μόνο ο θάνατος. Υπάρχουν ${num(HERO.total)} συνδυασμοί ενός ή δύο γονιδίων, ${num(HERO.sizes[4])} με έως πέντε, και ο έλεγχος ενός δικτύου Boole είναι γενικά NP-hard (Akutsu et al. 2007). ${HERO.ai ? `Όταν ρωτήθηκε απευθείας, ένα AI ονόμασε ${HERO.ai.distinct} σύνολα και τα ${HERO.ai.works} ήταν σωστά. ` : ""}${UNCH ? `Οι ανέλεγκτες αλλαγές του στο μοντέλο χαλάνε ${range(...UNCH)} από 10 γνωστά πειράματα. ` : ""}Ένας ακριβής solver δεν μπορεί να διαβάσει τα papers. Μαζί: ${HERO.found} υποψήφιες για το εργαστήριο και ${CHK} από 10 γνωστά πειράματα χαλασμένα. Υποθέσεις για πειράματα, όχι θεραπείες.`,
-      "hero.sa": () => `<b>Μόνο AI:</b> ${joined([HERO.ai && `${HERO.ai.works} από ${HERO.ai.distinct} εικασίες σωστές`, UNCH && `οι αλλαγές του χαλάνε ${range(...UNCH)} από 10 γνωστά πειράματα`])}`,
-      "hero.sb": () => `<b>Μόνο solver:</b> ακριβής, αλλά δεν διαβάζει τα papers${HERO.proj["5"] ? `· ≈ ${dur(HERO.proj["5"])} για 5 αλλαγές (εκτίμηση)` : ""}`,
+      "hero.sr": () => `CellProof: η ακτινοβολία σπάει το DNA και ένα κύτταρο με βλάβη δεν πεθαίνει πάντα. Ο στόχος είναι ένας συνδυασμός γονιδίων να σβήσουν, ή να ανάψουν, ώστε να μείνει μόνο ο θάνατος. Υπάρχουν ${num(HERO.total)} συνδυασμοί ενός ή δύο γονιδίων, ${num(HERO.sizes[4])} με έως πέντε, και ο έλεγχος ενός δικτύου Boole είναι γενικά NP-hard (Akutsu et al. 2007). ${HERO.ai ? `Όταν ρωτήθηκε απευθείας, ένα AI ονόμασε ${HERO.ai.distinct} σύνολα, τα ${HERO.ai.works} ήταν σωστά και βρήκε ${HERO.ai.minimal_hits} από τις ${HERO.ai.minimal} υποψήφιες. ` : ""}${UNCH ? `Οι ανέλεγκτες αλλαγές του στο μοντέλο χαλάνε ${range(...UNCH)} από 10 γνωστά πειράματα. ` : ""}Ένας ακριβής solver τις βρίσκει όλες εδώ αλλά δεν μπορεί να διαβάσει τα papers. Μαζί: ${HERO.found} υποψήφιες για το εργαστήριο και ${CHK} από 10 γνωστά πειράματα χαλασμένα. Υποθέσεις για πειράματα, όχι θεραπείες.`,
+      "hero.sa": () => `<b>Μόνο AI:</b> ${joined([HERO.ai && `${HERO.ai.works} από ${HERO.ai.distinct} εικασίες σωστές, βρήκε ${HERO.ai.minimal_hits} από τις ${HERO.ai.minimal} υποψήφιες`, UNCH && `οι αλλαγές του χαλάνε ${range(...UNCH)} από 10 γνωστά πειράματα`])}`,
+      "hero.sb": () => `<b>Μόνο solver:</b> βρίσκει και τις ${HERO.found} και τις ελέγχει, αλλά δεν διαβάζει τα papers${HERO.proj["5"] ? `· ≈ ${dur(HERO.proj["5"])} για 5 αλλαγές (εκτίμηση)` : ""}`,
       "hero.sc": () => `<b>Μαζί:</b> ${HERO.found} υποψήφιες για το εργαστήριο, ${CHK} από 10 γνωστά πειράματα χαλασμένα`,
       "hero.b1": "Η ακτινοβολία <em>σπάει</em> το DNA.", "hero.b2": "Δεν πεθαίνει <em>κάθε</em> κύτταρο με βλάβη.", "hero.n2": "Στο δημοσιευμένο μοντέλο. Εικονογράφηση, όχι ποσοστά.",
       "hero.b3": "Γύρνα τους σωστούς διακόπτες και κάθε κύτταρο <em>πεθαίνει.</em>", "hero.s3": "Ο στόχος: ένας συνδυασμός γονιδίων να σβήσουν, ή να ανάψουν, ώστε να μείνει μόνο ο θάνατος.",
@@ -590,9 +590,9 @@
     const paintHeroStage = (k) => { const el = $("[data-stage-text]", hero); if (el) el.textContent = k >= 2 ? T("hero.stage", k, dur(k === 2 ? HERO.secs : HERO.proj[String(k)] || 0), k > 2) : ""; };
     const stageTo = (k) => { shownStage = k; hero.dataset.stage = String(k); paintHeroStage(k); };
     const chips = PAIR.map(([n, v]) => ({ name: pretty(n), off: v === 0 }));
-    /* the first row is a cross only if the model was mostly wrong; if it was mostly right, it is a warning, because nothing checked it */
+    /* the first two rows are warnings (each does part of the job); the first becomes a cross only if the model was mostly wrong */
     const aiRow = $(".b-score li:nth-child(1)", hero);
-    if (aiRow && HERO.ai && HERO.ai.distinct && HERO.ai.works / HERO.ai.distinct >= 0.5) { aiRow.className = "mid"; $("i", aiRow).textContent = "!"; }
+    if (aiRow && HERO.ai && HERO.ai.distinct && HERO.ai.works / HERO.ai.distinct < 0.5) { aiRow.className = "no"; $("i", aiRow).textContent = "✕"; }
     const helix = makeHelix(cvH, { lite }), story = makeStory(cvS, { lite, total: HERO.total, keep: HERO.keep, sizes: HERO.sizes, marks: HERO.marks, chips, fmt: num, onCount: paint, onStage: stageTo });
     function show(n) {
       beat = n; hero.dataset.beat = String(n + 1); shownStage = 0; hero.dataset.stage = "0"; paintHeroStage(0);

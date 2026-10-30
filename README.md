@@ -59,6 +59,8 @@ answer; the pictures themselves are illustration (see `docs/limitations.md`). Th
 | Known behaviours broken when edits are applied without the solver | 7 of 10 (every edge) and 8 of 10 (at least two papers); with the solver, 0 |
 | Rejected edits repaired by Muse Spark and accepted by the solver | 6 of 9 (every edge), 3 of 4 (≥2 papers); Muse Wonder: 6 of 9 and 2 of 4 |
 | One repair call, Spark vs Wonder | 39.7 s and $0.04 against 102.6 s and $0.19 (median of 3) |
+| The search for gene sets that leave only death, solver alone | all 1,058 sets of up to two changes tried exactly in seconds, 11 minimal sets; sets of up to 5 changes would be 1,233,674 (projected time in the report) |
+| The same search, AI alone (Muse Spark, no tools, minimal reasoning, 3 requests) | 13 of 17 distinct guesses leave only death (a random candidate: 21%), 4 of the 11 minimal sets found, none checked; see `docs/limitations.md` |
 | Held-out audit: 23 claims, 10 scoreable | published model 3 correct, 5 wrong, 2 not expressible; augmented networks 4 correct, 6 wrong; a rule that ignores the perturbation 5 correct |
 | Exact checker on 400-node chains | stable states in milliseconds, 13 s in all; random networks time out from 50 nodes |
 | Extraction accuracy (M4) | TBD: needs 50 claims labelled by a person |

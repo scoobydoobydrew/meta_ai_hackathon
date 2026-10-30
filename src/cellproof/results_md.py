@@ -98,9 +98,11 @@ def search_section() -> str:
 
 def _search_arm(doc) -> str:
     s = doc["summary"]
+    stalled = doc.get("stalled_seeds", [])
     pct = lambda a, b: f"{100 * a / b:.0f}%" if b else "n/a"  # noqa: E731
     rows = [
         ("requests to the model", f"{s['requests']}, with the rules shown in a different order each time; {s['answered']} answered within {s['max_output_tokens']:,} output tokens, {s['out_of_budget']} did not"),
+        ("further requests that never returned (the API stalled), not counted", len(stalled)),
         ("answers (sets named)", f"{s['proposals']}, of which {s['malformed']} malformed and {s['proposals'] - s['malformed'] - s['distinct']} repeats"),
         ("distinct valid sets named", s["distinct"]),
         ("of those, leave only apoptosis (judged by the solver)", f"{s['works']} ({pct(s['works'], s['distinct'])})"),

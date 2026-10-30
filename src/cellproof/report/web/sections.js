@@ -254,6 +254,7 @@ const failCount = (arm) => Object.keys(D.verification.matrix[arm] || {}).length;
       <p class="muted">${esc(arms[0].model)}, no tools, was asked for ten sets of one or two changes after which an irradiated cell has apoptosis as its only fate, with the rules shown in a different order for each request. The exact solver judged every answer. A request that ran out of its token budget before finishing is reported and not counted as a wrong guess.</p>
       <div class="scroll-x"><table class="tbl"><thead><tr><th>reasoning effort</th>${arms.map((a) => `<th>${esc(a.effort)}</th>`).join("")}</tr></thead><tbody>
         <tr><td>requests answered within the budget</td>${arms.map((a) => `<td class="num">${a.summary.answered} of ${a.summary.requests}</td>`).join("")}</tr>
+        <tr><td>further requests that never returned (not counted)</td>${arms.map((a) => `<td class="num">${a.stalled || 0}</td>`).join("")}</tr>
         <tr><td>distinct valid sets named</td>${arms.map((a) => `<td class="num">${a.summary.distinct}</td>`).join("")}</tr>
         <tr><td>of those, leave only apoptosis</td>${arms.map((a) => `<td class="num">${a.summary.works} (${p(a.summary.works, a.summary.distinct)})</td>`).join("")}</tr>
         <tr><td>of those, among the ${s0.minimal} minimal sets the search finds</td>${arms.map((a) => `<td class="num">${a.summary.minimal_hits}</td>`).join("")}</tr>

@@ -1,0 +1,717 @@
+{
+ "model": "muse-spark-1.3",
+ "effort": "minimal",
+ "network": "repaired_min2",
+ "calls": 3,
+ "attempts": [
+  {
+   "seed": 0,
+   "cached": true,
+   "cost_usd": 0.0168,
+   "usage": {
+    "input_tokens": 1107,
+    "input_tokens_details": {
+     "cache_write_tokens": null,
+     "cached_tokens": 1027
+    },
+    "output_tokens": 3903,
+    "output_tokens_details": {
+     "reasoning_tokens": 3163
+    },
+    "total_tokens": 5010
+   },
+   "answered": true,
+   "proposals": [
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "AMPK_MAPK",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": true,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 kills p53_A and Wip1, forcing ATM=1 p53=1 p53_K=1 BAX=1 Caspase=1; AMPK=0 forces ULK1_Beclin1=0, leaving only apoptosis",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "PTEN",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 forces apoptotic markers on; PTEN=0 forces AKT=1 mTORC2=1 forcing ULK1=0",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "AKT",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": true,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 forces p53_K BAX Caspase on; AKT=1 forces mTORC2=1 forcing ULK1=0",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "Myc",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 forces apoptosis markers; Myc=1 forces WWP1=1 PTEN=0 AKT=1 mTORC2=1 ULK1=0",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "WWP1",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 forces apoptosis markers; WWP1=1 forces PTEN=0 AKT=1 mTORC2=1 ULK1=0",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "E2F1",
+       1
+      ],
+      [
+       "AMPK_MAPK",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": false,
+     "minimal": false,
+     "fates": [],
+     "reason": "E2F1=1 forces Sirt1=1 killing p53_A, giving p53_K BAX Caspase on; AMPK=0 kills ULK1",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "E2F1",
+       1
+      ],
+      [
+       "PTEN",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "E2F1=1 gives Sirt1=1 and apoptotic markers; PTEN=0 gives AKT mTORC2 on and ULK1 off",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "E2F1",
+       1
+      ],
+      [
+       "AKT",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "E2F1=1 gives Sirt1=1 and apoptotic markers; AKT=1 gives mTORC2=1 and ULK1=0",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "RB",
+       0
+      ],
+      [
+       "AMPK_MAPK",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": false,
+     "minimal": false,
+     "fates": [],
+     "reason": "RB=0 forces E2F1=1 Sirt1=1 killing p53_A and turning on p53_K BAX Caspase; AMPK=0 turns off ULK1",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "RB",
+       0
+      ],
+      [
+       "PTEN",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "RB=0 forces E2F1 Sirt1 on and apoptotic markers on; PTEN=0 forces AKT mTORC2 on and ULK1 off",
+     "repeat": false
+    }
+   ]
+  },
+  {
+   "seed": 1,
+   "cached": true,
+   "cost_usd": 0.0192,
+   "usage": {
+    "input_tokens": 1107,
+    "input_tokens_details": {
+     "cache_write_tokens": null,
+     "cached_tokens": 1027
+    },
+    "output_tokens": 4462,
+    "output_tokens_details": {
+     "reasoning_tokens": 3700
+    },
+    "total_tokens": 5569
+   },
+   "answered": true,
+   "proposals": [
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "AMPK_MAPK",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": true,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1-ON forces p53_A to 0 eliminating senescence and arrest; AMPK-KO forces ULK1_Beclin1 to 0 eliminating autophagy, leaving p53_K/BAX/Caspase active via ATM.",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "AKT",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": true,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1-ON kills p53_A fates; AKT-ON forces mTORC2 to 1 forcing ULK1 to 0 killing autophagy while supporting apoptosis.",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "PTEN",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1-ON removes p53_A; PTEN-KO forces AKT to 1 then mTORC2 to 1 then ULK1 to 0, leaving only apoptosis.",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "Myc",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1-ON blocks senescence/arrest; Myc-ON drives WWP1 to inhibit PTEN driving AKT/mTORC2 to block ULK1/autophagy.",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "WWP1",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1-ON kills p53_A; WWP1-ON inhibits PTEN forcing AKT/mTORC2 on and ULK1 off.",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "E2F1",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1-ON plus E2F1-ON forces miR221 on forcing PTEN off forcing AKT/mTOR on forcing ULK1 off.",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "miR221",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1-ON removes arrest/senescence; miR221-ON blocks PTEN and PUMA regulation pushing AKT/mTOR on and ULK1 off toward apoptosis.",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "TUG1",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1-ON plus TUG1-KO forces miR221 to 1 inhibiting PTEN activating AKT/mTOR inhibiting ULK1.",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "Mdm2",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": false,
+     "minimal": false,
+     "fates": [
+      "apoptosis",
+      "autophagy"
+     ],
+     "reason": "Sirt1-ON kills p53_A fates; Mdm2-KO sustains p53/p53_K/BAX/Caspase with AMPK-dependent ULK1 suppression via AKT/mTOR shift.",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "AMPK_MAPK",
+       0
+      ],
+      [
+       "AKT",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": false,
+     "minimal": false,
+     "fates": [
+      "apoptosis",
+      "senescence"
+     ],
+     "reason": "AMPK-KO forces ULK1 to 0 killing autophagy; AKT-ON forces mTORC1/2 modulation and with ATM-driven p53_K favors apoptosis over senescence/arrest.",
+     "repeat": false
+    }
+   ]
+  },
+  {
+   "seed": 2,
+   "cached": true,
+   "cost_usd": 0.0318,
+   "usage": {
+    "input_tokens": 1107,
+    "input_tokens_details": {
+     "cache_write_tokens": null,
+     "cached_tokens": 1027
+    },
+    "output_tokens": 7416,
+    "output_tokens_details": {
+     "reasoning_tokens": 6632
+    },
+    "total_tokens": 8523
+   },
+   "answered": true,
+   "proposals": [
+    {
+     "changes": [
+      [
+       "E2F1",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": true,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "E2F1=1 forces Sirt1=1 so p53_A=0 Wip1=0, forces ATM=1 p53=1 p53_K=1 BAX=1 Caspase=1, forces miR221=1 PTEN=0 AKT=1 mTORC2=1 ULK1=0, only apoptosis",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "Myc",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": true,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Myc=1 forces E2F1=1 via E2F1 rule, then as above Sirt1=1 p53_A=0 Wip1=0 ATM=1 p53_K=1 BAX=1 Caspase=1 and WWP1=1 PTEN=0 AKT=1 mTORC2=1 ULK=0",
+     "repeat": false
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "AKT",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": true,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 kills p53_A Wip1=0 ATM=1 p53_K=1 BAX=1 Caspase=1, AKT=1 forces mTORC2=1 ULK=0",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "PTEN",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 gives p53_K/BAX/Caspase=1, PTEN=0 forces AKT=1 mTORC2=1 ULK=0",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "AMPK_MAPK",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": true,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 gives apoptosis markers, AMPK=0 forces ULK1=0 directly",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "miR221",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 gives p53_K/BAX/Caspase=1, miR221=1 forces PTEN=0 AKT=1 mTORC2=1 ULK=0",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "WWP1",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 gives apoptosis markers, WWP1=1 forces PTEN=0 AKT=1 mTORC2=1 ULK=0",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "Myc",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 gives markers, Myc=1 forces WWP1=1 PTEN=0 AKT=1 mTORC2=1 ULK=0",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "E2F1",
+       1
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 gives markers, E2F1=1 forces miR221=1 PTEN=0 AKT=1 mTORC2=1 ULK=0",
+     "repeat": true
+    },
+    {
+     "changes": [
+      [
+       "Sirt1",
+       1
+      ],
+      [
+       "TUG1",
+       0
+      ]
+     ],
+     "valid": true,
+     "problem": "",
+     "works": true,
+     "minimal": false,
+     "fates": [
+      "apoptosis"
+     ],
+     "reason": "Sirt1=1 gives markers, TUG1=0 forces miR221=1 PTEN=0 AKT=1 mTORC2=1 ULK=0",
+     "repeat": true
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "requests": 3,
+  "answered": 3,
+  "out_of_budget": 0,
+  "max_output_tokens": 12000,
+  "proposals": 30,
+  "malformed": 0,
+  "distinct": 17,
+  "first_guesses": 3,
+  "first_guesses_work": 3,
+  "works": 13,
+  "minimal_hits": 4,
+  "candidates": 1058,
+  "working_candidates": 226,
+  "minimal": 11,
+  "cost_usd": 0.07,
+  "space": {
+   "1": 46,
+   "2": 1058,
+   "3": 15226,
+   "4": 156906,
+   "5": 1233674,
+   "6": 7694282
+  }
+ },
+ "stalled_seeds": [
+  3,
+  4
+ ]
+}
