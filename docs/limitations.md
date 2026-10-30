@@ -48,6 +48,15 @@ This is a research prototype that ranks hypotheses for lab testing. It makes no 
   What a solver alone cannot do is read the papers: the published model lacks ATR, CHK1, CHK2 and DNA-PK, which the literature
   knows. M6 measures a different limit: on random networks the exact checker timed out at 30 s from 50 nodes up (one of three
   seeds at 50, all at 100 and more), while networks shaped like the published one scaled to 400 nodes in about 12 s.
+- The chain reaction (header beat 4) is the output of `analysis.explain.forced_steps` for one shortlisted pair (one gene switched
+  off, one forced on; the pair with the longest chain is shown): a gene is forced when its rule has the same value whatever the
+  genes not yet forced do, and only the genes that depend, directly or through earlier ones, on the two switches are drawn (genes
+  forced by the damage alone are left out). The order of the tiles is the order in which the steps force them; a tile is not a
+  claim that it acts directly on the next. When there are more than the picture can hold, the middle is folded into a "+N" tile.
+  The genes that propagation cannot decide (feedback loops) are counted, not drawn, and only the exact solver settles them. The
+  count of on/off combinations is 2 to the number of genes (the damage signal is held on), plain arithmetic. "This pair is not
+  in the base paper" means that the base paper reports two single changes (TUG1 knocked out, miR-221 forced on) and not this
+  pair; it was not checked against other literature, so it does not say that no paper ever described it.
 - Of the 11 shortlisted sets, three are knock-outs (PTEN, RB, TUG1); the other eight force a gene on, and all four pairs include
   one forced-on gene. The header therefore says "switch off, or on", not "switch off".
 - The AI alone was measured on the search itself, and it did **not** fail at it (`python -m cellproof.cli search-baseline`; results in

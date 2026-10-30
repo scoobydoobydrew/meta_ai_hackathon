@@ -15,6 +15,7 @@ from itertools import combinations
 from pathlib import Path
 
 from cellproof.analysis.attractors import fixed_points, perturb
+from cellproof.analysis.explain import forced_steps
 from cellproof.analysis.interventions import READOUT_NODES, minimal_sets, search_space
 from cellproof.analysis.llm_search import candidate_sets
 from cellproof.eval.heldout import load as load_heldout
@@ -221,10 +222,33 @@ def interventions(networks: dict[str, dict[str, str]]) -> dict:
         "sizes": sizes, "projected_seconds": {k: round(seconds["augmented"] * n / total) for k, n in sizes.items()},
         "keep": sorted(order[frozenset(map(tuple, s))] for s in out["augmented"]),
     }
+    out["domino"] = domino(rules, out["augmented"])
     return out
 
 
 EFFORTS = ["minimal", "low", "medium", "high", "xhigh", "max"]
+
+
+def domino(rules: dict[str, str], sets: list[list[list]]) -> dict | None:
+    """The header's chain reaction: for one shortlisted set, the genes whose state is forced, one after another, by the set (and the
+    damage) through rules a reader can check by hand (analysis.explain.forced_steps), keeping only those that depend, directly or
+    through earlier ones, on the set itself and not on the damage alone. A pair with one gene switched off and one forced on, and the
+    longest such chain, is shown. The rest of the genes loop back on each other and only the solver settles them."""
+    best = None
+    for literals in sets:
+        if len(literals) != 2 or not any(v == 0 for _, v in literals):
+            continue
+        setting = {n: v for n, v in literals}
+        steps, _ = forced_steps(rules, {"DNA_damage": 1, **setting})
+        cause, chain = set(setting), []
+        for s in steps:
+            if any(n in cause for n, _ in s.because):
+                cause.add(s.node)
+                chain.append([s.node, s.value])
+        if best is None or len(chain) > len(best["chain"]):
+            genes = len(rules) - 1  # the damage signal is an input, held on
+            best = {"set": [list(x) for x in literals], "chain": chain, "forced": len(steps), "genes": genes, "loops": genes - len(literals) - len(steps), "combos": 2**genes}
+    return best
 
 
 def llm_search_block(rules: dict[str, str]) -> dict | None:

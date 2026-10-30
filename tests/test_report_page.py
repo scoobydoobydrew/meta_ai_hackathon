@@ -5,11 +5,12 @@ from pathlib import Path
 
 import pytest
 
-from cellproof.analysis.interventions import search_space
+from cellproof.analysis.explain import forced_steps
+from cellproof.analysis.interventions import minimal_sets, search_space
 from cellproof.network.bnet import load_bnet
 from cellproof.network.logic import influence_edges
 from cellproof.report.build import WEB, _json, parts, render, render_fragment
-from cellproof.report.data import FAILURE, FATE_CODES, _structured, interventions, lab_table, llm_search_block, story_block
+from cellproof.report.data import FAILURE, FATE_CODES, _structured, domino, interventions, lab_table, llm_search_block, story_block
 from cellproof.report.layout import NODE_ORDER, NODES
 
 BASE = load_bnet(Path(__file__).resolve().parents[1] / "data" / "base" / "gupta2023.bnet")
@@ -94,9 +95,22 @@ def test_the_ai_alone_marks_of_the_header_agree_with_the_solvers_summary():
     assert s["answered"] + s["out_of_budget"] == s["requests"]
 
 
-def test_the_header_tells_its_story_in_five_beats_and_names_its_sources():
+def test_the_chain_reaction_is_forced_steps_that_depend_on_the_two_switches():
+    rules = load_bnet(Path(__file__).resolve().parents[1] / "data" / "models" / "repaired_min2.bnet")
+    d = domino(rules, [[[n, v] for n, v in s] for s in minimal_sets(rules, 2)])
+    assert d and len(d["set"]) == 2 and any(v == 0 for _, v in d["set"]) and d["chain"]
+    steps, _ = forced_steps(rules, {"DNA_damage": 1, **{n: v for n, v in d["set"]}})
+    forced, cause = {s.node: s for s in steps}, {n for n, _ in d["set"]}
+    for node, value in d["chain"]:  # each gene is forced by a rule that reads something the switches (or an earlier gene) changed
+        assert forced[node].value == value and any(n in cause for n, _ in forced[node].because)
+        cause.add(node)
+    assert d["forced"] == len(steps) and d["genes"] == len(rules) - 1 and d["combos"] == 2 ** d["genes"]
+    assert 0 <= d["loops"] == d["genes"] - 2 - len(steps)
+
+
+def test_the_header_tells_its_story_in_six_beats_and_names_its_sources():
     body = (WEB / "body.html").read_text(encoding="utf-8")
-    assert [int(b) for b in re.findall(r'class="beat" data-b="(\d)"', body)] == [1, 2, 3, 4, 5]
+    assert [int(b) for b in re.findall(r'class="beat" data-b="(\d)"', body)] == [1, 2, 3, 4, 5, 6]
     assert "Radiotherapy is commonly used to treat a variety of solid tumors." in body and "PMC3167033" in body
     assert "NP-hard" in body and "Akutsu et al. 2007" in body  # the difficulty is stated with its source, in the markup as well as in the texts
 

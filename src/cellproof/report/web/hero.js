@@ -152,9 +152,10 @@ function makeHelix(cv, opt = {}) {
 /* ---------------------------------------------------------------- the story: a dish of cells, the goal, every change the solver tried, the verdict */
 function makeStory(cv, opt = {}) {
   /* Beats, counted from 0: 0 is the DNA alone (this canvas stays empty); 1 a dish swept by radiation, each cell taking one of four fates;
-     2 the goal: gene switches flip and every cell of a fresh dish dies; 3 a field with one dot per change of one or two genes that the
-     solver tried, which then zooms out as the number of genes changed at once grows; 4 back to the field: the AI's guesses, judged,
-     and the solver's scan, which dims all but the few that leave only death. The dots are one per set, in a fixed random order, so the
+     2 the goal: gene switches flip and every cell of a fresh dish dies; 3 the chain reaction: the genes that those two switches force,
+     one after another, fall like dominoes onto a cell; 4 a field with one dot per change of one or two genes that the solver tried,
+     which then zooms out as the number of genes changed at once grows; 5 back to the field: the AI's guesses, judged, and the
+     solver's scan, which dims all but the few that leave only death. The dots are one per set, in a fixed random order, so the
      positions mean nothing; the counts, the guesses' verdicts and which dots stay lit are the solver's. show(n) sets the beat,
      onCount(n) reports the number the caption should read, onStage(k) the largest number of genes changed at once being shown. */
   const ctx = cv.getContext("2d"), lite = !!opt.lite, TOTAL = opt.total || 0, KEEP = opt.keep || [], SIZES = opt.sizes || [], MARKS = opt.marks || [], CHIPS = opt.chips || [];
@@ -174,7 +175,7 @@ function makeStory(cv, opt = {}) {
   const pattern = ctx.createPattern(tile, "repeat");
 
   let W = 0, H = 0, dpr = 1, area = { cx: 0, cy: 0, w: 0, h: 0 }, dish = { cx: 0, cy: 0, R: 0 }, grid = null;
-  let ready = false, running = false, last = 0, beat = -1, prev = -1, dishA = 0, gridA = 0, sweepT = 0, chipT = 0, gridT = 0, zoomT = 0, backT = 0, backFrom = 1, aiT = 0, scanT = 0, count = -2, stage = 0;
+  let ready = false, running = false, last = 0, beat = -1, prev = -1, dishA = 0, gridA = 0, sweepT = 0, chipT = 0, gridT = 0, zoomT = 0, backT = 0, backFrom = 1, aiT = 0, scanT = 0, count = -2, stage = 0, domA = 0, domT = 0, domCell = null;
   let cells = [], blebs = [], debris = [];
 
   /* ---- the dish: cells are kept in units of the dish radius, so a resize moves nothing */
@@ -297,7 +298,7 @@ function makeStory(cv, opt = {}) {
     }
     return n[3];
   }
-  const scaleAt = (T) => (beat === 3 ? Math.sqrt(TOTAL / zoomN(T)) : beat === 4 && backT ? backFrom + (1 - backFrom) * smooth((T - backT) / 900) : 1);
+  const scaleAt = (T) => (beat === 4 ? Math.sqrt(TOTAL / zoomN(T)) : beat === 5 && backT ? backFrom + (1 - backFrom) * smooth((T - backT) / 900) : 1);
   function drawHaze(T, a, s) {
     const g = grid, spacing = Math.max(g.step * s, 1.8), k = spacing / TS, heat = SIZES.length > 4 ? clamp01(Math.log(zoomN(T) / TOTAL) / Math.log(SIZES[4] / TOTAL)) : 0;
     ctx.save(); ctx.beginPath(); ctx.rect(g.x0, g.y0, g.gw, g.gh); ctx.clip();
@@ -307,7 +308,7 @@ function makeStory(cv, opt = {}) {
   }
   function drawGrid(T, a) {
     const g = grid; if (!g) return;
-    const s = scaleAt(T), p = scanT ? (T - scanT) / SCAN : -1, rad = g.step * 0.3, aiP = beat === 4 && aiT ? T - aiT : -1;
+    const s = scaleAt(T), p = scanT ? (T - scanT) / SCAN : -1, rad = g.step * 0.3, aiP = beat === 5 && aiT ? T - aiT : -1;
     let appeared = 0, left = 0;
     if (s < 0.999) drawHaze(T, a, s);
     ctx.save(); ctx.translate(area.cx, area.cy); ctx.scale(s, s); ctx.translate(-area.cx, -area.cy);
@@ -352,9 +353,57 @@ function makeStory(cv, opt = {}) {
       lg.addColorStop(0, "rgba(120,220,255,0)"); lg.addColorStop(0.85, "rgba(120,220,255,.2)"); lg.addColorStop(1, "rgba(220,250,255,.95)");
       ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = a * fade; ctx.fillStyle = lg; ctx.fillRect(sx - g.gw * 0.14, g.y0 - g.step, g.gw * 0.14 + 3, g.gh + g.step * 2); ctx.restore();
     }
-    const n = zoomN(T), c = beat === 3 ? (zoomT && T >= zoomT ? Math.round(n) : appeared) : beat === 4 ? left : -1;
+    const n = zoomN(T), c = beat === 4 ? (zoomT && T >= zoomT ? Math.round(n) : appeared) : beat === 5 ? left : -1;
     if (c !== count) { count = c; if (opt.onCount) opt.onCount(c); }
-    if (beat === 3) { const k = n >= SIZES[4] * 0.9999 ? 5 : n >= SIZES[3] * 0.9999 ? 4 : n >= SIZES[2] * 0.9999 ? 3 : 2; if (k !== stage) { stage = k; if (opt.onStage) opt.onStage(k); } }
+    if (beat === 4) { const k = n >= SIZES[4] * 0.9999 ? 5 : n >= SIZES[3] * 0.9999 ? 4 : n >= SIZES[2] * 0.9999 ? 3 : 2; if (k !== stage) { stage = k; if (opt.onStage) opt.onStage(k); } }
+  }
+
+  /* ---- the chain reaction: the genes that the two switches force, one after another, fall like dominoes onto a cell. The order is the order
+     in which the solver's checkable steps force them; a tile is not a claim that it acts directly on the next. */
+  const DOM = opt.domino || null;
+  let tiles = [];
+  (function buildTiles() {
+    if (!DOM) return;
+    const full = [...DOM.set.map(([name, v]) => ({ name: DOM.label(name), v, set: true })), ...DOM.chain.map(([name, v]) => ({ name: DOM.label(name), v }))];
+    const max = lite ? 8 : 11, tail = 3;
+    if (full.length > max) { const head = max - 1 - tail; tiles = [...full.slice(0, head), { name: `+${full.length - head - tail}`, gap: true }, ...full.slice(-tail)]; } else tiles = full;
+  })();
+  const newDomCell = () => ({ x: 0, y: 0, r: 1, s: 1, a: 1, tint: FATES.base.slice(), act: null, die: 0, hit: 0, spin: 0.7, ph: 1.3, bled: false, gone: false });
+  function drawDomino(T, a, dt) {
+    const n = tiles.length; if (!n) return;
+    ctx.font = `600 ${lite ? 10 : 12.5}px ${sans}`;
+    const first = tiles[0].set ? `${tiles[0].name} ${tiles[0].v ? "ON" : "✕"}` : tiles[0].name, lead = Math.min(90, ctx.measureText(first).width * 0.72);  /* room for the tilted first name */
+    const th = Math.max(54, Math.min(area.h * 0.36, 150)), cr = th * 0.5, left = area.cx - area.w / 2 + lead, span = area.w - lead - th * 1.25, sp = span / n, tw = Math.max(15, Math.min(sp * 0.62, 38));
+    const base = area.cy + th * 0.5, FALL = 520, STEP = Math.min(300, 3000 / n), t0 = domT + 800, easeIn = (f) => f * f * (1.6 - 0.6 * f);
+    ctx.save(); ctx.globalAlpha = a;
+    const fl = ctx.createLinearGradient(left, 0, left + area.w, 0); fl.addColorStop(0, "rgba(255,255,255,0)"); fl.addColorStop(0.12, "rgba(255,255,255,.35)"); fl.addColorStop(0.9, "rgba(255,255,255,.35)"); fl.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = fl; ctx.fillRect(left, base, area.w, 2);
+    /* the cell the last tile falls on */
+    const lastX = left + (n - 1) * sp + tw, cx = lastX + th * 0.72, cy = base - cr, hitT = t0 + (n - 1) * STEP + FALL * 0.85, c = domCell || (domCell = newDomCell());
+    if (!c.act && T >= hitT) { c.act = "apoptosis"; c.die = T; c.hit = T; }
+    const k = 1 - Math.exp(-dt * 6), target = FATES[c.act || "base"]; c.tint = c.tint.map((v, i) => v + (target[i] - v) * k); c.spin += dt * 0.5; c.s += ((c.act ? 1.12 : 1) - c.s) * (1 - Math.exp(-dt * 4));
+    if (c.die && T - c.die > 1500) c.a = Math.max(0.35, c.a - dt * 1.2);
+    const keep = dish; dish = { cx, cy, R: cr }; drawCell(c, T, a); dish = keep;
+    for (let i = n - 1; i >= 0; i--) {  /* right to left: a tile that has fallen rests on top of the next */
+      const q = tiles[i], x = left + i * sp, f = Math.max(0, Math.min(1, (T - t0 - i * STEP) / FALL)), ang = (Math.PI / 2) * 0.86 * easeIn(f);
+      const on = q.set ? q.v : f > 0.5 ? q.v : -1, hot = f > 0 && f < 1 ? Math.sin(Math.PI * f) : 0;
+      const col = q.gap ? [210, 204, 240] : on === 1 ? [255, 206, 160] : on === 0 ? (q.set ? FATES.apoptosis : [150, 170, 235]) : [226, 218, 252];
+      ctx.save(); ctx.translate(x + tw, base); ctx.rotate(ang);
+      const g = ctx.createLinearGradient(-tw, -th, 0, 0); g.addColorStop(0, rgba(mixc(col, WHITE, 0.55), 0.96)); g.addColorStop(1, rgba(mixc(col, INK, 0.12), 0.96));
+      ctx.beginPath(); ctx.roundRect ? ctx.roundRect(-tw, -th, tw, th, 5) : ctx.rect(-tw, -th, tw, th); ctx.fillStyle = g; ctx.fill();
+      ctx.lineWidth = 1.6; ctx.strokeStyle = q.gap ? "rgba(255,255,255,.6)" : "rgba(255,255,255,.75)"; if (q.gap) ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+      if (hot > 0) { ctx.strokeStyle = `rgba(255,214,170,${0.9 * hot})`; ctx.lineWidth = 3; ctx.stroke(); }
+      ctx.restore();
+    }
+    /* the names sit under the floor, tilted, so that they stay readable once the tiles have fallen over one another; a name lights up when its tile is hit */
+    ctx.font = `600 ${lite ? 10 : 12.5}px ${sans}`; ctx.textBaseline = "middle";
+    tiles.forEach((q, i) => {
+      const f = Math.max(0, Math.min(1, (T - t0 - i * STEP) / FALL)), lit = q.set || f > 0.4, on = q.set ? q.v : q.v;
+      ctx.save(); ctx.translate(left + i * sp + tw / 2, base + 9); ctx.rotate(-Math.PI / 4); ctx.textAlign = "right";
+      ctx.fillStyle = q.gap ? "rgba(236,232,255,.75)" : lit ? (on === 1 ? "rgba(255,214,170,1)" : q.set ? "rgba(255,150,205,1)" : "rgba(176,196,255,1)") : "rgba(236,232,255,.55)";
+      ctx.fillText(q.set ? `${q.name} ${q.v ? "ON" : "✕"}` : q.name, 0, 0); ctx.restore();
+    });
+    ctx.restore();
   }
 
   function fit() {
@@ -366,8 +415,9 @@ function makeStory(cv, opt = {}) {
   }
   function draw(T, dt) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    const k = 1 - Math.exp(-dt * 5); dishA += (((beat === 1 || beat === 2) ? 1 : 0) - dishA) * k; gridA += ((beat >= 3 ? 1 : 0) - gridA) * k;
+    const k = 1 - Math.exp(-dt * 5); dishA += (((beat === 1 || beat === 2) ? 1 : 0) - dishA) * k; gridA += ((beat >= 4 ? 1 : 0) - gridA) * k; domA += ((beat === 3 ? 1 : 0) - domA) * k;
     if (dishA > 0.01) { updateCells(dt, T); drawDish(T, dishA); }
+    if (domA > 0.01) drawDomino(T, domA, dt);
     if (gridA > 0.01) drawGrid(T, gridA);
   }
   /* the beat's own start: a new dish (and its sweep), the switches, the dots appearing, the zoom, the guesses, the scan. `instant` shows the end of the beat at once. */
@@ -377,13 +427,14 @@ function makeStory(cv, opt = {}) {
       makeCells(n === 2); sweepT = instant ? 0 : T + (n === 2 ? 2300 : 700); chipT = n === 2 ? (instant ? T - 5000 : T + 250) : 0;
       if (instant) { for (const c of cells) { c.hit = 1; c.act = c.fate; c.s = c.fate === "senescence" ? 1.3 : 1; c.tint = FATES[c.fate].slice(); if (c.fate === "apoptosis") { c.gone = true; crumbs(c); } } cells = cells.filter((c) => !c.gone); }
     } else { sweepT = 0; chipT = 0; }
-    if (n >= 3) {
-      if (n === 3 || prev < 3) gridT = instant || n === 4 ? T - 6000 : T;
-      zoomT = n === 3 ? (instant ? T - 20000 : T + 1700) : 0;
-      backFrom = n === 4 && prev === 3 ? Math.sqrt(TOTAL / (SIZES[4] || TOTAL)) : 1; backT = n === 4 && !instant && prev === 3 ? T : 0;
-      aiT = n === 4 ? (instant ? T - 20000 : T + 1100) : 0; scanT = n === 4 ? (instant ? T - 1e5 : T + 3500) : 0;
+    if (n === 3) { domT = instant ? T - 30000 : T + 300; domCell = newDomCell(); if (instant) { domCell.act = "apoptosis"; domCell.die = T - 5000; domCell.tint = FATES.apoptosis.slice(); domCell.a = 0.35; domCell.s = 1.12; } } else domT = 0;
+    if (n >= 4) {
+      if (n === 4 || prev < 4) gridT = instant || n === 5 ? T - 6000 : T;
+      zoomT = n === 4 ? (instant ? T - 20000 : T + 1700) : 0;
+      backFrom = n === 5 && prev === 4 ? Math.sqrt(TOTAL / (SIZES[4] || TOTAL)) : 1; backT = n === 5 && !instant && prev === 4 ? T : 0;
+      aiT = n === 5 ? (instant ? T - 20000 : T + 1100) : 0; scanT = n === 5 ? (instant ? T - 1e5 : T + 3500) : 0;
     } else { gridT = 0; zoomT = 0; backT = 0; aiT = 0; scanT = 0; }
-    if (instant) { dishA = n === 1 || n === 2 ? 1 : 0; gridA = n >= 3 ? 1 : 0; if (ready) draw(T, 0); }
+    if (instant) { dishA = n === 1 || n === 2 ? 1 : 0; domA = n === 3 ? 1 : 0; gridA = n >= 4 ? 1 : 0; if (ready) draw(T, 0); }
   }
   const frame = (now) => { if (!running) return; const dt = Math.max(0, Math.min(0.05, (now - last) / 1000)); last = now; draw(now, dt); requestAnimationFrame(frame); };
   new ResizeObserver(() => { if (fit() && !running) draw(performance.now(), 0); }).observe(cv);

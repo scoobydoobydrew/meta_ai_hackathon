@@ -13,9 +13,12 @@ button switches it.
 solvers. Built this week: an agent where Muse Spark reads the papers and proposes rules, and an exact solver decides which
 ones the model can take."
 
-The top of the page plays a story of about 25 seconds over a close-up of DNA, in five beats that loop: a ray breaks the DNA
+The top of the page plays a story of about 30 seconds over a close-up of DNA, in six beats that loop: a ray breaks the DNA
 ("Radiation breaks DNA"); a dish of cells takes four fates ("Not every damaged cell dies"); two gene switches flip and every cell
-of a fresh dish dies ("Flip the right genes", the goal: a combination of genes to switch off, or on); a field of dots, one per
+of a fresh dish dies ("Flip the right genes", the goal: a combination of genes to switch off, or on); the same two switches set
+off a chain reaction ("One switch. A chain reaction.": a paper gives one link at a time, the cell is all of them at once; the genes
+the switches force fall like dominoes onto a cell, each step checkable by hand, and the ones that loop back on each other are
+settled only by the solver; the pair is not in the base paper, so the solver computed it); a field of dots, one per
 combination of one or two genes, which zooms out as sets of up to five genes are counted, with the NP-hard note and its source;
 the AI's guesses judged by the solver, then the solver's scan leaving a few glowing dots ("The AI proposes. The solver decides.").
 Reload the page so that it starts on the first beat, let it play under the one line above (do not read the captions out), then
