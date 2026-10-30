@@ -33,6 +33,24 @@ This is a research prototype that ranks hypotheses for lab testing. It makes no 
 - The "hunt" lists every set of one or two changes (readout genes excluded) that leaves only death in the model. Those are
   hypotheses about the model; two of them (TUG1 knocked out, miR-221 forced on) are what the base paper itself reports.
 
+**The difficulty, and what the header does and does not claim**
+- "Controlling a Boolean network is NP-hard in general" is a result of Akutsu, Hayashida, Ching and Ng (J Theor Biol 2007;244:670-679,
+  doi 10.1016/j.jtbi.2006.09.023): finding a control strategy that leads to a desired global state is NP-hard, and stays so for
+  restricted network structures. Our task (sets of at most two changes after which every stable state is apoptosis) is a relative
+  of that problem, not the same one; we cite the general result and claim no complexity class for this exact variant. Sedghamiz et
+  al. (Front Physiol 2019;10:241, CC BY) write that finding intervention sets exhaustively is feasible on small networks and
+  difficult on larger ones, which is the situation here.
+- The header does **not** say that a solver alone cannot solve this model: the exhaustive search over all of its sets of up to two
+  changes takes seconds. It shows how the count grows with the number of genes changed at once (sets of up to 3, 4 and 5 changes,
+  counted by the same enumeration as the search) and what that would cost at the speed measured for up to two changes. Those
+  times are projections ("projected" on the page), not measurements; the one we could check, sets of up to three changes, took 57 s
+  measured against 66 s projected (the search skips supersets of sets already found, so the projection errs on the high side).
+  What a solver alone cannot do is read the papers: the published model lacks ATR, CHK1, CHK2 and DNA-PK, which the literature
+  knows. M6 measures a different limit: on random networks the exact checker timed out at 30 s from 50 nodes up (one of three
+  seeds at 50, all at 100 and more), while networks shaped like the published one scaled to 400 nodes in about 12 s.
+- Of the 11 shortlisted sets, three are knock-outs (PTEN, RB, TUG1); the other eight force a gene on, and all four pairs include
+  one forced-on gene. The header therefore says "switch off, or on", not "switch off".
+
 **The solver and the loop**
 - The solver catches contradictions with the ten verification cases (and the G2 regression), not every error. Those cases
   come from the same paper as the base model, so they test that augmentation does not break what that paper reports.

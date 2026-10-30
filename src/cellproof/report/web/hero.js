@@ -149,26 +149,37 @@ function makeHelix(cv, opt = {}) {
   };
 }
 
-/* ---------------------------------------------------------------- the story: a dish of cells, then every change the solver tried */
+/* ---------------------------------------------------------------- the story: a dish of cells, the goal, every change the solver tried, the verdict */
 function makeStory(cv, opt = {}) {
-  /* Beats, counted from 0: 0 is the DNA alone (this canvas stays empty); 1 a dish of cells swept by radiation, each cell taking one of
-     four fates; 2 a field of dots, one per change of one or two genes that the solver tried; 3 the solver's scan, which dims all but the
-     few that leave only death. show(n) sets the beat, onCount(n) reports the number the caption should read (dots shown, dots left). */
-  const ctx = cv.getContext("2d"), lite = !!opt.lite, TOTAL = opt.total || 0, KEEP = opt.keep || 0, SCAN = lite ? 2200 : 2800, RAY = 380;
-  const ORDER = ["arrest", "senescence", "autophagy", "apoptosis"];
+  /* Beats, counted from 0: 0 is the DNA alone (this canvas stays empty); 1 a dish swept by radiation, each cell taking one of four fates;
+     2 the goal: gene switches flip and every cell of a fresh dish dies; 3 a field with one dot per change of one or two genes that the
+     solver tried, which then zooms out as the number of genes changed at once grows; 4 back to the field: the AI's guesses, judged,
+     and the solver's scan, which dims all but the few that leave only death. The dots are one per set, in a fixed random order, so the
+     positions mean nothing; the counts, the guesses' verdicts and which dots stay lit are the solver's. show(n) sets the beat,
+     onCount(n) reports the number the caption should read, onStage(k) the largest number of genes changed at once being shown. */
+  const ctx = cv.getContext("2d"), lite = !!opt.lite, TOTAL = opt.total || 0, KEEP = opt.keep || [], SIZES = opt.sizes || [], MARKS = opt.marks || [], CHIPS = opt.chips || [];
+  const SCAN = lite ? 2100 : 2500, RAY = 380, PLAN = [0.5, 0.8, 0.45, 0.8, 0.45, 0.9], TILE = 16, TS = 12, ORDER = ["arrest", "senescence", "autophagy", "apoptosis"];
   const FATES = { arrest: [92, 158, 255], senescence: [232, 192, 72], autophagy: [58, 214, 168], apoptosis: [255, 110, 186], base: [182, 176, 224] };
   const DOTS = [[178, 152, 238], [240, 196, 232], [250, 228, 204], [246, 242, 252]].map((c) => `rgb(${c[0]},${c[1]},${c[2]})`), PEACH = [255, 170, 92], WHITE = [255, 255, 255], INK = [14, 12, 36];
+  const GREEN = [88, 230, 172], RED = [255, 104, 116], BLUE = [132, 176, 255];
   const mixc = (a, c, k) => a.map((v, i) => v + (c[i] - v) * k), clamp01 = (x) => Math.max(0, Math.min(1, x));
   const soft = (c) => { const s = 96, o = document.createElement("canvas"); o.width = o.height = s; const g = o.getContext("2d"), gr = g.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2); gr.addColorStop(0, rgba(c, 0.95)); gr.addColorStop(1, rgba(c, 0)); g.fillStyle = gr; g.fillRect(0, 0, s, s); return o; };
-  const HALO = soft(PEACH), rb = rng(77);
+  const HALO = soft(PEACH), rb = rng(77), sans = css("--sans") || "sans-serif";
+  /* a tile of dots, repeated by a pattern fill, stands for the many more sets of the zoomed-out field */
+  const tile = (() => {
+    const o = document.createElement("canvas"); o.width = o.height = TILE * TS; const g = o.getContext("2d"), r = rng(13);
+    for (let y = 0; y < TILE; y++) for (let x = 0; x < TILE; x++) { g.fillStyle = DOTS[Math.floor(r() * 4)]; g.beginPath(); g.arc((x + 0.5 + (r() - 0.5) * 0.3) * TS, (y + 0.5 + (r() - 0.5) * 0.3) * TS, TS * 0.3 * (0.82 + r() * 0.36), 0, TAU); g.fill(); }  /* a little jitter, so that the haze reads as a crowd and not as graph paper */
+    return o;
+  })();
+  const pattern = ctx.createPattern(tile, "repeat");
 
   let W = 0, H = 0, dpr = 1, area = { cx: 0, cy: 0, w: 0, h: 0 }, dish = { cx: 0, cy: 0, R: 0 }, grid = null;
-  let ready = false, running = false, last = 0, beat = -1, prev = -1, dishA = 0, gridA = 0, sweepT = 0, gridT = 0, scanT = 0, count = -2;
+  let ready = false, running = false, last = 0, beat = -1, prev = -1, dishA = 0, gridA = 0, sweepT = 0, chipT = 0, gridT = 0, zoomT = 0, backT = 0, backFrom = 1, aiT = 0, scanT = 0, count = -2, stage = 0;
   let cells = [], blebs = [], debris = [];
 
   /* ---- the dish: cells are kept in units of the dish radius, so a resize moves nothing */
-  function makeCells() {
-    const r = rng(5), n = lite ? 22 : 34, list = [], fates = Array.from({ length: n }, (_, i) => ORDER[i % 4]);
+  function makeCells(allDie) {
+    const r = rng(5), n = lite ? 22 : 34, list = [], fates = Array.from({ length: n }, (_, i) => (allDie ? "apoptosis" : ORDER[i % 4]));
     for (let i = n - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [fates[i], fates[j]] = [fates[j], fates[i]]; }
     for (let tries = 0; list.length < n && tries < 6000; tries++) {
       const a = r() * TAU, d = Math.sqrt(r()) * 0.84, rad = (lite ? 0.125 : 0.1) * (0.84 + r() * 0.32), x = Math.cos(a) * d, y = Math.sin(a) * d;
@@ -210,6 +221,25 @@ function makeStory(cv, opt = {}) {
     const fl = c.hit ? Math.max(0, 1 - (T - c.hit) / 380) : 0;
     if (fl > 0) { ctx.beginPath(); ctx.arc(x, y, r * (1.08 + 0.5 * fl), 0, TAU); ctx.lineWidth = 3; ctx.strokeStyle = `rgba(255,255,255,${0.9 * fl})`; ctx.stroke(); }
   }
+  /* the two gene switches of the goal beat: they appear grey, then flip (a cross for a gene switched off, ON for one forced on) */
+  function drawChips(T, a) {
+    if (!CHIPS.length || !chipT) return;
+    const { cx, cy, R } = dish, h = Math.max(28, Math.min(46, R * 0.2)), fs = Math.round(h * 0.46), pad = h * 0.5, gap = h * 0.7, y = cy - R - h * 1.05;
+    ctx.save(); ctx.font = `600 ${fs}px ${sans}`; ctx.textBaseline = "middle";
+    const marks = CHIPS.map((c) => (c.off ? "✕" : "ON")), widths = CHIPS.map((c, i) => ctx.measureText(c.name).width + ctx.measureText(marks[i]).width + pad * 3.2);
+    let x = cx - (widths.reduce((s, w) => s + w, 0) + gap * (CHIPS.length - 1)) / 2;
+    CHIPS.forEach((c, i) => {
+      const w = widths[i], appear = clamp01((T - chipT - i * 160) / 420), flip = clamp01((T - chipT - 1150 - i * 260) / 360), pop = flip > 0 && flip < 1 ? 1 + 0.12 * Math.sin(flip * Math.PI) : 1;
+      const col = c.off ? FATES.apoptosis : PEACH, mid = x + w / 2;
+      ctx.globalAlpha = a * appear; ctx.save(); ctx.translate(mid, y); ctx.scale(pop, pop); ctx.translate(-mid, -y);
+      ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y - h / 2, w, h, h / 2) : ctx.rect(x, y - h / 2, w, h);
+      ctx.fillStyle = rgba(mixc([255, 255, 255], col, flip), 0.1 + 0.3 * flip); ctx.fill(); ctx.lineWidth = 1.6; ctx.strokeStyle = rgba(mixc([255, 255, 255], col, flip), 0.5 + 0.45 * flip); ctx.stroke();
+      ctx.fillStyle = rgba(WHITE, 0.95); ctx.textAlign = "left"; ctx.fillText(c.name, x + pad, y + 1);
+      ctx.fillStyle = rgba(mixc([200, 196, 230], mixc(col, WHITE, 0.35), flip), 0.55 + 0.45 * flip); ctx.textAlign = "right"; ctx.fillText(marks[i], x + w - pad, y + 1);
+      ctx.restore(); x += w + gap;
+    });
+    ctx.restore();
+  }
   function drawDish(T, a) {
     const { cx, cy, R } = dish;
     ctx.save(); ctx.globalAlpha = a;
@@ -236,9 +266,10 @@ function makeStory(cv, opt = {}) {
       ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, R, 0, TAU); ctx.clip(); ctx.fillStyle = lg; ctx.fillRect(sx - R * 0.5, cy - R, R * 0.5 + 6, R * 2); ctx.restore();
     }
     ctx.restore();
+    drawChips(T, a);
   }
 
-  /* ---- the field: one dot per change the solver tried; the positions are arbitrary, the count is the real one */
+  /* ---- the field: one dot per change the solver tried; the positions are arbitrary, the count and the verdicts are real */
   function buildGrid() {
     if (!TOTAL) { grid = null; return; }
     const A = area, aspect = A.w / A.h, cols = Math.max(10, Math.round(Math.sqrt(TOTAL * aspect))), rows = Math.ceil(TOTAL / cols), step = Math.min(A.w / cols, A.h / rows);
@@ -248,15 +279,38 @@ function makeStory(cv, opt = {}) {
       dots.push({ x: x0 + (c + 0.5) * step, y: y0 + (rr + 0.5) * step, fx: (c + 0.5) / cols, ord: Math.hypot((c + 0.5) / cols - 0.5, ((rr + 0.5) / rows - 0.5) * (gh / gw)), k: Math.floor(r() * 4), rv: 0.82 + r() * 0.36, keep: false, ph: r() * TAU });
     }
     const far = Math.max(...dots.map((d) => d.ord)) || 1; for (const d of dots) d.ord /= far;
-    const keepers = [];
-    for (let tries = 0; keepers.length < KEEP && tries < 8000; tries++) { const d = dots[Math.floor(r() * TOTAL)]; if (!d.keep && keepers.every((p) => Math.hypot(p.x - d.x, p.y - d.y) > step * 5)) { d.keep = true; keepers.push(d); } }
-    grid = { dots, keepers, step, x0, y0, gw, gh };
+    /* the i-th set tried sits in slot perm[i]: a fixed shuffle, so that nothing in the layout is a hint */
+    const perm = Array.from({ length: TOTAL }, (_, i) => i), q = rng(53);
+    for (let i = TOTAL - 1; i > 0; i--) { const j = Math.floor(q() * (i + 1)); [perm[i], perm[j]] = [perm[j], perm[i]]; }
+    const keepers = KEEP.filter((i) => i < TOTAL).map((i) => dots[perm[i]]); for (const d of keepers) d.keep = true;
+    const marks = MARKS.filter((m) => m.i < TOTAL).map((m, n) => ({ d: dots[perm[m.i]], w: m.w, m: m.m, n }));
+    grid = { dots, keepers, marks, step, x0, y0, gw, gh };
+  }
+  /* how far the field is zoomed out: its count grows through the stages, in logarithmic steps, and its scale falls with the square root */
+  function zoomN(T) {
+    const n = SIZES.slice(1);
+    if (n.length < 4 || !zoomT || T < zoomT) return TOTAL;
+    let t = (T - zoomT) / 1000;
+    for (let i = 0; i < PLAN.length; i++) {
+      if (t < PLAN[i]) return i % 2 === 0 ? n[i / 2] : Math.exp(Math.log(n[(i - 1) / 2]) + (Math.log(n[(i + 1) / 2]) - Math.log(n[(i - 1) / 2])) * smooth(t / PLAN[i]));
+      t -= PLAN[i];
+    }
+    return n[3];
+  }
+  const scaleAt = (T) => (beat === 3 ? Math.sqrt(TOTAL / zoomN(T)) : beat === 4 && backT ? backFrom + (1 - backFrom) * smooth((T - backT) / 900) : 1);
+  function drawHaze(T, a, s) {
+    const g = grid, spacing = Math.max(g.step * s, 1.8), k = spacing / TS, heat = SIZES.length > 4 ? clamp01(Math.log(zoomN(T) / TOTAL) / Math.log(SIZES[4] / TOTAL)) : 0;
+    ctx.save(); ctx.beginPath(); ctx.rect(g.x0, g.y0, g.gw, g.gh); ctx.clip();
+    if (heat > 0) { ctx.globalCompositeOperation = "lighter"; ctx.fillStyle = rgba(PEACH, 0.2 * heat * a); ctx.fillRect(g.x0, g.y0, g.gw, g.gh); ctx.globalCompositeOperation = "source-over"; }
+    ctx.translate(area.cx, area.cy); ctx.scale(k, k); ctx.globalAlpha = a * smooth((1 - s) / 0.2) * 0.9; ctx.fillStyle = pattern; ctx.fillRect(-g.gw / 2 / k, -g.gh / 2 / k, g.gw / k, g.gh / k);
+    ctx.restore();
   }
   function drawGrid(T, a) {
     const g = grid; if (!g) return;
-    const p = scanT ? (T - scanT) / SCAN : -1, pc = clamp01(p), rad = g.step * 0.3;
+    const s = scaleAt(T), p = scanT ? (T - scanT) / SCAN : -1, rad = g.step * 0.3, aiP = beat === 4 && aiT ? T - aiT : -1;
     let appeared = 0, left = 0;
-    ctx.save();
+    if (s < 0.999) drawHaze(T, a, s);
+    ctx.save(); ctx.translate(area.cx, area.cy); ctx.scale(s, s); ctx.translate(-area.cx, -area.cy);
     for (const d of g.dots) {
       const ap = clamp01((T - gridT - 250 - d.ord * 1050) / 280);
       if (ap <= 0) continue;
@@ -277,14 +331,30 @@ function makeStory(cv, opt = {}) {
       ctx.globalAlpha = a * ap; ctx.fillStyle = e > 0.02 ? rgba(mixc(PEACH, WHITE, 0.55 * e), 1) : DOTS[d.k]; ctx.beginPath(); ctx.arc(d.x, d.y, rad * d.rv * (1 + 1.4 * e), 0, TAU); ctx.fill();
       if (e > 0) { ctx.globalAlpha = a * e * 0.7; ctx.lineWidth = 1.6; ctx.strokeStyle = rgba(mixc(PEACH, WHITE, 0.4), 1); ctx.beginPath(); ctx.arc(d.x, d.y, g.step * (1.5 + 0.4 * pulse), 0, TAU); ctx.stroke(); }
     }
-    if (p > -0.02 && p < 1.12) {
-      const sx = g.x0 + pc * g.gw, fade = clamp01(Math.min((p + 0.02) * 12, (1.12 - p) * 8)), lg = ctx.createLinearGradient(sx - g.gw * 0.14, 0, sx + 3, 0);
-      lg.addColorStop(0, "rgba(120,220,255,0)"); lg.addColorStop(0.85, "rgba(120,220,255,.2)"); lg.addColorStop(1, "rgba(220,250,255,.95)");
-      ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = a * fade; ctx.fillStyle = lg; ctx.fillRect(sx - g.gw * 0.14, g.y0 - g.step, g.gw * 0.14 + 3, g.gh + g.step * 2); ctx.globalCompositeOperation = "source-over";
+    /* the AI's guesses, one after another: a blue ring, then the solver's verdict (green ring if it leaves only death, a red cross if not); the scan wipes the wrong ones */
+    const gap = Math.min(lite ? 70 : 55, 1800 / Math.max(1, g.marks.length));
+    for (const m of g.marks) {
+      const t0 = aiP - m.n * gap; if (t0 < 0) continue;
+      const verdict = smooth((t0 - 380) / 260), dim = m.d.keep || p < 0 ? 1 : 1 - clamp01(((p - m.d.fx) * SCAN) / 420), x = m.d.x, y = m.d.y, r0 = g.step * (1.15 + 0.5 * (1 - smooth(t0 / 260)));
+      ctx.globalAlpha = a * dim * clamp01(t0 / 120); ctx.lineWidth = Math.max(1.4, g.step * 0.16);
+      ctx.strokeStyle = rgba(mixc(BLUE, m.w ? GREEN : RED, verdict), 1); ctx.beginPath(); ctx.arc(x, y, r0, 0, TAU); ctx.stroke();
+      if (verdict > 0 && !m.w) { const c = r0 * 0.42; ctx.globalAlpha *= verdict; ctx.beginPath(); ctx.moveTo(x - c, y - c); ctx.lineTo(x + c, y + c); ctx.moveTo(x + c, y - c); ctx.lineTo(x - c, y + c); ctx.stroke(); }
     }
     ctx.restore();
-    const c = beat === 2 ? appeared : beat === 3 ? left : -1;
+    if (s < 0.999) {  /* the field we started with, shrinking into a speck: the 1,058 are only this much of what grows */
+      const w = g.gw * s, h = g.gh * s, e = clamp01((1 - s) / 0.15);
+      ctx.save(); ctx.globalAlpha = a * e; ctx.fillStyle = rgba(mixc(PEACH, WHITE, 0.6), 0.35); ctx.fillRect(area.cx - w / 2, area.cy - h / 2, w, h); ctx.lineWidth = 1.6; ctx.strokeStyle = "rgba(255,255,255,.9)"; ctx.strokeRect(area.cx - w / 2, area.cy - h / 2, w, h);
+      if (s < 0.5 && opt.fmt) { ctx.font = `600 ${lite ? 12 : 14}px ${sans}`; ctx.textAlign = "center"; ctx.fillStyle = "rgba(255,255,255,.95)"; ctx.fillText(opt.fmt(TOTAL), area.cx, area.cy + h / 2 + (lite ? 16 : 20)); }
+      ctx.restore();
+    }
+    if (p > -0.02 && p < 1.12) {
+      const sx = g.x0 + clamp01(p) * g.gw, fade = clamp01(Math.min((p + 0.02) * 12, (1.12 - p) * 8)), lg = ctx.createLinearGradient(sx - g.gw * 0.14, 0, sx + 3, 0);
+      lg.addColorStop(0, "rgba(120,220,255,0)"); lg.addColorStop(0.85, "rgba(120,220,255,.2)"); lg.addColorStop(1, "rgba(220,250,255,.95)");
+      ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = a * fade; ctx.fillStyle = lg; ctx.fillRect(sx - g.gw * 0.14, g.y0 - g.step, g.gw * 0.14 + 3, g.gh + g.step * 2); ctx.restore();
+    }
+    const n = zoomN(T), c = beat === 3 ? (zoomT && T >= zoomT ? Math.round(n) : appeared) : beat === 4 ? left : -1;
     if (c !== count) { count = c; if (opt.onCount) opt.onCount(c); }
+    if (beat === 3) { const k = n >= SIZES[4] * 0.9999 ? 5 : n >= SIZES[3] * 0.9999 ? 4 : n >= SIZES[2] * 0.9999 ? 3 : 2; if (k !== stage) { stage = k; if (opt.onStage) opt.onStage(k); } }
   }
 
   function fit() {
@@ -292,27 +362,32 @@ function makeStory(cv, opt = {}) {
     dpr = Math.min(2, devicePixelRatio || 1); W = r.width; H = r.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
     const wide = W >= 760, h = wide ? Math.min(H * 0.72, 600) : H * 0.74;
     area = wide ? { cx: W * 0.69, cy: H * 0.52, w: Math.min(W * 0.46, h * 1.25), h } : { cx: W * 0.5, cy: H * 0.5, w: W * 0.92, h };
-    dish = { cx: area.cx, cy: area.cy, R: Math.min(area.w, area.h) / 2 }; buildGrid(); ready = true; return true;
+    const R = (Math.min(area.w, area.h) / 2) * 0.9; dish = { cx: area.cx, cy: area.cy + R * 0.12, R }; buildGrid(); ready = true; return true;
   }
   function draw(T, dt) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    const k = 1 - Math.exp(-dt * 5); dishA += ((beat === 1 ? 1 : 0) - dishA) * k; gridA += ((beat >= 2 ? 1 : 0) - gridA) * k;
+    const k = 1 - Math.exp(-dt * 5); dishA += (((beat === 1 || beat === 2) ? 1 : 0) - dishA) * k; gridA += ((beat >= 3 ? 1 : 0) - gridA) * k;
     if (dishA > 0.01) { updateCells(dt, T); drawDish(T, dishA); }
     if (gridA > 0.01) drawGrid(T, gridA);
   }
-  /* the beat's own start: a new dish (and its sweep), the dots appearing, the scan. `instant` shows the end of the beat at once. */
+  /* the beat's own start: a new dish (and its sweep), the switches, the dots appearing, the zoom, the guesses, the scan. `instant` shows the end of the beat at once. */
   function show(n, instant) {
-    const T = performance.now(); prev = beat; beat = n; count = -2;
-    if (n === 1) {
-      makeCells(); sweepT = instant ? 0 : T + 700;
+    const T = performance.now(); prev = beat; beat = n; count = -2; stage = 0;
+    if (n === 1 || n === 2) {
+      makeCells(n === 2); sweepT = instant ? 0 : T + (n === 2 ? 2300 : 700); chipT = n === 2 ? (instant ? T - 5000 : T + 250) : 0;
       if (instant) { for (const c of cells) { c.hit = 1; c.act = c.fate; c.s = c.fate === "senescence" ? 1.3 : 1; c.tint = FATES[c.fate].slice(); if (c.fate === "apoptosis") { c.gone = true; crumbs(c); } } cells = cells.filter((c) => !c.gone); }
-    } else sweepT = 0;
-    if (n >= 2) { if (n === 2 || prev < 2) gridT = instant || n === 3 ? T - 6000 : T; scanT = n === 3 ? (instant ? T - 1e5 : T + 900) : 0; } else { gridT = 0; scanT = 0; }
-    if (instant) { dishA = n === 1 ? 1 : 0; gridA = n >= 2 ? 1 : 0; if (ready) draw(T, 0); }
+    } else { sweepT = 0; chipT = 0; }
+    if (n >= 3) {
+      if (n === 3 || prev < 3) gridT = instant || n === 4 ? T - 6000 : T;
+      zoomT = n === 3 ? (instant ? T - 20000 : T + 1700) : 0;
+      backFrom = n === 4 && prev === 3 ? Math.sqrt(TOTAL / (SIZES[4] || TOTAL)) : 1; backT = n === 4 && !instant && prev === 3 ? T : 0;
+      aiT = n === 4 ? (instant ? T - 20000 : T + 1100) : 0; scanT = n === 4 ? (instant ? T - 1e5 : T + 3500) : 0;
+    } else { gridT = 0; zoomT = 0; backT = 0; aiT = 0; scanT = 0; }
+    if (instant) { dishA = n === 1 || n === 2 ? 1 : 0; gridA = n >= 3 ? 1 : 0; if (ready) draw(T, 0); }
   }
   const frame = (now) => { if (!running) return; const dt = Math.max(0, Math.min(0.05, (now - last) / 1000)); last = now; draw(now, dt); requestAnimationFrame(frame); };
   new ResizeObserver(() => { if (fit() && !running) draw(performance.now(), 0); }).observe(cv);
-  fit(); makeCells();
+  fit(); makeCells(false);
   return {
     show,
     start: () => { fit(); if (running || !ready) return; if (reduced) { draw(performance.now(), 0); return; } running = true; last = performance.now(); requestAnimationFrame(frame); },

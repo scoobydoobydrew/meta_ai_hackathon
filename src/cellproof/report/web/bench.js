@@ -15,18 +15,35 @@
   /* the hunt: the exact solver found every set of one or two changes (readout genes excluded) after which every cell dies */
   const INTERV = ((D.interventions || {}).augmented || []).map((s) => s.map(([n, v]) => [n, v])), READOUT = new Set((D.interventions || {}).readout || []), HUNT = INTERV.length > 0;
   const setName = (s) => s.map(([n, v]) => `${pretty(n)} ${v ? "ON" : "✕"}`).join(" + ");
-  /* the header's numbers: how many changes the solver tried, how long that took on the machine that built this page, how many it kept */
-  const SPACE = (D.interventions || {}).space || {}, HERO = { total: SPACE.total || 0, found: SPACE.found || 0, secs: Math.max(1, Math.round(SPACE.seconds || 0)) };
+  /* the header's numbers, all from the solver or from files the pipeline wrote: how many changes of one or two genes it tried and how long
+     that took on the machine that built this page, how many it kept, how the count grows with the number of genes changed at once
+     (and the time that would take at the same speed: a projection), what the model did when asked for the answer itself, and how
+     many known experiments the unchecked edits break against the checked ones */
+  const SPACE = (D.interventions || {}).space || {}, AIX = D.llm_search ? D.llm_search.arms[D.llm_search.best] : null, MATRIX = (D.verification || {}).matrix || {};
+  const failCount = (pre) => Object.keys(MATRIX).filter((k) => k.startsWith(pre)).map((k) => Object.keys(MATRIX[k]).length);
+  const HERO = {
+    total: SPACE.total || 0, found: SPACE.found || 0, secs: Math.max(1, Math.round(SPACE.seconds || 0)), sizes: ["1", "2", "3", "4", "5"].map((k) => (SPACE.sizes || {})[k] || 0),
+    proj: SPACE.projected_seconds || {}, keep: SPACE.keep || [], marks: AIX ? AIX.marks : [], ai: AIX ? AIX.summary : null, unchecked: failCount("naive"), checked: failCount("verified").concat(failCount("repaired")),
+  };
+  const PAIR = INTERV.find((s) => s.length === 2 && s.some(([, v]) => v === 0)) || INTERV.find((s) => s.length === 2) || INTERV[0] || [];
+  const UNCH = HERO.unchecked.length ? [Math.min(...HERO.unchecked), Math.max(...HERO.unchecked)] : null, CHK = HERO.checked.length ? Math.max(...HERO.checked) : 0;
+  const range = (a, b) => (a === b ? `${a}` : `${a}–${b}`), joined = (parts) => parts.filter(Boolean).join(" · ");
 
   /* ---------------------------------------------------------------- texts */
   const TEXT = {
     en: {
       "nav.bench": "Bench", "play.short": "▶ Play", "play.stop": "■ Stop",
-      "hero.sr": () => `CellProof: radiation breaks DNA and a damaged cell does not always die. Which changes of one or two genes would make it die? There are ${num(HERO.total)} to try in the lab. An AI reads the papers, an exact solver checks every rule and tries every change, and ${HERO.found} candidates are left: hypotheses for experiments, not treatments.`,
+      "hero.sr": () => `CellProof: radiation breaks DNA and a damaged cell does not always die. The goal is a combination of genes to switch off, or on, that leaves only death. There are ${num(HERO.total)} combinations of one or two genes, ${num(HERO.sizes[4])} of up to five, and controlling a Boolean network is NP-hard in general (Akutsu et al. 2007). ${HERO.ai ? `Asked directly, an AI named ${HERO.ai.distinct} sets and ${HERO.ai.works} were right. ` : ""}${UNCH ? `Its unchecked edits to the model break ${range(...UNCH)} of 10 known experiments. ` : ""}An exact solver cannot read the papers. Together: ${HERO.found} candidates for the lab and ${CHK} of 10 known experiments broken. Hypotheses for experiments, not treatments.`,
+      "hero.sa": () => `<b>AI alone:</b> ${joined([HERO.ai && `${HERO.ai.works} of ${HERO.ai.distinct} guesses right`, UNCH && `its edits break ${range(...UNCH)} of 10 known experiments`])}`,
+      "hero.sb": () => `<b>Solver alone:</b> exact, but blind to the papers${HERO.proj["5"] ? `; ≈ ${dur(HERO.proj["5"])} for 5 changes (projected)` : ""}`,
+      "hero.sc": () => `<b>Together:</b> ${HERO.found} candidates for the lab, ${CHK} of 10 known experiments broken`,
       "hero.b1": "Radiation <em>breaks</em> DNA.", "hero.b2": "Not every damaged cell <em>dies.</em>", "hero.n2": "In the published model. Illustration, not percentages.",
-      "hero.b3": "Which genes make it <em>die?</em>", "hero.n3": "changes of one or two genes to try", "hero.s3": "Each one is a lab experiment.",
-      "hero.b4": "The AI proposes. The solver <em>decides.</em>", "hero.n4": "candidates left",
-      "hero.s4": () => `An AI reads the papers. An exact solver checks every rule, then tries all ${num(HERO.total)} changes in ${HERO.secs} s. The lab starts with these.`,
+      "hero.b3": "Flip the right genes, and every cell <em>dies.</em>", "hero.s3": "The goal: a combination of genes to switch off, or on, that leaves only death.",
+      "hero.n3": "Two genes here, an example from the model. Illustration.",
+      "hero.b4": "Which combination? The search <em>explodes.</em>", "hero.n4": "combinations, each one a lab experiment", "hero.np": "<b>NP-hard</b> in general · Akutsu et al. 2007",
+      "hero.stage": (k, t, proj) => `up to ${k} genes at once · solver ${proj ? "≈ " : ""}${t}${proj ? " (projected)" : ""}`,
+      "hero.b5": "The AI proposes. The solver <em>decides.</em>", "hero.n5": "candidates left",
+      "unit.s": "s", "unit.min": "min", "unit.h": "h",
       "hero.tag": "Illustration, not to scale. Hypotheses for experiments, not treatments.", "hero.step": (i, n) => `Part ${i} of ${n}`,
       "hero.play": (n, s) => `▶ Play the ${s}-second story`, "hero.try": "Try it yourself",
       "bench.eyebrow": "The test bench", "bench.h2": "Five steps. One circuit. The checker decides.",
@@ -83,11 +100,17 @@
     },
     el: {
       "nav.bench": "Εργαστήριο", "play.short": "▶ Παίξε", "play.stop": "■ Στοπ",
-      "hero.sr": () => `CellProof: η ακτινοβολία σπάει το DNA και ένα κύτταρο με βλάβη δεν πεθαίνει πάντα. Ποιες αλλαγές σε ένα ή δύο γονίδια θα το έκαναν να πεθάνει; Υπάρχουν ${num(HERO.total)} για δοκιμή στο εργαστήριο. Ένα AI διαβάζει τα papers, ένας ακριβής solver ελέγχει κάθε κανόνα και δοκιμάζει κάθε αλλαγή, και μένουν ${HERO.found} υποψήφιες: υποθέσεις για πειράματα, όχι θεραπείες.`,
+      "hero.sr": () => `CellProof: η ακτινοβολία σπάει το DNA και ένα κύτταρο με βλάβη δεν πεθαίνει πάντα. Ο στόχος είναι ένας συνδυασμός γονιδίων να σβήσουν, ή να ανάψουν, ώστε να μείνει μόνο ο θάνατος. Υπάρχουν ${num(HERO.total)} συνδυασμοί ενός ή δύο γονιδίων, ${num(HERO.sizes[4])} με έως πέντε, και ο έλεγχος ενός δικτύου Boole είναι γενικά NP-hard (Akutsu et al. 2007). ${HERO.ai ? `Όταν ρωτήθηκε απευθείας, ένα AI ονόμασε ${HERO.ai.distinct} σύνολα και τα ${HERO.ai.works} ήταν σωστά. ` : ""}${UNCH ? `Οι ανέλεγκτες αλλαγές του στο μοντέλο χαλάνε ${range(...UNCH)} από 10 γνωστά πειράματα. ` : ""}Ένας ακριβής solver δεν μπορεί να διαβάσει τα papers. Μαζί: ${HERO.found} υποψήφιες για το εργαστήριο και ${CHK} από 10 γνωστά πειράματα χαλασμένα. Υποθέσεις για πειράματα, όχι θεραπείες.`,
+      "hero.sa": () => `<b>Μόνο AI:</b> ${joined([HERO.ai && `${HERO.ai.works} από ${HERO.ai.distinct} εικασίες σωστές`, UNCH && `οι αλλαγές του χαλάνε ${range(...UNCH)} από 10 γνωστά πειράματα`])}`,
+      "hero.sb": () => `<b>Μόνο solver:</b> ακριβής, αλλά δεν διαβάζει τα papers${HERO.proj["5"] ? `· ≈ ${dur(HERO.proj["5"])} για 5 αλλαγές (εκτίμηση)` : ""}`,
+      "hero.sc": () => `<b>Μαζί:</b> ${HERO.found} υποψήφιες για το εργαστήριο, ${CHK} από 10 γνωστά πειράματα χαλασμένα`,
       "hero.b1": "Η ακτινοβολία <em>σπάει</em> το DNA.", "hero.b2": "Δεν πεθαίνει <em>κάθε</em> κύτταρο με βλάβη.", "hero.n2": "Στο δημοσιευμένο μοντέλο. Εικονογράφηση, όχι ποσοστά.",
-      "hero.b3": "Ποια γονίδια το κάνουν να <em>πεθάνει;</em>", "hero.n3": "αλλαγές σε ένα ή δύο γονίδια για δοκιμή", "hero.s3": "Κάθε μία είναι ένα πείραμα στο εργαστήριο.",
-      "hero.b4": "Το AI προτείνει. Ο solver <em>αποφασίζει.</em>", "hero.n4": "υποψήφιες έμειναν",
-      "hero.s4": () => `Ένα AI διαβάζει τα papers. Ένας ακριβής solver ελέγχει κάθε κανόνα και μετά δοκιμάζει και τις ${num(HERO.total)} αλλαγές σε ${HERO.secs} δλ. Το εργαστήριο ξεκινά από αυτές.`,
+      "hero.b3": "Γύρνα τους σωστούς διακόπτες και κάθε κύτταρο <em>πεθαίνει.</em>", "hero.s3": "Ο στόχος: ένας συνδυασμός γονιδίων να σβήσουν, ή να ανάψουν, ώστε να μείνει μόνο ο θάνατος.",
+      "hero.n3": "Εδώ δύο γονίδια, ένα παράδειγμα από το μοντέλο. Εικονογράφηση.",
+      "hero.b4": "Ποιος συνδυασμός; Η αναζήτηση <em>εκρήγνυται.</em>", "hero.n4": "συνδυασμοί, ο καθένας ένα πείραμα στο εργαστήριο", "hero.np": "<b>NP-hard</b> γενικά · Akutsu et al. 2007",
+      "hero.stage": (k, t, proj) => `έως ${k} γονίδια μαζί · solver ${proj ? "≈ " : ""}${t}${proj ? " (εκτίμηση)" : ""}`,
+      "hero.b5": "Το AI προτείνει. Ο solver <em>αποφασίζει.</em>", "hero.n5": "υποψήφιες έμειναν",
+      "unit.s": "δλ", "unit.min": "λ", "unit.h": "ώ",
       "hero.tag": "Εικονογράφηση, όχι υπό κλίμακα. Υποθέσεις για πειράματα, όχι θεραπείες.", "hero.step": (i, n) => `Μέρος ${i} από ${n}`,
       "hero.play": (n, s) => `▶ Παίξε την ιστορία (${s} δλ)`, "hero.try": "Δοκίμασέ το",
       "bench.eyebrow": "Το εργαστήριο δοκιμών", "bench.h2": "Πέντε βήματα. Ένα κύκλωμα. Αποφασίζει ο ελεγκτής.",
@@ -148,6 +171,7 @@
   const T = (k, ...a) => { const v = TEXT[lang][k] ?? TEXT.en[k]; return typeof v === "function" ? v(...a) : v ?? k; };
   const fname = (f) => T("fate." + f);
   const num = (n) => Number(n).toLocaleString(lang === "el" ? "el-GR" : "en-US");
+  const dur = (s) => (s < 90 ? `${Math.round(s)} ${T("unit.s")}` : s < 3600 ? `${Math.round(s / 60)} ${T("unit.min")}` : `${num(Math.round(s / 360) / 10)} ${T("unit.h")}`);
 
   /* ---------------------------------------------------------------- state */
   const initial = () => ({ act: 1, reach: 1, ver: "A", scale: "dish", damage: 0, irr: 0, perts: [], fate: null, variant: 0, read: false, reading: false, plugged: false,
@@ -559,15 +583,21 @@
      it moves only while it is on screen, and the little bars under the words jump to any beat */
   (function heroStory() {
     const hero = $("#top"), cvH = $("#heroMol"), cvS = $("#heroStory"); if (!hero || !cvH || !cvS) return;
-    const lite = innerWidth < 700, BEATS = HERO.total && HERO.found ? 4 : 2, DUR = [4400, 5200, 4600, 6400].slice(0, BEATS), dots = $$("#hDots button");
-    let beat = 0, timer = 0, hitT = 0, seen = true, shown = -1;
+    const FULL = HERO.total && HERO.found && HERO.sizes.every(Boolean), lite = innerWidth < 700, BEATS = FULL ? 5 : 3, DUR = [3400, 4200, 4800, 6200, 6800].slice(0, BEATS), dots = $$("#hDots button");
+    let beat = 0, timer = 0, hitT = 0, seen = true, shown = -1, shownStage = 0;
     dots.forEach((d, i) => { d.hidden = i >= BEATS; });
     const paint = (n) => { shown = n; const el = $(`.beat[data-b="${beat + 1}"] [data-count]`, hero); if (el && n >= 0) el.textContent = num(n); };
-    const helix = makeHelix(cvH, { lite }), story = makeStory(cvS, { lite, total: HERO.total, keep: HERO.found, onCount: paint });
+    const paintHeroStage = (k) => { const el = $("[data-stage-text]", hero); if (el) el.textContent = k >= 2 ? T("hero.stage", k, dur(k === 2 ? HERO.secs : HERO.proj[String(k)] || 0), k > 2) : ""; };
+    const stageTo = (k) => { shownStage = k; hero.dataset.stage = String(k); paintHeroStage(k); };
+    const chips = PAIR.map(([n, v]) => ({ name: pretty(n), off: v === 0 }));
+    /* the first row is a cross only if the model was mostly wrong; if it was mostly right, it is a warning, because nothing checked it */
+    const aiRow = $(".b-score li:nth-child(1)", hero);
+    if (aiRow && HERO.ai && HERO.ai.distinct && HERO.ai.works / HERO.ai.distinct >= 0.5) { aiRow.className = "mid"; $("i", aiRow).textContent = "!"; }
+    const helix = makeHelix(cvH, { lite }), story = makeStory(cvS, { lite, total: HERO.total, keep: HERO.keep, sizes: HERO.sizes, marks: HERO.marks, chips, fmt: num, onCount: paint, onStage: stageTo });
     function show(n) {
-      beat = n; hero.dataset.beat = String(n + 1);
+      beat = n; hero.dataset.beat = String(n + 1); shownStage = 0; hero.dataset.stage = "0"; paintHeroStage(0);
       dots.forEach((d, i) => { d.dataset.state = i < n ? "done" : i === n ? "on" : "todo"; d.setAttribute("aria-current", i === n ? "step" : "false"); d.style.setProperty("--dur", DUR[n] + "ms"); });
-      paint(n === 3 ? HERO.total : n === 2 ? 0 : -1);
+      paint(n === 4 ? HERO.total : n === 3 ? 0 : -1);
       story.show(n, reduced);
       clearTimeout(hitT); if (n === 0) hitT = setTimeout(helix.hit, 1000);
       clearTimeout(timer); if (!reduced && seen && !document.hidden) timer = setTimeout(() => show((n + 1) % BEATS), DUR[n]);
@@ -578,7 +608,7 @@
     dots.forEach((d, i) => d.addEventListener("click", () => show(i)));
     new IntersectionObserver((es) => { seen = es[0].isIntersecting; sync(); }, { threshold: 0.05 }).observe(hero);
     document.addEventListener("visibilitychange", sync);
-    heroApi = { relabel: () => { dots.forEach((d, i) => d.setAttribute("aria-label", T("hero.step", i + 1, BEATS))); paint(shown); } };
+    heroApi = { relabel: () => { dots.forEach((d, i) => d.setAttribute("aria-label", T("hero.step", i + 1, BEATS))); paint(shown); paintHeroStage(shownStage); } };
   })();
 
   applyStatic(); render();

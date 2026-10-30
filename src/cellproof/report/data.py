@@ -16,6 +16,7 @@ from pathlib import Path
 
 from cellproof.analysis.attractors import fixed_points, perturb
 from cellproof.analysis.interventions import READOUT_NODES, minimal_sets, search_space
+from cellproof.analysis.llm_search import candidate_sets
 from cellproof.eval.heldout import load as load_heldout
 from cellproof.eval.heldout import summarize
 from cellproof.extract.stats import load_records, summarize as summarize_extractions
@@ -209,9 +210,43 @@ def interventions(networks: dict[str, dict[str, str]]) -> dict:
         out[key] = [[[n, v] for n, v in s] for s in minimal_sets(networks[key], 2)]
         seconds[key] = time.perf_counter() - start
     out["readout"] = sorted(READOUT_NODES)  # genes that define the outcome: forcing one of them is not an intervention
-    # the header's story: how many changes the solver tried on the checked network, how long it took here, how many it kept
-    out["space"] = {"total": search_space(networks["augmented"], 2), "seconds": round(seconds["augmented"], 1), "found": len(out["augmented"])}
+    # the header's story: how many changes the solver tried on the checked network, how long it took here, how many it kept, and how the
+    # count grows with the number of genes changed at once (a projection at the speed measured here, not a measurement)
+    rules = networks["augmented"]
+    total = search_space(rules, 2)
+    sizes = {str(k): search_space(rules, k) for k in range(1, 6)}
+    order = {frozenset(c): i for i, c in enumerate(candidate_sets(rules, 2))}
+    out["space"] = {
+        "total": total, "seconds": round(seconds["augmented"], 1), "found": len(out["augmented"]), "genes": sum(1 for n in rules if n not in READOUT_NODES),
+        "sizes": sizes, "projected_seconds": {k: round(seconds["augmented"] * n / total) for k, n in sizes.items()},
+        "keep": sorted(order[frozenset(map(tuple, s))] for s in out["augmented"]),
+    }
     return out
+
+
+EFFORTS = ["minimal", "low", "medium", "high", "xhigh", "max"]
+
+
+def llm_search_block(rules: dict[str, str]) -> dict | None:
+    """The AI-alone arms of the search (results/llm_search_<effort>.json, written by `cellproof search-baseline`): the numbers and, for each
+    distinct valid proposal, which dot of the header's field (which set of changes) it is and whether the solver says it works. `best` is the
+    arm with the highest reasoning effort, the model's best shot, which the header quotes."""
+    order = {frozenset(c): i for i, c in enumerate(candidate_sets(rules, 2))}
+    arms = {}
+    for path in sorted((ROOT / "results").glob("llm_search_*.json")):
+        doc = _read(path)
+        marks, seen = [], set()
+        for attempt in doc["attempts"]:
+            for p in attempt["proposals"]:
+                key = frozenset(map(tuple, p["changes"]))
+                if p["valid"] and key not in seen:
+                    seen.add(key)
+                    marks.append({"i": order[key], "w": int(p["works"]), "m": int(p["minimal"])})
+        arms[doc["effort"]] = {"model": doc["model"], "effort": doc["effort"], "calls": doc["calls"], "summary": doc["summary"], "marks": marks}
+    if not arms:
+        return None
+    answered = [e for e, a in arms.items() if a["summary"]["distinct"] > 0] or list(arms)  # an arm in which nothing was answered quotes nothing
+    return {"best": max(answered, key=lambda e: EFFORTS.index(e) if e in EFFORTS else -1), "arms": arms}
 
 
 def story_block(published: dict[str, str], base_edges: set) -> dict | None:
@@ -324,6 +359,7 @@ def collect() -> dict:
         "verification": verification(),
         "heldout": heldout(),
         "interventions": interventions(rules),
+        "llm_search": llm_search_block(rules["augmented"]),
         "scaling": _read(ROOT / "results" / "scaling.json"),
         "api": api_usage(),
         "labels": {"sampled": len(label_rows), "labelled": sum(1 for r in label_rows if r["label"].strip())},

@@ -13,11 +13,14 @@ button switches it.
 solvers. Built this week: an agent where Muse Spark reads the papers and proposes rules, and an exact solver decides which
 ones the model can take."
 
-The top of the page plays a 20-second story over a close-up of DNA, in four beats of about five seconds that loop: a ray breaks
-the DNA ("Radiation breaks DNA"); a dish of cells takes four fates ("Not every damaged cell dies"); a field of dots, one per
-change of one or two genes ("Which genes make it die?", with the count); the solver's scan leaves a few glowing dots ("The AI
-proposes. The solver decides.", the count falling to the shortlist). Reload the page so that it starts on the first beat, let it
-play under the one line above (do not read the captions out), then press *Play*. The little bars under the words jump to a beat.
+The top of the page plays a story of about 25 seconds over a close-up of DNA, in five beats that loop: a ray breaks the DNA
+("Radiation breaks DNA"); a dish of cells takes four fates ("Not every damaged cell dies"); two gene switches flip and every cell
+of a fresh dish dies ("Flip the right genes", the goal: a combination of genes to switch off, or on); a field of dots, one per
+combination of one or two genes, which zooms out as sets of up to five genes are counted, with the NP-hard note and its source;
+the AI's guesses judged by the solver, then the solver's scan leaving a few glowing dots ("The AI proposes. The solver decides.").
+Reload the page so that it starts on the first beat, let it play under the one line above (do not read the captions out), then
+press *Play*. The little bars under the words jump to a beat. Say it plainly if asked: the solver alone does solve this small
+model in seconds; what it cannot do is read the papers, and the count of candidates explodes as the model or the sets grow.
 
 **0:15 to 1:20. The bench (press *Play the 60-second story*; talk over the captions, do not read them out).**
 The page walks through by itself, from the dish to the cell and then through five steps. What each caption stands for:

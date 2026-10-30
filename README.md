@@ -37,10 +37,12 @@ All numbers are produced by `make verify` and written to [`results/RESULTS.md`](
 [`docs/limitations.md`](docs/limitations.md).
 
 **The interactive report is [`results/report.html`](results/report.html)** (open it in a browser; `python -m cellproof.cli report`
-rebuilds it). The top of the page is a 20-second story told over a close-up of DNA, in four beats: radiation breaks DNA; a damaged
-cell can pause, age, recycle itself or die, so not every one dies; which one- or two-gene changes would make it die, each a lab
-experiment; the exact solver tried all of them and kept a shortlist (the counts and the solver's time are computed when the page
-is built, not typed in). Below it is a test bench in five clickable steps (the
+rebuilds it). The top of the page is a story of about 25 seconds told over a close-up of DNA, in five beats: radiation breaks DNA; a
+damaged cell can pause, age, recycle itself or die, so not every one dies; the goal, a combination of genes to switch off, or on,
+that leaves only death; the search for it explodes with the number of genes changed at once (controlling a Boolean network is
+NP-hard in general, Akutsu et al. 2007); the AI alone, the solver alone and the two together, ending with the exact solver's
+shortlist (every count, time and verdict is computed when the page is built, not typed in; times for larger sets are projections
+and say so). Below it is a test bench in five clickable steps (the
 cells, a patch from the literature, ten known experiments, the AI's repair, a check against held-out outcomes) and a sixth, a
 game: find every way to leave only death. The stage shows a dish of cells that react to radiation, and the same network drawn
 as a pathway poster (a cell whose membrane takes the radiation, named gene pills, golden arrows that switch on, teal bars that

@@ -191,6 +191,11 @@ def verify() -> None:
     interventions(
         networks="base=data/base/gupta2023.bnet,repaired_min2=data/models/repaired_min2.bnet", max_size=2, out=Path("results/interventions.md")
     )
+    for recorded_path in sorted(Path("results").glob("llm_search_*.json")):
+        typer.echo(f"== the search, AI alone, replayed from cache: {recorded_path.name}")
+        recorded = json.loads(recorded_path.read_text(encoding="utf-8"))
+        search_baseline(calls=recorded["calls"], model=recorded["model"], effort=recorded["effort"], network=Path(f"data/models/{recorded['network']}.bnet"),
+                        out=recorded_path, timeout=60.0, retries=4, budget=recorded["summary"]["max_output_tokens"])
     from cellproof.report.build import write as write_report
     from cellproof.results_md import render
 
@@ -232,6 +237,35 @@ def interventions(
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
     typer.echo("\n".join(lines[:12]))
+
+
+@app.command("search-baseline")
+def search_baseline(
+    calls: int = typer.Option(5, help="Requests to the model, each with the rules shown in another order."),
+    model: str = typer.Option(DEFAULT_MODEL),
+    effort: str = typer.Option("minimal", help="Reasoning effort. At low, medium and high one call did not answer within 7 to 15 minutes."),
+    network: Path = typer.Option(Path("data/models/repaired_min2.bnet"), help="The network the exhaustive search runs on."),
+    out: Path = typer.Option(None, help="Default: results/llm_search_<effort>.json."),
+    timeout: float = typer.Option(60.0, help="Seconds to wait for one attempt. A normal answer takes 10 to 30 s; some requests stall, so a late one is abandoned and asked again."),
+    retries: int = typer.Option(4, help="Further attempts after a stall."),
+    budget: int = typer.Option(12000, help="max_output_tokens: reasoning and answer share it; a request that runs out counts as unanswered."),
+) -> None:
+    """The AI-alone arm of the intervention search: the model names sets of one or two changes, the exact solver judges every one.
+    Spends a few cents the first time (the answers are cached; `verify` replays them for free). Writes results/llm_search.json."""
+    import os
+
+    from cellproof.analysis.llm_search import ask, evaluate
+    from cellproof.meta_client import make_client
+    from cellproof.network.bnet import load_bnet
+
+    rules = load_bnet(network)
+    client = None if os.environ.get("CELLPROOF_OFFLINE") == "1" else make_client().with_options(timeout=timeout, max_retries=retries)
+    attempts = ask(rules, calls, model=model, effort=effort, budget=budget, client=client)
+    result = evaluate(rules, attempts, model, effort, network.stem, budget)
+    out = out or Path(f"results/llm_search_{effort}.json")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(result, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    typer.echo(json.dumps(result["summary"], indent=1))
 
 
 @app.command()

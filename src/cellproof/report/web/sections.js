@@ -239,6 +239,28 @@ const failCount = (arm) => Object.keys(D.verification.matrix[arm] || {}).length;
   $("#intervCard").innerHTML = `<h3>Changes that leave only apoptosis</h3><p class="muted">The solver searched every set of up to two knock-outs or forced-on genes (readout genes excluded). ${paperSets.length === 2 ? "Both searches rediscover the two single changes the base paper itself reports: TUG1 knocked out and miR-221 forced on. " : ""}These are hypotheses about the model, for lab testing, not treatments.</p>
     <div><div class="faint" style="font-size:12.5px;margin-bottom:6px">Published model: ${pub.length} sets · Verified and repaired: ${aug.length} sets</div><div class="presets" id="sets"></div></div>`;
   $("#sets").replaceChildren(...aug.slice(0, 14).map((s) => { const isOld = pub.some((p) => same(p, s)); const b = h(`<button class="tab" type="button" title="Try it in the cell">${esc(setName(s))}${isOld ? "" : " · new"}</button>`); b.addEventListener("click", () => window.CPLab.apply(isOld ? "augmented" : "augmented", s.map((x) => [...x]))); return b; }));
+  /* how the search grows, and what the model alone does when asked for the answer: the evidence behind the header's last three beats */
+  const SP = I.space, AI = D.llm_search, knockouts = aug.filter((s) => s.every(([, v]) => v === 0)).length;
+  const span = (s) => (s < 90 ? `${Math.round(s)} s` : s < 3600 ? `${Math.round(s / 60)} min` : `${(Math.round(s / 360) / 10).toString()} h`);
+  if (SP && SP.sizes) {
+    const rowsK = Object.keys(SP.sizes).filter((k) => +k >= 2).map((k) => `<tr><td>up to ${k} changes at once</td><td class="num">${fmt(SP.sizes[k])}</td><td class="num">${+k === 2 ? `${SP.seconds} s, measured` : `≈ ${span(SP.projected_seconds[k])}, projected`}</td></tr>`).join("");
+    $("#intervCard").insertAdjacentHTML("beforeend", `<h3 style="margin-top:22px">How the search grows</h3>
+      <table class="tbl"><thead><tr><th>sets tried</th><th>how many</th><th>exhaustive search here</th></tr></thead><tbody>${rowsK}</tbody></table>
+      <p class="muted" style="margin-top:8px">${SP.genes} genes can be changed (readout genes excluded), each knocked out or forced on. Projected time = the measured time for up to two changes times the ratio of the counts, at the same speed; it is not a measurement. Controlling a Boolean network is NP-hard in general (<a href="https://doi.org/10.1016/j.jtbi.2006.09.023" target="_blank" rel="noopener">Akutsu et al. 2007</a>), and exhaustive search is feasible on small networks only (<a href="https://doi.org/10.3389/fphys.2019.00241" target="_blank" rel="noopener">Sedghamiz et al. 2019</a>). Here it is feasible: all of them in seconds. Of the ${aug.length} sets that stay, ${knockouts} are knock-outs only; the rest force a gene on, so the goal is to switch genes off <em>or</em> on.</p>`);
+  }
+  if (AI && AI.arms) {
+    const p = (a, b) => (b ? `${Math.round((100 * a) / b)}%` : "n/a"), arms = Object.values(AI.arms), s0 = arms[0].summary;
+    $("#intervCard").insertAdjacentHTML("beforeend", `<h3 style="margin-top:22px">The same search, with the AI alone</h3>
+      <p class="muted">${esc(arms[0].model)}, no tools, was asked for ten sets of one or two changes after which an irradiated cell has apoptosis as its only fate, with the rules shown in a different order for each request. The exact solver judged every answer. A request that ran out of its token budget before finishing is reported and not counted as a wrong guess.</p>
+      <div class="scroll-x"><table class="tbl"><thead><tr><th>reasoning effort</th>${arms.map((a) => `<th>${esc(a.effort)}</th>`).join("")}</tr></thead><tbody>
+        <tr><td>requests answered within the budget</td>${arms.map((a) => `<td class="num">${a.summary.answered} of ${a.summary.requests}</td>`).join("")}</tr>
+        <tr><td>distinct valid sets named</td>${arms.map((a) => `<td class="num">${a.summary.distinct}</td>`).join("")}</tr>
+        <tr><td>of those, leave only apoptosis</td>${arms.map((a) => `<td class="num">${a.summary.works} (${p(a.summary.works, a.summary.distinct)})</td>`).join("")}</tr>
+        <tr><td>of those, among the ${s0.minimal} minimal sets the search finds</td>${arms.map((a) => `<td class="num">${a.summary.minimal_hits}</td>`).join("")}</tr>
+        <tr><td>for comparison: a random candidate set leaves only apoptosis</td>${arms.map(() => `<td class="num">${p(s0.working_candidates, s0.candidates)}</td>`).join("")}</tr>
+        <tr><td>for comparison: a random candidate set is a minimal one</td>${arms.map(() => `<td class="num">${p(s0.minimal, s0.candidates)}</td>`).join("")}</tr>
+      </tbody></table></div>`);
+  }
 
   /* F. cost */
   const A = D.api, B = D.bench;
