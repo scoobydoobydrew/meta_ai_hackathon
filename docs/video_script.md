@@ -13,6 +13,9 @@ button switches it.
 solvers. Built this week: an agent where Muse Spark reads the papers and proposes rules, and an exact solver decides which
 ones the model can take."
 
+The page header is a 22-second trailer on a loop (dish, DNA, circuit, fates). It is a good opening shot: let it play once under
+the one line above, then press *Play*.
+
 **0:15 to 1:20. The bench (press *Play the 64-second story*; talk over the captions, do not read them out).**
 The page walks through by itself, from the dish down to the DNA and then through five steps. What each caption stands for:
 1. *Dish.* "A cell hit by radiation has to decide. The dish is irradiated and each cell pauses, ages, recycles itself or dies;

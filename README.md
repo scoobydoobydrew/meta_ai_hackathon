@@ -39,7 +39,8 @@ All numbers are produced by `make verify` and written to [`results/RESULTS.md`](
 **The interactive report is [`results/report.html`](results/report.html)** (open it in a browser; `python -m cellproof.cli report`
 rebuilds it). At the top is a test bench in five clickable steps (the cells, a patch from the literature, ten known experiments, the AI's
 repair, a check against held-out outcomes) and a sixth, a game: find every way to leave only death. The stage has three
-levels of magnification, a dish of cells, the gene circuit and the DNA, and a 64-second automatic walk-through; it is in
+levels of magnification, a dish of cells, the gene circuit and the DNA (a three-dimensional helix that can be dragged to turn
+it and folded into a coil), and a 64-second automatic walk-through; the header is a 22-second trailer on a loop. It is in
 English and Greek. Below it is the lab notebook with every number and case file. Every lamp, and every fate a cell takes
 in the dish, is the exact solver's answer (the cells themselves are an illustration; see `docs/limitations.md`). The headline numbers, each also in `results/RESULTS.md`:
 

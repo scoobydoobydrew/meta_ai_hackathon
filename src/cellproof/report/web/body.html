@@ -25,7 +25,7 @@
           <a class="btn" href="#bench" data-i18n="hero.try">Try it yourself</a>
         </div>
       </div>
-      <div class="hero-col"><div class="hero-art" aria-hidden="true"><canvas id="heroCanvas"></canvas><canvas class="scene" id="heroDish"></canvas></div><div class="hero-tag" id="heroTag"></div></div>
+      <div class="hero-col"><div class="hero-art" id="heroArt" data-level="dish" aria-hidden="true"><canvas id="heroCanvas"></canvas><canvas class="scene" id="heroDish"></canvas><canvas class="scene" id="heroDna"></canvas><div class="hero-cap" id="heroCap"></div></div><div class="hero-tag" id="heroTag"></div></div>
     </div>
   </div>
 </section>
@@ -60,6 +60,7 @@
           <div class="b-dock" id="bDock">
             <div class="vials" id="bVials" role="group" aria-label="Treatments"></div>
             <button class="irr" id="bIrr" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.6"/><path d="M12 2.5v4.2M12 17.3v4.2M2.5 12h4.2M17.3 12h4.2M5.3 5.3l3 3M15.7 15.7l3 3M18.7 5.3l-3 3M8.3 15.7l-3 3"/></svg><span id="bIrrTxt"></span></button>
+            <button class="pillbtn" id="bFold" type="button" hidden><span id="bFoldTxt"></span></button>
             <button class="pillbtn" id="bFollow" type="button" data-i18n="dna.go" hidden>Follow the signal →</button>
             <button class="pillbtn" id="bOpen" type="button" aria-pressed="false" hidden><span id="bOpenTxt"></span></button>
             <p class="b-dock-hint" id="bDockHint"></p>

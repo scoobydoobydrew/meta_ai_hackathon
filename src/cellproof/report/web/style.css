@@ -392,8 +392,16 @@ canvas.scene { position: absolute; inset: 0; width: 100%; height: 100%; display:
 .b-note { font-size: 12px; color: var(--fg-3); line-height: 1.4; margin: 0; }
 .pillbtn { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(6px); cursor: pointer; color: var(--fg); }
 .pillbtn:hover { background: var(--raised); }
-.hero-art #heroCanvas { opacity: .42; }
+/* the header trailer: three levels of magnification, as on the bench, and a line of words under them */
+.hero-art canvas { transition: opacity .7s ease, transform .7s ease, filter .7s ease; }
+.hero-art #heroCanvas { opacity: .2; transform: scale(.9); }
+.hero-art #heroDish, .hero-art #heroDna { opacity: 0; transform: scale(.84); filter: blur(6px); pointer-events: none; }
+.hero-art[data-level="dish"] #heroDish, .hero-art[data-level="dna"] #heroDna { opacity: 1; transform: none; filter: none; pointer-events: auto; }
+.hero-art[data-level="net"] #heroCanvas { opacity: 1; transform: none; }
+.hero-art[data-level="dna"] #heroDish, .hero-art[data-level="net"] #heroDish, .hero-art[data-level="net"] #heroDna { transform: scale(1.22); }
 .hero-art #heroDish { cursor: pointer; }
+.hero-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 34px 16px 14px; text-align: center; font-family: var(--display); font-size: clamp(17px, 2.1vw, 24px); line-height: 1.1; text-wrap: balance; background: linear-gradient(to top, color-mix(in srgb, var(--bg) 90%, transparent) 30%, transparent); opacity: 0; transition: opacity .4s; pointer-events: none; }
+.hero-cap.show { opacity: 1; }
 .pillbtn .bolt { width: 9px; height: 9px; border-radius: 50%; background: var(--fg-3); transition: background .25s, box-shadow .25s; }
 .pillbtn[aria-pressed="true"] { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); }
 .pillbtn[aria-pressed="true"] .bolt { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), 0 0 12px 2px var(--glow); }

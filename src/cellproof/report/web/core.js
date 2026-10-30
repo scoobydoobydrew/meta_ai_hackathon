@@ -101,6 +101,7 @@ const newEdgeRecords = (node) => ((D.docket.repaired_min2 || []).filter((r) => r
     for (const k in fateGlow) fateGlow[k] = Math.max(0, fateGlow[k] - dt * 0.22);
     draw(t); requestAnimationFrame(step);
   }
+  addEventListener("herowave", () => { nextWave = 0; });  /* the header's trailer asks for a signal when it reaches the circuit */
   const init = () => { readColors(); size(); };
   init(); addEventListener("resize", init); addEventListener("themechange", () => setTimeout(readColors, 30));
   $("#heroTag").textContent = `${net.nodes.length} genes · ${net.edges.length} regulatory links · signal drawn from the model's own rules`;

@@ -36,8 +36,9 @@
       "dish.note": "Illustration: each cell shows one fate the model allows. The model gives possibilities, not percentages.", "dish.empty": "no cells left",
       "tip.idle": "A healthy cell. Irradiate the dish and watch it decide.", "tip.cell": "Click to look inside this cell.", "tip.osc": "No stable state: this cell keeps flipping between fates.",
       "dock.circuit": "Open the circuit, then click a gene to cut it; click again to force it on.",
-      "dna.go": "Follow the signal →", "dna.hint0": "Press Irradiate to damage the DNA.", "dna.note": "In the model, damaged DNA switches on these genes:",
-      "dna.papers": (n) => `${n} papers`, "dna.pub": "published model",
+      "dna.go": "Follow the signal →", "dna.hint0": "Press Irradiate to damage the DNA. Drag to turn it.", "dna.note": "In the model, damaged DNA switches on these genes. Drag to turn it.",
+      "dna.papers": (n) => `${n} papers`, "dna.pub": "published model", "dna.fold": "Fold the DNA", "dna.unfold": "Unfold the DNA",
+      "hero.c1": "Radiation hits a dish of cells.", "hero.c2": "Inside each cell, it damages the DNA.", "hero.c3": "A circuit of genes senses the damage…", "hero.c4": "…and decides: pause, age, recycle or die.",
       rail: ["Cells", "Patch", "Tests", "Repair", "Audit", "Hunt"],
       "a6.t": "The hunt", "a6.h": (n) => `Cut or switch on one or two genes so that every cell dies. The checker knows exactly ${n} ways. How many can you find?`,
       "a6.how": "On the circuit, click a gene: once to cut it, twice to force it on, three times to clear it. Two genes at most.",
@@ -102,8 +103,9 @@
       "dish.note": "Εικονογράφηση: κάθε κύτταρο δείχνει μία μοίρα που επιτρέπει το μοντέλο. Το μοντέλο δίνει ενδεχόμενα, όχι ποσοστά.", "dish.empty": "δεν έμεινε κανένα κύτταρο",
       "tip.idle": "Ένα υγιές κύτταρο. Ακτινοβόλησε το τρυβλίο και δες το να αποφασίζει.", "tip.cell": "Κάνε κλικ για να δεις μέσα στο κύτταρο.", "tip.osc": "Καμία σταθερή κατάσταση: το κύτταρο αλλάζει συνεχώς μοίρα.",
       "dock.circuit": "Άνοιξε το κύκλωμα και κάνε κλικ σε γονίδιο για να το κόψεις· ξανά κλικ για να το ανάψεις.",
-      "dna.go": "Ακολούθησε το σήμα →", "dna.hint0": "Πάτα Ακτινοβόληση για να πάθει βλάβη το DNA.", "dna.note": "Στο μοντέλο, η βλάβη του DNA ανάβει αυτά τα γονίδια:",
-      "dna.papers": (n) => `${n} papers`, "dna.pub": "δημοσιευμένο μοντέλο",
+      "dna.go": "Ακολούθησε το σήμα →", "dna.hint0": "Πάτα Ακτινοβόληση για να πάθει βλάβη το DNA. Σύρε για να το γυρίσεις.", "dna.note": "Στο μοντέλο, η βλάβη του DNA ανάβει αυτά τα γονίδια. Σύρε για να το γυρίσεις.",
+      "dna.papers": (n) => `${n} papers`, "dna.pub": "δημοσιευμένο μοντέλο", "dna.fold": "Αναδίπλωσε το DNA", "dna.unfold": "Ξεδίπλωσε το DNA",
+      "hero.c1": "Η ακτινοβολία χτυπά ένα τρυβλίο με κύτταρα.", "hero.c2": "Μέσα σε κάθε κύτταρο, χτυπά το DNA.", "hero.c3": "Ένα κύκλωμα γονιδίων αισθάνεται τη βλάβη…", "hero.c4": "…και αποφασίζει: παύση, γήρανση, ανακύκλωση ή θάνατος.",
       rail: ["Κύτταρα", "Μπάλωμα", "Δοκιμές", "Διόρθωση", "Έλεγχος", "Κυνήγι"],
       "a6.t": "Το κυνήγι", "a6.h": (n) => `Κόψε ή άναψε ένα ή δύο γονίδια ώστε να πεθαίνουν όλα τα κύτταρα. Ο ελεγκτής ξέρει ακριβώς ${n} τρόπους. Πόσους βρίσκεις;`,
       "a6.how": "Στο κύκλωμα, κάνε κλικ σε ένα γονίδιο: μία φορά το κόβεις, δύο φορές το αναγκάζεις να ανάψει, τρεις φορές το καθαρίζεις. Το πολύ δύο γονίδια.",
@@ -158,7 +160,7 @@
 
   /* ---------------------------------------------------------------- state */
   const initial = () => ({ act: 1, reach: 1, ver: "A", scale: "dish", damage: 0, irr: 0, perts: [], fate: null, variant: 0, open: null, read: false, reading: false, plugged: false,
-    answered: false, thinking: false, fixed: false, run: {}, sel: null, claim: null, whyOpen: false, status: "", playing: false, verdict: null, lastFind: null });
+    answered: false, thinking: false, fixed: false, run: {}, sel: null, claim: null, whyOpen: false, status: "", playing: false, verdict: null, lastFind: null, folded: false });
   const st = initial();
   let found = new Set();  /* the hunt's progress outlives a restart, and a reload when storage allows it */
   try { found = new Set(JSON.parse(localStorage.getItem("cellproof-hunt") || "[]")); } catch (e) { /* storage may be blocked */ }
@@ -267,7 +269,7 @@
   }
   function toggleDamage() { st.damage = st.damage ? 0 : 1; if (st.perts.length > 1) st.perts = st.perts.slice(0, 1); st.sel = null; st.fate = null; st.variant = 0; render(); }
 
-  function paintStage() {
+  function paintStage(entered) {
     const key = netKey();
     if (key !== built) { net.build(key); built = key; pulses.forEach((p) => p.c.remove()); pulses = []; }
     net.focus((st.act === 2 && st.plugged) || st.act === 4 ? SPOT : null);  /* the patch is the story of steps 2 and 4: once plugged in, everything else recedes */
@@ -296,7 +298,10 @@
       dish.run({ sig: [key, st.damage, pertKey(st.perts), layout, st.irr].join("|"), layout, damage: !!st.damage, treated: st.perts.length > 0,
         dishes: compare ? [{ fates: c.expected, title: T("cmp.paper"), empty: T("dish.empty") }, { fates, osc, bad, title: T("says"), empty: T("dish.empty") }] : [{ fates, osc, bad, empty: T("dish.empty") }] });
       dish.spot(st.fate && present.has(st.fate) ? st.fate : null);
-    } else if (st.scale === "dna") dna.run({ sig: [key, st.damage, st.irr].join("|"), damaged: !!st.damage, sensors: sensorsFor(key) });
+    } else if (st.scale === "dna") {
+      dna.run({ sig: [key, st.damage, st.irr].join("|"), damaged: !!st.damage, sensors: sensorsFor(key), force: !!entered });  /* each visit replays the damage */
+      if (entered) { if (st.folded) dna.foldTo(1, 0); else dna.reveal(); }  /* zooming in unwinds the coil */
+    }
     renderDock(compare); syncLoops();
   }
 
@@ -315,6 +320,7 @@
     $("#bIrr").hidden = s === "circuit";
     $("#bIrrTxt").textContent = T(compare ? "irr.replay" : st.damage ? "irr.again" : "irr.go");
     $("#bIrr").classList.toggle("nudge", !st.damage && !compare);
+    $("#bFold").hidden = s !== "dna"; $("#bFoldTxt").textContent = T(st.folded ? "dna.unfold" : "dna.fold");
     $("#bFollow").hidden = s !== "dna";
     $("#bOpen").hidden = s !== "circuit";
     $("#bDockHint").textContent = s === "circuit" ? T("dock.circuit") : s === "dna" ? T(st.damage ? "dna.note" : "dna.hint0") : "";
@@ -450,12 +456,13 @@
   }
   function render() {
     box.dataset.open = (st.open ?? st.act >= 5) ? "1" : "0";  /* closed by default, open for the audit and the hunt, and whatever the viewer chose since the last step */
-    if (shownScale !== st.scale) { $("#bTip").classList.remove("show"); shownScale = st.scale; }  /* a tooltip from the level just left must not linger */
+    const entered = shownScale !== st.scale;
+    if (entered) { $("#bTip").classList.remove("show"); shownScale = st.scale; }  /* a tooltip from the level just left must not linger */
     $$("#bScale button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.scale === st.scale)));
     $("#bDamage").setAttribute("aria-pressed", String(!!st.damage));
     $("#bOpen").setAttribute("aria-pressed", String(box.dataset.open === "1"));
     $("#bOpenTxt").textContent = T(box.dataset.open === "1" ? "ctl.close" : "ctl.open");
-    paintStage(); renderRail(); renderPanel(); renderRack(); renderDetail();
+    paintStage(entered); renderRail(); renderPanel(); renderRack(); renderDetail();
   }
   function go(n) {
     clearUi();
@@ -510,7 +517,7 @@
     const p = PRESETS.find((x) => x[0] === id); if (!p) return;
     st.damage = 1; st.perts = p[2].map((x) => [...x]); st.sel = null; st.fate = null; st.variant = 0; st.irr++; render();
   }
-  function irradiate() { if (st.playing) return; st.damage = 1; st.irr++; st.sel = null; st.fate = null; st.variant = 0; render(); }
+  function irradiate() { if (st.playing) return; if (st.folded) { st.folded = false; dna.foldTo(dna.OPEN, 1500); } st.damage = 1; st.irr++; st.sel = null; st.fate = null; st.variant = 0; render(); }
   function setScale(s) { if (s === st.scale) return; st.scale = s; render(); }
   function reset() { stop(); clearUi(); Object.assign(st, initial()); built = null; render(); }
   const ACT = {
@@ -532,6 +539,7 @@
   $("#bDamage").addEventListener("click", () => { if (!st.playing) toggleDamage(); });
   $("#bOpen").addEventListener("click", () => { if (!st.playing) { st.open = box.dataset.open !== "1"; render(); } });
   $("#bIrr").addEventListener("click", irradiate);
+  $("#bFold").addEventListener("click", () => { if (st.playing) return; st.folded = !st.folded; dna.foldTo(st.folded ? 1 : dna.OPEN, 1700); renderDock(box.dataset.layout === "compare"); });
   $("#bFollow").addEventListener("click", () => { if (!st.playing) setScale("circuit"); });
   $$("#bScale button").forEach((b) => b.addEventListener("click", () => { if (!st.playing) setScale(b.dataset.scale); }));
 
@@ -574,7 +582,7 @@
       ? ["The gene circuit of a cell. Lamps below show which fates it can reach.", "A culture dish of cells reacting to radiation.", "A strand of DNA damaged by radiation."]
       : ["Το κύκλωμα γονιδίων ενός κυττάρου. Οι λυχνίες από κάτω δείχνουν ποιες μοίρες μπορεί να φτάσει.", "Ένα τρυβλίο με κύτταρα που αντιδρούν στην ακτινοβολία.", "Ένα κομμάτι DNA που έπαθε βλάβη από ακτινοβολία."];
     ["#bNet", "#bDish", "#bDna"].forEach((id, i) => $(id).setAttribute("aria-label", aria[i]));
-    buildVials();
+    buildVials(); if (heroCap) heroCap();
   }
   $("#lang").addEventListener("click", () => {
     lang = lang === "en" ? "el" : "en";
@@ -582,20 +590,34 @@
     applyStatic(); refreshCaption(); render();
   });
 
-  /* the header: a dish that is irradiated again and again with the circuit's real fates, over the faint network */
+  /* the header is a trailer with almost nothing to read: radiation hits a dish, the DNA of a cell unwinds and breaks, the circuit of genes
+     lights up, the cells take their fates. It plays on a loop while the header is on screen, with the circuit's real fates. */
+  let heroKey = "", heroCap = null;
   (function heroLoop() {
-    const cv = $("#heroDish"), v2 = CASES.find((c) => c.id === "V02");
-    if (!cv || !v2) return;
-    const four = [...new Set(decode(v2.A.states).map((p) => p.fate).filter(Boolean))], timers = new Set();
-    const hd = makeDish(cv, { onCell: () => $("#bench").scrollIntoView({ behavior: reduced ? "auto" : "smooth" }) });
+    const cv = $("#heroDish"), art = $("#heroArt"), cap = $("#heroCap"), v2 = CASES.find((c) => c.id === "V02");
+    if (!cv || !art || !cap || !v2) return;
+    const four = [...new Set(decode(v2.A.states).map((p) => p.fate).filter(Boolean))], timers = new Set(), toBench = () => $("#bench").scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+    const hd = makeDish(cv, { onCell: toBench }), hn = makeDna($("#heroDna"), { hero: true, roll: -0.42, zoom: 1.5 });
     let n = 0, live = false;
-    const neutral = () => hd.run({ sig: "h" + ++n, layout: "single", damage: false, treated: false, dishes: [{ fates: [] }] });
-    const cycle = () => { neutral(); later(timers, () => hd.fire({ sig: "h" + n + "f", fates: four }), 2800); later(timers, cycle, 11000); };
-    if (reduced) { hd.run({ sig: "h", layout: "single", damage: true, treated: false, dishes: [{ fates: four }] }); return; }
+    const level = (l) => { art.dataset.level = l; if (l === "dish") hd.start(); else hd.stop(); if (l === "dna") hn.start(); else hn.stop(); };
+    const say = (k) => { heroKey = k; cap.classList.remove("show"); later(timers, () => { cap.textContent = T(k); cap.classList.add("show"); }, 240); };
+    heroCap = () => { if (heroKey) cap.textContent = T(heroKey); };
+    const wave = () => dispatchEvent(new Event("herowave"));
+    const cycle = () => {
+      n++;
+      level("dish"); say("hero.c1"); hd.run({ sig: "h" + n, layout: "single", damage: false, treated: false, dishes: [{ fates: [] }] });
+      later(timers, () => hd.fire({ sig: "h" + n + "f", fates: four }), 2800);
+      later(timers, () => { level("dna"); say("hero.c2"); hn.run({ sig: "d" + n, damaged: false, sensors: [], force: true }); hn.reveal(2300); }, 7200);
+      later(timers, () => hn.run({ sig: "d" + n + "x", damaged: true, sensors: [] }), 10400);
+      later(timers, () => { level("net"); say("hero.c3"); wave(); }, 14400);
+      later(timers, () => { say("hero.c4"); wave(); }, 18000);
+      later(timers, cycle, 22200);
+    };
+    if (reduced) { hd.run({ sig: "h", layout: "single", damage: true, treated: false, dishes: [{ fates: four }] }); level("dish"); say("hero.c1"); return; }
     new IntersectionObserver((es) => {
       const on = es[0].isIntersecting && !document.hidden;
-      if (on && !live) { live = true; hd.start(); cycle(); } else if (!on && live) { live = false; hd.stop(); clearSet(timers); }
-    }, { threshold: 0.2 }).observe(cv);
+      if (on && !live) { live = true; cycle(); } else if (!on && live) { live = false; hd.stop(); hn.stop(); clearSet(timers); }
+    }, { threshold: 0.2 }).observe(art);
   })();
 
   applyStatic(); render();

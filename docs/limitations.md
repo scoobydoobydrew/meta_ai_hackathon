@@ -23,7 +23,7 @@ This is a research prototype that ranks hypotheses for lab testing. It makes no 
 - The dish of cells and the strand of DNA on the report's bench are illustrations. What they show comes from the solver: which
   fates the circuit allows, whether it settles at all, which fate the paper does not expect, which genes DNA damage switches on
   in the model and how many papers say so. The number, size and position of the cells, the proportion of each fate (the model
-  gives possibilities, not percentages) and the shape of the helix are not data.
+  gives possibilities, not percentages), the shape of the helix and the way it folds into a coil are not data.
 - The "hunt" lists every set of one or two changes (readout genes excluded) that leaves only death in the model. Those are
   hypotheses about the model; two of them (TUG1 knocked out, miR-221 forced on) are what the base paper itself reports.
 
