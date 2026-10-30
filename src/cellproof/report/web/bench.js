@@ -15,13 +15,19 @@
   /* the hunt: the exact solver found every set of one or two changes (readout genes excluded) after which every cell dies */
   const INTERV = ((D.interventions || {}).augmented || []).map((s) => s.map(([n, v]) => [n, v])), READOUT = new Set((D.interventions || {}).readout || []), HUNT = INTERV.length > 0;
   const setName = (s) => s.map(([n, v]) => `${pretty(n)} ${v ? "ON" : "✕"}`).join(" + ");
+  /* the header's numbers: how many changes the solver tried, how long that took on the machine that built this page, how many it kept */
+  const SPACE = (D.interventions || {}).space || {}, HERO = { total: SPACE.total || 0, found: SPACE.found || 0, secs: Math.max(1, Math.round(SPACE.seconds || 0)) };
 
   /* ---------------------------------------------------------------- texts */
   const TEXT = {
     en: {
       "nav.bench": "Bench", "play.short": "▶ Play", "play.stop": "■ Stop",
-      "hero.h1": "A cell hit by radiation has to <em>decide.</em>",
-      "hero.lede": "An AI reads the papers. An exact solver decides what the model can take.",
+      "hero.sr": () => `CellProof: radiation breaks DNA and a damaged cell does not always die. Which changes of one or two genes would make it die? There are ${num(HERO.total)} to try in the lab. An AI reads the papers, an exact solver checks every rule and tries every change, and ${HERO.found} candidates are left: hypotheses for experiments, not treatments.`,
+      "hero.b1": "Radiation <em>breaks</em> DNA.", "hero.b2": "Not every damaged cell <em>dies.</em>", "hero.n2": "In the published model. Illustration, not percentages.",
+      "hero.b3": "Which genes make it <em>die?</em>", "hero.n3": "changes of one or two genes to try", "hero.s3": "Each one is a lab experiment.",
+      "hero.b4": "The AI proposes. The solver <em>decides.</em>", "hero.n4": "candidates left",
+      "hero.s4": () => `An AI reads the papers. An exact solver checks every rule, then tries all ${num(HERO.total)} changes in ${HERO.secs} s. The lab starts with these.`,
+      "hero.tag": "Illustration, not to scale. Hypotheses for experiments, not treatments.", "hero.step": (i, n) => `Part ${i} of ${n}`,
       "hero.play": (n, s) => `▶ Play the ${s}-second story`, "hero.try": "Try it yourself",
       "bench.eyebrow": "The test bench", "bench.h2": "Five steps. One circuit. The checker decides.",
       "ctl.damage": "DNA damage",
@@ -77,8 +83,12 @@
     },
     el: {
       "nav.bench": "Εργαστήριο", "play.short": "▶ Παίξε", "play.stop": "■ Στοπ",
-      "hero.h1": "Ένα κύτταρο που δέχεται ακτινοβολία πρέπει να <em>αποφασίσει.</em>",
-      "hero.lede": "Ένα AI διαβάζει τα papers. Ένας ακριβής solver αποφασίζει τι αντέχει το μοντέλο.",
+      "hero.sr": () => `CellProof: η ακτινοβολία σπάει το DNA και ένα κύτταρο με βλάβη δεν πεθαίνει πάντα. Ποιες αλλαγές σε ένα ή δύο γονίδια θα το έκαναν να πεθάνει; Υπάρχουν ${num(HERO.total)} για δοκιμή στο εργαστήριο. Ένα AI διαβάζει τα papers, ένας ακριβής solver ελέγχει κάθε κανόνα και δοκιμάζει κάθε αλλαγή, και μένουν ${HERO.found} υποψήφιες: υποθέσεις για πειράματα, όχι θεραπείες.`,
+      "hero.b1": "Η ακτινοβολία <em>σπάει</em> το DNA.", "hero.b2": "Δεν πεθαίνει <em>κάθε</em> κύτταρο με βλάβη.", "hero.n2": "Στο δημοσιευμένο μοντέλο. Εικονογράφηση, όχι ποσοστά.",
+      "hero.b3": "Ποια γονίδια το κάνουν να <em>πεθάνει;</em>", "hero.n3": "αλλαγές σε ένα ή δύο γονίδια για δοκιμή", "hero.s3": "Κάθε μία είναι ένα πείραμα στο εργαστήριο.",
+      "hero.b4": "Το AI προτείνει. Ο solver <em>αποφασίζει.</em>", "hero.n4": "υποψήφιες έμειναν",
+      "hero.s4": () => `Ένα AI διαβάζει τα papers. Ένας ακριβής solver ελέγχει κάθε κανόνα και μετά δοκιμάζει και τις ${num(HERO.total)} αλλαγές σε ${HERO.secs} δλ. Το εργαστήριο ξεκινά από αυτές.`,
+      "hero.tag": "Εικονογράφηση, όχι υπό κλίμακα. Υποθέσεις για πειράματα, όχι θεραπείες.", "hero.step": (i, n) => `Μέρος ${i} από ${n}`,
       "hero.play": (n, s) => `▶ Παίξε την ιστορία (${s} δλ)`, "hero.try": "Δοκίμασέ το",
       "bench.eyebrow": "Το εργαστήριο δοκιμών", "bench.h2": "Πέντε βήματα. Ένα κύκλωμα. Αποφασίζει ο ελεγκτής.",
       "ctl.damage": "Βλάβη DNA",
@@ -137,6 +147,7 @@
   try { const s = localStorage.getItem("cellproof-lang"); lang = s === "el" || s === "en" ? s : /^el/i.test(navigator.language || "") ? "el" : "en"; } catch (e) { /* storage may be blocked */ }
   const T = (k, ...a) => { const v = TEXT[lang][k] ?? TEXT.en[k]; return typeof v === "function" ? v(...a) : v ?? k; };
   const fname = (f) => T("fate." + f);
+  const num = (n) => Number(n).toLocaleString(lang === "el" ? "el-GR" : "en-US");
 
   /* ---------------------------------------------------------------- state */
   const initial = () => ({ act: 1, reach: 1, ver: "A", scale: "dish", damage: 0, irr: 0, perts: [], fate: null, variant: 0, read: false, reading: false, plugged: false,
@@ -526,6 +537,7 @@
   for (const id of ["playTop", "playHero"]) $("#" + id).addEventListener("click", play);
 
   /* ---------------------------------------------------------------- language */
+  let heroApi = null;  /* set by the header at the end of this file */
   function applyStatic() {
     document.documentElement.lang = lang;
     $$("[data-i18n]").forEach((el) => (el.textContent = T(el.dataset.i18n, N0, PLAY_S)));
@@ -535,7 +547,7 @@
       ? ["The gene circuit of a cell. Lamps below show which fates it can reach.", "A culture dish of cells reacting to radiation."]
       : ["Το κύκλωμα γονιδίων ενός κυττάρου. Οι λυχνίες από κάτω δείχνουν ποιες μοίρες μπορεί να φτάσει.", "Ένα τρυβλίο με κύτταρα που αντιδρούν στην ακτινοβολία."];
     ["#bNet", "#bDish"].forEach((id, i) => $(id).setAttribute("aria-label", aria[i]));
-    buildVials(); net.relabel();
+    buildVials(); net.relabel(); if (heroApi) heroApi.relabel();
   }
   $("#lang").addEventListener("click", () => {
     lang = lang === "en" ? "el" : "en";
@@ -543,15 +555,30 @@
     applyStatic(); refreshCaption(); render();
   });
 
-  /* the header: a protein clamped on a double helix, close up; it moves only while it is on screen */
-  (function heroMolecule() {
-    const cv = $("#heroMol"); if (!cv) return;
-    const mol = makeMolecule(cv, { lite: innerWidth < 700 });
-    let seen = true;
-    const sync = () => { if (seen && !document.hidden) mol.start(); else mol.stop(); };
-    new IntersectionObserver((es) => { seen = es[0].isIntersecting; sync(); }, { threshold: 0.05 }).observe(cv);
+  /* the header: DNA at the back, a four-beat story in front (radiation, fates, every change to try, the solver's shortlist);
+     it moves only while it is on screen, and the little bars under the words jump to any beat */
+  (function heroStory() {
+    const hero = $("#top"), cvH = $("#heroMol"), cvS = $("#heroStory"); if (!hero || !cvH || !cvS) return;
+    const lite = innerWidth < 700, BEATS = HERO.total && HERO.found ? 4 : 2, DUR = [4400, 5200, 4600, 6400].slice(0, BEATS), dots = $$("#hDots button");
+    let beat = 0, timer = 0, hitT = 0, seen = true, shown = -1;
+    dots.forEach((d, i) => { d.hidden = i >= BEATS; });
+    const paint = (n) => { shown = n; const el = $(`.beat[data-b="${beat + 1}"] [data-count]`, hero); if (el && n >= 0) el.textContent = num(n); };
+    const helix = makeHelix(cvH, { lite }), story = makeStory(cvS, { lite, total: HERO.total, keep: HERO.found, onCount: paint });
+    function show(n) {
+      beat = n; hero.dataset.beat = String(n + 1);
+      dots.forEach((d, i) => { d.dataset.state = i < n ? "done" : i === n ? "on" : "todo"; d.setAttribute("aria-current", i === n ? "step" : "false"); d.style.setProperty("--dur", DUR[n] + "ms"); });
+      paint(n === 3 ? HERO.total : n === 2 ? 0 : -1);
+      story.show(n, reduced);
+      clearTimeout(hitT); if (n === 0) hitT = setTimeout(helix.hit, 1000);
+      clearTimeout(timer); if (!reduced && seen && !document.hidden) timer = setTimeout(() => show((n + 1) % BEATS), DUR[n]);
+    }
+    const sync = () => {
+      if (seen && !document.hidden) { helix.start(); story.start(); show(beat); } else { helix.stop(); story.stop(); clearTimeout(timer); clearTimeout(hitT); }
+    };
+    dots.forEach((d, i) => d.addEventListener("click", () => show(i)));
+    new IntersectionObserver((es) => { seen = es[0].isIntersecting; sync(); }, { threshold: 0.05 }).observe(hero);
     document.addEventListener("visibilitychange", sync);
-    sync();
+    heroApi = { relabel: () => { dots.forEach((d, i) => d.setAttribute("aria-label", T("hero.step", i + 1, BEATS))); paint(shown); } };
   })();
 
   applyStatic(); render();

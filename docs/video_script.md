@@ -13,8 +13,11 @@ button switches it.
 solvers. Built this week: an agent where Muse Spark reads the papers and proposes rules, and an exact solver decides which
 ones the model can take."
 
-The top of the page is a close-up of p53 on DNA with a ray that hits the helix every few seconds. It is a good opening shot: let
-it play under the one line above (do not explain it), then press *Play*.
+The top of the page plays a 20-second story over a close-up of DNA, in four beats of about five seconds that loop: a ray breaks
+the DNA ("Radiation breaks DNA"); a dish of cells takes four fates ("Not every damaged cell dies"); a field of dots, one per
+change of one or two genes ("Which genes make it die?", with the count); the solver's scan leaves a few glowing dots ("The AI
+proposes. The solver decides.", the count falling to the shortlist). Reload the page so that it starts on the first beat, let it
+play under the one line above (do not read the captions out), then press *Play*. The little bars under the words jump to a beat.
 
 **0:15 to 1:20. The bench (press *Play the 60-second story*; talk over the captions, do not read them out).**
 The page walks through by itself, from the dish to the cell and then through five steps. What each caption stands for:

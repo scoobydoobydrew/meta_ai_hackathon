@@ -21,6 +21,8 @@
   --f-senescence: #8F6F00;
   --f-autophagy: #1A9A78;
   --f-proliferation: #5B6780;
+  /* the same four fates on the always-dark header and its story */
+  --hf-arrest: #5c9eff; --hf-senescence: #e8c048; --hf-autophagy: #3ad6a8; --hf-apoptosis: #ff6eba;
   /* Verdicts: failure is the loud state; success is quiet ink */
   --bad: #C8441A;
   --bad-soft: #FBE3DA;
@@ -97,27 +99,82 @@ section { padding-block: clamp(56px, 8vw, 104px); }
 .sec-head { display: grid; gap: 4px; margin-bottom: clamp(28px, 4vw, 48px); }
 
 /* ---------------------------------------------------------------- hero */
-/* the header: a close-up of a protein on DNA, full width and always deep blue, whatever the theme; the words sit on the left */
-.hero { position: relative; isolation: isolate; margin: 0 calc(var(--gutter-r) * -1) 0 calc(var(--gutter) * -1); min-height: clamp(540px, 88vh, 840px); display: grid; align-items: center; overflow: hidden; color: #fff; background: radial-gradient(70% 90% at 68% 46%, #2169d6 0%, #12418f 36%, #0a2559 66%, #06142f 100%); }
-.hero-mol { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
-.hero-shade { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(5, 14, 40, .8) 0%, rgba(5, 14, 40, .5) 34%, transparent 62%), linear-gradient(to top, var(--bg) 0%, transparent 16%); }
-.hero-copy { position: relative; z-index: 2; width: 100%; padding: clamp(64px, 9vw, 120px) var(--gutter-r) clamp(72px, 10vw, 128px) var(--gutter); pointer-events: none; }
+/* the header: DNA in the manner of a textured render with a four-beat story in front of it, always dusky slate-violet whatever the theme;
+   the words sit on the left, the pictures on the right (below the words on a phone) */
+.hero { position: relative; isolation: isolate; margin: 0 calc(var(--gutter-r) * -1) 0 calc(var(--gutter) * -1); padding-block: 0; min-height: clamp(560px, calc(100vh - 62px), 860px); display: grid; align-items: center; overflow: hidden; color: #fff;
+  background: radial-gradient(46% 62% at 94% 10%, rgba(255, 196, 150, .3), transparent 70%), radial-gradient(80% 100% at 68% 46%, #6a688f 0%, #403f5e 34%, #22213a 66%, #0f0f1f 100%); }
+.hero-mol, .hero-story { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-mol { z-index: 0; transition: opacity .9s ease; }
+.hero:not([data-beat="1"]) .hero-mol { opacity: .32; }
+.hero-shade { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(10, 10, 24, .86) 0%, rgba(10, 10, 24, .54) 36%, transparent 64%); }
+.hero-story { z-index: 2; pointer-events: none; }
+.hero::after { content: ""; position: absolute; inset: auto 0 0 0; height: 9%; z-index: 3; pointer-events: none; background: linear-gradient(to top, var(--bg), transparent); }
+.hero-copy { position: relative; z-index: 4; width: 100%; padding: clamp(32px, 7vh, 84px) var(--gutter-r) clamp(40px, 7vh, 88px) var(--gutter); pointer-events: none; }
 .hero-copy > * { pointer-events: auto; }
-.hero .eyebrow { color: rgba(220, 232, 255, .72); }
-.hero .lede { max-width: 30ch; color: rgba(232, 240, 255, .9); }
+.hero .eyebrow { max-width: 46ch; color: rgba(228, 224, 255, .7); }
 .hero .btn { background: rgba(255, 255, 255, .12); color: #fff; border-color: rgba(255, 255, 255, .42); backdrop-filter: blur(6px); }
 .hero .btn:hover { background: rgba(255, 255, 255, .22); }
-.hero .btn.primary { background: #fff; color: #0a2559; border-color: #fff; }
-.hero .btn.primary:hover { background: #e7efff; }
-.hero-tag { position: absolute; z-index: 2; right: var(--gutter-r); bottom: 16px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; color: rgba(220, 232, 255, .55); pointer-events: none; }
+.hero .btn.primary { background: #fff; color: #1c1b30; border-color: #fff; }
+.hero .btn.primary:hover { background: #f0ebff; }
+.hero-tag { position: absolute; z-index: 4; right: var(--gutter-r); bottom: 14px; max-width: 46ch; text-align: right; font-family: var(--mono); font-size: 11px; line-height: 1.4; letter-spacing: .04em; color: rgba(228, 224, 255, .6); pointer-events: none; }
+
+/* the four beats share one grid cell, so the block never changes height; the one for the current beat fades up */
+.beats { display: grid; margin-top: 14px; }
+.beat { grid-area: 1 / 1; opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; pointer-events: none; }
+.hero[data-beat="1"] .beat[data-b="1"], .hero[data-beat="2"] .beat[data-b="2"], .hero[data-beat="3"] .beat[data-b="3"], .hero[data-beat="4"] .beat[data-b="4"] { opacity: 1; transform: none; transition-delay: .16s; }
+.b-big { max-width: 8.6em; font-family: var(--display); font-weight: 400; font-size: clamp(36px, min(5.2vw, 9.6vh), 80px); line-height: .96; letter-spacing: -.015em; text-wrap: balance; }
+.b-big em { font-style: italic; color: #ffc9a0; }
+.b-sub { margin-top: 16px; max-width: 42ch; font-size: clamp(15px, min(1.4vw, 2.7vh), 19px); line-height: 1.45; color: rgba(238, 236, 252, .88); }
+.b-quote { margin: 22px 0 0; max-width: 38ch; padding-left: 14px; border-left: 2px solid rgba(255, 201, 160, .65); font-size: 15px; line-height: 1.45; font-style: italic; color: rgba(238, 236, 252, .88); }
+.b-quote cite { display: block; margin-top: 5px; font-family: var(--mono); font-size: 11px; font-style: normal; letter-spacing: .04em; color: rgba(228, 224, 255, .62); }
+.b-key { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 22px; font-size: 16px; font-weight: 500; }
+.b-key > span { display: inline-flex; align-items: center; gap: 8px; }
+.b-key i { width: 13px; height: 13px; border-radius: 50%; background: var(--c); box-shadow: 0 0 12px var(--c); }
+.b-num { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin-top: 18px; }
+.b-num b { font-family: var(--display); font-weight: 400; font-size: clamp(52px, min(8vw, 14.5vh), 120px); line-height: .88; letter-spacing: -.02em; color: #ffd6b0; font-variant-numeric: tabular-nums; }
+.b-num span { max-width: 19ch; font-size: clamp(15px, 1.3vw, 18px); line-height: 1.25; color: rgba(238, 236, 252, .88); }
+
+/* little progress bars under the words: one per beat, the current one fills while it plays, any of them can be clicked */
+.hero-dots { display: flex; gap: 8px; margin-top: clamp(16px, 3.4vh, 28px); }
+@media (min-width: 761px) and (max-height: 700px) { .hero .eyebrow { display: none; } }
+.hero-dots button { position: relative; width: 46px; height: 16px; padding: 0; border: 0; background: none; cursor: pointer; }
+.hero-dots button::before, .hero-dots button::after { content: ""; position: absolute; left: 0; top: 6px; height: 4px; border-radius: 2px; }
+.hero-dots button::before { right: 0; background: rgba(255, 255, 255, .26); }
+.hero-dots button::after { width: 0; background: #ffd0a8; }
+.hero-dots button[data-state="done"]::after { width: 100%; }
+.hero-dots button[data-state="on"]::after { animation: heroFill var(--dur, 5s) linear forwards; }
+@keyframes heroFill { from { width: 0; } to { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .hero-dots button[data-state="on"]::after { animation: none; width: 100%; } .beat { transition: none; } }
+.hero .cta { margin-top: 18px; }
 @media (max-width: 760px) {
-  .hero { align-items: start; min-height: clamp(620px, 96svh, 860px); }
-  .hero-shade { background: linear-gradient(to bottom, rgba(5, 14, 40, .86) 0%, rgba(5, 14, 40, .55) 42%, transparent 72%), linear-gradient(to top, var(--bg) 0%, transparent 14%); }
-  .hero-copy { padding-top: 48px; }
+  .hero { align-items: stretch; min-height: clamp(600px, calc(100svh - 62px), 900px); }
+  .hero-shade { background: linear-gradient(to bottom, rgba(10, 10, 24, .84) 0%, rgba(10, 10, 24, .5) 48%, transparent 76%); }
+  .hero-story { inset: auto 0 13% 0; height: 49%; }  /* a canvas does not stretch between top and bottom, so its height is given */
+  .hero-copy { display: flex; flex-direction: column; height: 100%; padding-top: 34px; padding-bottom: 30px; }
+  .hero .btn { padding: 10px 16px; font-size: 14.5px; }
+  .hero .btn:not(.primary) { background: none; border-color: transparent; padding-inline: 6px; text-decoration: underline; text-underline-offset: 4px; backdrop-filter: none; }  /* one row of buttons on a narrow phone */
+  .hero .eyebrow { display: none; }
+  .b-big { font-size: clamp(36px, 10.4vw, 52px); }
+  .b-sub { margin-top: 10px; font-size: 15px; }
+  .b-quote { margin-top: 14px; font-size: 14px; }
+  .b-key { margin-top: 14px; font-size: 15px; }
+  .b-num { margin-top: 8px; }
+  .b-num b { font-size: clamp(52px, 17vw, 76px); }
+  .hero-foot { margin-top: auto; }
+  .hero-dots { margin-top: 0; }
+  .hero .cta { margin-top: 12px; }
+  .hero-tag { display: none; }
 }
-.hero h1 { max-width: 6.9em; font-family: var(--display); font-weight: 400; font-size: clamp(44px, 6.4vw, 96px); line-height: .96; letter-spacing: -.015em; margin: 18px 0 22px; }
-.hero h1 em { font-style: italic; color: #ff8de8; }
-.hero .lede { max-width: 54ch; }
+@media (max-width: 760px) and (max-height: 720px) {  /* a short phone: everything a little smaller so the words stay above the picture */
+  .hero-copy { padding-top: 22px; padding-bottom: 20px; }
+  .b-big { font-size: 34px; }
+  .b-num { margin-top: 4px; }
+  .b-num b { font-size: 52px; }
+  .b-sub { margin-top: 8px; font-size: 14px; }
+  .b-quote { margin-top: 10px; font-size: 13px; }
+  .b-key { margin-top: 10px; font-size: 14px; }
+  .hero .cta { margin-top: 8px; }
+}
 .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); padding: 11px 18px; border-radius: 12px; cursor: pointer; text-decoration: none; color: var(--fg); font-weight: 500; font-size: 15px; }
 .btn:hover { background: var(--raised); }

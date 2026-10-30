@@ -13,19 +13,48 @@
 </header>
 
 <main>
-<section class="hero" id="top">
+<section class="hero" id="top" data-beat="1">
   <canvas class="hero-mol" id="heroMol" aria-hidden="true"></canvas>
+  <canvas class="hero-story" id="heroStory" aria-hidden="true"></canvas>
   <div class="hero-shade" aria-hidden="true"></div>
   <div class="wrap hero-copy">
     <div class="eyebrow">Meta Global AI Developer Hackathon · Indie track · Push the Frontier</div>
-    <h1 data-i18n-html="hero.h1">A cell hit by radiation has to <em>decide.</em></h1>
-    <p class="lede" data-i18n="hero.lede">An AI reads the papers. An exact solver decides what the model can take.</p>
-    <div class="cta">
-      <button class="btn primary" id="playHero" type="button" data-i18n="hero.play">▶ Play the story</button>
-      <a class="btn" href="#bench" data-i18n="hero.try">Try it yourself</a>
+    <h1 class="sr-only" data-i18n="hero.sr">CellProof: radiation breaks DNA and a damaged cell does not always die. An AI reads the papers, an exact solver checks every rule, and the few candidate gene changes that remain are hypotheses for the lab.</h1>
+    <div class="beats" aria-hidden="true">
+      <div class="beat" data-b="1">
+        <p class="b-big" data-i18n-html="hero.b1">Radiation <em>breaks</em> DNA.</p>
+        <blockquote class="b-quote">Radiotherapy is commonly used to treat a variety of solid tumors.<cite>Bridges et al. 2011, Clin Cancer Res · PMC3167033</cite></blockquote>
+      </div>
+      <div class="beat" data-b="2">
+        <p class="b-big" data-i18n-html="hero.b2">Not every damaged cell <em>dies.</em></p>
+        <p class="b-key">
+          <span style="--c: var(--hf-arrest)"><i></i><span data-i18n="fate.arrest">Pauses</span></span>
+          <span style="--c: var(--hf-senescence)"><i></i><span data-i18n="fate.senescence">Ages</span></span>
+          <span style="--c: var(--hf-autophagy)"><i></i><span data-i18n="fate.autophagy">Recycles</span></span>
+          <span style="--c: var(--hf-apoptosis)"><i></i><span data-i18n="fate.apoptosis">Dies</span></span>
+        </p>
+        <p class="b-sub" data-i18n="hero.n2">In the published model. Illustration, not percentages.</p>
+      </div>
+      <div class="beat" data-b="3">
+        <p class="b-big" data-i18n-html="hero.b3">Which genes make it <em>die?</em></p>
+        <div class="b-num"><b data-count>0</b><span data-i18n="hero.n3">changes of one or two genes to try</span></div>
+        <p class="b-sub" data-i18n="hero.s3">Each one is a lab experiment.</p>
+      </div>
+      <div class="beat" data-b="4">
+        <p class="b-big" data-i18n-html="hero.b4">The AI proposes. The solver <em>decides.</em></p>
+        <div class="b-num"><b data-count>0</b><span data-i18n="hero.n4">candidates left</span></div>
+        <p class="b-sub" data-i18n="hero.s4">An AI reads the papers. An exact solver checks every rule, then tries every change.</p>
+      </div>
+    </div>
+    <div class="hero-foot">
+      <div class="hero-dots" id="hDots" role="group" aria-label="Story"><button type="button"></button><button type="button"></button><button type="button"></button><button type="button"></button></div>
+      <div class="cta">
+        <button class="btn primary" id="playHero" type="button" data-i18n="hero.play">▶ Play the story</button>
+        <a class="btn" href="#bench" data-i18n="hero.try">Try it yourself</a>
+      </div>
     </div>
   </div>
-  <div class="hero-tag" aria-hidden="true">p53 on DNA · illustration</div>
+  <div class="hero-tag" aria-hidden="true" data-i18n="hero.tag">Illustration, not to scale. Hypotheses for experiments, not treatments.</div>
 </section>
 
 <section id="bench" class="band bench-sec">

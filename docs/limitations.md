@@ -20,8 +20,13 @@ This is a research prototype that ranks hypotheses for lab testing. It makes no 
 - Literature can be inconsistent, incomplete or specific to a cell type; the model has one context.
 
 **The pictures**
-- The protein on DNA at the top of the page, the dish of cells and the cell with its membrane on the bench are illustrations.
-  The protein and the helix are not structure data: shapes, colours and the way they sit are decoration. What the bench shows
+- The DNA at the top of the page, its story (the dish of cells, the field of dots) and, on the bench, the dish and the cell with its
+  membrane are illustrations. The helix is not structure data: shapes, colours and the way they sit are decoration. The dots
+  in the story are one per set of one or two changes that the solver tried; their positions are arbitrary, only their number
+  and the number that stay lit are real, and the seconds shown are the time the solver took on the machine that built the page.
+  "Not every damaged cell dies" is what the published model's stable states say (the four fates are all reachable), not a
+  measurement on real cells. "Each one is a lab experiment" is about how a candidate would have to be tested; no lab time or
+  cost is claimed anywhere. The one sentence about radiotherapy is a quotation (Bridges et al. 2011), given as context. What the bench shows
   comes from the solver: which fates the circuit allows, whether it settles at all, which fate the paper does not expect,
   which genes are on in a stable state. The number, size and position of the cells, the proportion of each fate (the model
   gives possibilities, not percentages) and the purple cell around the network are not data.

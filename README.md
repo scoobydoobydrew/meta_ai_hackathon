@@ -37,7 +37,10 @@ All numbers are produced by `make verify` and written to [`results/RESULTS.md`](
 [`docs/limitations.md`](docs/limitations.md).
 
 **The interactive report is [`results/report.html`](results/report.html)** (open it in a browser; `python -m cellproof.cli report`
-rebuilds it). The top of the page is a close-up of a protein on a DNA double helix; below it is a test bench in five clickable steps (the
+rebuilds it). The top of the page is a 20-second story told over a close-up of DNA, in four beats: radiation breaks DNA; a damaged
+cell can pause, age, recycle itself or die, so not every one dies; which one- or two-gene changes would make it die, each a lab
+experiment; the exact solver tried all of them and kept a shortlist (the counts and the solver's time are computed when the page
+is built, not typed in). Below it is a test bench in five clickable steps (the
 cells, a patch from the literature, ten known experiments, the AI's repair, a check against held-out outcomes) and a sixth, a
 game: find every way to leave only death. The stage shows a dish of cells that react to radiation, and the same network drawn
 as a pathway poster (a cell whose membrane takes the radiation, named gene pills, golden arrows that switch on, teal bars that

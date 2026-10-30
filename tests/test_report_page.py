@@ -5,10 +5,11 @@ from pathlib import Path
 
 import pytest
 
+from cellproof.analysis.interventions import search_space
 from cellproof.network.bnet import load_bnet
 from cellproof.network.logic import influence_edges
 from cellproof.report.build import WEB, _json, parts, render, render_fragment
-from cellproof.report.data import FAILURE, FATE_CODES, _structured, lab_table, story_block
+from cellproof.report.data import FAILURE, FATE_CODES, _structured, interventions, lab_table, story_block
 from cellproof.report.layout import NODE_ORDER, NODES
 
 BASE = load_bnet(Path(__file__).resolve().parents[1] / "data" / "base" / "gupta2023.bnet")
@@ -64,7 +65,7 @@ def test_the_bench_story_is_built_from_the_solver_and_its_three_acts_are_true_of
 def test_the_page_carries_the_bench_and_its_script_parses(tmp_path):
     head, body, script = parts({"x": 1})
     assert 'id="bench"' in body and 'id="bLamps"' in body and "CPBench" in script
-    assert 'id="heroMol"' in body and "makeMolecule" in script and "makePoster" in script and "makeDish" in script
+    assert 'id="heroMol"' in body and 'id="heroStory"' in body and "makeHelix" in script and "makeStory" in script and "makePoster" in script and "makeDish" in script
     node = shutil.which("node")
     if node is None:
         pytest.skip("node is not installed")
@@ -72,6 +73,19 @@ def test_the_page_carries_the_bench_and_its_script_parses(tmp_path):
     page.write_text(script.split("<script>", 1)[1].rsplit("</script>", 1)[0], encoding="utf-8")
     result = subprocess.run([node, "--check", str(page)], capture_output=True, text=True)
     assert result.returncode == 0, result.stderr
+
+
+def test_the_headers_story_numbers_are_the_solvers_own():
+    out = interventions({"published": BASE, "augmented": BASE})
+    space = out["space"]
+    assert space["total"] == search_space(BASE, 2) and space["found"] == len(out["augmented"]) and space["seconds"] >= 0
+    assert 0 < space["found"] < space["total"]
+
+
+def test_the_header_tells_its_story_in_four_beats_and_quotes_its_source():
+    body = (WEB / "body.html").read_text(encoding="utf-8")
+    assert [int(b) for b in re.findall(r'class="beat" data-b="(\d)"', body)] == [1, 2, 3, 4]
+    assert "Radiotherapy is commonly used to treat a variety of solid tumors." in body and "PMC3167033" in body
 
 
 def test_both_languages_have_the_same_texts_and_every_label_in_the_markup_has_one():

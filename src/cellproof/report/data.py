@@ -10,11 +10,12 @@ import hashlib
 import json
 import re
 import subprocess
+import time
 from itertools import combinations
 from pathlib import Path
 
 from cellproof.analysis.attractors import fixed_points, perturb
-from cellproof.analysis.interventions import READOUT_NODES, minimal_sets
+from cellproof.analysis.interventions import READOUT_NODES, minimal_sets, search_space
 from cellproof.eval.heldout import load as load_heldout
 from cellproof.eval.heldout import summarize
 from cellproof.extract.stats import load_records, summarize as summarize_extractions
@@ -202,9 +203,14 @@ def api_usage() -> dict:
 
 def interventions(networks: dict[str, dict[str, str]]) -> dict:
     out: dict = {}
+    seconds = {}
     for key in ("published", "augmented"):
+        start = time.perf_counter()
         out[key] = [[[n, v] for n, v in s] for s in minimal_sets(networks[key], 2)]
+        seconds[key] = time.perf_counter() - start
     out["readout"] = sorted(READOUT_NODES)  # genes that define the outcome: forcing one of them is not an intervention
+    # the header's story: how many changes the solver tried on the checked network, how long it took here, how many it kept
+    out["space"] = {"total": search_space(networks["augmented"], 2), "seconds": round(seconds["augmented"], 1), "found": len(out["augmented"])}
     return out
 
 

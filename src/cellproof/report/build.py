@@ -21,7 +21,7 @@ def parts(data: dict) -> tuple[str, str, str]:
         f"<link rel=\"stylesheet\" href=\"{FONTS}\">\n<style>\n{(WEB / 'style.css').read_text(encoding='utf-8')}\n</style>\n"
     )
     body = (WEB / "body.html").read_text(encoding="utf-8")
-    code = "\n".join((WEB / name).read_text(encoding="utf-8") for name in ("core.js", "sections.js", "poster.js", "scenes.js", "bench.js"))
+    code = "\n".join((WEB / name).read_text(encoding="utf-8") for name in ("core.js", "sections.js", "poster.js", "scenes.js", "hero.js", "bench.js"))
     script = f"<script>\nconst D = {_json(data)};\n{code}\n</script>\n"
     return head, body, script
 

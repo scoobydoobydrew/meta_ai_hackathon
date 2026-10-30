@@ -9,6 +9,7 @@ in the lab; it is not a treatment suggestion.
 from __future__ import annotations
 
 from itertools import combinations
+from math import comb
 
 from cellproof.analysis.attractors import attractor_sizes, fixed_points, perturb
 from cellproof.network.phenotypes import classify
@@ -38,6 +39,12 @@ def minimal_sets(rules: dict[str, str], max_size: int = 2, target: frozenset[str
             if fates(rules, dict(combo)) == set(target):
                 found.append(chosen)
     return [tuple(sorted(s)) for s in found]
+
+
+def search_space(rules: dict[str, str], max_size: int = 2) -> int:
+    """How many sets `minimal_sets` looks at: k different genes (readout genes excluded), each knocked out or forced on."""
+    genes = sum(1 for n in rules if n not in READOUT_NODES)
+    return sum(comb(genes, k) * 2**k for k in range(1, max_size + 1))
 
 
 def all_attractors_are_fixed_points(rules: dict[str, str], setting: dict[str, int]) -> bool:
