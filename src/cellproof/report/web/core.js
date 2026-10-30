@@ -46,69 +46,6 @@ const newEdgeRecords = (node) => ((D.docket.repaired_min2 || []).filter((r) => r
   addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true }); spy();
 })();
 
-/* ---------------------------------------------------------------- header animation: a damage signal travelling the real network */
-(function hero() {
-  const cv = $("#heroCanvas"), ctx = cv.getContext("2d");
-  const net = D.networks.augmented || D.networks.published;
-  const pos = Object.fromEntries(Object.entries(L.nodes).map(([k, v]) => [k, [v.x, v.y]]));
-  const fates = Object.entries(L.fates).map(([k, f]) => [k, [f.label, f.x, f.y, f.defined_by]]);
-  const edges = net.edges.filter((e) => pos[e[0]] && pos[e[1]] && e[0] !== e[1]);
-  const out = {};
-  edges.forEach((e, i) => (out[e[0]] ||= []).push(i));
-  const glow = {}, fateGlow = {};
-  let pulses = [], W = 0, H = 0, dpr = 1, last = 0, nextWave = 0, colors = {};
-  const readColors = () => { colors = { fg: css("--fg"), faint: css("--fg-3"), line: css("--line"), arrest: css("--f-arrest"), senescence: css("--f-senescence"), autophagy: css("--f-autophagy"), apoptosis: css("--f-apoptosis"), neu: css("--new") }; };
-  const size = () => { const r = cv.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
-  const sx = (x) => (x / L.width) * W, sy = (y) => (y / L.height) * H;
-  const wave = (t) => { if (pulses.length < 90) (out.DNA_damage || []).forEach((i) => pulses.push({ e: i, t0: t, d: 700, depth: 0 })); };
-  /* each edge is a quadratic curve, as in the interactive map; control points are fixed so pulses ride the same line */
-  const ctrl = edges.map((e) => { const a = pos[e[0]], b = pos[e[1]], dx = b[0] - a[0], dy = b[1] - a[1]; return [(a[0] + b[0]) / 2 - dy * 0.1, (a[1] + b[1]) / 2 + dx * 0.1]; });
-  const bez = (i, k) => { const e = edges[i], a = pos[e[0]], b = pos[e[1]], c = ctrl[i], u = 1 - k; return [sx(u * u * a[0] + 2 * u * k * c[0] + k * k * b[0]), sy(u * u * a[1] + 2 * u * k * c[1] + k * k * b[1])]; };
-  function draw(t) {
-    ctx.clearRect(0, 0, W, H);
-    ctx.lineWidth = 1; ctx.strokeStyle = colors.line; ctx.globalAlpha = 0.55;
-    ctx.beginPath(); edges.forEach((e, i) => { ctx.moveTo(sx(pos[e[0]][0]), sy(pos[e[0]][1])); ctx.quadraticCurveTo(sx(ctrl[i][0]), sy(ctrl[i][1]), sx(pos[e[1]][0]), sy(pos[e[1]][1])); }); ctx.stroke(); ctx.globalAlpha = 1;
-    for (const [k, f] of fates) {
-      const g = Math.min(1, fateGlow[k] || 0), x = sx(f[1]), y = sy(f[2]);
-      ctx.beginPath(); ctx.arc(x, y - 22, 5 + g * 9, 0, 7); ctx.fillStyle = colors[k]; ctx.globalAlpha = 0.16 + 0.5 * g; ctx.fill();
-      ctx.beginPath(); ctx.arc(x, y - 22, 4 + g * 2, 0, 7); ctx.globalAlpha = 0.5 + 0.5 * g; ctx.fill(); ctx.globalAlpha = 1;
-      ctx.font = `500 ${Math.max(12, W / 40)}px ${css("--sans")}`; ctx.textAlign = "center"; ctx.fillStyle = colors[k]; ctx.globalAlpha = 0.55 + 0.45 * g;
-      ctx.fillText(f[0], x, y + 2); ctx.globalAlpha = 1;
-    }
-    for (const [n, p] of Object.entries(pos)) {
-      const g = Math.min(1, glow[n] || 0), isNew = L.new_nodes.includes(n), x = sx(p[0]), y = sy(p[1]), r = (isNew ? 5 : n === "DNA_damage" ? 7 : 3.6) + g * 3.5;
-      if (g > 0.05) { ctx.beginPath(); ctx.arc(x, y, r + 8, 0, 7); ctx.fillStyle = colors.fg; ctx.globalAlpha = 0.14 * g; ctx.fill(); }
-      ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fillStyle = g > 0.05 || n === "DNA_damage" ? colors.fg : colors.faint; ctx.globalAlpha = 0.55 + 0.45 * g; ctx.fill(); ctx.globalAlpha = 1;
-      if (isNew) { ctx.beginPath(); ctx.arc(x, y, r + 4.5, 0, 7); ctx.strokeStyle = colors.neu; ctx.lineWidth = 1.2; ctx.stroke(); }
-    }
-    for (const p of pulses) {
-      const k = Math.min(1, (t - p.t0) / p.d);
-      for (let j = 6; j >= 0; j--) { const [x, y] = bez(p.e, Math.max(0, k - j * 0.045)); ctx.beginPath(); ctx.arc(x, y, 3.4 - j * 0.38, 0, 7); ctx.fillStyle = colors.fg; ctx.globalAlpha = (1 - j / 7) * 0.9; ctx.shadowColor = colors.fg; ctx.shadowBlur = j === 0 ? 12 : 0; ctx.fill(); }
-      ctx.globalAlpha = 1; ctx.shadowBlur = 0;
-    }
-  }
-  function step(t) {
-    const dt = Math.min(64, t - last) / 1000; last = t;
-    if (t > nextWave) { wave(t); nextWave = t + 3600; }
-    const arrived = [];
-    pulses = pulses.filter((p) => { if (t - p.t0 >= p.d) { arrived.push(p); return false; } return true; });
-    for (const p of arrived) {
-      const e = edges[p.e]; glow[e[1]] = 1;
-      for (const [k, f] of fates) if (f[3].includes(e[1])) fateGlow[k] = Math.min(1.2, (fateGlow[k] || 0) + 0.35);
-      if (p.depth < 7) for (const i of out[e[1]] || []) if (pulses.length < 110 && Math.random() < 0.8) pulses.push({ e: i, t0: t, d: 520 + Math.random() * 260, depth: p.depth + 1 });
-    }
-    for (const k in glow) glow[k] = Math.max(0, glow[k] - dt * 0.55);
-    for (const k in fateGlow) fateGlow[k] = Math.max(0, fateGlow[k] - dt * 0.22);
-    draw(t); requestAnimationFrame(step);
-  }
-  addEventListener("herowave", () => { nextWave = 0; });  /* the header's trailer asks for a signal when it reaches the circuit */
-  const init = () => { readColors(); size(); };
-  init(); addEventListener("resize", init); addEventListener("themechange", () => setTimeout(readColors, 30));
-  $("#heroTag").textContent = `${net.nodes.length} genes · ${net.edges.length} regulatory links · signal drawn from the model's own rules`;
-  if (reduced) { for (const n of ["DNA_damage", "ATM_pH2AX", "p53", "p53_K", "BAX", "Caspase"]) glow[n] = 1; fateGlow.apoptosis = 1; draw(0); }
-  else requestAnimationFrame(step);
-})();
-
 /* ---------------------------------------------------------------- the network drawing */
 function makeNet(svgEl, tip, handlers = {}, initial = "augmented") {
   const stage = svgEl.parentElement;

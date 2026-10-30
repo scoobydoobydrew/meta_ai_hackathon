@@ -20,10 +20,11 @@ This is a research prototype that ranks hypotheses for lab testing. It makes no 
 - Literature can be inconsistent, incomplete or specific to a cell type; the model has one context.
 
 **The pictures**
-- The dish of cells and the strand of DNA on the report's bench are illustrations. What they show comes from the solver: which
-  fates the circuit allows, whether it settles at all, which fate the paper does not expect, which genes DNA damage switches on
-  in the model and how many papers say so. The number, size and position of the cells, the proportion of each fate (the model
-  gives possibilities, not percentages), the shape of the helix and the way it folds into a coil are not data.
+- The protein on DNA at the top of the page, the dish of cells and the cell with its membrane on the bench are illustrations.
+  The protein and the helix are not structure data: shapes, colours and the way they sit are decoration. What the bench shows
+  comes from the solver: which fates the circuit allows, whether it settles at all, which fate the paper does not expect,
+  which genes are on in a stable state. The number, size and position of the cells, the proportion of each fate (the model
+  gives possibilities, not percentages) and the purple cell around the network are not data.
 - The "hunt" lists every set of one or two changes (readout genes excluded) that leaves only death in the model. Those are
   hypotheses about the model; two of them (TUG1 knocked out, miR-221 forced on) are what the base paper itself reports.
 

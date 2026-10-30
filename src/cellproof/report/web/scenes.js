@@ -259,134 +259,118 @@ function makeDish(cv, opt = {}) {
   return { run, fire, start: b.start, stop: b.stop, draw: () => b.tick(0, performance.now()), spot: (f) => { spot = f; if (!b.running) b.tick(0, performance.now()); }, cells: () => dishes.map((d) => d.cells.length) };
 }
 
-/* ---------------------------------------------------------------- DNA in three dimensions, folded into a coil or open, damaged where the radiation lands */
-function makeDna(cv, opt = {}) {
-  const b = sceneBase(cv), ctx = b.ctx, rnd = rng(5);
-  /* The strand has one length whatever its shape. The axis of the double helix is itself a helix whose radius is `fold` times RC,
-     so fold = 0 is a long straight fibre and fold = 1 the same fibre wound into a compact spring (the camera moves in as it winds). */
-  const ROLL = opt.roll || 0, ZOOM = opt.zoom || 1, N = 220, L = 1300, RC = 60, CP = 24, RH = 30, LAM = 112, OPEN = 0.12, F = 1000, CX = 500, CY = opt.hero ? 346 : 262;
-  const SITE_I = [0.3, 0.5, 0.7].map((q) => Math.round(q * (N - 1))), GAP = 11, FRAY = 8;
-  const PAIRS = [[[246, 178, 72], [64, 196, 188]], [[160, 122, 250], [250, 122, 150]]];  /* two kinds of base pair in four muted colours: decoration */
-  const kind = Array.from({ length: N }, () => (rnd() < 0.5 ? 0 : 1)), flip = Array.from({ length: N }, () => rnd() < 0.5);
-  const parts = Array.from({ length: 40 }, () => ({ x: rnd() * SW, y: rnd() * SH, r: 1 + rnd() * 2.2, vx: (rnd() - 0.5) * 8, vy: (rnd() - 0.5) * 8, a: 0.08 + rnd() * 0.14 }));
-  const mk = () => new Float32Array(N);
-  const [ax, ay, az, tx, ty, tz, Nx, Ny, Nz, Bx, By, Bz] = Array.from({ length: 12 }, mk), [x1, y1, z1, w1, x2, y2, z2, w2] = Array.from({ length: 8 }, mk), dmin = new Uint16Array(N);
-  let sig = "", t = 0, hitAt = 0, damaged = false, sensors = [], fold = { from: OPEN, to: OPEN, t0: 0, dur: 0 }, f = OPEN, yawU = 0, pitchU = 0, drag = null;
-  const mixc = (a, c, k) => a.map((v, i) => v + (c[i] - v) * k), clamp01 = (x) => Math.max(0, Math.min(1, x));
-  const rr = (x, y, w, h, r) => { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); };
+/* ---------------------------------------------------------------- the header: a protein clamped on a double helix, close up, in the manner of a molecular graphics picture */
+function makeMolecule(cv, opt = {}) {
+  /* Every atom is a shaded sphere drawn from a small pre-rendered sprite, far to near, tinted toward the background with depth. The
+     protein is four lumps of beads with a loose tail each, the DNA two backbones of beads with base-pair rungs, upright and longer than
+     the picture. Colours, shapes and the way the protein sits are illustration, not structure data. */
+  const ctx = cv.getContext("2d"), rnd = rng(17), lite = !!opt.lite, F = 1100;
+  const PAL = {
+    p0: [118, 150, 238], p1: [92, 122, 226], p2: [72, 96, 210], p3: [156, 182, 255], p4: [122, 90, 232], p5: [62, 74, 204],
+    t0: [168, 198, 255], t1: [96, 92, 240], d0: [238, 84, 232], d1: [255, 146, 242], d2: [196, 56, 214], d3: [255, 206, 250], hot: [255, 176, 84],
+  };
+  const FOG = [8, 38, 108], LEVELS = [0, 0.2, 0.42, 0.62];
+  const mixc = (a, c, k) => a.map((v, i) => v + (c[i] - v) * k);
+  const mkSprite = (c) => {
+    const s = 64, o = document.createElement("canvas"); o.width = o.height = s;
+    const g = o.getContext("2d"), gr = g.createRadialGradient(s * 0.36, s * 0.3, s * 0.03, s * 0.5, s * 0.5, s * 0.5);
+    gr.addColorStop(0, rgba(mixc(c, [255, 255, 255], 0.6), 1)); gr.addColorStop(0.42, rgba(c, 1)); gr.addColorStop(1, rgba(mixc(c, [4, 8, 44], 0.55), 1));
+    g.fillStyle = gr; g.beginPath(); g.arc(s / 2, s / 2, s / 2 - 1, 0, TAU); g.fill(); return o;
+  };
+  const SPR = Object.fromEntries(Object.entries(PAL).map(([k, c]) => [k, LEVELS.map((lv) => mkSprite(mixc(c, FOG, lv)))]));
+  const soft = (c) => { const s = 96, o = document.createElement("canvas"); o.width = o.height = s; const g = o.getContext("2d"), gr = g.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2); gr.addColorStop(0, rgba(c, 0.9)); gr.addColorStop(1, rgba(c, 0)); g.fillStyle = gr; g.fillRect(0, 0, s, s); return o; };
+  const BOKEH = [soft([150, 190, 255]), soft([255, 130, 235])];
 
-  const setFold = (to, ms = 0) => { fold = { from: f, to, t0: performance.now(), dur: reduced ? 0 : ms }; if (!fold.dur) f = to; if (!b.running) b.tick(0, performance.now()); };
-  function run(a) {
-    if (a.sig === sig && !a.force) return;
-    sig = a.sig; sensors = a.sensors || []; damaged = !!a.damaged; hitAt = performance.now() - (reduced ? 6000 : 0);
-    if (a.fold !== undefined) setFold(a.fold, a.foldMs || 0); else if (!b.running) b.tick(0, performance.now());
+  /* the protein: four lumps around the helix, each a cloud of beads leaning to its surface, each with a loose tail ending in a knot */
+  const protein = [], ball = () => { for (;;) { const x = rnd() * 2 - 1, y = rnd() * 2 - 1, z = rnd() * 2 - 1, d = x * x + y * y + z * z; if (d <= 1 && d > 0.05) return [x, y, z, Math.sqrt(d)]; } };
+  [[45, -78], [135, -78], [225, 78], [315, 78]].forEach(([deg, cy], ci) => {
+    const a = (deg * Math.PI) / 180, cx = Math.cos(a) * 178, cz = Math.sin(a) * 178;
+    for (let i = 0; i < (lite ? 120 : 220); i++) {
+      const [bx, by, bz, d] = ball(), rho = 0.55 + 0.45 * Math.min(1, d + 0.2);
+      const x = cx + (bx / d) * rho * 106, y = cy + (by / d) * rho * 126, z = cz + (bz / d) * rho * 98;
+      const n = Math.sin(x * 0.045) + Math.cos(y * 0.06 + ci) + Math.sin(z * 0.05 - x * 0.02), k = n > 1.1 ? "p3" : n > 0.4 ? "p0" : n > -0.3 ? "p1" : n > -1 ? "p2" : "p5";
+      protein.push({ x, y, z, r: 10 + rnd() * 7, k: rnd() < 0.08 ? "p4" : k });
+    }
+    const out = [Math.cos(a), cy > 0 ? 0.6 : -0.6, Math.sin(a)], base = [cx + out[0] * 104, cy + out[1] * 100, cz + out[2] * 104], len = lite ? 16 : 24;
+    for (let i = 0; i < len; i++) {
+      const u = i / len, w = Math.sin(u * 4.2 + ci) * 26;
+      protein.push({ x: base[0] + out[0] * u * 150 - w * out[2], y: base[1] + out[1] * u * 120 + Math.sin(u * 3) * 30, z: base[2] + out[2] * u * 150 + w * out[0], r: 8.2, k: "t0" });
+    }
+    const e = protein[protein.length - 1];
+    for (let i = 0; i < (lite ? 6 : 10); i++) { const [bx, by, bz] = ball(); protein.push({ x: e.x + bx * 22, y: e.y + by * 22, z: e.z + bz * 22, r: 9 + rnd() * 4, k: "t1" }); }
+  });
+
+  /* the DNA: its beads are placed again every frame because it turns about its own axis */
+  const KB = lite ? 110 : 170, NB = lite ? 36 : 54, LY = 1120, R = 58, PITCH = 200, dna = Array.from({ length: KB * 2 + NB * 5 }, () => ({ x: 0, y: 0, z: 0, r: 0, k: "d0" }));
+  function placeDna(t) {
+    let n = 0;
+    for (let s = 0; s < 2; s++) for (let i = 0; i < KB; i++) { const y = (i / (KB - 1) - 0.5) * LY, ph = (TAU * y) / PITCH + t * 0.9 + s * Math.PI, b = dna[n++]; b.x = R * Math.cos(ph); b.z = R * Math.sin(ph); b.y = y; b.r = 10.5; b.k = (i + s) % 7 === 0 ? "d2" : "d0"; }
+    for (let j = 0; j < NB; j++) { const y = ((j + 0.5) / NB - 0.5) * LY, ph = (TAU * y) / PITCH + t * 0.9; for (let m = 0; m < 5; m++) { const f = (m + 0.5) / 5, b = dna[n++]; b.x = R * Math.cos(ph) * (1 - 2 * f); b.z = R * Math.sin(ph) * (1 - 2 * f); b.y = y; b.r = 5.6; b.k = m === 2 ? "d3" : "d1"; } }
   }
 
-  b.tick = (dt, T) => {
+  let W = 0, H = 0, dpr = 1, cx = 0, cy = 0, S = 1, ready = false, running = false, last = 0, t = 0, yawU = 0, pitchU = 0, drag = null, shock = null, nextShock = 2200;
+  const bokeh = Array.from({ length: lite ? 16 : 32 }, () => ({ x: rnd(), y: rnd(), r: 8 + rnd() * 42, a: 0.05 + rnd() * 0.12, v: 0.006 + rnd() * 0.02, k: rnd() < 0.7 ? 0 : 1 })), items = [];
+  function fit() {
+    const r = cv.getBoundingClientRect(); if (!r.width || !r.height) return false;
+    dpr = Math.min(2, devicePixelRatio || 1); W = r.width; H = r.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    const wide = W >= 760; cx = wide ? W * 0.67 : W * 0.5; cy = wide ? H * 0.5 : H * 0.72; S = wide ? H / 720 : Math.min(W / 560, H / 980); ready = true; return true;
+  }
+
+  function draw(T, dt) {
     t += dt;
-    if (fold.dur) f = fold.from + (fold.to - fold.from) * smooth((T - fold.t0) / fold.dur);
-    b.begin();
-    const c = b.c, lt = b.light, since = damaged ? T - hitAt : -1, dp = damaged ? smooth((since - 500) / 800) : 0, brk = dp * (1 - smooth((f - 0.2) / 0.5));
-    const warm = lt ? [196, 52, 140] : [240, 112, 202], strand = [c.accent, warm], white = [255, 255, 255];
-    ctx.beginPath(); ctx.ellipse(SW / 2, CY, 480, 190 + 120 * f, 0, 0, TAU); ctx.fillStyle = rgba(c.accent, lt ? 0.08 : 0.05); ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = rgba(c.accent, lt ? 0.3 : 0.2); ctx.stroke();
-    for (const p of parts) { p.x = (p.x + p.vx * dt + SW) % SW; p.y = (p.y + p.vy * dt + SH) % SH; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, TAU); ctx.fillStyle = rgba(c["fg-3"], p.a); ctx.fill(); }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    if (!reduced && T > nextShock) { shock = { t0: T, y: (rnd() - 0.5) * 520 }; nextShock = T + 7600; }
+    const age = shock ? T - shock.t0 : 1e9, pa = (age - 380) / 1700, pulse = pa > 0 && pa < 1 ? Math.sin(Math.PI * pa) : 0;
+    const yaw = yawU + t * 0.17, pitch = pitchU + 0.12 + 0.06 * Math.sin(t * 0.23), cyw = Math.cos(yaw), syw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
+    yawU *= Math.exp(-dt * 0.5); if (!drag) pitchU *= Math.exp(-dt * 0.7);
+    const scr = (x, y, z) => { const xa = x * cyw + z * syw, za = -x * syw + z * cyw, yb = y * cp - za * sp, zb = y * sp + za * cp, w = F / (F + zb); return { x: cx + xa * w * S, y: cy + yb * w * S, z: zb, w }; };
 
-    /* the axis, its frame without twist (parallel transport), and the two backbones around it */
-    yawU *= Math.exp(-dt * 0.35); if (!drag) pitchU *= Math.exp(-dt * 0.5);
-    const yaw = yawU + 0.34 * Math.sin(t * 0.27), pitch = pitchU + 0.16 + 0.05 * Math.sin(t * 0.21), cy_ = Math.cos(yaw), sy_ = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch), ws = (1 + 0.65 * f) * ZOOM, cr = Math.cos(ROLL), sr = Math.sin(ROLL);
-    const Rc = RC * f, k = Math.hypot(Rc, CP), Theta = L / k, xc = (CP * Theta) / 2;
-    for (let i = 0; i < N; i++) { const th = ((i / (N - 1)) * L) / k; ax[i] = CP * th - xc; ay[i] = Rc * Math.cos(th); az[i] = Rc * Math.sin(th); }
-    for (let i = 0; i < N; i++) {
-      const a = Math.max(0, i - 1), d = Math.min(N - 1, i + 1); const dx = ax[d] - ax[a], dy = ay[d] - ay[a], dz = az[d] - az[a], m = Math.hypot(dx, dy, dz) || 1; tx[i] = dx / m; ty[i] = dy / m; tz[i] = dz / m;
-    }
-    let nx = 0, ny = 1, nz = 0;
-    for (let i = 0; i < N; i++) {
-      const dd = nx * tx[i] + ny * ty[i] + nz * tz[i]; nx -= dd * tx[i]; ny -= dd * ty[i]; nz -= dd * tz[i]; const m = Math.hypot(nx, ny, nz) || 1; nx /= m; ny /= m; nz /= m;
-      Nx[i] = nx; Ny[i] = ny; Nz[i] = nz; Bx[i] = ty[i] * nz - tz[i] * ny; By[i] = tz[i] * nx - tx[i] * nz; Bz[i] = tx[i] * ny - ty[i] * nx;
-    }
-    const proj = (x, y, z, X, Y, Z, W, i) => {
-      x *= ws; y *= ws; z *= ws; const xa = x * cy_ + z * sy_, za = -x * sy_ + z * cy_, yb = y * cp - za * sp, zb = y * sp + za * cp, w = F / (F + zb);
-      X[i] = CX + (xa * cr - yb * sr) * w; Y[i] = CY + (xa * sr + yb * cr) * w; Z[i] = zb; W[i] = w;
-    };
-    for (let i = 0; i < N; i++) {
-      const s = (i / (N - 1)) * L, phi = (TAU * s) / LAM + t * 1.1, co = Math.cos(phi), si = Math.sin(phi);
-      const d = Math.min(Math.abs(i - SITE_I[0]), Math.abs(i - SITE_I[1]), Math.abs(i - SITE_I[2])); dmin[i] = d;
-      const fr = brk > 0 ? brk * Math.max(0, 1 - Math.max(0, d - GAP * brk) / FRAY) * 22 : 0;
-      const ux = RH * (co * Nx[i] + si * Bx[i]) + fr * Bx[i], uy = RH * (co * Ny[i] + si * By[i]) + fr * By[i], uz = RH * (co * Nz[i] + si * Bz[i]) + fr * Bz[i];
-      proj(ax[i] + ux, ay[i] + uy, az[i] + uz, x1, y1, z1, w1, i); proj(ax[i] - ux, ay[i] - uy, az[i] - uz, x2, y2, z2, w2, i);
-    }
-    const site = SITE_I.map((i) => { const X = [0], Y = [0], Z = [0], W = [0]; proj(ax[i], ay[i], az[i], X, Y, Z, W, 0); return { x: X[0], y: Y[0], w: W[0] }; });
+    ctx.globalCompositeOperation = "lighter";
+    const au = ctx.createRadialGradient(cx, cy, 0, cx, cy, 0.62 * H); au.addColorStop(0, "rgba(255,80,225,.17)"); au.addColorStop(0.5, "rgba(110,80,255,.07)"); au.addColorStop(1, "rgba(0,0,0,0)"); ctx.fillStyle = au; ctx.fillRect(0, 0, W, H);
+    for (const b of bokeh) { const y = (((b.y - t * b.v) % 1) + 1) % 1; ctx.globalAlpha = b.a; ctx.drawImage(BOKEH[b.k], b.x * W - b.r, y * H - b.r, b.r * 2, b.r * 2); }
+    ctx.globalAlpha = 1; ctx.globalCompositeOperation = "source-over";
 
-    /* everything is drawn far to near */
-    const gap = (i) => brk > 0 && dmin[i] < GAP * brk, P = [], off = (a, bb) => (a < -70 && bb < -70) || (a > SW + 70 && bb > SW + 70);
-    for (let i = 0; i < N - 1; i++) {
-      if (gap(i) || gap(i + 1)) continue;
-      if (!off(x1[i], x1[i + 1])) P.push({ z: (z1[i] + z1[i + 1]) / 2, a: 0, i });
-      if (!off(x2[i], x2[i + 1])) P.push({ z: (z2[i] + z2[i + 1]) / 2, a: 1, i });
-    }
-    for (let i = 2; i < N - 2; i += 3) if (!(brk > 0 && dmin[i] < GAP * brk + 2) && !off(x1[i], x2[i])) P.push({ z: (z1[i] + z2[i]) / 2, a: 2, i });
-    P.sort((p, q) => q.z - p.z);
-    const ks = 1 + 0.35 * f, dep = (z) => Math.max(0.12, Math.min(1, 0.5 - z / (840 * ws)));
-    const ball = (x, y, r, col, al) => { ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fillStyle = rgba(col, al); ctx.fill(); ctx.beginPath(); ctx.arc(x - r * 0.3, y - r * 0.3, r * 0.34, 0, TAU); ctx.fillStyle = `rgba(255,255,255,${0.55 * al})`; ctx.fill(); };
-    ctx.lineCap = "round";
-    for (const q of P) {
-      const i = q.i;
-      if (q.a < 2) {
-        const X = q.a ? x2 : x1, Y = q.a ? y2 : y1, W = q.a ? w2 : w1, col = strand[q.a], al = dep(q.z), w = ((W[i] + W[i + 1]) / 2) * ks;
-        ctx.beginPath(); ctx.moveTo(X[i], Y[i]); ctx.lineTo(X[i + 1], Y[i + 1]);
-        ctx.lineWidth = 8 * w; ctx.strokeStyle = rgba(mixc(col, [0, 0, 0], lt ? 0.1 : 0.25), 0.4 + 0.6 * al); ctx.stroke();
-        ctx.lineWidth = 3 * w; ctx.strokeStyle = rgba(mixc(col, white, 0.5), 0.35 + 0.65 * al); ctx.stroke();
-      } else {
-        const al = dep(q.z), w = ((w1[i] + w2[i]) / 2) * ks, pair = PAIRS[kind[i]], ca = pair[flip[i] ? 1 : 0], cb = pair[flip[i] ? 0 : 1], mx = (x1[i] + x2[i]) / 2, my = (y1[i] + y2[i]) / 2;
-        ctx.lineWidth = 4 * w;
-        ctx.beginPath(); ctx.moveTo(x1[i], y1[i]); ctx.lineTo(mx, my); ctx.strokeStyle = rgba(ca, 0.3 + 0.7 * al); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(mx, my); ctx.lineTo(x2[i], y2[i]); ctx.strokeStyle = rgba(cb, 0.3 + 0.7 * al); ctx.stroke();
-        ball(x1[i], y1[i], 5.4 * w, mixc(ca, [0, 0, 0], lt ? 0.12 : 0), 0.4 + 0.6 * al); ball(x2[i], y2[i], 5.4 * w, mixc(cb, [0, 0, 0], lt ? 0.12 : 0), 0.4 + 0.6 * al);
+    placeDna(t); items.length = 0;
+    const add = (b, k, grow) => { const p = scr(b.x, b.y, b.z); items.push({ z: p.z, x: p.x, y: p.y, r: b.r * grow * p.w * S, k }); };
+    for (const b of protein) add(b, b.k, 1 + 0.07 * pulse);
+    const hot = (b) => shock && age > 300 && age < 1700 && Math.abs(b.y - shock.y) < 60 * Math.min(1, (age - 300) / 300);
+    for (const b of dna) add(b, hot(b) ? "hot" : b.k, 1);
+    items.sort((a, b) => b.z - a.z);
+    for (const it of items) { const lv = Math.max(0, Math.min(3, Math.floor(((it.z + 340) / 680) * 3.999))); ctx.drawImage(SPR[it.k][lv], it.x - it.r, it.y - it.r, it.r * 2, it.r * 2); }
+
+    /* the radiation: a ray from the upper left, a glow and a ring where it lands, and the protein answering with a pulse */
+    if (shock && age < 2200) {
+      const s0 = scr(0, shock.y, 0), x0 = s0.x - 560 * S, y0 = s0.y - 420 * S, k = Math.min(1, age / 380);
+      ctx.globalCompositeOperation = "lighter";
+      if (age < 480) {
+        const tail = Math.max(0, k - 0.2), xa = x0 + (s0.x - x0) * tail, ya = y0 + (s0.y - y0) * tail, xb = x0 + (s0.x - x0) * k, yb = y0 + (s0.y - y0) * k, lg = ctx.createLinearGradient(xa, ya, xb, yb);
+        lg.addColorStop(0, "rgba(255,255,255,0)"); lg.addColorStop(1, "rgba(255,255,255,.95)"); ctx.strokeStyle = lg; ctx.lineWidth = 4 * S + 1; ctx.lineCap = "round"; ctx.beginPath(); ctx.moveTo(xa, ya); ctx.lineTo(xb, yb); ctx.stroke();
       }
-    }
-    ctx.lineCap = "butt";
-
-    /* the radiation: rays, then a glowing break where each lands, then the sensors it switches on */
-    if (damaged && since < 1500) site.forEach((s, j) => {
-      const kk = clamp01((since - j * 150) / 420); if (kk <= 0 || kk >= 1) return;
-      const tail = Math.max(0, kk - 0.18), ex = s.x - 300, ey = -30, xa = ex + (s.x - ex) * tail, ya = ey + (s.y - ey) * tail, xb = ex + (s.x - ex) * kk, yb = ey + (s.y - ey) * kk;
-      const lg = ctx.createLinearGradient(xa, ya, xb, yb); lg.addColorStop(0, "rgba(255,255,255,0)"); lg.addColorStop(1, "rgba(255,255,255,.95)");
-      ctx.strokeStyle = lg; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(xa, ya); ctx.lineTo(xb, yb); ctx.stroke();
-    });
-    if (dp > 0) for (const s of site) {
-      const fl = 0.75 + 0.25 * Math.sin(t * 13 + s.x), R = 110 * s.w * ks, g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, R);
-      g.addColorStop(0, rgba(c.bad, 0.55 * dp * fl)); g.addColorStop(1, rgba(c.bad, 0)); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(s.x, s.y, R, 0, TAU); ctx.fill();
-      for (let i = 0; i < 10; i++) {
-        const a = (i / 10) * TAU + t * 1.7, l = (16 + 24 * Math.abs(Math.sin(t * 7 + i * 1.9)) * dp) * s.w * ks;
-        ctx.beginPath(); ctx.moveTo(s.x + Math.cos(a) * 14 * s.w, s.y + Math.sin(a) * 14 * s.w); ctx.lineTo(s.x + Math.cos(a) * (14 * s.w + l), s.y + Math.sin(a) * (14 * s.w + l)); ctx.lineWidth = 2.2; ctx.strokeStyle = rgba(c.bad, 0.9 * dp); ctx.stroke();
+      if (age > 340) {
+        const a2 = age - 340, rad = (70 + a2 * 0.16) * S, al = Math.max(0, 1 - a2 / 1500), g = ctx.createRadialGradient(s0.x, s0.y, 0, s0.x, s0.y, rad);
+        g.addColorStop(0, `rgba(255,190,100,${0.8 * al})`); g.addColorStop(1, "rgba(255,120,60,0)"); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(s0.x, s0.y, rad, 0, TAU); ctx.fill();
+        ctx.lineWidth = 2.5; ctx.strokeStyle = `rgba(255,220,170,${0.7 * al})`; ctx.beginPath(); ctx.arc(s0.x, s0.y, rad * 1.25, 0, TAU); ctx.stroke();
       }
+      ctx.globalCompositeOperation = "source-over";
     }
-    const pop = smooth((dp - 0.55) / 0.45) * (1 - smooth((f - 0.15) / 0.15));
-    if (pop > 0.01 && sensors.length) {
-      const slots = sensors.length === 1 ? [1] : sensors.length === 2 ? [0, 2] : sensors.map((_, i) => i % 3);
-      sensors.forEach((sn, i) => {
-        const s = site[slots[i]], y = s.y + 150 * s.w + (1 - pop) * 26, w = 184, h = 62;
-        ctx.save(); ctx.globalAlpha = pop;
-        ctx.setLineDash([4, 5]); ctx.lineWidth = 1.8; ctx.strokeStyle = rgba(c.accent, 0.75); ctx.beginPath(); ctx.moveTo(s.x, s.y + 18 * s.w); ctx.lineTo(s.x, y); ctx.stroke(); ctx.setLineDash([]);
-        rr(s.x - w / 2, y, w, h, 16); ctx.fillStyle = rgba(c.surface, 0.95); ctx.fill(); ctx.lineWidth = sn.isNew ? 2.4 : 1.4; ctx.strokeStyle = sn.isNew ? rgba(c.new, 0.95) : rgba(c.line, 1); ctx.stroke();
-        ctx.textAlign = "center"; ctx.fillStyle = rgba(c.fg, 1); ctx.font = `600 21px ${b.sans}`; ctx.fillText(sn.label, s.x, y + 28);
-        ctx.fillStyle = rgba(c["fg-3"], 1); ctx.font = `500 14px ${b.sans}`; ctx.fillText(sn.sub, s.x, y + 48);
-        if (sn.isNew) { ctx.font = `700 11px ${b.sans}`; ctx.fillStyle = rgba(c.new, 1); ctx.fillText("NEW", s.x + w / 2 - 22, y - 7); }
-        ctx.restore();
-      });
-    }
-  };
+  }
 
-  /* drag to turn it; a vertical swipe still scrolls the page */
-  cv.style.cursor = "grab"; cv.style.touchAction = "pan-y";
+  const frame = (now) => { if (!running) return; const dt = Math.max(0, Math.min(0.05, (now - last) / 1000)); last = now; draw(now, dt); requestAnimationFrame(frame); };
+  cv.style.touchAction = "pan-y";
   cv.addEventListener("pointerdown", (e) => { drag = { x: e.clientX, y: e.clientY }; cv.setPointerCapture(e.pointerId); cv.style.cursor = "grabbing"; });
   cv.addEventListener("pointermove", (e) => {
     if (!drag) return;
-    yawU = Math.max(-0.9, Math.min(0.9, yawU + (e.clientX - drag.x) * 0.007)); pitchU = Math.max(-0.5, Math.min(0.5, pitchU + (e.clientY - drag.y) * 0.004)); drag.x = e.clientX; drag.y = e.clientY;
-    if (!b.running) b.tick(0, performance.now());
+    yawU = Math.max(-1.6, Math.min(1.6, yawU + (e.clientX - drag.x) * 0.008)); pitchU = Math.max(-0.5, Math.min(0.5, pitchU + (e.clientY - drag.y) * 0.004)); drag.x = e.clientX; drag.y = e.clientY;
+    if (!running && ready) draw(performance.now(), 0);
   });
   const release = () => { drag = null; cv.style.cursor = "grab"; };
   cv.addEventListener("pointerup", release); cv.addEventListener("pointercancel", release);
-
-  return { run, OPEN, foldTo: setFold, reveal: (ms = 2400) => { f = 1; setFold(OPEN, ms); }, folded: () => fold.to > 0.5, start: b.start, stop: b.stop, draw: () => b.tick(0, performance.now()) };
+  cv.style.cursor = "grab";
+  new ResizeObserver(() => { if (fit() && !running) draw(performance.now(), 0); }).observe(cv);
+  fit();
+  return {
+    start: () => { fit(); if (running || !ready) return; if (reduced) { draw(performance.now(), 0); return; } running = true; last = performance.now(); requestAnimationFrame(frame); },
+    stop: () => { running = false; },
+    draw: () => { if (ready) draw(performance.now(), 0); },
+  };
 }

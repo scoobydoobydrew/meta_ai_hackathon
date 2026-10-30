@@ -10,7 +10,7 @@
   const GATE = [...new Set(toks(PATCH.final).filter((x) => /^[A-Za-z_]/.test(x) && !toks(PATCH.template).includes(x)))];
   const SPOT = new Set(["DNA_damage", "ATR", SRC, DST, ...GATE]);
   const NEW_LIST = ((D.summary && D.summary.new_nodes) || []).map(pretty).join(", ");
-  const N0 = D.networks.published.nodes.length, PLAY_S = 64;
+  const N0 = D.networks.published.nodes.length, PLAY_S = 60;
   const SCI = { proliferation: "proliferation", arrest: "arrest", senescence: "senescence", autophagy: "autophagy", apoptosis: "apoptosis" };
   /* the hunt: the exact solver found every set of one or two changes (readout genes excluded) after which every cell dies */
   const INTERV = ((D.interventions || {}).augmented || []).map((s) => s.map(([n, v]) => [n, v])), READOUT = new Set((D.interventions || {}).readout || []), HUNT = INTERV.length > 0;
@@ -21,24 +21,15 @@
     en: {
       "nav.bench": "Bench", "play.short": "▶ Play", "play.stop": "■ Stop",
       "hero.h1": "A cell hit by radiation has to <em>decide.</em>",
-      "hero.lede": (n) => `A published model of that decision has ${n} genes and misses what the papers know. An AI reads the papers and proposes new wires. An exact checker decides which ones the circuit can take.`,
+      "hero.lede": "An AI reads the papers. An exact solver decides what the model can take.",
       "hero.play": (n, s) => `▶ Play the ${s}-second story`, "hero.try": "Try it yourself",
       "bench.eyebrow": "The test bench", "bench.h2": "Five steps. One circuit. The checker decides.",
-      "how.sum": "What am I looking at?",
-      "how.circuit": "Circuit", "how.circuit.d": (n) => `The gene network of a cell: ${n} genes that switch each other on and off.`,
-      "how.wire": "Wire", "how.wire.d": "One regulation: gene A switches gene B on, or off.",
-      "how.lamp": "Lamp", "how.lamp.d": "A fate the cell can end in. Lit means the checker found a stable state with that fate.",
-      "how.checker": "Checker", "how.checker.d": "An exact solver. It does not guess: it lists every stable state.",
-      "how.dish": "Dish", "how.dish.d": "Cells in a dish stand for the circuit: each cell shows one fate the circuit allows. An illustration, with no percentages.",
-      "ctl.damage": "DNA damage", "ctl.open": "Open the circuit", "ctl.close": "Close the circuit", "chip": (n) => `cell model · ${n} genes`,
-      "scale.dish": "Dish", "scale.circuit": "Circuit", "scale.dna": "DNA", "irr.go": "Irradiate", "irr.again": "Irradiate again", "irr.replay": "Replay",
+      "ctl.damage": "DNA damage",
+      "scale.dish": "Dish", "scale.circuit": "Cell", "irr.go": "Irradiate", "irr.again": "Irradiate again", "irr.replay": "Replay",
       "vial.none": "Control", "vial.tug1": "TUG1 cut", "vial.mir": "miR-221 on", "vial.p53": "p53 out", "cmp.paper": "Paper: known result",
-      "dish.note": "Illustration: each cell shows one fate the model allows. The model gives possibilities, not percentages.", "dish.empty": "no cells left",
+      "dish.note": "Illustration. The model gives possible fates, not percentages.", "dish.empty": "no cells left",
       "tip.idle": "A healthy cell. Irradiate the dish and watch it decide.", "tip.cell": "Click to look inside this cell.", "tip.osc": "No stable state: this cell keeps flipping between fates.",
-      "dock.circuit": "Open the circuit, then click a gene to cut it; click again to force it on.",
-      "dna.go": "Follow the signal →", "dna.hint0": "Press Irradiate to damage the DNA. Drag to turn it.", "dna.note": "In the model, damaged DNA switches on these genes. Drag to turn it.",
-      "dna.papers": (n) => `${n} papers`, "dna.pub": "published model", "dna.fold": "Fold the DNA", "dna.unfold": "Unfold the DNA",
-      "hero.c1": "Radiation hits a dish of cells.", "hero.c2": "Inside each cell, it damages the DNA.", "hero.c3": "A circuit of genes senses the damage…", "hero.c4": "…and decides: pause, age, recycle or die.",
+      "dock.circuit": "Click a gene to cut it. Click again to switch it on.", "lg.act": "switches on", "lg.inh": "switches off", "lg.new": "new wire", "lg.on": "on", "lg.off": "off",
       rail: ["Cells", "Patch", "Tests", "Repair", "Audit", "Hunt"],
       "a6.t": "The hunt", "a6.h": (n) => `Cut or switch on one or two genes so that every cell dies. The checker knows exactly ${n} ways. How many can you find?`,
       "a6.how": "On the circuit, click a gene: once to cut it, twice to force it on, three times to clear it. Two genes at most.",
@@ -49,24 +40,23 @@
       "a6.hint": "Hint", "a6.dish": "See it in the dish", "a6.reset": "Reset", "a6.note": "These are hypotheses about the model, for lab testing. Not treatments.",
       "a6.tease": (n) => `Challenge: can you make every cell die? The checker knows ${n} ways.`, "a6.go": "Start the hunt →",
       "fate.proliferation": "Divides", "fate.arrest": "Pauses", "fate.senescence": "Ages", "fate.autophagy": "Recycles", "fate.apoptosis": "Dies",
-      "a1.t": "A dish of cells", "a1.h": "Radiation hits a dish of cells and each cell decides: pause, age, recycle or die. Press Irradiate, then try a treatment.",
+      "a1.t": "A dish of cells", "a1.h": "Press Irradiate, then try a treatment.",
       "cut.none": "No change", "cut.tug1": "Cut TUG1", "cut.mir": "Switch on miR-221", "cut.p53": "Remove p53",
-      "a1.tip": "Click a cell to look inside it.", "a1.next": "Next: the circuit has a gap →",
+      "a1.next": "Next: the circuit has a gap →",
       "st.only": (x) => `Only “${x}” is reachable.`, "st.many": (n, list) => `${n} fates are reachable: ${list}.`,
       "st.never": "The circuit never settles: it keeps oscillating, so no lamp stays on.", "st.nofate": "A stable state exists, but it matches none of the five fates.",
       "st.unknown": "This combination was not precomputed.",
-      "why.sum": "Why does it end like this?", "why.because": "because", "why.none": "Nothing is forced by the input alone: the feedback loops decide.",
-      "a2.t": "The patch", "a2.h": (list) => `The model has no ${list}. The papers know them.`,
+            "a2.t": "The patch", "a2.h": (list) => `The model has no ${list}. The papers know them.`,
       "a2.read": (n) => `Let the AI read ${n} papers`, "cnt.papers": "papers read", "cnt.claims": "claims proposed", "cnt.quotes": "quotes found word for word",
       "a2.found": (q, k) => `One of ${q} quoted claims. ${k} papers agree.`, "a2.wire": (a, b) => `Proposed wire: ${a} switches ${b} off`,
       "a2.more": (n) => `${n} more quotes`, "a2.plug": "Plug the wire in, unchecked",
       "a2.plugged": "Plugged in, unchecked. Try an old experiment: cut TUG1 and watch the lamps.", "a2.next": "Next: test it on 10 known experiments →",
-      "a3.t": "The tests", "a3.h": "Ten experiments whose outcome is known from the base paper. The checker replays each one on the patched circuit.",
+      "a3.t": "The tests", "a3.h": "Ten known experiments. The checker replays each one.",
       "a3.run": "Run the 10 known experiments", "a3.res": (p, f) => `${p} of 10 pass, ${f} fail.`, "a3.click": "Click a red light to see what went wrong.",
       "a3.allpass": "All 10 pass.", "a3.next": "Send the failures to the AI →",
       dmg: "damage", nodmg: "no damage", known: "Known from the paper", says: "The circuit says", atleast: "at least", match: "matches", nomatch: "does not match",
       notexp: "not expected", expected: "expected",
-      "a4.t": "The repair", "a4.h": "The checker sends the AI the claim, its quotes and the counterexample. The AI answers:", "a4.think": "The AI is thinking…",
+      "a4.t": "The repair", "a4.h": "The AI gets the failed tests and answers:", "a4.think": "The AI is thinking…",
       "a4.own": "In the AI's own words", "a4.gate": "Both must be on to switch it off.", "a4.fix": "Plug in the new version and re-run",
       "a4.done": (p) => `${p} of 10 pass. The checker decided, not the AI.`, "a4.cheat": "Can the AI cheat?",
       "a4.cheat.d": "Once it offered a rule that passed all ten tests but changed no prediction at all, so it fixed nothing. The checker refused it as vacuous:",
@@ -78,7 +68,7 @@
       "a5.worked": (a, b, z) => `What worked: without the checker, the edits broke ${a}–${b} of the 10 known experiments. With it: ${z}.`,
       "a5.nb": "Open the lab notebook ↓", "a5.again": "Play again", "a5.restart": "Start over", "a5.click": "Click a row for the quote.", "a5.noaudit": "The held-out set has not been scored.",
       "cap.1": "A cell hit by radiation has to decide.", "cap.2": "Four fates are possible.", "cap.3": "Cut one wire, TUG1: only death is left.",
-      "cap.d1": "Inside each cell, damaged DNA is the signal.", "cap.d2": "The signal runs through a circuit of genes.",
+      "cap.d1": "Inside every cell, a circuit of genes decides.",
       "cap.4": "But the circuit has gaps. The papers know more.", "cap.5": (n) => `An AI reads ${n} papers and quotes what they say.`,
       "cap.6": (a, b) => `Plug in the new wire: ${a} switches off ${b}.`, "cap.7": "An exact checker replays 10 known experiments.",
       "cap.8": (f) => `${f} break. The checker shows exactly which.`, "cap.9": "The AI gets the counterexample and rewrites the rule.",
@@ -88,24 +78,15 @@
     el: {
       "nav.bench": "Εργαστήριο", "play.short": "▶ Παίξε", "play.stop": "■ Στοπ",
       "hero.h1": "Ένα κύτταρο που δέχεται ακτινοβολία πρέπει να <em>αποφασίσει.</em>",
-      "hero.lede": (n) => `Ένα δημοσιευμένο μοντέλο αυτής της απόφασης έχει ${n} γονίδια και του λείπουν όσα ξέρει η βιβλιογραφία. Ένα AI διαβάζει τα papers και προτείνει νέα καλώδια. Ένας ακριβής ελεγκτής αποφασίζει ποια χωράνε στο κύκλωμα.`,
+      "hero.lede": "Ένα AI διαβάζει τα papers. Ένας ακριβής solver αποφασίζει τι αντέχει το μοντέλο.",
       "hero.play": (n, s) => `▶ Παίξε την ιστορία (${s} δλ)`, "hero.try": "Δοκίμασέ το",
       "bench.eyebrow": "Το εργαστήριο δοκιμών", "bench.h2": "Πέντε βήματα. Ένα κύκλωμα. Αποφασίζει ο ελεγκτής.",
-      "how.sum": "Τι βλέπω εδώ;",
-      "how.circuit": "Κύκλωμα", "how.circuit.d": (n) => `Το δίκτυο γονιδίων ενός κυττάρου: ${n} γονίδια που ανάβουν και σβήνουν το ένα το άλλο.`,
-      "how.wire": "Καλώδιο", "how.wire.d": "Μία ρύθμιση: το γονίδιο Α ανάβει ή σβήνει το γονίδιο Β.",
-      "how.lamp": "Λυχνία", "how.lamp.d": "Μια μοίρα στην οποία μπορεί να καταλήξει το κύτταρο. Αναμμένη σημαίνει ότι ο ελεγκτής βρήκε σταθερή κατάσταση με αυτή τη μοίρα.",
-      "how.checker": "Ελεγκτής", "how.checker.d": "Ένας ακριβής solver. Δεν μαντεύει: απαριθμεί κάθε σταθερή κατάσταση.",
-      "how.dish": "Τρυβλίο", "how.dish.d": "Τα κύτταρα σε ένα τρυβλίο παριστάνουν το κύκλωμα: κάθε κύτταρο δείχνει μία μοίρα που επιτρέπει το κύκλωμα. Εικονογράφηση, χωρίς ποσοστά.",
-      "ctl.damage": "Βλάβη DNA", "ctl.open": "Άνοιξε το κύκλωμα", "ctl.close": "Κλείσε το κύκλωμα", "chip": (n) => `μοντέλο κυττάρου · ${n} γονίδια`,
-      "scale.dish": "Τρυβλίο", "scale.circuit": "Κύκλωμα", "scale.dna": "DNA", "irr.go": "Ακτινοβόληση", "irr.again": "Ξανά ακτινοβόληση", "irr.replay": "Επανάληψη",
+      "ctl.damage": "Βλάβη DNA",
+      "scale.dish": "Τρυβλίο", "scale.circuit": "Κύτταρο", "irr.go": "Ακτινοβόληση", "irr.again": "Ξανά ακτινοβόληση", "irr.replay": "Επανάληψη",
       "vial.none": "Μάρτυρας", "vial.tug1": "Κομμένο TUG1", "vial.mir": "Αναμμένο miR-221", "vial.p53": "Χωρίς p53", "cmp.paper": "Paper: γνωστό αποτέλεσμα",
-      "dish.note": "Εικονογράφηση: κάθε κύτταρο δείχνει μία μοίρα που επιτρέπει το μοντέλο. Το μοντέλο δίνει ενδεχόμενα, όχι ποσοστά.", "dish.empty": "δεν έμεινε κανένα κύτταρο",
+      "dish.note": "Εικονογράφηση. Το μοντέλο δίνει πιθανές μοίρες, όχι ποσοστά.", "dish.empty": "δεν έμεινε κανένα κύτταρο",
       "tip.idle": "Ένα υγιές κύτταρο. Ακτινοβόλησε το τρυβλίο και δες το να αποφασίζει.", "tip.cell": "Κάνε κλικ για να δεις μέσα στο κύτταρο.", "tip.osc": "Καμία σταθερή κατάσταση: το κύτταρο αλλάζει συνεχώς μοίρα.",
-      "dock.circuit": "Άνοιξε το κύκλωμα και κάνε κλικ σε γονίδιο για να το κόψεις· ξανά κλικ για να το ανάψεις.",
-      "dna.go": "Ακολούθησε το σήμα →", "dna.hint0": "Πάτα Ακτινοβόληση για να πάθει βλάβη το DNA. Σύρε για να το γυρίσεις.", "dna.note": "Στο μοντέλο, η βλάβη του DNA ανάβει αυτά τα γονίδια. Σύρε για να το γυρίσεις.",
-      "dna.papers": (n) => `${n} papers`, "dna.pub": "δημοσιευμένο μοντέλο", "dna.fold": "Αναδίπλωσε το DNA", "dna.unfold": "Ξεδίπλωσε το DNA",
-      "hero.c1": "Η ακτινοβολία χτυπά ένα τρυβλίο με κύτταρα.", "hero.c2": "Μέσα σε κάθε κύτταρο, χτυπά το DNA.", "hero.c3": "Ένα κύκλωμα γονιδίων αισθάνεται τη βλάβη…", "hero.c4": "…και αποφασίζει: παύση, γήρανση, ανακύκλωση ή θάνατος.",
+      "dock.circuit": "Κάνε κλικ σε γονίδιο για να το κόψεις. Ξανά κλικ για να το ανάψεις.", "lg.act": "ανάβει", "lg.inh": "σβήνει", "lg.new": "νέο καλώδιο", "lg.on": "αναμμένο", "lg.off": "σβηστό",
       rail: ["Κύτταρα", "Μπάλωμα", "Δοκιμές", "Διόρθωση", "Έλεγχος", "Κυνήγι"],
       "a6.t": "Το κυνήγι", "a6.h": (n) => `Κόψε ή άναψε ένα ή δύο γονίδια ώστε να πεθαίνουν όλα τα κύτταρα. Ο ελεγκτής ξέρει ακριβώς ${n} τρόπους. Πόσους βρίσκεις;`,
       "a6.how": "Στο κύκλωμα, κάνε κλικ σε ένα γονίδιο: μία φορά το κόβεις, δύο φορές το αναγκάζεις να ανάψει, τρεις φορές το καθαρίζεις. Το πολύ δύο γονίδια.",
@@ -116,24 +97,23 @@
       "a6.hint": "Βοήθεια", "a6.dish": "Δες το στο τρυβλίο", "a6.reset": "Μηδενισμός", "a6.note": "Υποθέσεις για το μοντέλο, για δοκιμή στο εργαστήριο. Όχι θεραπείες.",
       "a6.tease": (n) => `Πρόκληση: μπορείς να κάνεις όλα τα κύτταρα να πεθάνουν; Ο ελεγκτής ξέρει ${n} τρόπους.`, "a6.go": "Ξεκίνα το κυνήγι →",
       "fate.proliferation": "Διαιρείται", "fate.arrest": "Παύση", "fate.senescence": "Γήρανση", "fate.autophagy": "Ανακύκλωση", "fate.apoptosis": "Θάνατος",
-      "a1.t": "Ένα τρυβλίο με κύτταρα", "a1.h": "Η ακτινοβολία χτυπά ένα τρυβλίο με κύτταρα και κάθε κύτταρο αποφασίζει: παύση, γήρανση, ανακύκλωση ή θάνατος. Πάτα Ακτινοβόληση και μετά δοκίμασε μια επέμβαση.",
+      "a1.t": "Ένα τρυβλίο με κύτταρα", "a1.h": "Πάτα Ακτινοβόληση και μετά δοκίμασε μια επέμβαση.",
       "cut.none": "Καμία αλλαγή", "cut.tug1": "Κόψε το TUG1", "cut.mir": "Άναψε το miR-221", "cut.p53": "Βγάλε το p53",
-      "a1.tip": "Κάνε κλικ σε ένα κύτταρο για να δεις μέσα του.", "a1.next": "Επόμενο: το κύκλωμα έχει ένα κενό →",
+      "a1.next": "Επόμενο: το κύκλωμα έχει ένα κενό →",
       "st.only": (x) => `Μένει μόνο: «${x}».`, "st.many": (n, list) => `Προσιτές μοίρες (${n}): ${list}.`,
       "st.never": "Το κύκλωμα δεν σταθεροποιείται ποτέ: ταλαντώνεται, οπότε καμία λυχνία δεν μένει αναμμένη.", "st.nofate": "Υπάρχει σταθερή κατάσταση, αλλά δεν ταιριάζει σε καμία από τις πέντε μοίρες.",
       "st.unknown": "Αυτός ο συνδυασμός δεν έχει υπολογιστεί από πριν.",
-      "why.sum": "Γιατί καταλήγει έτσι;", "why.because": "επειδή", "why.none": "Το input μόνο του δεν επιβάλλει τίποτα: αποφασίζουν οι βρόχοι ανάδρασης.",
-      "a2.t": "Το μπάλωμα", "a2.h": (list) => `Στο μοντέλο λείπουν τα ${list}. Τα papers τα ξέρουν.`,
+            "a2.t": "Το μπάλωμα", "a2.h": (list) => `Στο μοντέλο λείπουν τα ${list}. Τα papers τα ξέρουν.`,
       "a2.read": (n) => `Άσε το AI να διαβάσει ${n} papers`, "cnt.papers": "papers διαβάστηκαν", "cnt.claims": "ισχυρισμοί", "cnt.quotes": "αποσπάσματα κατά λέξη",
       "a2.found": (q, k) => `Ένας από τους ${q} ισχυρισμούς με απόσπασμα. Συμφωνούν ${k} papers.`, "a2.wire": (a, b) => `Προτεινόμενο καλώδιο: το ${a} σβήνει το ${b}`,
       "a2.more": (n) => `${n} ακόμη αποσπάσματα`, "a2.plug": "Σύνδεσε το καλώδιο, χωρίς έλεγχο",
       "a2.plugged": "Συνδέθηκε, χωρίς έλεγχο. Δοκίμασε ένα παλιό πείραμα: κόψε το TUG1 και δες τις λυχνίες.", "a2.next": "Επόμενο: δοκίμασέ το σε 10 γνωστά πειράματα →",
-      "a3.t": "Οι δοκιμές", "a3.h": "Δέκα πειράματα με γνωστό αποτέλεσμα από το αρχικό paper. Ο ελεγκτής τα ξαναπαίζει στο μπαλωμένο κύκλωμα.",
+      "a3.t": "Οι δοκιμές", "a3.h": "Δέκα γνωστά πειράματα. Ο ελεγκτής ξαναπαίζει το καθένα.",
       "a3.run": "Τρέξε τα 10 γνωστά πειράματα", "a3.res": (p, f) => `Περνούν ${p} από 10, αποτυγχάνουν ${f}.`, "a3.click": "Κάνε κλικ σε μια κόκκινη λυχνία για να δεις τι πήγε στραβά.",
       "a3.allpass": "Περνούν και τα 10.", "a3.next": "Στείλε τις αποτυχίες στο AI →",
       dmg: "βλάβη", nodmg: "χωρίς βλάβη", known: "Γνωστό από το paper", says: "Το κύκλωμα λέει", atleast: "τουλάχιστον", match: "ταιριάζει", nomatch: "δεν ταιριάζει",
       notexp: "δεν αναμενόταν", expected: "αναμενόταν",
-      "a4.t": "Η επιδιόρθωση", "a4.h": "Ο ελεγκτής στέλνει στο AI τον ισχυρισμό, τα αποσπάσματα και το αντιπαράδειγμα. Το AI απαντά:", "a4.think": "Το AI σκέφτεται…",
+      "a4.t": "Η επιδιόρθωση", "a4.h": "Το AI παίρνει τις αποτυχημένες δοκιμές και απαντά:", "a4.think": "Το AI σκέφτεται…",
       "a4.own": "Με τα λόγια του AI", "a4.gate": "Πρέπει να είναι και τα δύο αναμμένα για να το σβήσουν.", "a4.fix": "Σύνδεσε τη νέα έκδοση και ξανατρέξε",
       "a4.done": (p) => `Περνούν ${p} από 10. Αποφάσισε ο ελεγκτής, όχι το AI.`, "a4.cheat": "Μπορεί το AI να εξαπατήσει;",
       "a4.cheat.d": "Μία φορά πρότεινε έναν κανόνα που περνούσε και τις δέκα δοκιμές αλλά δεν άλλαζε καμία πρόβλεψη, άρα δεν διόρθωνε τίποτα. Ο ελεγκτής τον απέρριψε ως κενό:",
@@ -145,7 +125,7 @@
       "a5.worked": (a, b, z) => `Τι δούλεψε: χωρίς τον ελεγκτή, οι αλλαγές χάλασαν ${a}–${b} από τα 10 γνωστά πειράματα. Με τον ελεγκτή: ${z}.`,
       "a5.nb": "Άνοιξε το σημειωματάριο ↓", "a5.again": "Παίξε ξανά", "a5.restart": "Από την αρχή", "a5.click": "Κάνε κλικ σε μια γραμμή για το απόσπασμα.", "a5.noaudit": "Το held-out set δεν έχει βαθμολογηθεί.",
       "cap.1": "Ένα κύτταρο που δέχεται ακτινοβολία πρέπει να αποφασίσει.", "cap.2": "Τέσσερις μοίρες είναι πιθανές.", "cap.3": "Κόβουμε ένα καλώδιο, το TUG1: μένει μόνο ο θάνατος.",
-      "cap.d1": "Μέσα σε κάθε κύτταρο, το σήμα είναι το κατεστραμμένο DNA.", "cap.d2": "Το σήμα τρέχει σε ένα κύκλωμα γονιδίων.",
+      "cap.d1": "Μέσα σε κάθε κύτταρο, ένα κύκλωμα γονιδίων αποφασίζει.",
       "cap.4": "Αλλά το κύκλωμα έχει κενά. Τα papers ξέρουν περισσότερα.", "cap.5": (n) => `Ένα AI διαβάζει ${n} papers και παραθέτει τι λένε.`,
       "cap.6": (a, b) => `Συνδέουμε το νέο καλώδιο: το ${a} σβήνει το ${b}.`, "cap.7": "Ένας ακριβής ελεγκτής ξαναπαίζει 10 γνωστά πειράματα.",
       "cap.8": (f) => `Αποτυγχάνουν ${f}. Ο ελεγκτής δείχνει ακριβώς ποια.`, "cap.9": "Το AI παίρνει το αντιπαράδειγμα και ξαναγράφει τον κανόνα.",
@@ -159,8 +139,8 @@
   const fname = (f) => T("fate." + f);
 
   /* ---------------------------------------------------------------- state */
-  const initial = () => ({ act: 1, reach: 1, ver: "A", scale: "dish", damage: 0, irr: 0, perts: [], fate: null, variant: 0, open: null, read: false, reading: false, plugged: false,
-    answered: false, thinking: false, fixed: false, run: {}, sel: null, claim: null, whyOpen: false, status: "", playing: false, verdict: null, lastFind: null, folded: false });
+  const initial = () => ({ act: 1, reach: 1, ver: "A", scale: "dish", damage: 0, irr: 0, perts: [], fate: null, variant: 0, read: false, reading: false, plugged: false,
+    answered: false, thinking: false, fixed: false, run: {}, sel: null, claim: null, status: "", playing: false, verdict: null, lastFind: null });
   const st = initial();
   let found = new Set();  /* the hunt's progress outlives a restart, and a reload when storage allows it */
   try { found = new Set(JSON.parse(localStorage.getItem("cellproof-hunt") || "[]")); } catch (e) { /* storage may be blocked */ }
@@ -189,14 +169,10 @@
   const failing = (v) => CASES.filter((c) => !c[v].ok);
 
   /* ---------------------------------------------------------------- the stage */
-  const net = makeNet(svgEl, $("#bTip"), { node: onNode }, "A");
+  const net = makePoster(svgEl, $("#bTip"), { node: onNode, fateLabel: fname }, "A");
   let built = "A";
-  const frame = svg("rect", { class: "chipframe", x: 8, y: 18, width: 984, height: 672, rx: 40 });
-  svgEl.insertBefore(frame, svgEl.firstChild);
-  const frameLabel = svg("text", { class: "chiplabel", x: 36, y: 676 }, svgEl);
   const pulseG = svg("g", { class: "pulses" }, svgEl);
   const dish = makeDish($("#bDish"), { tip: $("#bTip"), label: cellTip, onCell });
-  const dna = makeDna($("#bDna"));
 
   /* signals running along the wires whose source gene is on in the stable state being shown */
   let pulses = [], pulseLast = 0, pulseAcc = 0, pulsing = false;
@@ -227,14 +203,11 @@
     const live = inView && !document.hidden && !reduced, want = (s) => live && st.scale === s;
     if (want("circuit") && !pulsing) { pulsing = true; pulseLast = performance.now(); requestAnimationFrame(pulseFrame); } else if (!want("circuit")) pulsing = false;
     if (want("dish")) dish.start(); else dish.stop();
-    if (want("dna")) dna.start(); else dna.stop();
   }
   new IntersectionObserver((es) => { inView = es[0].isIntersecting; syncLoops(); }, { threshold: 0.15 }).observe(box);
   document.addEventListener("visibilitychange", syncLoops);
   function cellTip(c) { return c.osc ? esc(T("tip.osc")) : c.act ? `<b>${esc(fname(c.act))}</b> · ${esc(SCI[c.act])}<br>${esc(T("tip.cell"))}` : esc(T("tip.idle")); }
   function onCell(c) { if (st.playing) return; st.fate = c.act || null; st.variant = 0; setScale("circuit"); }
-  const papersFor = (s, t) => { const w = ((D.summary && D.summary.why_selected) || {})[t], hit = w && w.in.find(([e]) => e.startsWith(s + "|")); return hit ? hit[1] : 0; };
-  const sensorsFor = (key) => NET(key).edges.filter((e) => e[0] === "DNA_damage" && e[1] !== "DNA_damage").map(([, t, , isNew]) => ({ label: pretty(t), isNew: !!isNew, sub: isNew ? T("dna.papers", papersFor("DNA_damage", t)) : T("dna.pub") }));
   const compareNow = () => (st.act === 3 || st.act === 4) && !!caseFor(netKey(), st.damage, st.perts);
 
   const inPaper = (s) => CASES.some((c) => c.expected.length === 1 && c.expected[0] === "apoptosis" && (c.setting.DNA_damage ?? 0) === 1 && pertKey(Object.entries(c.setting).filter(([n]) => n !== "DNA_damage")) === pertKey(s));
@@ -269,11 +242,10 @@
   }
   function toggleDamage() { st.damage = st.damage ? 0 : 1; if (st.perts.length > 1) st.perts = st.perts.slice(0, 1); st.sel = null; st.fate = null; st.variant = 0; render(); }
 
-  function paintStage(entered) {
+  function paintStage() {
     const key = netKey();
     if (key !== built) { net.build(key); built = key; pulses.forEach((p) => p.c.remove()); pulses = []; }
     net.focus((st.act === 2 && st.plugged) || st.act === 4 ? SPOT : null);  /* the patch is the story of steps 2 and 4: once plugged in, everything else recedes */
-    frameLabel.textContent = T("chip", NET(key).nodes.length);
     const pts = points(key, st.damage, st.perts), present = new Set(pts ? pts.map((p) => p.fate).filter(Boolean) : []);
     const c = caseFor(key, st.damage, st.perts);
     const bad = c && c.match !== "covers" ? FATES.filter((f) => present.has(f) && !c.expected.includes(f)) : [];
@@ -292,22 +264,19 @@
     }));
     /* the dish and the DNA show the same experiment as the circuit; each is rebuilt only when the experiment itself changes */
     const compare = compareNow(), layout = compare ? "compare" : "single";
-    box.dataset.scale = st.scale; box.dataset.layout = layout;
+    box.dataset.scale = st.scale; box.dataset.layout = layout; box.dataset.damage = String(st.damage);
     if (st.scale === "dish") {
       const fates = FATES.filter((f) => present.has(f)), osc = !!pts && pts.length === 0;
       dish.run({ sig: [key, st.damage, pertKey(st.perts), layout, st.irr].join("|"), layout, damage: !!st.damage, treated: st.perts.length > 0,
         dishes: compare ? [{ fates: c.expected, title: T("cmp.paper"), empty: T("dish.empty") }, { fates, osc, bad, title: T("says"), empty: T("dish.empty") }] : [{ fates, osc, bad, empty: T("dish.empty") }] });
       dish.spot(st.fate && present.has(st.fate) ? st.fate : null);
-    } else if (st.scale === "dna") {
-      dna.run({ sig: [key, st.damage, st.irr].join("|"), damaged: !!st.damage, sensors: sensorsFor(key), force: !!entered });  /* each visit replays the damage */
-      if (entered) { if (st.folded) dna.foldTo(1, 0); else dna.reveal(); }  /* zooming in unwinds the coil */
     }
     renderDock(compare); syncLoops();
   }
 
   /* ---------------------------------------------------------------- the panel of the current step */
   const PRESETS = [["none", "cut.none", []], ["tug1", "cut.tug1", [["TUG1", 0]]], ["mir", "cut.mir", [["miR221", 1]]], ["p53", "cut.p53", [["p53", 0]]]];
-  /* the tool strip under the stage: treatments and the radiation source for the dish, the same source for the DNA, the open/close switch for the circuit */
+  /* the tool strip under the stage: treatments and the radiation source for the dish, a key to the wires for the cell */
   const buildVials = () => $("#bVials").replaceChildren(...PRESETS.map(([id, , perts]) => {
     const v = h(`<button type="button" class="vial${id === "none" ? " ctl" : ""}" data-id="${id}"><span class="tube"><i class="liq"></i></span><span>${esc(T("vial." + id))}</span></button>`);
     v.dataset.key = pertKey(perts); v.addEventListener("click", () => { if (!st.playing) setCut(id); });
@@ -320,10 +289,8 @@
     $("#bIrr").hidden = s === "circuit";
     $("#bIrrTxt").textContent = T(compare ? "irr.replay" : st.damage ? "irr.again" : "irr.go");
     $("#bIrr").classList.toggle("nudge", !st.damage && !compare);
-    $("#bFold").hidden = s !== "dna"; $("#bFoldTxt").textContent = T(st.folded ? "dna.unfold" : "dna.fold");
-    $("#bFollow").hidden = s !== "dna";
-    $("#bOpen").hidden = s !== "circuit";
-    $("#bDockHint").textContent = s === "circuit" ? T("dock.circuit") : s === "dna" ? T(st.damage ? "dna.note" : "dna.hint0") : "";
+    $("#bLegend").hidden = s !== "circuit";
+    $("#bDockHint").textContent = s === "circuit" ? T("dock.circuit") : "";
     $("#bNote").hidden = s !== "dish"; $("#bNote").textContent = T("dish.note");
   }
   const btn = (act, label, cls = "", arg = "") => `<button type="button" class="btn ${cls}" data-do="${act}"${arg ? ` data-arg="${esc(arg)}"` : ""}>${label}</button>`;
@@ -333,11 +300,6 @@
     const p = Object.entries(c.setting).filter(([n]) => n !== "DNA_damage");
     return p.length ? p.map(([n, v]) => `${pretty(n)} ${v ? "ON" : "✕"}`).join(" + ") : c.setting.DNA_damage ? T("dmg") : T("nodmg");
   };
-  function whyBlock() {
-    const steps = forcedSteps(st.ver, { DNA_damage: st.damage, ...Object.fromEntries(st.perts) }).slice(0, 14);
-    const rows = steps.length ? steps.map((s, i) => `<div class="step"><em>${i + 1}</em><span><b>${esc(pretty(s.node))}</b> = ${s.value} <em>${esc(T("why.because"))} ${esc(s.node)} = ${esc(s.rule)} (${s.reads.map(([r, v]) => esc(pretty(r)) + "=" + v).join(", ")})</em></span></div>`).join("") : `<div class="hint">${esc(T("why.none"))}</div>`;
-    return `<details class="b-why"${st.whyOpen ? " open" : ""}><summary>${esc(T("why.sum"))}</summary><div class="steps">${rows}</div></details>`;
-  }
   const quoteCard = () => {
     const q = PATCH.quotes;
     return `<div class="b-card"><small>${esc(T("a2.found", fmt(quoted), PATCH.papers))}</small><q>“${esc(q[0].quote)}”</q><small class="mono">${esc(q[0].pmcid)}</small>
@@ -372,7 +334,7 @@
   function panelHTML() {
     const done = (v) => rackOf(v).done;
     const tease = HUNT ? `<div class="b-card tease"><span>${esc(T("a6.tease", INTERV.length))}</span><div>${btn("hunt", esc(T("a6.go")), "small")}</div></div>` : "";
-    if (st.act === 1) return `<h3>${T("a1.t")}</h3><p class="b-hint">${T("a1.h")}</p>${presetRow()}<p class="b-status">${esc(st.status)}</p>${whyBlock()}<p class="hint">${esc(T("a1.tip"))}</p><div class="b-actions">${btn("next", T("a1.next"), "primary")}</div>${tease}`;
+    if (st.act === 1) return `<h3>${T("a1.t")}</h3><p class="b-hint">${T("a1.h")}</p>${presetRow()}<p class="b-status">${esc(st.status)}</p><div class="b-actions">${btn("next", T("a1.next"), "primary")}</div>${tease}`;
     if (st.act === 2) {
       if (st.reading) return `<h3>${T("a2.t")}</h3><div class="b-count"><div><b id="cnt0">0</b><small>${esc(T("cnt.papers"))}</small></div><div><b id="cnt1">0</b><small>${esc(T("cnt.claims"))}</small></div><div><b id="cnt2">0</b><small>${esc(T("cnt.quotes"))}</small></div></div>`;
       if (!st.read) return `<h3>${T("a2.t")}</h3><p class="b-hint">${T("a2.h", NEW_LIST)}</p><div class="b-actions">${btn("read", esc(T("a2.read", D.meta.corpus_papers)), "primary")}</div>`;
@@ -415,7 +377,6 @@
   function renderPanel() {
     const el = $("#bPanel"), a = document.activeElement, keep = a && el.contains(a) && a.dataset.do ? [a.dataset.do, a.dataset.arg] : null;
     el.innerHTML = panelHTML();
-    const why = $(".b-why", el); if (why) why.addEventListener("toggle", () => (st.whyOpen = why.open));
     if (keep) { const again = $$("[data-do]", el).find((x) => x.dataset.do === keep[0] && x.dataset.arg === keep[1]); if (again) again.focus({ preventScroll: true }); }
   }
 
@@ -455,18 +416,14 @@
     }));
   }
   function render() {
-    box.dataset.open = (st.open ?? st.act >= 5) ? "1" : "0";  /* closed by default, open for the audit and the hunt, and whatever the viewer chose since the last step */
-    const entered = shownScale !== st.scale;
-    if (entered) { $("#bTip").classList.remove("show"); shownScale = st.scale; }  /* a tooltip from the level just left must not linger */
+    if (shownScale !== st.scale) { $("#bTip").classList.remove("show"); shownScale = st.scale; }  /* a tooltip from the level just left must not linger */
     $$("#bScale button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.scale === st.scale)));
     $("#bDamage").setAttribute("aria-pressed", String(!!st.damage));
-    $("#bOpen").setAttribute("aria-pressed", String(box.dataset.open === "1"));
-    $("#bOpenTxt").textContent = T(box.dataset.open === "1" ? "ctl.close" : "ctl.open");
-    paintStage(entered); renderRail(); renderPanel(); renderRack(); renderDetail();
+    paintStage(); renderRail(); renderPanel(); renderRack(); renderDetail();
   }
   function go(n) {
     clearUi();
-    st.act = n; st.reach = Math.max(st.reach, Math.min(n, 5)); st.sel = null; st.claim = null; st.open = null; st.fate = null; st.variant = 0; st.verdict = null;
+    st.act = n; st.reach = Math.max(st.reach, Math.min(n, 5)); st.sel = null; st.claim = null; st.fate = null; st.variant = 0; st.verdict = null;
     st.ver = n === 1 ? "A" : n === 2 ? (st.plugged ? "B" : "A") : n === 3 ? "B" : n === 4 ? (st.fixed ? "C" : "B") : "C";
     if (n === 3) st.plugged = true;
     if (n === 2 || n >= 5 || st.perts.length > 1) st.perts = [];  /* an old cut does not carry into a new step; a pair of cuts is only for the tests */
@@ -517,7 +474,7 @@
     const p = PRESETS.find((x) => x[0] === id); if (!p) return;
     st.damage = 1; st.perts = p[2].map((x) => [...x]); st.sel = null; st.fate = null; st.variant = 0; st.irr++; render();
   }
-  function irradiate() { if (st.playing) return; if (st.folded) { st.folded = false; dna.foldTo(dna.OPEN, 1500); } st.damage = 1; st.irr++; st.sel = null; st.fate = null; st.variant = 0; render(); }
+  function irradiate() { if (st.playing) return; st.damage = 1; st.irr++; st.sel = null; st.fate = null; st.variant = 0; render(); }
   function setScale(s) { if (s === st.scale) return; st.scale = s; render(); }
   function reset() { stop(); clearUi(); Object.assign(st, initial()); built = null; render(); }
   const ACT = {
@@ -537,10 +494,7 @@
   };
   $("#bPanel").addEventListener("click", (ev) => { const b = ev.target.closest("[data-do]"); if (b && !b.disabled && !st.playing) ACT[b.dataset.do](b.dataset.arg); });
   $("#bDamage").addEventListener("click", () => { if (!st.playing) toggleDamage(); });
-  $("#bOpen").addEventListener("click", () => { if (!st.playing) { st.open = box.dataset.open !== "1"; render(); } });
   $("#bIrr").addEventListener("click", irradiate);
-  $("#bFold").addEventListener("click", () => { if (st.playing) return; st.folded = !st.folded; dna.foldTo(st.folded ? 1 : dna.OPEN, 1700); renderDock(box.dataset.layout === "compare"); });
-  $("#bFollow").addEventListener("click", () => { if (!st.playing) setScale("circuit"); });
   $$("#bScale button").forEach((b) => b.addEventListener("click", () => { if (!st.playing) setScale(b.dataset.scale); }));
 
   /* ---------------------------------------------------------------- presentation mode: the same actions, on a timer, with captions */
@@ -554,16 +508,16 @@
     clearSet(script); clearUi(); Object.assign(st, initial()); built = null; render();
     st.playing = true; grid.classList.add("playing"); $("#bStop").hidden = false;
     grid.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });  /* stage and lamps together in one screen */
-    /* a descent in magnification (dish, DNA, circuit), then the five steps */
+    /* a dish, then the cell, then the five steps */
     const fails = failing("B").length, hollow = HO_ ? HO_.claims.findIndex((c) => c.no_stable_state.base) : -1, S = [
       [600, () => say("cap.1")], [3000, () => { say("cap.2"); irradiate(); }], [8200, () => { say("cap.3"); setCut("tug1"); }],
-      [13800, () => { say("cap.d1"); setScale("dna"); }], [18200, () => { say("cap.d2"); setScale("circuit"); }],
-      [22000, () => { say("cap.4"); go(2); }], [24200, () => { say("cap.5", D.meta.corpus_papers); doRead(); }],
-      [28800, () => { say("cap.6", pretty(SRC), pretty(DST)); doPlug(); }], [31000, () => setCut("tug1")],
-      [33800, () => { say("cap.7"); go(3); }], [35000, () => doRun("B")], [38800, () => say("cap.8", fails)],
-      [43200, () => { say("cap.9"); go(4); }], [48200, () => { say("cap.10"); doFix(); }],
-      [52500, () => { say("cap.11"); go(5); }], [56500, () => { if (hollow >= 0) { say("cap.11b"); ACT.claim(hollow); } }],
-      [60500, () => say("cap.12")], [PLAY_S * 1000, () => stop()],
+      [13800, () => { say("cap.d1"); setScale("circuit"); }],
+      [18000, () => { say("cap.4"); go(2); }], [20200, () => { say("cap.5", D.meta.corpus_papers); doRead(); }],
+      [24800, () => { say("cap.6", pretty(SRC), pretty(DST)); doPlug(); }], [27000, () => setCut("tug1")],
+      [29800, () => { say("cap.7"); go(3); }], [31000, () => doRun("B")], [34800, () => say("cap.8", fails)],
+      [39200, () => { say("cap.9"); go(4); }], [44200, () => { say("cap.10"); doFix(); }],
+      [48500, () => { say("cap.11"); go(5); }], [52500, () => { if (hollow >= 0) { say("cap.11b"); ACT.claim(hollow); } }],
+      [56500, () => say("cap.12")], [PLAY_S * 1000, () => stop()],
     ];
     S.forEach(([ms, fn]) => later(script, fn, ms));
   }
@@ -577,12 +531,11 @@
     $$("[data-i18n]").forEach((el) => (el.textContent = T(el.dataset.i18n, N0, PLAY_S)));
     $$("[data-i18n-html]").forEach((el) => (el.innerHTML = T(el.dataset.i18nHtml, N0, PLAY_S)));
     $("#langTxt").textContent = lang === "en" ? "ΕΛ" : "EN";
-    $("#bHow").replaceChildren(...["dish", "circuit", "wire", "lamp", "checker"].map((k) => h(`<div><b>${esc(T("how." + k))}</b><span>${esc(T("how." + k + ".d", N0))}</span></div>`)));
     const aria = lang === "en"
-      ? ["The gene circuit of a cell. Lamps below show which fates it can reach.", "A culture dish of cells reacting to radiation.", "A strand of DNA damaged by radiation."]
-      : ["Το κύκλωμα γονιδίων ενός κυττάρου. Οι λυχνίες από κάτω δείχνουν ποιες μοίρες μπορεί να φτάσει.", "Ένα τρυβλίο με κύτταρα που αντιδρούν στην ακτινοβολία.", "Ένα κομμάτι DNA που έπαθε βλάβη από ακτινοβολία."];
-    ["#bNet", "#bDish", "#bDna"].forEach((id, i) => $(id).setAttribute("aria-label", aria[i]));
-    buildVials(); if (heroCap) heroCap();
+      ? ["The gene circuit of a cell. Lamps below show which fates it can reach.", "A culture dish of cells reacting to radiation."]
+      : ["Το κύκλωμα γονιδίων ενός κυττάρου. Οι λυχνίες από κάτω δείχνουν ποιες μοίρες μπορεί να φτάσει.", "Ένα τρυβλίο με κύτταρα που αντιδρούν στην ακτινοβολία."];
+    ["#bNet", "#bDish"].forEach((id, i) => $(id).setAttribute("aria-label", aria[i]));
+    buildVials(); net.relabel();
   }
   $("#lang").addEventListener("click", () => {
     lang = lang === "en" ? "el" : "en";
@@ -590,34 +543,15 @@
     applyStatic(); refreshCaption(); render();
   });
 
-  /* the header is a trailer with almost nothing to read: radiation hits a dish, the DNA of a cell unwinds and breaks, the circuit of genes
-     lights up, the cells take their fates. It plays on a loop while the header is on screen, with the circuit's real fates. */
-  let heroKey = "", heroCap = null;
-  (function heroLoop() {
-    const cv = $("#heroDish"), art = $("#heroArt"), cap = $("#heroCap"), v2 = CASES.find((c) => c.id === "V02");
-    if (!cv || !art || !cap || !v2) return;
-    const four = [...new Set(decode(v2.A.states).map((p) => p.fate).filter(Boolean))], timers = new Set(), toBench = () => $("#bench").scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
-    const hd = makeDish(cv, { onCell: toBench }), hn = makeDna($("#heroDna"), { hero: true, roll: -0.42, zoom: 1.5 });
-    let n = 0, live = false;
-    const level = (l) => { art.dataset.level = l; if (l === "dish") hd.start(); else hd.stop(); if (l === "dna") hn.start(); else hn.stop(); };
-    const say = (k) => { heroKey = k; cap.classList.remove("show"); later(timers, () => { cap.textContent = T(k); cap.classList.add("show"); }, 240); };
-    heroCap = () => { if (heroKey) cap.textContent = T(heroKey); };
-    const wave = () => dispatchEvent(new Event("herowave"));
-    const cycle = () => {
-      n++;
-      level("dish"); say("hero.c1"); hd.run({ sig: "h" + n, layout: "single", damage: false, treated: false, dishes: [{ fates: [] }] });
-      later(timers, () => hd.fire({ sig: "h" + n + "f", fates: four }), 2800);
-      later(timers, () => { level("dna"); say("hero.c2"); hn.run({ sig: "d" + n, damaged: false, sensors: [], force: true }); hn.reveal(2300); }, 7200);
-      later(timers, () => hn.run({ sig: "d" + n + "x", damaged: true, sensors: [] }), 10400);
-      later(timers, () => { level("net"); say("hero.c3"); wave(); }, 14400);
-      later(timers, () => { say("hero.c4"); wave(); }, 18000);
-      later(timers, cycle, 22200);
-    };
-    if (reduced) { hd.run({ sig: "h", layout: "single", damage: true, treated: false, dishes: [{ fates: four }] }); level("dish"); say("hero.c1"); return; }
-    new IntersectionObserver((es) => {
-      const on = es[0].isIntersecting && !document.hidden;
-      if (on && !live) { live = true; cycle(); } else if (!on && live) { live = false; hd.stop(); hn.stop(); clearSet(timers); }
-    }, { threshold: 0.2 }).observe(art);
+  /* the header: a protein clamped on a double helix, close up; it moves only while it is on screen */
+  (function heroMolecule() {
+    const cv = $("#heroMol"); if (!cv) return;
+    const mol = makeMolecule(cv, { lite: innerWidth < 700 });
+    let seen = true;
+    const sync = () => { if (seen && !document.hidden) mol.start(); else mol.stop(); };
+    new IntersectionObserver((es) => { seen = es[0].isIntersecting; sync(); }, { threshold: 0.05 }).observe(cv);
+    document.addEventListener("visibilitychange", sync);
+    sync();
   })();
 
   applyStatic(); render();

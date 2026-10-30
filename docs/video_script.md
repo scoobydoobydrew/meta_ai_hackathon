@@ -13,16 +13,16 @@ button switches it.
 solvers. Built this week: an agent where Muse Spark reads the papers and proposes rules, and an exact solver decides which
 ones the model can take."
 
-The page header is a 22-second trailer on a loop (dish, DNA, circuit, fates). It is a good opening shot: let it play once under
-the one line above, then press *Play*.
+The top of the page is a close-up of p53 on DNA with a ray that hits the helix every few seconds. It is a good opening shot: let
+it play under the one line above (do not explain it), then press *Play*.
 
-**0:15 to 1:20. The bench (press *Play the 64-second story*; talk over the captions, do not read them out).**
-The page walks through by itself, from the dish down to the DNA and then through five steps. What each caption stands for:
+**0:15 to 1:20. The bench (press *Play the 60-second story*; talk over the captions, do not read them out).**
+The page walks through by itself, from the dish to the cell and then through five steps. What each caption stands for:
 1. *Dish.* "A cell hit by radiation has to decide. The dish is irradiated and each cell pauses, ages, recycles itself or dies;
    which fates are possible is the solver's exact answer, not a simulation. Cut one gene, TUG1, and every cell dies, which
    is what the paper reports."
-2. *DNA, then circuit.* "Inside each cell, damaged DNA is the signal. In the model it switches on one sensor gene, and the
-   signal runs through a circuit of genes."
+2. *Cell.* "Inside every cell, a circuit of genes decides: golden arrows switch genes on, teal bars switch them off." (the
+   poster view)
 3. *Patch.* "The model has no ATR or CHK1, but the papers know them. Muse Spark read 36 papers and quotes what they say.
    Plug in the new wire: CHK1 switches off CDC25C."
 4. *Tests.* "An exact checker replays ten known experiments. Three break: on the right, the cells now also age, which no paper
@@ -36,7 +36,7 @@ The page walks through by itself, from the dish down to the DNA and then through
 If there is time, say one line about the sixth step, the hunt: "The solver knows all eleven ways to leave only death; two of
 them are what the paper reports. Click genes and find them." Show one discovery (TUG1 out), then stop.
 
-**1:20 to 2:00. Why you can trust it (scroll to the notebook; click *Open the circuit* first if you want the full network).**
+**1:20 to 2:00. Why you can trust it (scroll to the notebook).**
 - "The cell": click *TUG1 knocked out*, then *p53 knocked out* ("no stable state: the network oscillates").
 - "Case files": the CHK1 case is preselected. Show the papers, the template, the solver's counterexample, then the
   repair attempts. Click *ATR activates ATM/γH2AX*: "Here its first answer passed the cases but changed nothing, so the solver

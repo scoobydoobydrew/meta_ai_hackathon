@@ -64,6 +64,7 @@ def test_the_bench_story_is_built_from_the_solver_and_its_three_acts_are_true_of
 def test_the_page_carries_the_bench_and_its_script_parses(tmp_path):
     head, body, script = parts({"x": 1})
     assert 'id="bench"' in body and 'id="bLamps"' in body and "CPBench" in script
+    assert 'id="heroMol"' in body and "makeMolecule" in script and "makePoster" in script and "makeDish" in script
     node = shutil.which("node")
     if node is None:
         pytest.skip("node is not installed")
