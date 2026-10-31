@@ -13,13 +13,14 @@ button switches it.
 solvers. Built this week: an agent where Muse Spark reads the papers and proposes rules, and an exact solver decides which
 ones the model can take."
 
-The top of the page plays a story of about 30 seconds over a close-up of DNA, in six beats that loop: a ray breaks the DNA
+The top of the page plays a story of about 50 seconds (each beat stays long enough to read) over a close-up of DNA, in six beats that loop: a ray breaks the DNA
 ("Radiation breaks DNA"); a dish of cells takes four fates ("Not every damaged cell dies"); two gene switches flip and every cell
 of a fresh dish dies ("Flip the right genes", the goal: a combination of genes to switch off, or on); new rules keep coming and
-each can change which combinations work ("New rules change which genes to flip": a rule is a link between two genes; three rows of
-dots, the combinations that work in the published model, in the same model after the rules read from the papers were added
-without checking, none of the old ones left and a few new ones, with the number of known experiments it breaks, and after each
-rule was checked first, the old ones back; the cards that fall are an illustration of papers bringing rules); a field of dots, one per
+each can change which combinations work ("New rules change which genes to flip": a rule is a link between two genes; a small
+network of genes where papers arrive one after another and each brings a link, with the 11 combinations of the published list
+as dots under it: unchecked, two of the links make the dots go out, none of the old ones is left and a few others appear, with the
+number of known experiments that model breaks; then each rule is checked first, one is struck out, the old ones come back; the
+genes' placement and the cards are illustration, the counts and which dot goes out are the solver's); a field of dots, one per
 combination of one or two genes, which zooms out as sets of up to five genes are counted, with the NP-hard note and its source;
 the AI's guesses judged by the solver, then the solver's scan leaving a few glowing dots ("The AI proposes. The solver decides.").
 Reload the page so that it starts on the first beat, let it play under the one line above (do not read the captions out), then

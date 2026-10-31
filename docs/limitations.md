@@ -48,18 +48,23 @@ This is a research prototype that ranks hypotheses for lab testing. It makes no 
   What a solver alone cannot do is read the papers: the published model lacks ATR, CHK1, CHK2 and DNA-PK, which the literature
   knows. M6 measures a different limit: on random networks the exact checker timed out at 30 s from 50 nodes up (one of three
   seeds at 50, all at 100 and more), while networks shaped like the published one scaled to 400 nodes in about 12 s.
-- "New rules change which genes to flip" (header beat 4) compares three runs of the same exhaustive search (sets of one or two
-  changes, readout genes excluded): on the published model, on the model with the rules read from the papers applied unchecked
-  (`data/models/naive_min2.bnet`), and on the checked and repaired model (`data/models/repaired_min2.bnet`). Each row counts the
-  sets the search leaves, how many of the published sets are among them and how many are new, next to the number of the ten
-  known experiments that model breaks (the verification matrix). It is one extraction run and one set of edits (edges supported
-  by at least two papers): "replaced all of the published combinations" describes this set, and another set of unchecked edits
-  can leave some of them. The third row is the same papers with each rule checked, not the same eleven rules: in that run ten
-  were accepted (three of them after the model repaired them) and one was rejected (`results/augmentation_summary.json`). A
-  "rule" in the header is an edit of one gene's update rule that adds or changes a link, as in the legend of the stage. The
-  cards that fall are an illustration of papers bringing rules, and the order in which the old combinations go out is arbitrary:
-  the picture does not claim that a given rule removes a given combination. The unchecked model is wrong against known
-  experiments, so the new combinations in its row are what a broken model says, not candidates.
+- "New rules change which genes to flip" (header beat 4) replays two runs of the pipeline edit by edit, from the published model
+  (`results/augment_naive_min2.json`: every edit applied unchecked; `results/augment_repaired_min2.json`: each edit checked, and
+  repaired when rejected), in the order the run applied them (strongest evidence first). Each edit is a rule, and the link it adds
+  is found by comparing the network's influences before and after it (`report/data.py`, `replay`); each unchecked edit adds one.
+  After every edit the solver asks, for each of the 11 sets of the published list, whether the damaged network still ends in
+  apoptosis only; a dot goes out at the edit after which its set stops doing so, and the number under the dots is how many still
+  do. The count is cumulative: the edit named is where the list changes, not necessarily its only cause (the edits before it are
+  in the model too). In this run two edits change the list (the 4th, ATR to ATM/γH2AX, takes 11 down to 5, and the 8th, "p53
+  requires p21", takes 5 down to 0); the others change nothing and the picture lets them stream by. The three other dots that
+  appear at the end are the unchecked model's own list after the exhaustive search (`naive_min2`: 3 sets, none of them in the
+  published list), and the unchecked model breaks 8 of the 10 known experiments (the verification matrix), so what it says is
+  what a broken model says, not a candidate. In the checked run the 8th edit is rejected, three are repaired (a repaired rule
+  adds the same link, and in one case a second one, but its logic differs: the picture shows links, not logic), and the list
+  stays at 11 after every edit. It is one extraction run and one set of edits (edges supported by at least two papers): "replaced
+  all of the published combinations" describes this set, and another set of unchecked edits can leave some of them. The small
+  network shows the genes that the edits touch and the published links between them (`net` in the data), not the whole model;
+  where the genes sit is illustration. The card names the first paper that supports the edge (PMC id) and how many papers do.
 - Of the 11 shortlisted sets, three are knock-outs (PTEN, RB, TUG1); the other eight force a gene on, and all four pairs include
   one forced-on gene. The header therefore says "switch off, or on", not "switch off".
 - The AI alone was measured on the search itself, and it did **not** fail at it (`python -m cellproof.cli search-baseline`; results in

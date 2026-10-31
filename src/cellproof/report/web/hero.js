@@ -153,14 +153,14 @@ function makeHelix(cv, opt = {}) {
 function makeStory(cv, opt = {}) {
   /* Beats, counted from 0: 0 is the DNA alone (this canvas stays empty); 1 a dish swept by radiation, each cell taking one of four fates;
      2 the goal: gene switches flip and every cell of a fresh dish dies; 3 new rules keep coming and each can change which combinations
-     work (three rows of dots: the published model's list, the list after rules from the papers were added unchecked, and after each was
-     checked first); 4 a field with one dot per change of one or two genes that the solver tried,
+     work (a small network of genes: papers bring links one after another, the dots of the published list go out, then a scan checks
+     each rule first and the dots come back); 4 a field with one dot per change of one or two genes that the solver tried,
      which then zooms out as the number of genes changed at once grows; 5 back to the field: the AI's guesses, judged, and the
      solver's scan, which dims all but the few that leave only death. The dots are one per set, in a fixed random order, so the
      positions mean nothing; the counts, the guesses' verdicts and which dots stay lit are the solver's. show(n) sets the beat,
      onCount(n) reports the number the caption should read, onStage(k) the largest number of genes changed at once being shown. */
   const ctx = cv.getContext("2d"), lite = !!opt.lite, TOTAL = opt.total || 0, KEEP = opt.keep || [], SIZES = opt.sizes || [], MARKS = opt.marks || [], CHIPS = opt.chips || [];
-  const SCAN = lite ? 2100 : 2500, RAY = 380, PLAN = [0.5, 0.8, 0.45, 0.8, 0.45, 0.9], TILE = 16, TS = 12, ORDER = ["arrest", "senescence", "autophagy", "apoptosis"];
+  const SCAN = lite ? 2600 : 3000, RAY = 380, PLAN = [0.8, 1.2, 0.7, 1.2, 0.7, 1.3], TILE = 16, TS = 12, ORDER = ["arrest", "senescence", "autophagy", "apoptosis"];
   const FATES = { arrest: [92, 158, 255], senescence: [232, 192, 72], autophagy: [58, 214, 168], apoptosis: [255, 110, 186], base: [182, 176, 224] };
   const DOTS = [[178, 152, 238], [240, 196, 232], [250, 228, 204], [246, 242, 252]].map((c) => `rgb(${c[0]},${c[1]},${c[2]})`), PEACH = [255, 170, 92], WHITE = [255, 255, 255], INK = [14, 12, 36];
   const GREEN = [88, 230, 172], RED = [255, 104, 116], BLUE = [132, 176, 255];
@@ -359,78 +359,145 @@ function makeStory(cv, opt = {}) {
     if (beat === 4) { const k = n >= SIZES[4] * 0.9999 ? 5 : n >= SIZES[3] * 0.9999 ? 4 : n >= SIZES[2] * 0.9999 ? 3 : 2; if (k !== stage) { stage = k; if (opt.onStage) opt.onStage(k); } }
   }
 
-  /* ---- the drift: new rules keep coming, and each can change which combinations work. Three rows, one dot per combination that the exhaustive
-     search found: the published model's; the same model after the rules read from the papers were added without checking (the old
-     combinations go out, others appear); and after each rule was checked first (the old ones are back, ringed green). The counts of
-     combinations and of broken experiments are the solver's; the cards that fall are an illustration of papers bringing rules. */
-  const DR = opt.drift || null, HALO_RED = soft(RED), T2 = 1100, T3 = 3700, FALL = 480, GAP = 120;
-  const outOrder = (() => { const q = rng(7), o = Array.from({ length: DR ? DR.published : 0 }, (_, i) => i); for (let i = o.length - 1; i > 0; i--) { const j = Math.floor(q() * (i + 1)); [o[i], o[j]] = [o[j], o[i]]; } return o; })();
+  /* ---- the drift: new rules keep coming, and each can change which combinations work. A panel with a small network of genes (grey: the
+     published model's genes and links) and, under it, one dot per combination of the published list. Papers arrive one after another,
+     each bringing a link: a peach edge grows between two genes (new genes pop in), and dots go out as combinations stop working. Which
+     link, which paper, how many dots and which ones are the solver's replay of the pipeline's own edits, in the order it applied
+     them (report/data.py, replay). Then a scan: each rule checked first, the accepted links turn green, the rejected one is struck
+     out and the old combinations come back. The placement of the genes and the cards that carry the papers are illustration. */
+  const DR = opt.drift || null, HALO_RED = soft(RED);
+  const POS = { DNA_damage: [0.08, 0.5], ATR: [0.28, 0.08], DNA_PK: [0.28, 0.92], ATM_pH2AX: [0.45, 0.5], CHK1: [0.62, 0.08], CHK2: [0.62, 0.92], p53: [0.75, 0.62], Cdc25: [0.9, 0.08], Cdc2_CycB: [0.9, 0.4], p21: [0.88, 0.92] };
+  const START = 1400, SMALL = 260, BIG = 1300, SWEEP = 900, linkKey = (e) => e.join("|");
+  const nodes = DR ? DR.nodes.map((n, i, all) => ({ ...n, pos: POS[n.id] || [0.5 + 0.42 * Math.cos((i / all.length) * TAU), 0.5 + 0.42 * Math.sin((i / all.length) * TAU)] })) : [];
+  const tl = DR ? (() => {
+    let cursor = START;
+    const A = DR.a.map((s) => { const big = s.lost.length + s.back.length > 0, o = { ...s, big, at: cursor }; cursor += big ? BIG : SMALL; return o; });  /* a link that changes the list gets time, the others stream by */
+    const aEnd = cursor, tNew = aEnd + 150, tB = aEnd + 1500, okB = new Set(DR.b.flatMap((s) => s.added.map(linkKey))), links = [];
+    A.forEach((s) => s.added.forEach((e) => links.push({ e, at: s.at, big: s.big, ok: okB.has(linkKey(e)) })));
+    const seen = new Set(links.map((q) => linkKey(q.e)));
+    DR.b.forEach((s) => s.added.forEach((e) => { if (!seen.has(linkKey(e))) links.push({ e, at: tB, big: false, ok: true, extra: true }); }));
+    const nodeAt = {};  /* when a gene that the published model lacks pops in: with the first link that touches it */
+    for (const q of links) for (const id of q.e.slice(0, 2)) nodeAt[id] = Math.min(nodeAt[id] ?? 1e9, q.at);
+    const events = Array.from({ length: DR.published }, () => []), litB = Array(DR.published).fill(true);  /* per dot: when it goes out or comes back in the first run; whether it is lit after the checks */
+    A.forEach((s) => { s.lost.forEach((i, r) => events[i].push([s.at + 600 + r * 70, false])); s.back.forEach((i, r) => events[i].push([s.at + 600 + r * 70, true])); });
+    DR.b.forEach((s) => { s.lost.forEach((i) => (litB[i] = false)); s.back.forEach((i) => (litB[i] = true)); });
+    const pairs = new Set([...DR.base, ...links.map((q) => q.e)].map((e) => `${e[0]}>${e[1]}`));
+    return { A, aEnd, tNew, tB, links, nodeAt, events, litB, pairs };
+  })() : null;
   function drawDrift(T, a) {
     if (!DR) return;
-    const L = DR.labels(), t = T - driftT, left = area.cx - area.w / 2, right = area.cx + area.w / 2, n0 = DR.published, extra = Math.max(DR.rows[1].added, DR.rows[2].added);
-    const fs = lite ? 11 : 13, sm = lite ? 10 : 11.5, big = lite ? 24 : 34;
-    ctx.save(); ctx.font = `700 ${big}px ${sans}`;
-    const numW = ctx.measureText("00").width + 10, strip = right - left - numW - 6, p = strip / (n0 + extra + 0.7), r = Math.min(p * 0.36, lite ? 9 : 13);
-    const rowH = fs + 8 + 2 * r + 6 + sm + 4, pitch = Math.min((area.h - rowH) / 2, rowH * 2.3), top = area.cy - (2 * pitch + rowH) / 2;
-    const slotX = (k) => left + r + 1 + (k < n0 ? k : k + 0.7) * p, yL = (i) => top + i * pitch + fs, yD = (i) => yL(i) + 8 + r;
-    const pad = lite ? 12 : 18;  /* a dark panel behind the rows, so that the small words stay readable over the DNA */
-    ctx.globalAlpha = a * clamp01(t / 300); ctx.beginPath(); ctx.roundRect ? ctx.roundRect(left - pad, top - pad, right - left + 2 * pad, 2 * pitch + rowH + 2 * pad, 14) : ctx.rect(left - pad, top - pad, right - left + 2 * pad, 2 * pitch + rowH + 2 * pad);
-    ctx.fillStyle = "rgba(14,12,34,.55)"; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = "rgba(255,255,255,.14)"; ctx.stroke();
+    const pad = lite ? 12 : 18, ax = W >= 760 && W < 1000 ? Math.max(area.cx, W - pad - 10 - area.w / 2) : area.cx;  /* on a mid-size screen, keep the panel clear of the words */
+    const H0 = Math.min(area.h, 470), L = DR.labels(), t = T - driftT, left = ax - area.w / 2, right = ax + area.w / 2, top = area.cy - H0 / 2, n0 = DR.published, extra = DR.newSets;
+    const fs = lite ? 10 : area.w < 420 ? 11 : 12.5, sm = lite ? 10 : 11.5, big = lite ? 22 : 32, bandH = lite ? 30 : 44, stripH = lite ? 64 : 94;
+    const rr = (x, y, w, h, r) => { ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, r); else ctx.rect(x, y, w, h); };
+    const span = right - left + 2 * pad, passAt = (x) => tl.tB + clamp01((x - (left - pad)) / span) * SWEEP, sweepP = t >= tl.tB ? (t - tl.tB) / SWEEP : -1;
+    ctx.save();
+    ctx.globalAlpha = a * clamp01(t / 300); rr(left - pad, top - pad, span, H0 + 2 * pad, 14);  /* a dark panel, so that the small words stay readable over the DNA */
+    ctx.fillStyle = "rgba(14,12,34,.58)"; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = "rgba(255,255,255,.14)"; ctx.stroke();
+    /* the genes: pills in a fixed layout, kept inside the panel */
+    const netTop = top + bandH + 10, netBot = top + H0 - stripH - 6, nh = Math.min(netBot - netTop, lite ? 190 : 240), nTop = netTop + (netBot - netTop - nh) / 2, ph = lite ? 16 : 22, box = {};
+    ctx.font = `600 ${fs}px ${sans}`;
+    for (const n of nodes) { const w = ctx.measureText(n.label).width + (lite ? 12 : 18); box[n.id] = { n, w, h: ph, x: Math.max(left + w / 2, Math.min(right - w / 2, left + n.pos[0] * (right - left))), y: nTop + n.pos[1] * nh }; }
+    const geom = (e) => {
+      const A = box[e[0]], B = box[e[1]]; if (!A || !B) return null;
+      const dx = B.x - A.x, dy = B.y - A.y, d = Math.hypot(dx, dy) || 1, bend = tl.pairs.has(`${e[1]}>${e[0]}`) ? (e[0] < e[1] ? 1 : -1) * 0.15 * d : 0;
+      const c = [(A.x + B.x) / 2 - (dy / d) * bend, (A.y + B.y) / 2 + (dx / d) * bend];
+      const edge = (N, gap) => {  /* where the line towards the control point leaves the pill of gene N */
+        const ux = c[0] - N.x, uy = c[1] - N.y, k = Math.min(N.w / 2 / (Math.abs(ux) || 1e-6), N.h / 2 / (Math.abs(uy) || 1e-6), 1), len = Math.hypot(ux, uy) || 1;
+        return [N.x + ux * k + (ux / len) * gap, N.y + uy * k + (uy / len) * gap];
+      };
+      const p0 = edge(A, 3), p1 = edge(B, 4);
+      return { p0, p1, c, mid: [0.25 * p0[0] + 0.5 * c[0] + 0.25 * p1[0], 0.25 * p0[1] + 0.5 * c[1] + 0.25 * p1[1]] };
+    };
+    const line = (g, prog, col, lw, al, dash) => {  /* a curve from the first gene towards the second, `prog` of the way; returns its tip */
+      if (!g || prog <= 0 || al <= 0.01) return null;
+      ctx.beginPath(); let prev = g.p0, tip = g.p0;
+      for (let i = 0; i <= 22; i++) { const s = (prog * i) / 22, u = 1 - s, x = u * u * g.p0[0] + 2 * u * s * g.c[0] + s * s * g.p1[0], y = u * u * g.p0[1] + 2 * u * s * g.c[1] + s * s * g.p1[1]; if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); prev = tip; tip = [x, y]; }
+      ctx.globalAlpha = a * al; ctx.lineWidth = lw; ctx.strokeStyle = col; ctx.setLineDash(dash || []); ctx.stroke(); ctx.setLineDash([]);
+      return { tip, prev };
+    };
+    const head = (h, sign, col, size, al) => {  /* an arrow for a link that switches on, a bar for one that switches off */
+      if (!h) return;
+      ctx.save(); ctx.translate(h.tip[0], h.tip[1]); ctx.rotate(Math.atan2(h.tip[1] - h.prev[1], h.tip[0] - h.prev[0])); ctx.globalAlpha = a * al; ctx.fillStyle = col; ctx.strokeStyle = col; ctx.lineWidth = Math.max(1.8, size * 0.3);
+      ctx.beginPath(); if (sign === "-") { ctx.moveTo(0, -size * 0.75); ctx.lineTo(0, size * 0.75); ctx.stroke(); } else { ctx.moveTo(0, 0); ctx.lineTo(-size, -size * 0.55); ctx.lineTo(-size, size * 0.55); ctx.closePath(); ctx.fill(); }
+      ctx.restore();
+    };
+    const lw = lite ? 1.7 : 2.2, baseAp = clamp01((t - 150) / 450), pulse = {};
+    for (const e of DR.base) { const g = geom(e); const h = line(g, 1, "rgba(255,255,255,.4)", lite ? 1.2 : 1.5, baseAp); head(h, e[2], "rgba(255,255,255,.55)", lite ? 5 : 6.5, baseAp); }
+    for (const q of tl.links) {  /* the links that the papers bring */
+      const g = geom(q.e); if (!g) continue;
+      const tp = passAt(g.mid[0]), grow = q.extra ? clamp01((t - tp) / 320) : smooth((t - q.at - 80) / (q.big ? 520 : 240)), inB = sweepP >= 0 && t >= tp, mixk = inB ? smooth((t - tp) / 260) : 0;
+      let al = 1, dash = null, col = rgba(mixc(PEACH, q.ok ? GREEN : RED, mixk), 1);
+      if (inB && !q.ok) { dash = [4, 4]; al = 1 - clamp01((t - tp - 700) / 500); }
+      if (q.big && t < q.at + 1200 && !inB) line(g, grow, rgba(PEACH, 0.28), lw * 3.2, 1);  /* a glow while the link that changes the answer arrives */
+      const h = line(g, grow, col, q.big && !inB ? lw * 1.4 : lw, al, dash); if (grow >= 0.98) head(h, q.e[2], col, lite ? 6 : 8, al);
+      if (inB && !q.ok && al > 0.02) { const c = lite ? 4 : 6; ctx.globalAlpha = a * al * smooth((t - tp) / 200); ctx.strokeStyle = rgba(RED, 1); ctx.lineWidth = lw; ctx.beginPath(); ctx.moveTo(g.mid[0] - c, g.mid[1] - c); ctx.lineTo(g.mid[0] + c, g.mid[1] + c); ctx.moveTo(g.mid[0] + c, g.mid[1] - c); ctx.lineTo(g.mid[0] - c, g.mid[1] + c); ctx.stroke(); }
+      if (q.big && !inB) { const k = clamp01((t - q.at) / 150) * (1 - clamp01((t - q.at - 700) / 600)); for (const id of q.e.slice(0, 2)) pulse[id] = Math.max(pulse[id] || 0, k); }
+    }
+    nodes.forEach((n, i) => {
+      const b = box[n.id], ap = n.isNew ? clamp01((t - (tl.nodeAt[n.id] ?? 0) - 40) / 260) : clamp01((t - 150 - i * 30) / 350); if (ap <= 0) return;
+      const kB = n.isNew && sweepP >= 0 ? smooth((t - passAt(b.x)) / 260) : 0;  /* a new gene turns green when the scan has checked its links */
+      ctx.save(); ctx.translate(b.x, b.y); const pop = n.isNew ? 1 + 0.2 * Math.sin(ap * Math.PI) : 1; ctx.scale(pop, pop); ctx.globalAlpha = a * ap;
+      if (pulse[n.id]) { rr(-b.w / 2 - 4, -b.h / 2 - 4, b.w + 8, b.h + 8, b.h / 2 + 4); ctx.lineWidth = 2; ctx.strokeStyle = rgba(PEACH, 0.8 * pulse[n.id]); ctx.stroke(); }
+      rr(-b.w / 2, -b.h / 2, b.w, b.h, b.h / 2); ctx.fillStyle = n.isNew ? rgba(mixc(mixc(PEACH, INK, 0.45), mixc(GREEN, INK, 0.55), kB), 0.9) : "rgba(60,56,96,.92)"; ctx.fill(); ctx.lineWidth = 1.4; ctx.strokeStyle = n.isNew ? rgba(mixc(PEACH, GREEN, kB), 0.95) : "rgba(255,255,255,.45)"; ctx.stroke();
+      ctx.font = `600 ${fs}px ${sans}`; ctx.fillStyle = "rgba(255,255,255,.96)"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(n.label, 0, 1); ctx.restore();
+    });
+    /* under the network: one dot per combination of the published list, then the number that works and what the solver says about the known experiments */
+    const sy0 = top + H0 - stripH, slots = n0 + extra;
+    ctx.font = `700 ${big}px ${sans}`; const numW = ctx.measureText("00").width + 10, strip = right - left - numW - 6, p = strip / (slots + 0.7), r = Math.min(p * 0.36, lite ? 8 : 12);
+    const slotX = (k) => left + r + 1 + (k < n0 ? k : k + 0.7) * p, yD = sy0 + sm + 12 + r;
     const dot = (x, y, kind, k, al, ring) => {  /* k: 0..1 how far it has appeared; ring: 0..1 the green ring of a checked one */
       if (al <= 0.01) return;
-      const rr = r * (0.4 + 0.6 * k);
+      const rd = r * (0.4 + 0.6 * k);
       if (kind === "ghost") { ctx.globalAlpha = a * al * 0.6; ctx.setLineDash([3, 3]); ctx.lineWidth = 1.3; ctx.strokeStyle = "rgba(255,255,255,.55)"; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.stroke(); ctx.setLineDash([]); return; }
-      const hot = kind === "new" ? RED : PEACH;
-      ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = a * al * 0.55; ctx.drawImage(kind === "new" ? HALO_RED : HALO, x - rr * 2.4, y - rr * 2.4, rr * 4.8, rr * 4.8); ctx.restore();
-      ctx.globalAlpha = a * al; ctx.fillStyle = rgba(mixc(hot, WHITE, kind === "new" ? 0.3 : 0.55), 1); ctx.beginPath(); ctx.arc(x, y, rr, 0, TAU); ctx.fill();
+      ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = a * al * 0.55; ctx.drawImage(kind === "new" ? HALO_RED : HALO, x - rd * 2.4, y - rd * 2.4, rd * 4.8, rd * 4.8); ctx.restore();
+      ctx.globalAlpha = a * al; ctx.fillStyle = rgba(mixc(kind === "new" ? RED : PEACH, WHITE, kind === "new" ? 0.3 : 0.55), 1); ctx.beginPath(); ctx.arc(x, y, rd, 0, TAU); ctx.fill();
       if (ring > 0) { ctx.globalAlpha = a * al * ring; ctx.lineWidth = Math.max(1.4, r * 0.16); ctx.strokeStyle = rgba(GREEN, 1); ctx.beginPath(); ctx.arc(x, y, r * (1.3 + 0.25 * (1 - ring)), 0, TAU); ctx.stroke(); }
     };
-    let landed = 0; for (let j = 0; j < DR.rules; j++) if (t >= T2 + 150 + j * GAP + FALL) landed++;
-    const START = [0, T2, T3];
-    for (let i = 0; i < 3; i++) {
-      const row = DR.rows[i], ra = clamp01((t - START[i]) / 300); if (ra <= 0) continue;
-      let lit = 0; const y = yD(i);
-      for (let k = 0; k < n0 + row.added; k++) {
-        const x = slotX(k);
-        if (i === 0) { const ap = clamp01((t - 100 - k * 40) / 240); if (ap > 0) { dot(x, y, "lit", smooth(ap), ap, 0); if (ap > 0.5) lit++; } continue; }
-        if (k >= n0) {  /* a combination that was not in the published list */
-          const at = i === 1 ? T2 + 1850 + (k - n0) * 150 : T3 + 100 + k * 40, ap = clamp01((t - at) / 260);
-          if (ap > 0) { dot(x, y, "new", smooth(ap) * (1 + 0.25 * Math.sin(ap * Math.PI)), ap, 0); if (ap > 0.5) lit++; }
-          continue;
-        }
-        const kept = k < row.kept;
-        if (i === 1) {  /* the old combinations go out one after another, in no particular order, as the cards land */
-          const ap = clamp01((t - T2 - 100) / 250), out = T2 + 500 + (outOrder[k] / Math.max(1, n0)) * 1400;
-          if (kept || t < out) { const fl = !kept && t > out - 260 ? 0.55 + 0.45 * Math.cos((t - out) * 0.05) : 1; dot(x, y, "lit", 1, ap * fl, 0); if (ap > 0.5) lit++; } else dot(x, y, "ghost", 1, ap, 0);
-        } else {
-          const at = T3 + 100 + k * 40, ap = clamp01((t - at) / 240);
-          if (kept) { dot(x, y, "lit", smooth(ap), ap, clamp01((t - at - 160) / 300)); if (ap > 0.5) lit++; } else dot(x, y, "ghost", 1, clamp01((t - T3 - 100) / 300), 0);
-        }
-      }
-      if (i === 1 && row.added > 0 && t > T2 + 1700) { ctx.globalAlpha = a * clamp01((t - T2 - 1700) / 250) * 0.8; ctx.font = `700 ${fs + 3}px ${sans}`; ctx.fillStyle = "rgba(255,255,255,.85)"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("+", left + r + 1 + (n0 - 0.5 + 0.35) * p, y); }
-      ctx.textBaseline = "alphabetic"; ctx.textAlign = "left";
-      /* the label above, the count at the right, and what the solver says about the known experiments under the row */
-      ctx.globalAlpha = a * ra; ctx.font = `600 ${fs}px ${sans}`; ctx.fillStyle = "rgba(255,255,255,.92)"; ctx.fillText(i === 1 ? L.r2(landed) : i === 0 ? L.r1 : L.r3, left, yL(i));
-      if (i === 0) { ctx.font = `500 ${sm}px ${sans}`; ctx.fillStyle = "rgba(228,224,255,.78)"; ctx.textAlign = "right"; ctx.fillText(L.head, right, yL(0)); ctx.textAlign = "left"; }
-      ctx.font = `700 ${big}px ${sans}`; ctx.textAlign = "right"; ctx.fillStyle = rgba(i === 1 && lit ? mixc(RED, WHITE, 0.25) : mixc(PEACH, WHITE, 0.5), 1); ctx.fillText(String(lit), right, y + big * 0.34); ctx.textAlign = "left";
-      if (i > 0) {
-        const at = i === 1 ? T2 + 1850 + Math.max(0, row.added - 1) * 150 + 450 : T3 + 100 + (n0 + row.added) * 40 + 300, ba = clamp01((t - at) / 350);
-        if (ba > 0) { ctx.globalAlpha = a * ba; ctx.font = `600 ${sm}px ${sans}`; ctx.fillStyle = rgba(row.broken ? RED : GREEN, 1); ctx.fillText(`${row.broken ? "✕" : "✓"} ${L.broken(row.broken)}`, left, y + r + sm + 6); }
+    let lit = 0, newLit = 0;
+    for (let k = 0; k < slots; k++) {
+      const x = slotX(k), tp = passAt(x), inB = sweepP >= 0 && t >= tp;
+      if (k < n0) {
+        const ap = clamp01((t - 300 - k * 40) / 240); let on = true, fl = 1;
+        for (const [te, v] of tl.events[k]) { if (t >= te) on = v; else if (!v && t > te - 260) fl = 0.55 + 0.45 * Math.cos((t - te) * 0.05); }
+        if (inB) { on = tl.litB[k]; fl = 1; }
+        if (on) { dot(x, yD, "lit", smooth(ap), ap * fl, inB ? clamp01((t - tp - 100) / 300) : 0); if (ap > 0.5) lit++; } else dot(x, yD, "ghost", 1, ap, 0);
+      } else {
+        const at = tl.tNew + (k - n0) * 150, ap = clamp01((t - at) / 260) * (inB ? 1 - clamp01((t - tp) / 200) : 1);
+        if (ap > 0) { dot(x, yD, "new", smooth(ap) * (1 + 0.25 * Math.sin(clamp01((t - at) / 260) * Math.PI)), ap, 0); if (ap > 0.5) { lit++; newLit++; } }
       }
     }
-    /* the cards: each paper brings a rule, a link between two genes, and falls into the second row */
-    const cw = lite ? 15 : 22, ch = cw * 1.3, y0 = yD(0) + r + 8, y1 = yL(1) - fs;
-    for (let j = 0; j < DR.rules; j++) {
-      const f = (t - (T2 + 150 + j * GAP)) / FALL; if (f <= 0 || f >= 1.3) continue;
-      const e = f * f * (1.5 - 0.5 * f), x = left + 22 + ((j + 1) * 0.6180339887 % 1) * (strip - 36), y = y0 + (y1 - y0) * clamp01(e), rot = Math.sin(j * 1.7) * 0.35 + clamp01(f) * 0.5, al = clamp01(f / 0.15) * (1 - clamp01((f - 1) / 0.3));
-      ctx.save(); ctx.globalAlpha = a * al; ctx.translate(x, y); ctx.rotate(rot);
-      ctx.beginPath(); ctx.roundRect ? ctx.roundRect(-cw / 2, -ch / 2, cw, ch, 3) : ctx.rect(-cw / 2, -ch / 2, cw, ch); ctx.fillStyle = "rgba(250,247,255,.95)"; ctx.fill();
-      ctx.strokeStyle = "rgba(255,255,255,.85)"; ctx.lineWidth = 1; ctx.stroke();
-      const lx = cw * 0.2, ly = -ch * 0.12;  /* the rule on the card: two genes and the link between them */
-      ctx.strokeStyle = rgba(PEACH, 1); ctx.lineWidth = Math.max(1.2, cw * 0.07); ctx.beginPath(); ctx.moveTo(-lx, ly); ctx.lineTo(lx, ly); ctx.stroke();
-      ctx.fillStyle = rgba(mixc(PEACH, INK, 0.2), 1); for (const sx of [-lx, lx]) { ctx.beginPath(); ctx.arc(sx, ly, Math.max(1.6, cw * 0.1), 0, TAU); ctx.fill(); }
-      ctx.fillStyle = "rgba(120,112,170,.55)"; for (let q = 0; q < 2; q++) ctx.fillRect(-cw * 0.34, ch * (0.12 + q * 0.16), cw * (q ? 0.42 : 0.68), Math.max(1.2, ch * 0.05));
-      ctx.restore();
+    ctx.textBaseline = "alphabetic"; ctx.textAlign = "left";
+    ctx.globalAlpha = a * clamp01((t - 250) / 300); ctx.font = `500 ${sm}px ${sans}`; ctx.fillStyle = "rgba(228,224,255,.8)"; ctx.fillText(L.head, left, sy0 + sm);
+    ctx.font = `700 ${big}px ${sans}`; ctx.textAlign = "right"; ctx.fillStyle = rgba(newLit ? mixc(RED, WHITE, 0.25) : mixc(PEACH, WHITE, 0.5), 1); ctx.fillText(String(lit), right, yD + big * 0.34); ctx.textAlign = "left";
+    const tBadge = tl.tNew + extra * 150 + 250, aBadge = clamp01((t - tBadge) / 350) * (1 - clamp01((t - tl.tB - SWEEP * 0.3) / 250)), bBadge = clamp01((t - tl.tB - SWEEP * 0.6) / 350);
+    ctx.font = `600 ${sm}px ${sans}`;
+    if (aBadge > 0) { ctx.globalAlpha = a * aBadge; ctx.fillStyle = rgba(RED, 1); ctx.fillText(`✕ ${L.broken(DR.broken[0])}`, left, yD + r + sm + 8); }
+    if (bBadge > 0) { ctx.globalAlpha = a * bBadge; ctx.fillStyle = rgba(GREEN, 1); ctx.fillText(`✓ ${L.broken(DR.broken[1])}`, left, yD + r + sm + 8); }
+    /* the band at the top: what is going on (unchecked, then checked) and the paper that has just arrived */
+    const chip = (txt, col, al) => {
+      if (al <= 0.01) return;
+      ctx.font = `600 ${sm}px ${sans}`; const w = ctx.measureText(txt).width + 18, h = sm + 10; ctx.globalAlpha = a * al; rr(left, top + 2, w, h, h / 2); ctx.fillStyle = rgba(col, 0.14); ctx.fill(); ctx.lineWidth = 1.3; ctx.strokeStyle = rgba(col, 0.8); ctx.stroke();
+      ctx.fillStyle = rgba(mixc(col, WHITE, 0.5), 1); ctx.textAlign = "left"; ctx.textBaseline = "middle"; ctx.fillText(txt, left + 9, top + 2 + h / 2 + 1); ctx.textBaseline = "alphabetic";
+    };
+    const landed = tl.A.filter((s) => t >= s.at + 150).length, swap = clamp01((t - tl.tB) / 300);
+    chip(L.chipA(landed), [255, 196, 96], clamp01(t / 300) * (1 - swap)); chip(L.chipB, GREEN, swap);
+    const cur = tl.A.find((s) => t >= s.at && t < s.at + (s.big ? BIG : SMALL)) || (t >= tl.aEnd && t < tl.aEnd + 300 ? tl.A[tl.A.length - 1] : null);
+    if (cur) {
+      const age = t - cur.at, fade = cur === tl.A[tl.A.length - 1] && t >= tl.aEnd ? 1 - clamp01((t - tl.aEnd) / 300) : 1, slide = (1 - smooth(age / 160)) * 22, ch2 = lite ? 30 : 38;
+      ctx.font = `700 ${lite ? 11 : 13}px ${sans}`; const w1 = ctx.measureText(cur.claim).width; ctx.font = `500 ${lite ? 9 : 10.5}px ${sans}`;
+      const meta = `${cur.pmcid ? cur.pmcid + " · " : ""}${L.papers(cur.papers)}`, w2 = ctx.measureText(meta).width, cw = Math.max(w1, w2) + (lite ? 34 : 42), cx0 = right - cw + slide, cy0 = top + 1;
+      ctx.globalAlpha = a * fade * clamp01(age / 120); rr(cx0, cy0, cw, ch2, 7); ctx.fillStyle = "rgba(250,247,255,.95)"; ctx.fill(); ctx.lineWidth = cur.big ? 2.2 : 1; ctx.strokeStyle = cur.big ? rgba(PEACH, 1) : "rgba(255,255,255,.8)"; ctx.stroke();
+      const ix = cx0 + 9, iy = cy0 + ch2 / 2 - (lite ? 8 : 10), iw = lite ? 11 : 14, ih = lite ? 16 : 20;  /* the paper */
+      ctx.fillStyle = "rgba(120,112,170,.2)"; rr(ix, iy, iw, ih, 2); ctx.fill(); ctx.strokeStyle = "rgba(90,82,150,.7)"; ctx.lineWidth = 1; ctx.stroke();
+      ctx.fillStyle = "rgba(90,82,150,.7)"; for (let q = 0; q < 3; q++) ctx.fillRect(ix + 2.5, iy + 3.5 + q * (ih / 4.4), iw - 5, 1.2);
+      ctx.textAlign = "left"; ctx.textBaseline = "middle"; ctx.font = `700 ${lite ? 11 : 13}px ${sans}`; ctx.fillStyle = "rgb(36,30,70)"; ctx.fillText(cur.claim, cx0 + iw + 18, cy0 + ch2 * 0.34);
+      ctx.font = `500 ${lite ? 9 : 10.5}px ${sans}`; ctx.fillStyle = "rgb(96,88,140)"; ctx.fillText(meta, cx0 + iw + 18, cy0 + ch2 * 0.72); ctx.textBaseline = "alphabetic";
+    }
+    if (sweepP > -0.02 && sweepP < 1.12) {  /* the solver's scan, the same cyan wipe as in the last beat */
+      const sx = left - pad + clamp01(sweepP) * span, fade = clamp01(Math.min((sweepP + 0.02) * 12, (1.12 - sweepP) * 8)), lg = ctx.createLinearGradient(sx - span * 0.14, 0, sx + 3, 0);
+      lg.addColorStop(0, "rgba(120,220,255,0)"); lg.addColorStop(0.85, "rgba(120,220,255,.2)"); lg.addColorStop(1, "rgba(220,250,255,.95)");
+      ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = a * fade; ctx.fillStyle = lg; ctx.fillRect(sx - span * 0.14, top - pad + 6, span * 0.14 + 3, H0 + 2 * pad - 12); ctx.restore();
     }
     ctx.restore();
   }
@@ -461,7 +528,7 @@ function makeStory(cv, opt = {}) {
       if (n === 4 || prev < 4) gridT = instant || n === 5 ? T - 6000 : T;
       zoomT = n === 4 ? (instant ? T - 20000 : T + 1700) : 0;
       backFrom = n === 5 && prev === 4 ? Math.sqrt(TOTAL / (SIZES[4] || TOTAL)) : 1; backT = n === 5 && !instant && prev === 4 ? T : 0;
-      aiT = n === 5 ? (instant ? T - 20000 : T + 1100) : 0; scanT = n === 5 ? (instant ? T - 1e5 : T + 3500) : 0;
+      aiT = n === 5 ? (instant ? T - 20000 : T + 1100) : 0; scanT = n === 5 ? (instant ? T - 1e5 : T + 4600) : 0;
     } else { gridT = 0; zoomT = 0; backT = 0; aiT = 0; scanT = 0; }
     if (instant) { dishA = n === 1 || n === 2 ? 1 : 0; driftA = n === 3 ? 1 : 0; gridA = n >= 4 ? 1 : 0; if (ready) draw(T, 0); }
   }

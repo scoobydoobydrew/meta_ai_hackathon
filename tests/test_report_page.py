@@ -1,3 +1,4 @@
+import json
 import re
 import shutil
 import subprocess
@@ -11,9 +12,11 @@ from cellproof.network.logic import influence_edges
 from cellproof.report.build import WEB, _json, parts, render, render_fragment
 from cellproof.report.data import FAILURE, FATE_CODES, _structured, interventions, lab_table, llm_search_block, story_block
 from cellproof.report.data import drift as report_drift
+from cellproof.report.data import replay
 from cellproof.report.layout import NODE_ORDER, NODES
 
-DATA = Path(__file__).resolve().parents[1] / "data"
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "data"
 MODELS = DATA / "models"
 BASE = load_bnet(DATA / "base" / "gupta2023.bnet")
 
@@ -104,6 +107,26 @@ def test_new_rules_applied_unchecked_replace_the_list_and_checked_ones_keep_it(s
     assert report_drift({"published": [], "augmented": []}, {"published": BASE, "augmented": BASE}) is None  # nothing to compare without an unchecked model
 
 
+def test_the_replay_of_each_run_ends_in_its_stored_model_and_shows_the_links_that_change_the_answer(searched):
+    """The fourth beat replays the two runs edit by edit: papers bring links one after another and the dots of the published list go out.
+    Each replay must end in the model the run stored, and the steps must say what the beat's words say."""
+    rules, out = searched
+    drift, summary = out["drift"], json.loads((ROOT / "results" / "augmentation_summary.json").read_text(encoding="utf-8"))["runs"]
+    for name, key, arm in (("unchecked", "unchecked", "naive_min2"), ("checked", "augmented", "repaired_min2")):
+        log = json.loads((ROOT / "results" / f"augment_{arm}.json").read_text(encoding="utf-8"))
+        steps, final = replay(BASE, log, out["published"])
+        assert final == rules[key] and steps == drift["runs"][name]  # applied again from the published model, the edits give the stored one
+        assert len(steps) == summary[arm]["edits_proposed"] and sum(s["status"] != "rejected" for s in steps) == summary[arm]["accepted"]
+    unchecked, checked = drift["runs"]["unchecked"], drift["runs"]["checked"]
+    assert {s["edge"] for s in unchecked} == {s["edge"] for s in checked}  # the same papers, the same edits
+    assert all(s["status"] == "accepted" and len(s["added"]) == 1 for s in unchecked)  # unchecked, every edit adds one link (docs/limitations.md says so)
+    assert any(s["lost"] for s in unchecked) and unchecked[-1]["alive"] == 0  # some link changes the list, and in the end all of it is gone
+    assert all(s["alive"] == drift["published"] for s in checked) and any(s["status"] == "rejected" for s in checked)  # checked: the list never changes
+    nodes = {n["id"] for n in drift["net"]["nodes"]}
+    assert all(set(link[:2]) <= nodes for steps_ in (unchecked, checked) for s in steps_ for link in s["added"])  # every link can be drawn
+    assert all(set(link[:2]) <= nodes for link in drift["net"]["base"]) and {n["id"] for n in drift["net"]["nodes"] if n["new"]} <= set(rules["unchecked"]) - set(BASE)
+
+
 def test_the_ai_alone_marks_of_the_header_agree_with_the_solvers_summary():
     rules = load_bnet(Path(__file__).resolve().parents[1] / "data" / "models" / "repaired_min2.bnet")
     block = llm_search_block(rules)
@@ -121,6 +144,13 @@ def test_the_header_tells_its_story_in_six_beats_and_names_its_sources():
     assert [int(b) for b in re.findall(r'class="beat" data-b="(\d)"', body)] == [1, 2, 3, 4, 5, 6]
     assert "Radiotherapy is commonly used to treat a variety of solid tumors." in body and "PMC3167033" in body
     assert "NP-hard" in body and "Akutsu et al. 2007" in body  # the difficulty is stated with its source, in the markup as well as in the texts
+
+
+def test_every_beat_of_the_header_stays_long_enough_to_read_its_words():
+    js = (WEB / "bench.js").read_text(encoding="utf-8")
+    seconds = [int(x) / 1000 for x in re.search(r"DUR = \[([\d, ]+)\]", js).group(1).split(",")]
+    assert len(seconds) == 6 and min(seconds) >= 5  # the first impression: the words have to be readable
+    assert seconds[3] >= 10 and seconds[5] >= 10  # the network with papers arriving and the scoreboard carry the most to read
 
 
 def test_both_languages_have_the_same_texts_and_every_label_in_the_markup_has_one():

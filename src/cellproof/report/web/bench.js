@@ -26,12 +26,12 @@
     proj: SPACE.projected_seconds || {}, keep: SPACE.keep || [], marks: AIX ? AIX.marks : [], ai: AIX ? AIX.summary : null, unchecked: failCount("naive"), checked: failCount("verified").concat(failCount("repaired")),
   };
   /* new rules keep coming and each can change which combinations work: the same search on the model with the rules read from the papers
-     applied unchecked and on the checked one, and how many of the published list each keeps (report/data.py), with the number of known
-     experiments each model breaks (the verification matrix) */
-  const DR0 = (D.interventions || {}).drift || null, RUNS = (D.summary || {}).runs || {}, NCASES = ((D.verification || {}).cases || []).length;
+     applied unchecked and on the checked one, how many of the published list each keeps, and the two runs replayed edit by edit, with
+     the links each edit adds (report/data.py), next to the number of known experiments each model breaks (the verification matrix) */
+  const DR0 = (D.interventions || {}).drift || null, NCASES = ((D.verification || {}).cases || []).length;
   const broke = (key) => (MATRIX[key] ? Object.keys(MATRIX[key]).length : null);
-  const DRIFT = DR0 && RUNS.naive_min2 && NCASES && broke("naive_min2") !== null && broke("repaired_min2") !== null
-    ? { ...DR0, rules: RUNS.naive_min2.accepted, papers: (D.meta || {}).corpus_papers || 0, cases: NCASES, broken: broke("naive_min2"), repaired: broke("repaired_min2") } : null;
+  const DRIFT = DR0 && DR0.runs && DR0.net && DR0.runs.unchecked.length && NCASES && broke("naive_min2") !== null && broke("repaired_min2") !== null
+    ? { ...DR0, rules: DR0.runs.unchecked.length, papers: (D.meta || {}).corpus_papers || 0, cases: NCASES, broken: broke("naive_min2"), repaired: broke("repaired_min2") } : null;
   const DR = DRIFT || { published: 0, rules: 0, papers: 0, cases: 0, broken: 0, repaired: 0, unchecked: { sets: 0, kept: 0, new: 0 }, checked: { sets: 0, kept: 0, new: 0 } };
   /* the pair shown in the goal beat: the first shortlisted pair with one gene switched off and one forced on */
   const PAIR = INTERV.find((s) => s.length === 2 && s.some(([, v]) => v === 0)) || INTERV.find((s) => s.length === 2) || INTERV[0] || [];
@@ -54,8 +54,8 @@
       "hero.bd": "New rules change <em>which genes to flip.</em>",
       "hero.sd": () => `A rule is a link between two genes, and papers keep adding them. Here, ${DR.rules} new rules from ${DR.papers} papers, unchecked, replaced all ${DR.published} combinations that worked.`,
       "hero.dl": () => `Check each rule first, and the same ${DR.checked.sets} stay.`,
-      "hero.dr1": "The published model", "hero.dr2": (n) => `+ ${n} new rules from ${DR.papers} papers, unchecked`, "hero.dr3": "The same papers, each rule checked first",
       "hero.drn": "combinations that work", "hero.drb": (n) => `${n} of ${DR.cases} known experiments broken`,
+      "hero.dra": (n) => `Unchecked · ${n} new rules`, "hero.drc": "Each rule checked first", "hero.drp": (n) => `${n} paper${n === 1 ? "" : "s"}`,
       "hero.b4": "Which combination? The search <em>explodes.</em>", "hero.n4": "combinations, each one a lab experiment", "hero.np": "<b>NP-hard</b> in general · Akutsu et al. 2007",
       "hero.stage": (k, t, proj) => `up to ${k} genes at once · solver ${proj ? "≈ " : ""}${t}${proj ? " (projected)" : ""}`,
       "hero.b5": "The AI proposes. The solver <em>decides.</em>", "hero.n5": "candidates left",
@@ -127,8 +127,8 @@
       "hero.bd": "Νέοι κανόνες, <em>άλλοι διακόπτες να γυρίσεις.</em>",
       "hero.sd": () => `Ένας κανόνας είναι μια σύνδεση ανάμεσα σε δύο γονίδια, και τα papers προσθέτουν συνέχεια νέους. Εδώ, ${DR.rules} νέοι κανόνες από ${DR.papers} papers, χωρίς έλεγχο, αντικατέστησαν όλους τους ${DR.published} συνδυασμούς που δούλευαν.`,
       "hero.dl": () => `Έλεγξε κάθε κανόνα πρώτα και μένουν οι ίδιοι ${DR.checked.sets}.`,
-      "hero.dr1": "Το δημοσιευμένο μοντέλο", "hero.dr2": (n) => `+ ${n} νέοι κανόνες από ${DR.papers} papers, χωρίς έλεγχο`, "hero.dr3": "Τα ίδια papers, κάθε κανόνας ελέγχεται πρώτα",
       "hero.drn": "συνδυασμοί που δουλεύουν", "hero.drb": (n) => `${n} από ${DR.cases} γνωστά πειράματα χαλασμένα`,
+      "hero.dra": (n) => `Χωρίς έλεγχο · ${n} νέοι κανόνες`, "hero.drc": "Κάθε κανόνας ελέγχεται πρώτα", "hero.drp": (n) => `${n} paper${n === 1 ? "" : "s"}`,
       "hero.b4": "Ποιος συνδυασμός; Η αναζήτηση <em>εκρήγνυται.</em>", "hero.n4": "συνδυασμοί, ο καθένας ένα πείραμα στο εργαστήριο", "hero.np": "<b>NP-hard</b> γενικά · Akutsu et al. 2007",
       "hero.stage": (k, t, proj) => `έως ${k} γονίδια μαζί · solver ${proj ? "≈ " : ""}${t}${proj ? " (εκτίμηση)" : ""}`,
       "hero.b5": "Το AI προτείνει. Ο solver <em>αποφασίζει.</em>", "hero.n5": "υποψήφιες έμειναν",
@@ -605,18 +605,21 @@
      it moves only while it is on screen, and the little bars under the words jump to any beat */
   (function heroStory() {
     const hero = $("#top"), cvH = $("#heroMol"), cvS = $("#heroStory"); if (!hero || !cvH || !cvS) return;
-    const FULL = HERO.total && HERO.found && HERO.sizes.every(Boolean) && DRIFT, lite = innerWidth < 700, BEATS = FULL ? 6 : 3, DUR = [3400, 4200, 4800, 6400, 6200, 6800].slice(0, BEATS), dots = $$("#hDots button");
+    const FULL = HERO.total && HERO.found && HERO.sizes.every(Boolean) && DRIFT, lite = innerWidth < 700, BEATS = FULL ? 6 : 3, DUR = [5500, 6500, 8500, 11000, 10000, 11500].slice(0, BEATS), dots = $$("#hDots button");
     let beat = 0, timer = 0, hitT = 0, seen = true, shown = -1, shownStage = 0;
     dots.forEach((d, i) => { d.hidden = i >= BEATS; });
     const paint = (n) => { shown = n; const el = $(`.beat[data-b="${beat + 1}"] [data-count]`, hero); if (el && n >= 0) el.textContent = num(n); };
     const paintHeroStage = (k) => { const el = $("[data-stage-text]", hero); if (el) el.textContent = k >= 2 ? T("hero.stage", k, dur(k === 2 ? HERO.secs : HERO.proj[String(k)] || 0), k > 2) : ""; };
     const stageTo = (k) => { shownStage = k; hero.dataset.stage = String(k); paintHeroStage(k); };
     const chips = PAIR.map(([n, v]) => ({ name: pretty(n), off: v === 0 }));
-    /* the fourth beat: three rows of dots (published list; after the rules were added unchecked; after each was checked first), the words from TEXT */
+    /* the fourth beat: a small network (the genes the edits touch, the published links between them) where the papers bring links one after
+       another, with the dots of the published list under it; the words come from TEXT */
+    const claimOf = (s) => { const e = s.added[0]; return e ? `${pretty(e[0])} ${e[2] === "-" ? "⊣" : "→"} ${pretty(e[1])}` : s.edge; };
     const drift = DRIFT ? {
-      published: DR.published, rules: DR.rules,
-      rows: [{ kept: DR.published, added: 0 }, { kept: DR.unchecked.kept, added: DR.unchecked.new, broken: DR.broken }, { kept: DR.checked.kept, added: DR.checked.new, broken: DR.repaired }],
-      labels: () => ({ r1: T("hero.dr1"), r2: (n) => T("hero.dr2", n), r3: T("hero.dr3"), head: T("hero.drn"), broken: (n) => T("hero.drb", n) }),
+      published: DR.published, newSets: DR.unchecked.new, broken: [DR.broken, DR.repaired],
+      nodes: DR.net.nodes.map((n) => ({ id: n.id, label: pretty(n.id), isNew: n.new })), base: DR.net.base,
+      a: DR.runs.unchecked.map((s) => ({ ...s, claim: claimOf(s) })), b: DR.runs.checked,
+      labels: () => ({ head: T("hero.drn"), chipA: (n) => T("hero.dra", n), chipB: T("hero.drc"), broken: (n) => T("hero.drb", n), papers: (n) => T("hero.drp", n) }),
     } : null;
     /* the first two rows are warnings (each does part of the job); the first becomes a cross only if the model was mostly wrong */
     const aiRow = $(".b-score li:nth-child(1)", hero);

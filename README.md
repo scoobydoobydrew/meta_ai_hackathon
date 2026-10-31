@@ -37,12 +37,12 @@ All numbers are produced by `make verify` and written to [`results/RESULTS.md`](
 [`docs/limitations.md`](docs/limitations.md).
 
 **The interactive report is [`results/report.html`](results/report.html)** (open it in a browser; `python -m cellproof.cli report`
-rebuilds it). The top of the page is a story of about 30 seconds told over a close-up of DNA, in six beats: radiation breaks DNA; a
+rebuilds it). The top of the page is a story of about 50 seconds (long enough to read) told over a close-up of DNA, in six beats: radiation breaks DNA; a
 damaged cell can pause, age, recycle itself or die, so not every one dies; the goal, a combination of genes to switch off, or on,
-that leaves only death; new rules keep coming and each can change which combinations work (a rule is a link between two genes;
-the same exhaustive search on the model with the rules read from the papers applied unchecked leaves none of the published
-combinations, and with each rule checked first it leaves the same ones, next to the number of known experiments each model
-breaks); the search for it explodes with the number of genes changed at once (controlling a Boolean network is
+that leaves only death; new rules keep coming and each can change which combinations work (a small network of genes: papers
+bring links one after another, and the combinations of the published list stop working as the pipeline's own edits are
+replayed one by one, unchecked; then each rule is checked first and the same combinations stay, next to the number of known
+experiments each model breaks); the search for it explodes with the number of genes changed at once (controlling a Boolean network is
 NP-hard in general, Akutsu et al. 2007); the AI alone, the solver alone and the two together, ending with the exact solver's
 shortlist (every count, time and verdict is computed when the page is built, not typed in; times for larger sets are projections
 and say so). Below it is a test bench in five clickable steps (the

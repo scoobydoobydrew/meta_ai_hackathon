@@ -15,7 +15,7 @@ from itertools import combinations
 from pathlib import Path
 
 from cellproof.analysis.attractors import fixed_points, perturb
-from cellproof.analysis.interventions import READOUT_NODES, minimal_sets, search_space
+from cellproof.analysis.interventions import READOUT_NODES, fates, minimal_sets, search_space
 from cellproof.analysis.llm_search import candidate_sets
 from cellproof.eval.heldout import load as load_heldout
 from cellproof.eval.heldout import summarize
@@ -228,11 +228,40 @@ def interventions(networks: dict[str, dict[str, str]]) -> dict:
 EFFORTS = ["minimal", "low", "medium", "high", "xhigh", "max"]
 
 
+def _influences(rules: dict[str, str]) -> set[tuple[str, str, str]]:
+    return {(s, t, sign) for s, t, sign in influence_edges(rules) if s != t}
+
+
+def replay(base: dict[str, str], log: list[dict], published: list[list[list]]) -> tuple[list[dict], dict[str, str]]:
+    """The edits of one run (results/augment_<arm>.json) in the order the run applied them, rejected ones included. For each: the links
+    (influences between two genes) it added to the network, and which sets of the published list stop leaving only apoptosis after it
+    (`lost`) or leave only apoptosis again (`back`), as indices into that list; `alive` is how many leave only apoptosis. Applied
+    again from the published model, the accepted edits give the run's final model, which is returned too."""
+    rules, edges, works = dict(base), _influences(base), set(range(len(published)))
+    steps = []
+    for rec in log:
+        if rec["status"] not in ("accepted", "rejected"):
+            continue
+        added: list[list[str]] = []
+        lost: list[int] = []
+        back: list[int] = []
+        if rec["status"] == "accepted":
+            rules[rec["node"]] = rec["final_rule"]
+            now = _influences(rules)
+            added, edges = [list(e) for e in sorted(now - edges)], now
+            still = {i for i in range(len(published)) if fates(rules, {n: v for n, v in published[i]}) == {"apoptosis"}}
+            lost, back, works = sorted(works - still), sorted(still - works), still
+        status = "rejected" if rec["status"] == "rejected" else "repaired" if rec.get("repaired") else "accepted"
+        steps.append({"edge": rec["edge"], "status": status, "papers": rec["papers"], "pmcid": (rec["support"] or [{}])[0].get("pmcid", ""), "added": added, "lost": lost, "back": back, "alive": len(works)})
+    return steps, rules
+
+
 def drift(found: dict[str, list[list[list]]], networks: dict[str, dict[str, str]]) -> dict | None:
     """The header's fourth beat: a new rule can change which sets of changes work. The same exhaustive search is run on the model with
     the rules read from the papers applied unchecked, and compared set by set with the published model's list; the checked model's
-    list (already searched for the header's field) is compared the same way. Only the counts are kept: how many sets each model
-    leaves, how many of the published sets are still there, how many are new."""
+    list (already searched for the header's field) is compared the same way: how many sets each model leaves, how many of the
+    published sets are still there, how many are new. `runs` replays the two runs edit by edit (see `replay`), `net` is the part of
+    the network they touch: its genes and the published links between them, so that the page can draw the links arriving."""
     if "unchecked" not in networks:
         return None
     sets = {"published": found["published"], "unchecked": [[[n, v] for n, v in s] for s in minimal_sets(networks["unchecked"], 2)], "checked": found["augmented"]}
@@ -240,6 +269,15 @@ def drift(found: dict[str, list[list[list]]], networks: dict[str, dict[str, str]
     out: dict = {"published": len(keys["published"])}
     for name in ("unchecked", "checked"):
         out[name] = {"sets": len(keys[name]), "kept": len(keys["published"] & keys[name]), "new": len(keys[name] - keys["published"])}
+    base, runs = networks["published"], {}
+    for name, key in (("unchecked", "unchecked"), ("checked", "augmented")):
+        log = _read(ROOT / "results" / f"augment_{NETWORKS[key][1].stem}.json")
+        if log is None:
+            return out
+        runs[name], _ = replay(base, log, found["published"])
+    touched = sorted({n for steps in runs.values() for step in steps for link in step["added"] for n in link[:2]})
+    out["runs"] = runs
+    out["net"] = {"nodes": [{"id": n, "new": n not in base} for n in touched], "base": [list(e) for e in sorted(_influences(base)) if e[0] in touched and e[1] in touched]}
     return out
 
 
