@@ -167,6 +167,11 @@ section { padding-block: clamp(56px, 8vw, 104px); }
 .hero-dots button[data-state="on"]::after { animation: heroFill var(--dur, 5s) linear forwards; }
 @keyframes heroFill { from { width: 0; } to { width: 100%; } }
 @media (prefers-reduced-motion: reduce) { .hero-dots button[data-state="on"]::after { animation: none; width: 100%; } .beat { transition: none; } }
+/* the header stands still while the pointer is over it (the controller in bench.js adds .is-held): the bar stops filling, the lines that
+   are still to arrive wait, and a pause mark shows at the end of the bars */
+.hero.is-held .beat *, .hero.is-held .hero-dots button::after { animation-play-state: paused; }
+.hero-hold { display: none; align-self: center; flex: none; width: 12px; height: 14px; margin-left: 4px; border-radius: 1px; background: linear-gradient(90deg, #ffd0a8 0 4px, transparent 4px 8px, #ffd0a8 8px 12px); }
+.hero.is-held .hero-hold { display: block; }
 .hero .cta { margin-top: 18px; }
 @media (max-width: 760px) {
   .hero { align-items: stretch; min-height: clamp(600px, calc(100svh - 62px), 900px); }

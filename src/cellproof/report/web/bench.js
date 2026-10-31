@@ -606,7 +606,7 @@
   (function heroStory() {
     const hero = $("#top"), cvH = $("#heroMol"), cvS = $("#heroStory"); if (!hero || !cvH || !cvS) return;
     const FULL = HERO.total && HERO.found && HERO.sizes.every(Boolean) && DRIFT, lite = innerWidth < 700, BEATS = FULL ? 6 : 3, DUR = [5500, 6500, 8500, 11000, 10000, 11500].slice(0, BEATS), dots = $$("#hDots button");
-    let beat = 0, timer = 0, hitT = 0, seen = true, shown = -1, shownStage = 0;
+    let beat = 0, timer = 0, hitT = 0, seen = true, shown = -1, shownStage = 0, held = false, due = 0, since = 0;
     dots.forEach((d, i) => { d.hidden = i >= BEATS; });
     const paint = (n) => { shown = n; const el = $(`.beat[data-b="${beat + 1}"] [data-count]`, hero); if (el && n >= 0) el.textContent = num(n); };
     const paintHeroStage = (k) => { const el = $("[data-stage-text]", hero); if (el) el.textContent = k >= 2 ? T("hero.stage", k, dur(k === 2 ? HERO.secs : HERO.proj[String(k)] || 0), k > 2) : ""; };
@@ -631,12 +631,26 @@
       paint(n === 5 ? HERO.total : n === 4 ? 0 : -1);
       story.show(n, reduced);
       clearTimeout(hitT); if (n === 0) hitT = setTimeout(helix.hit, 1000);
-      clearTimeout(timer); if (!reduced && seen && !document.hidden) timer = setTimeout(() => show((n + 1) % BEATS), DUR[n]);
+      arm(DUR[n]);
     }
+    /* the next beat comes when the time is up, unless the header is held */
+    const arm = (ms) => { clearTimeout(timer); due = ms; since = performance.now(); if (!reduced && seen && !document.hidden && !held) timer = setTimeout(() => show((beat + 1) % BEATS), ms); };
+    /* the header stands still while the pointer is over its words or pictures, so that they can be read (not over the bars and buttons: a click on a bar plays that beat), and carries on when the pointer leaves */
+    const hold = () => {
+      if (held || reduced) return;
+      held = true; hero.classList.add("is-held"); story.hold(); clearTimeout(timer); due = Math.max(0, due - (performance.now() - since));
+    };
+    const release = () => {
+      if (!held) return;
+      held = false; hero.classList.remove("is-held"); story.release(); since = performance.now();
+      if (seen && !document.hidden) timer = setTimeout(() => show((beat + 1) % BEATS), due);
+    };
     const sync = () => {
-      if (seen && !document.hidden) { helix.start(); story.start(); show(beat); } else { helix.stop(); story.stop(); clearTimeout(timer); clearTimeout(hitT); }
+      if (seen && !document.hidden) { helix.start(); story.start(); show(beat); } else { release(); helix.stop(); story.stop(); clearTimeout(timer); clearTimeout(hitT); }
     };
     dots.forEach((d, i) => d.addEventListener("click", () => show(i)));
+    hero.addEventListener("pointermove", (e) => { if (e.pointerType === "mouse" && !e.target.closest(".hero-foot")) hold(); else release(); });
+    hero.addEventListener("pointerleave", release);
     new IntersectionObserver((es) => { seen = es[0].isIntersecting; sync(); }, { threshold: 0.05 }).observe(hero);
     document.addEventListener("visibilitychange", sync);
     heroApi = { relabel: () => { dots.forEach((d, i) => d.setAttribute("aria-label", T("hero.step", i + 1, BEATS))); paint(shown); paintHeroStage(shownStage); } };

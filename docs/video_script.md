@@ -24,7 +24,9 @@ genes' placement and the cards are illustration, the counts and which dot goes o
 combination of one or two genes, which zooms out as sets of up to five genes are counted, with the NP-hard note and its source;
 the AI's guesses judged by the solver, then the solver's scan leaving a few glowing dots ("The AI proposes. The solver decides.").
 Reload the page so that it starts on the first beat, let it play under the one line above (do not read the captions out), then
-press *Play*. The little bars under the words jump to a beat. Say it plainly if asked: the solver alone does solve this small
+press *Play*. Keep the mouse pointer off the header while it plays: it stands still while the pointer is over its words or
+pictures (a pause mark shows next to the little bars), and it carries on when the pointer leaves. The little bars under the
+words jump to a beat, and the pointer over them does not hold it. Say it plainly if asked: the solver alone does solve this small
 model in seconds; what it cannot do is read the papers, and the count of candidates explodes as the model or the sets grow. And
 the AI alone is not useless: asked directly for the genes, it was right for most of its guesses and found some of the 11, but
 nothing checks it, a quarter of its guesses were wrong, and its edits to the model, unchecked, break 7 or 8 of the 10 known

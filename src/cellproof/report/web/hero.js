@@ -176,7 +176,7 @@ function makeStory(cv, opt = {}) {
   const pattern = ctx.createPattern(tile, "repeat");
 
   let W = 0, H = 0, dpr = 1, area = { cx: 0, cy: 0, w: 0, h: 0 }, dish = { cx: 0, cy: 0, R: 0 }, grid = null;
-  let ready = false, running = false, last = 0, beat = -1, prev = -1, dishA = 0, gridA = 0, sweepT = 0, chipT = 0, gridT = 0, zoomT = 0, backT = 0, backFrom = 1, aiT = 0, scanT = 0, count = -2, stage = 0, driftA = 0, driftT = 0;
+  let ready = false, running = false, last = 0, beat = -1, prev = -1, dishA = 0, gridA = 0, sweepT = 0, chipT = 0, gridT = 0, zoomT = 0, backT = 0, backFrom = 1, aiT = 0, scanT = 0, count = -2, stage = 0, driftA = 0, driftT = 0, held = false, heldAt = 0, skew = 0;
   let cells = [], blebs = [], debris = [];
 
   /* ---- the dish: cells are kept in units of the dish radius, so a resize moves nothing */
@@ -516,9 +516,11 @@ function makeStory(cv, opt = {}) {
     if (driftA > 0.01) drawDrift(T, driftA);
     if (gridA > 0.01) drawGrid(T, gridA);
   }
+  /* the story's own clock stands still while the header is held (the pointer is over it) and carries on from where it stood */
+  const clock = () => (held ? heldAt : performance.now()) - skew;
   /* the beat's own start: a new dish (and its sweep), the switches, the dots appearing, the zoom, the guesses, the scan. `instant` shows the end of the beat at once. */
   function show(n, instant) {
-    const T = performance.now(); prev = beat; beat = n; count = -2; stage = 0;
+    const T = clock(); prev = beat; beat = n; count = -2; stage = 0;
     if (n === 1 || n === 2) {
       makeCells(n === 2); sweepT = instant ? 0 : T + (n === 2 ? 2300 : 700); chipT = n === 2 ? (instant ? T - 5000 : T + 250) : 0;
       if (instant) { for (const c of cells) { c.hit = 1; c.act = c.fate; c.s = c.fate === "senescence" ? 1.3 : 1; c.tint = FATES[c.fate].slice(); if (c.fate === "apoptosis") { c.gone = true; crumbs(c); } } cells = cells.filter((c) => !c.gone); }
@@ -530,14 +532,17 @@ function makeStory(cv, opt = {}) {
       backFrom = n === 5 && prev === 4 ? Math.sqrt(TOTAL / (SIZES[4] || TOTAL)) : 1; backT = n === 5 && !instant && prev === 4 ? T : 0;
       aiT = n === 5 ? (instant ? T - 20000 : T + 1100) : 0; scanT = n === 5 ? (instant ? T - 1e5 : T + 4600) : 0;
     } else { gridT = 0; zoomT = 0; backT = 0; aiT = 0; scanT = 0; }
-    if (instant) { dishA = n === 1 || n === 2 ? 1 : 0; driftA = n === 3 ? 1 : 0; gridA = n >= 4 ? 1 : 0; if (ready) draw(T, 0); }
+    if (instant) { dishA = n === 1 || n === 2 ? 1 : 0; driftA = n === 3 ? 1 : 0; gridA = n >= 4 ? 1 : 0; }
+    if ((instant || held) && ready) draw(T, 0);
   }
-  const frame = (now) => { if (!running) return; const dt = Math.max(0, Math.min(0.05, (now - last) / 1000)); last = now; draw(now, dt); requestAnimationFrame(frame); };
-  new ResizeObserver(() => { if (fit() && !running) draw(performance.now(), 0); }).observe(cv);
+  const frame = (now) => { if (!running) return; const dt = Math.max(0, Math.min(0.05, (now - last) / 1000)); last = now; if (!held) draw(now - skew, dt); requestAnimationFrame(frame); };
+  new ResizeObserver(() => { if (fit() && (!running || held)) draw(clock(), 0); }).observe(cv);
   fit(); makeCells(false);
   return {
     show,
     start: () => { fit(); if (running || !ready) return; if (reduced) { draw(performance.now(), 0); return; } running = true; last = performance.now(); requestAnimationFrame(frame); },
     stop: () => { running = false; },
+    hold: () => { if (!held) { held = true; heldAt = performance.now(); } },
+    release: () => { if (held) { held = false; skew += performance.now() - heldAt; } },
   };
 }

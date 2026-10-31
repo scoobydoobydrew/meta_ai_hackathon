@@ -37,7 +37,7 @@ All numbers are produced by `make verify` and written to [`results/RESULTS.md`](
 [`docs/limitations.md`](docs/limitations.md).
 
 **The interactive report is [`results/report.html`](results/report.html)** (open it in a browser; `python -m cellproof.cli report`
-rebuilds it). The top of the page is a story of about 50 seconds (long enough to read) told over a close-up of DNA, in six beats: radiation breaks DNA; a
+rebuilds it). The top of the page is a story of about 50 seconds (long enough to read, and it stands still while the mouse pointer is over its words or pictures) told over a close-up of DNA, in six beats: radiation breaks DNA; a
 damaged cell can pause, age, recycle itself or die, so not every one dies; the goal, a combination of genes to switch off, or on,
 that leaves only death; new rules keep coming and each can change which combinations work (a small network of genes: papers
 bring links one after another, and the combinations of the published list stop working as the pipeline's own edits are

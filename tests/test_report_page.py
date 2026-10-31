@@ -153,6 +153,15 @@ def test_every_beat_of_the_header_stays_long_enough_to_read_its_words():
     assert seconds[3] >= 10 and seconds[5] >= 10  # the network with papers arriving and the scoreboard carry the most to read
 
 
+def test_the_header_stands_still_while_the_mouse_is_over_its_words_and_pictures_but_not_over_its_bars():
+    bench, hero, css, html = ((WEB / name).read_text(encoding="utf-8") for name in ("bench.js", "hero.js", "style.css", "body.html"))
+    assert 'addEventListener("pointermove"' in bench and 'e.pointerType === "mouse"' in bench and 'closest(".hero-foot")' in bench  # a mouse, not a touch, and not over the bars and buttons
+    assert 'addEventListener("pointerleave", release)' in bench and "story.hold()" in bench and "story.release()" in bench
+    assert "hold: () =>" in hero and "release: () =>" in hero and "const clock = () => (held ? heldAt : performance.now()) - skew" in hero  # the story's own clock stands still
+    assert ".hero.is-held .beat *, .hero.is-held .hero-dots button::after { animation-play-state: paused; }" in css
+    assert 'class="hero-hold"' in html and ".hero.is-held .hero-hold { display: block; }" in css  # a pause mark shows
+
+
 def test_both_languages_have_the_same_texts_and_every_label_in_the_markup_has_one():
     js = (WEB / "bench.js").read_text(encoding="utf-8")
     text = js.split("  const TEXT = {\n", 1)[1].split("\n  let lang", 1)[0]
